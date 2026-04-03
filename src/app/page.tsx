@@ -86,7 +86,8 @@ function LandingPageContent() {
   
   // Preserve redirect param from middleware when navigating to auth
   const redirectParam = searchParams.get("redirect")
-  const authUrl = redirectParam ? `http://localhost:3000/auth?redirect=${encodeURIComponent(redirectParam)}` : "http://localhost:3000/auth"
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+  const authUrl = redirectParam ? `${appUrl}/auth?redirect=${encodeURIComponent(redirectParam)}` : `${appUrl}/auth`
 
   // Auto-rotate hero role tabs
   useEffect(() => {
