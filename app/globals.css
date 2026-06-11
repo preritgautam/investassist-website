@@ -1,0 +1,4123 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* InvestAssist Financial SaaS Theme - v3 - New Towne Data Update - Cache Bust 2026-03-22T12:30:00Z */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     INSTITUTIONAL FINANCE THEME - Bloomberg/Carta/Juniper Square Inspired
+     Deep navy foundations, crisp whites, muted professional accents
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Core backgrounds - Clean, professional white with subtle warmth */
+  --background: #fafbfc;
+  --foreground: #0f172a;
+
+  /* Cards - Pure white with sophisticated depth */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  /* Popovers - Elevated surfaces */
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  /* Primary - Deep navy (institutional trust) */
+  --primary: #0f172a;
+  --primary-foreground: #ffffff;
+
+  /* Secondary - Cool slate gray */
+  --secondary: #f1f5f9;
+  --secondary-foreground: #334155;
+
+  /* Muted - Subtle backgrounds */
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+
+  /* Accent - Refined teal (financial growth) */
+  --accent: #f0fdfa;
+  --accent-foreground: #0d9488;
+
+  /* Destructive - Muted professional red */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Borders - Hairline precise */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0f172a;
+
+  /* Charts - Institutional palette */
+  --chart-1: #0d9488;
+  --chart-2: #3b82f6;
+  --chart-3: #0d9488;
+  --chart-4: #f59e0b;
+  --chart-5: #ec4899;
+
+  /* Radius - Refined, not bubbly */
+  --radius: 0.5rem;
+
+  /* Sidebar - Deep navy institutional */
+  --sidebar: #0f172a;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #0d9488;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #1e293b;
+  --sidebar-ring: #0d9488;
+
+  /* Status - Muted, professional indicators */
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --success-muted: #ecfdf5;
+  --success-muted-foreground: #047857;
+
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --warning-muted: #fffbeb;
+  --warning-muted-foreground: #b45309;
+
+  --info: #0284c7;
+  --info-foreground: #ffffff;
+  --info-muted: #f0f9ff;
+  --info-muted-foreground: #0369a1;
+
+  --attention: #ea580c;
+  --attention-foreground: #ffffff;
+  --attention-muted: #fff7ed;
+  --attention-muted-foreground: #c2410c;
+
+  /* Gradients - Sophisticated depth */
+  --gradient-primary-from: #0f172a;
+  --gradient-primary-to: #1e293b;
+  --gradient-secondary-from: #0d9488;
+  --gradient-secondary-to: #0f766e;
+  --gradient-success-from: #059669;
+  --gradient-success-to: #047857;
+  --gradient-warning-from: #d97706;
+  --gradient-warning-to: #b45309;
+  --gradient-accent-from: #0d9488;
+  --gradient-accent-to: #0f766e;
+
+  /* Surfaces - Layered depth */
+  --surface: #ffffff;
+  --surface-elevated: #f8fafc;
+  --surface-muted: #f1f5f9;
+
+  /* Interactive - Clean state management */
+  --interactive-bg: #f8fafc;
+  --interactive-fg: #0f172a;
+  --interactive-border: #e2e8f0;
+  --interactive-hover-bg: #f1f5f9;
+  --interactive-hover-fg: #0f172a;
+
+  --interactive-secondary-bg: #f1f5f9;
+  --interactive-secondary-fg: #334155;
+  --interactive-secondary-border: #e2e8f0;
+  --interactive-secondary-hover-bg: #e2e8f0;
+  --interactive-secondary-hover-fg: #0f172a;
+}
+
+.dark {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SUPER-GRADIENT / NEURAL THEME
+     Deep navy foundations with electric blue, indigo, magenta & cyan glows
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --background: #060a18;
+  --foreground: #e8edff;
+  --card: #0e1530;
+  --card-foreground: #e8edff;
+  --popover: #0e1530;
+  --popover-foreground: #e8edff;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #1a2348;
+  --secondary-foreground: #cdd6ff;
+  --muted: #121a38;
+  --muted-foreground: #8b97c9;
+  --accent: #1a2348;
+  --accent-foreground: #38bdf8;
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
+  --border: #25305c;
+  --input: #25305c;
+  --ring: #6366f1;
+  --chart-1: #38bdf8;
+  --chart-2: #6366f1;
+  --chart-3: #a855f7;
+  --chart-4: #ec4899;
+  --chart-5: #22d3ee;
+  --sidebar: #080d20;
+  --sidebar-foreground: #e8edff;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #141d40;
+  --sidebar-accent-foreground: #38bdf8;
+  --sidebar-border: #25305c;
+  --sidebar-ring: #6366f1;
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --success-muted: #05312a;
+  --success-muted-foreground: #34d399;
+  --warning: #f59e0b;
+  --warning-foreground: #0f172a;
+  --warning-muted: #3a2606;
+  --warning-muted-foreground: #fbbf24;
+  --info: #38bdf8;
+  --info-foreground: #06121f;
+  --info-muted: #0c2942;
+  --info-muted-foreground: #7dd3fc;
+  --attention: #ec4899;
+  --attention-foreground: #ffffff;
+  --attention-muted: #3a0f29;
+  --attention-muted-foreground: #f9a8d4;
+  /* Super-gradient stops - electric blue → indigo → magenta → cyan */
+  --gradient-primary-from: #6366f1;
+  --gradient-primary-to: #a855f7;
+  --gradient-secondary-from: #38bdf8;
+  --gradient-secondary-to: #6366f1;
+  --gradient-success-from: #10b981;
+  --gradient-success-to: #34d399;
+  --gradient-warning-from: #f59e0b;
+  --gradient-warning-to: #fbbf24;
+  --gradient-accent-from: #a855f7;
+  --gradient-accent-to: #ec4899;
+  --surface: #0e1530;
+  --surface-elevated: #16203f;
+  --surface-muted: #0a1024;
+  --interactive-bg: #16203f;
+  --interactive-fg: #e8edff;
+  --interactive-border: #2d3a6b;
+  --interactive-hover-bg: #20294f;
+  --interactive-hover-fg: #ffffff;
+  --interactive-secondary-bg: #121a38;
+  --interactive-secondary-fg: #cdd6ff;
+  --interactive-secondary-border: #25305c;
+  --interactive-secondary-hover-bg: #1a2348;
+  --interactive-secondary-hover-fg: #e8edff;
+}
+
+@theme inline {
+  --font-sans: var(--font-display, 'Plus Jakarta Sans'), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-success-muted-foreground: var(--success-muted-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-warning-muted-foreground: var(--warning-muted-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-info-muted-foreground: var(--info-muted-foreground);
+
+  --color-attention: var(--attention);
+  --color-attention-foreground: var(--attention-foreground);
+  --color-attention-muted: var(--attention-muted);
+  --color-attention-muted-foreground: var(--attention-muted-foreground);
+
+  --color-gradient-primary-from: var(--gradient-primary-from);
+  --color-gradient-primary-to: var(--gradient-primary-to);
+  --color-gradient-secondary-from: var(--gradient-secondary-from);
+  --color-gradient-secondary-to: var(--gradient-secondary-to);
+  --color-gradient-success-from: var(--gradient-success-from);
+  --color-gradient-success-to: var(--gradient-success-to);
+  --color-gradient-warning-from: var(--gradient-warning-from);
+  --color-gradient-warning-to: var(--gradient-warning-to);
+  --color-gradient-accent-from: var(--gradient-accent-from);
+  --color-gradient-accent-to: var(--gradient-accent-to);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--surface-muted);
+  --color-interactive-bg: var(--interactive-bg);
+  --color-interactive-fg: var(--interactive-fg);
+  --color-interactive-border: var(--interactive-border);
+  --color-interactive-hover-bg: var(--interactive-hover-bg);
+  --color-interactive-hover-fg: var(--interactive-hover-fg);
+  --color-interactive-secondary-bg: var(--interactive-secondary-bg);
+  --color-interactive-secondary-fg: var(--interactive-secondary-fg);
+  --color-interactive-secondary-border: var(--interactive-secondary-border);
+  --color-interactive-secondary-hover-bg: var(--interactive-secondary-hover-bg);
+  --color-interactive-secondary-hover-fg: var(--interactive-secondary-hover-fg);
+}
+
+@layer base {
+  * {
+    @apply outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Clean scrolling — overflow-y: scroll forces a permanent scrollbar so
+     Radix UI never removes it, eliminating the layout-shift on Select/Dialog open */
+  html {
+    height: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable; /* reserves space even when scrollbar is hidden */
+  }
+  
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Counteract Radix UI's scroll-lock padding injection.
+       When Radix removes the scrollbar it sets padding-right on body
+       equal to the scrollbar width — but since we force overflow-y:scroll
+       the scrollbar never actually disappears, so we must always reset this. */
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Prevent Radix UI from shifting layout when Select/Dialog/Sheet locks scroll.
+     Radix adds [data-scroll-locked] to body and injects padding-right to compensate
+     for the removed scrollbar — but we always show the scrollbar via overflow-y:scroll
+     so no compensation is needed. */
+  body[data-scroll-locked] {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Refined scrollbar - minimal and professional */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+
+  /* Ticker animation */
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-ticker {
+    animation: ticker 40s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-ticker:hover {
+    animation-play-state: paused;
+  }
+
+  /* Subtle pulse for unmapped items - draws attention without being annoying */
+  @keyframes pulse-subtle {
+    0%, 100% { 
+      opacity: 1; 
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+    50% { 
+      opacity: 0.95; 
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+
+  /* Shimmer animation for skeleton loading */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Focus states - refined */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLASSMORPHISM DESIGN SYSTEM - Premium Analysis Dashboard
+   Award-winning UI with depth, light, and modern frosted glass effects
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Premium Dashboard Background - Clean institutional slate */
+.glass-dashboard-bg {
+  background: 
+    radial-gradient(ellipse 70% 50% at 15% 35%, rgba(13, 148, 136, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 70%, rgba(15, 23, 42, 0.04) 0%, transparent 60%),
+    linear-gradient(160deg, #fafbfc 0%, #f8fafc 40%, #f4f7fa 100%);
+  background-attachment: fixed;
+}
+
+/* Glass Card - Primary frosted glass effect */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 8px 32px rgba(100, 100, 140, 0.08),
+    0 2px 8px rgba(100, 100, 140, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(100, 100, 140, 0.12),
+    0 4px 12px rgba(100, 100, 140, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Glass Card Dark - For hero/primary KPIs */
+.glass-card-dark {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.90) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Glass Card Accent - Colored tint variants */
+.glass-card-teal {
+  background: linear-gradient(135deg, rgba(240, 253, 250, 0.95) 0%, rgba(204, 251, 241, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  box-shadow: 0 4px 24px rgba(20, 184, 166, 0.12);
+}
+
+.glass-card-indigo {
+  background: linear-gradient(135deg, rgba(240, 253, 250, 0.95) 0%, rgba(204, 251, 241, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  box-shadow: 0 4px 24px rgba(13, 148, 136, 0.12);
+}
+
+.glass-card-amber {
+  background: linear-gradient(135deg, rgba(255, 251, 235, 0.95) 0%, rgba(254, 243, 199, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  box-shadow: 0 4px 24px rgba(245, 158, 11, 0.12);
+}
+
+.glass-card-emerald {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, rgba(209, 250, 229, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 24px rgba(16, 185, 129, 0.12);
+}
+
+/* Glass Inner Card - Nested frosted elements */
+.glass-inner {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Glass Button - Premium button styling */
+.glass-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 4px 16px rgba(100, 100, 140, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
+}
+
+.glass-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 20px rgba(100, 100, 140, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Glass Progress Bar */
+.glass-progress {
+  background: rgba(241, 245, 249, 0.8);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.glass-progress-fill {
+  background: linear-gradient(90deg, var(--progress-from, #0d9488) 0%, var(--progress-to, #14b8a6) 100%);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+}
+
+/* Premium Text Gradients */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Effects */
+.glow-teal {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.3), 0 0 40px rgba(20, 184, 166, 0.1);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.25), 0 0 40px rgba(13, 148, 136, 0.10);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.1);
+}
+
+/* Premium Icon Container */
+.glass-icon {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Animated Shine Effect */
+@keyframes glass-shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 60%
+  );
+  animation: glass-shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.glass-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Premium Divider */
+.glass-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.3) 20%, rgba(148, 163, 184, 0.3) 80%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEOMORPHIC DESIGN SYSTEM - GLOBAL TOKENS
+   Clean slate/teal with white neomorphic cards
+   3D depth, borderless design, consistent shadows across platform
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── CSS CUSTOM PROPERTIES (Design Tokens) ─────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   NEOMORPHISM DESIGN SYSTEM - InvestAssist Platform
+   
+   USAGE GUIDE:
+   
+   1. PAGE LAYOUTS:
+      - Outer wrapper: Use `p-2 sm:p-3` with transparent background (parent gradient shows through)
+      - Inner card: Wrap header + tabs + content in single `neo-card rounded-2xl overflow-hidden`
+   
+   2. TABS:
+      - Container: `neo-tabs p-1 rounded-xl`
+      - Active: `neo-tab-active text-slate-900`
+      - Inactive: `neo-tab-inactive text-slate-500`
+   
+   3. CARDS & SECTIONS:
+      - Primary: `neo-card` (gradient white with depth)
+      - Interactive: `neo-card neo-card-hover`
+      - Small: `neo-card-sm`
+      - Inner nested: `neo-card-inner`
+   
+   4. ROWS & LISTS:
+      - List item: `neo-row`
+      - Highlighted: `neo-row-highlight`
+   
+   5. INPUTS:
+      - Elevated style: `neo-input-elevated rounded-xl`
+   
+   6. BUTTONS:
+      - Elevated: `neo-btn-elevated`
+      - Primary: `neo-btn-primary`
+      - Ghost: `neo-btn-ghost`
+      - Version badge: `neo-version-btn`
+   
+   7. SPECIAL:
+      - Icon container: `neo-icon-btn`
+      - Inset elements: `neo-inset`
+   
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Neo Shadows - 3D Depth */
+  --neo-shadow-sm: 0 2px 8px rgba(100, 100, 140, 0.06), 0 1px 2px rgba(100, 100, 140, 0.03);
+  --neo-shadow-md: 0 4px 16px rgba(100, 100, 140, 0.08), 0 2px 4px rgba(100, 100, 140, 0.04);
+  --neo-shadow-lg: 0 4px 24px rgba(100, 100, 140, 0.08), 0 1px 3px rgba(100, 100, 140, 0.04);
+  --neo-shadow-xl: 0 8px 32px rgba(100, 100, 140, 0.12), 0 2px 6px rgba(100, 100, 140, 0.06);
+  --neo-shadow-hover: 0 6px 20px rgba(100, 100, 140, 0.15), 0 2px 8px rgba(100, 100, 140, 0.08);
+  --neo-shadow-active: 0 2px 8px rgba(100, 100, 140, 0.1);
+  
+  /* Neo Button Shadows with 3D Depth */
+  --neo-btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --neo-btn-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
+  --neo-btn-shadow-primary: 0 4px 16px rgba(15, 23, 42, 0.22);
+  --neo-btn-shadow-primary-hover: 0 6px 24px rgba(15, 23, 42, 0.30);
+  
+  /* Neo Inner Card Shadows (colored tints) */
+  --neo-shadow-indigo: 0 4px 16px rgba(13, 148, 136, 0.15);
+  --neo-shadow-emerald: 0 4px 16px rgba(16, 185, 129, 0.15);
+  --neo-shadow-amber: 0 4px 16px rgba(245, 158, 11, 0.15);
+  --neo-shadow-red: 0 4px 16px rgba(239, 68, 68, 0.15);
+  --neo-shadow-blue: 0 4px 16px rgba(59, 130, 246, 0.15);
+  --neo-shadow-teal: 0 4px 16px rgba(20, 184, 166, 0.15);
+  
+  /* Neo Border Radius */
+  --neo-radius-xs: 8px;
+  --neo-radius-sm: 12px;
+  --neo-radius-md: 16px;
+  --neo-radius-lg: 20px;
+  --neo-radius-xl: 24px;
+  --neo-radius-full: 9999px;
+  
+  /* Neo Transitions */
+  --neo-transition: all 0.2s ease;
+  --neo-transition-fast: all 0.15s ease;
+  --neo-transition-slow: all 0.3s ease;
+  
+  /* ═══════════════════════════════════════════════════════════════════════════
+     TYPOGRAPHY SCALE - InvestAssist Platform Standard
+     Consistent across Syndicator, Investor, Buyer, Broker dashboards
+     ═══════════════════════════════════════════════════════════════════════════ */
+  
+  /* Font Sizes - Numeric scale */
+  --ia-text-2xs: 0.5625rem;    /* 9px - micro labels, AI badges */
+  --ia-text-xs: 0.625rem;      /* 10px - uppercase labels, chips */
+  --ia-text-sm: 0.6875rem;     /* 11px - small body, badges */
+  --ia-text-base: 0.75rem;     /* 12px - body small, table cells */
+  --ia-text-md: 0.8125rem;     /* 13px - section titles */
+  --ia-text-lg: 0.875rem;      /* 14px - body text, buttons */
+  --ia-text-xl: 1rem;          /* 16px - card titles, stat values */
+  --ia-text-2xl: 1.125rem;     /* 18px - page titles mobile */
+  --ia-text-3xl: 1.25rem;      /* 20px - page titles desktop */
+  --ia-text-4xl: 1.5rem;       /* 24px - hero stats */
+  
+  /* Font Weights */
+  --ia-font-normal: 400;
+  --ia-font-medium: 500;
+  --ia-font-semibold: 600;
+  --ia-font-bold: 700;
+  
+  /* Line Heights */
+  --ia-leading-tight: 1.25;
+  --ia-leading-normal: 1.5;
+  --ia-leading-relaxed: 1.625;
+  
+  /* Letter Spacing */
+  --ia-tracking-tight: -0.025em;
+  --ia-tracking-normal: 0;
+  --ia-tracking-wide: 0.05em;
+  --ia-tracking-wider: 0.1em;
+  
+  /* ═══════════════════════════════════════════════════════════════════════════
+     COMPONENT SIZING - InvestAssist Platform Standard
+     Consistent button, badge, input sizes across all pages
+     ═════════════════════�����������═════════════════════════════════════════════════════ */
+  
+  /* Button Heights */
+  --ia-btn-xs: 1.5rem;         /* 24px - micro buttons */
+  --ia-btn-sm: 1.75rem;        /* 28px - card action buttons */
+  --ia-btn-md: 2rem;           /* 32px - standard buttons (h-8) */
+  --ia-btn-lg: 2.5rem;         /* 40px - primary CTAs */
+  
+  /* Icon Button Sizes */
+  --ia-icon-btn-sm: 1.75rem;   /* 28px - h-7 w-7 */
+  --ia-icon-btn-md: 2rem;      /* 32px - h-8 w-8 */
+  --ia-icon-btn-lg: 2.25rem;   /* 36px - h-9 w-9 */
+  
+  /* Badge Sizes */
+  --ia-badge-sm-px: 0.375rem;  /* px-1.5 */
+  --ia-badge-sm-py: 0.125rem;  /* py-0.5 */
+  --ia-badge-md-px: 0.5rem;    /* px-2 */
+  --ia-badge-md-py: 0.25rem;   /* py-1 */
+  
+  /* Input Heights */
+  --ia-input-sm: 2rem;         /* 32px */
+  --ia-input-md: 2.25rem;      /* 36px */
+  --ia-input-lg: 2.5rem;       /* 40px */
+  
+  /* Avatar Sizes */
+  --ia-avatar-xs: 1.5rem;      /* 24px - h-6 w-6 */
+  --ia-avatar-sm: 1.75rem;     /* 28px - h-7 w-7 */
+  --ia-avatar-md: 2rem;        /* 32px - h-8 w-8 */
+  --ia-avatar-lg: 2.5rem;      /* 40px - h-10 w-10 */
+  
+  /* Neo Typography (legacy - keep for backwards compatibility) */
+  --neo-text-xs: 0.6875rem;    /* 11px */
+  --neo-text-sm: 0.875rem;     /* 14px */
+  --neo-text-base: 1rem;       /* 16px */
+  --neo-text-lg: 1.125rem;     /* 18px */
+  --neo-text-xl: 1.25rem;      /* 20px */
+  
+  /* Neo Gradient Background */
+  --neo-gradient: linear-gradient(90deg, #f0f4f8 0%, #eaeff5 15%, #e5ecf3 30%, #dfe9f2 50%, #daeaf3 70%, #d6ecf4 85%, #d2eef5 100%);
+  --neo-section-gradient: linear-gradient(135deg, #ffffff 0%, #fafbfc 50%, #f4f7fa 80%, #eef2f6 100%);
+  --neo-top-drawer-gradient: linear-gradient(to right, #ffffff 0%, #fafbfc 40%, #f4f7fa 75%, #eef2f6 100%);
+  --neo-surface: linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(244, 247, 250, 0.95) 50%, rgba(240, 244, 248, 0.92) 100%);
+
+  /* ─── TABLE TYPOGRAPHY TOKENS ───────────────────────────────────────────── */
+  /* These tokens ensure legibility and visual hierarchy in financial tables */
+  --neo-table-header-font-size: 12px;
+  --neo-table-header-font-weight: 700;
+  --neo-table-header-color: #0f172a; /* slate-900 */
+  --neo-table-header-tracking: 0.05em;
+  --neo-table-header-bg: linear-gradient(135deg, rgba(248,250,252,0.98) 0%, rgba(241,245,249,0.95) 50%, rgba(236,241,247,0.92) 100%);
+  --neo-table-header-shadow: 0 2px 8px rgba(15,23,42,0.06);
+  
+  --neo-table-section-font-size: 11px;
+  --neo-table-section-font-weight: 700;
+  --neo-table-section-color: #1e293b; /* slate-800 */
+  --neo-table-section-bg: linear-gradient(135deg, rgba(248,250,252,0.95) 0%, rgba(241,245,249,0.9) 100%);
+  
+  --neo-table-row-font-size: 13px;
+  --neo-table-row-font-weight: 500;
+  --neo-table-row-color: #0f172a; /* slate-900 */
+  --neo-table-row-padding: 14px 16px;
+  
+  --neo-table-cell-font-size: 13px;
+  --neo-table-value-font-weight: 600;
+  --neo-table-value-color: #0f172a; /* slate-900 */
+  
+  /* ─── TOOLTIP TOKENS ────────────────────────────────────────────────────── */
+  --neo-tooltip-bg: #1e293b; /* slate-800 */
+  --neo-tooltip-text: #ffffff;
+  --neo-tooltip-border: rgba(71, 85, 105, 0.5); /* slate-600/50 */
+  --neo-tooltip-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  --neo-tooltip-radius: 8px;
+  --neo-tooltip-padding: 8px 12px;
+  --neo-tooltip-font-size: 12px;
+}
+
+/* ─── METRICS BAR (compact KPI strip inside financial tables) ────────────── */
+/* Use this class on the strip containing KeyMetricsBar in any table layout.  */
+/* It provides a neo-surface tint, inset border, and compact vertical sizing. */
+.neo-metrics-bar {
+  background: var(--neo-surface);
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+/* ─── TABLE HEADER ROW ───────────────────────────────────────────────────── */
+/* Strong neomorphic header with depth and legible typography */
+.neo-table-header {
+  background: var(--neo-table-header-bg);
+  box-shadow: var(--neo-table-header-shadow);
+}
+
+.neo-table-header th {
+  font-size: var(--neo-table-header-font-size);
+  font-weight: var(--neo-table-header-font-weight);
+  color: var(--neo-table-header-color);
+  letter-spacing: var(--neo-table-header-tracking);
+  padding: 16px;
+}
+
+/* ─── TABLE SECTION HEADER ───────────────────────────────────────────────── */
+/* Section divider rows (e.g., REVENUE, EXPENSES) */
+.neo-table-section {
+  background: var(--neo-table-section-bg);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 6px rgba(15,23,42,0.04);
+}
+
+.neo-table-section td {
+  font-size: var(--neo-table-section-font-size);
+  font-weight: var(--neo-table-section-font-weight);
+  color: var(--neo-table-section-color);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 16px;
+}
+
+/* ─── TABLE DATA ROW ─────────────────────────────────────────────────────── */
+/* Regular data rows with legible values */
+.neo-table-row {
+  font-size: var(--neo-table-row-font-size);
+  font-weight: var(--neo-table-row-font-weight);
+  color: var(--neo-table-row-color);
+  transition: background 0.15s ease;
+}
+
+.neo-table-row:hover {
+  background: rgba(248, 250, 252, 0.7);
+}
+
+.neo-table-row td {
+  padding: var(--neo-table-row-padding);
+}
+
+/* Table cell values */
+.neo-table-value {
+  font-size: var(--neo-table-cell-font-size);
+  font-weight: var(--neo-table-value-font-weight);
+  color: var(--neo-table-value-color);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── BACKGROUND ───────────────────────────────────────��─����─���─��─��─────────── */
+.neo-gradient-bg {
+  background: var(--neo-gradient);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Auth super-gradient: deep navy left panel for login/invite pages */
+.auth-super-gradient {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e293b 40%,
+    rgba(13, 148, 136, 0.15) 80%,
+    rgba(99, 102, 241, 0.10) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-super-gradient::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,148,136,0.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.auth-super-gradient::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ─── MAIN CARD STYLES ───────────────────────────────────────────────────── */
+/* White neomorphic card - main card style with 3D depth and subtle gradient */
+.neo-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 252, 0.96) 50%, rgba(248, 249, 252, 0.93) 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06), 0 1px 4px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: none;
+}
+
+/* Hover state for interactive cards */
+.neo-card-hover {
+  transition: var(--neo-transition);
+}
+
+.neo-card-hover:hover {
+  box-shadow: 0 8px 32px rgba(100, 100, 160, 0.12), 0 2px 8px rgba(100, 100, 160, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+}
+
+/* Smaller variant */
+.neo-card-sm {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(252, 252, 252, 0.92) 100%);
+  border-radius: var(--neo-radius-md);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: none;
+}
+
+/* ─── NEO-CARD-ELEVATED: Primary elevated card with 3D depth ────────────── */
+/* Use for: Loan cards, metric cards, prominent sections */
+.neo-card-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.99) 0%, rgba(252, 252, 252, 0.97) 40%, rgba(248, 250, 252, 0.95) 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 
+    0 4px 20px rgba(15, 23, 42, 0.07),
+    0 2px 8px rgba(15, 23, 42, 0.04),
+    0 1px 2px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: var(--neo-transition);
+}
+
+.neo-card-elevated:hover {
+  box-shadow: 
+    0 8px 32px rgba(15, 23, 42, 0.10),
+    0 4px 12px rgba(15, 23, 42, 0.05),
+    0 1px 3px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+}
+
+/* ─── NEO-CARD-INSET: Inset/pressed style for nested elements ───────────── */
+/* Use for: Metric chips, stat boxes, inner containers */
+.neo-card-inset {
+  background: linear-gradient(135deg, rgba(241, 244, 248, 0.85) 0%, rgba(237, 241, 246, 0.75) 50%, rgba(242, 245, 249, 0.65) 100%);
+  border-radius: var(--neo-radius-sm);
+  box-shadow: 
+    inset 0 2px 4px rgba(15, 23, 42, 0.05),
+    inset 0 1px 2px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+/* ─── NEO-CARD-STATS: Stats card with clean slate tint ──────────────────── */
+/* Use for: KPI cards, summary metrics */
+.neo-card-stats-elevated {
+  background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 40%, #eef2f7 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 
+    0 4px 16px rgba(15, 23, 42, 0.06),
+    0 2px 6px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  transition: var(--neo-transition);
+}
+
+/* ─── NEO-PAGE-GRADIENT: Full page gradient background ──────────────────── */
+/* Use for: Page wrappers, content areas */
+.neo-page-gradient {
+  background: linear-gradient(135deg, #fafbfc 0%, #f8fafc 25%, #f5f7fa 50%, #f2f5f8 75%, #eef2f6 100%);
+  min-height: 100%;
+}
+
+/* Section card with gradient */
+.neo-section-card {
+  background: var(--neo-section-gradient);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: var(--neo-shadow-lg);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Navy accent card (for special/highlighted sections) */
+.neo-card-accent {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.25), 0 2px 8px rgba(15, 23, 42, 0.15);
+  border: none;
+  color: white;
+}
+
+/* Teal accent card */
+.neo-accent-teal {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  border-radius: var(--neo-radius-lg);
+  color: white;
+  box-shadow: var(--neo-shadow-teal);
+}
+
+/* ─── INNER CARDS (Colored Tints) ────────────────────────────────────────── */
+.neo-inner-card {
+  border-radius: var(--neo-radius-sm);
+  border: none;
+  padding: 1rem;
+}
+
+.neo-inner-card-white {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--neo-shadow-md);
+}
+
+.neo-inner-card-indigo {
+  background: rgba(236, 253, 245, 0.8);
+  box-shadow: var(--neo-shadow-teal);
+}
+
+.neo-inner-card-emerald {
+  background: rgba(236, 253, 245, 0.8);
+  box-shadow: var(--neo-shadow-emerald);
+}
+
+.neo-inner-card-amber {
+  background: rgba(255, 251, 235, 0.8);
+  box-shadow: var(--neo-shadow-amber);
+}
+
+.neo-inner-card-red {
+  background: rgba(254, 242, 242, 0.8);
+  box-shadow: var(--neo-shadow-red);
+}
+
+.neo-inner-card-blue {
+  background: rgba(239, 246, 255, 0.8);
+  box-shadow: var(--neo-shadow-blue);
+}
+
+.neo-inner-card-teal {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.9) 0%, rgba(204, 251, 241, 0.9) 100%);
+  box-shadow: var(--neo-shadow-teal);
+}
+
+/* ─── INSET ELEMENTS ─────────────────────────────────────────────────────── */
+.neo-inset {
+  background: linear-gradient(135deg, rgba(245, 247, 252, 0.9) 0%, rgba(240, 243, 250, 0.85) 100%);
+  border-radius: var(--neo-radius-md);
+  box-shadow: inset 2px 2px 6px rgba(140, 150, 180, 0.12), inset -2px -2px 6px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ─── TAB STYLES ────────────────────────────────────��─────����──────────────── */
+/* Neo tab container - inset look with depth */
+.neo-tabs {
+  background: linear-gradient(135deg, rgba(240, 243, 250, 0.95) 0%, rgba(235, 238, 248, 0.9) 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 
+    inset 2px 2px 6px rgba(140, 150, 180, 0.15),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.95),
+    0 1px 2px rgba(100, 100, 140, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Active tab - elevated with shadow depth */
+.neo-tab-active {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 252, 255, 0.95) 100%);
+  border-radius: var(--neo-radius-md);
+  box-shadow: 
+    0 3px 10px rgba(100, 100, 160, 0.1),
+    0 1px 3px rgba(100, 100, 160, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Inactive tab */
+.neo-tab-inactive {
+  background: transparent;
+  border-radius: var(--neo-radius-md);
+  transition: var(--neo-transition);
+}
+
+.neo-tab-inactive:hover {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 4px rgba(100, 100, 160, 0.06);
+}
+
+/* ─── INPUT STYLES ───────────────────────────────────────────────────────── */
+/* Elevated input with neo depth */
+.neo-input-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 252, 255, 0.95) 100%);
+  border: none;
+  border-radius: var(--neo-radius-md);
+  box-shadow: 
+    0 2px 8px rgba(100, 100, 160, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: var(--neo-transition);
+}
+
+.neo-input-elevated:focus {
+  outline: none;
+  box-shadow: 
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    0 0 0 2px rgba(13, 148, 136, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Elevated button with neo depth */
+.neo-btn-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 252, 255, 0.95) 100%);
+  border: none;
+  border-radius: var(--neo-radius-md);
+  box-shadow: 
+    0 2px 8px rgba(100, 100, 160, 0.08),
+    0 1px 2px rgba(100, 100, 160, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: var(--neo-transition);
+}
+
+.neo-btn-elevated:hover {
+  box-shadow: 
+    0 4px 12px rgba(100, 100, 160, 0.12),
+    0 2px 4px rgba(100, 100, 160, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+/* Version button with dark neo style */
+.neo-version-btn {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  color: white;
+  border: none;
+  border-radius: var(--neo-radius-md);
+  box-shadow: 
+    0 2px 8px rgba(31, 41, 55, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: var(--neo-transition);
+}
+
+.neo-version-btn:hover {
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  box-shadow: 
+    0 4px 12px rgba(31, 41, 55, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Icon container with neo depth */
+.neo-icon-btn {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.9) 100%);
+  box-shadow: 
+    0 2px 6px rgba(100, 100, 160, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────────────────── */
+/* Base neomorphic button with 3D depth */
+.neo-btn {
+  background: #ffffff;
+  border-radius: var(--neo-radius-sm);
+  box-shadow: var(--neo-btn-shadow);
+  border: none;
+  transition: var(--neo-transition);
+  font-size: var(--neo-text-sm);
+  font-weight: 500;
+}
+
+.neo-btn:hover {
+  box-shadow: var(--neo-btn-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.neo-btn:active {
+  box-shadow: var(--neo-shadow-active);
+  transform: translateY(0);
+}
+
+/* White/ghost button with depth */
+.neo-btn-ghost {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--neo-radius-sm);
+  box-shadow: var(--neo-btn-shadow);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--neo-btn-shadow-hover);
+}
+
+/* Primary action button */
+.neo-btn-primary {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  border-radius: var(--neo-radius-sm);
+  box-shadow: var(--neo-btn-shadow-primary);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-btn-primary:hover {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  transform: translateY(-1px);
+  box-shadow: var(--neo-btn-shadow-primary-hover);
+}
+
+/* Round icon button with 3D depth */
+.neo-btn-icon {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--neo-radius-full);
+  box-shadow: var(--neo-btn-shadow);
+  border: none;
+  transition: var(--neo-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neo-btn-icon:hover {
+  background: #ffffff;
+  box-shadow: var(--neo-btn-shadow-hover);
+}
+
+.neo-btn-icon.active {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(30, 41, 59, 0.3);
+}
+
+/* ─── BADGES (No Borders) ────────────────────────────────────────────────── */
+.neo-badge {
+  border-radius: var(--neo-radius-xs);
+  padding: 0.125rem 0.5rem;
+  font-size: var(--neo-text-xs);
+  font-weight: 500;
+  border: none;
+}
+
+.neo-badge-teal {
+  background: rgba(204, 251, 241, 0.8);
+  color: #0f766e;
+  box-shadow: 0 2px 6px rgba(20, 184, 166, 0.15);
+}
+
+.neo-badge-amber {
+  background: rgba(254, 243, 199, 0.8);
+  color: #b45309;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15);
+}
+
+.neo-badge-red {
+  background: rgba(254, 226, 226, 0.8);
+  color: #b91c1c;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.15);
+}
+
+.neo-badge-indigo {
+  background: rgba(204, 251, 241, 0.8);
+  color: #0f766e;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.15);
+}
+
+/* ─── PROGRESS BAR ───────────────────────────────────────────────────────── */
+.neo-progress {
+  background: rgba(226, 232, 240, 0.8);
+  border-radius: var(--neo-radius-xs);
+  height: 8px;
+  box-shadow: inset 2px 2px 4px rgba(174, 174, 192, 0.15);
+}
+
+.neo-progress-fill {
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+  border-radius: var(--neo-radius-xs);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+/* ─── INPUTS ─────────────────────────────────────────────────────────────── */
+.neo-input {
+  background: #ffffff;
+  border-radius: var(--neo-radius-sm);
+  box-shadow: var(--neo-shadow-sm);
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: var(--neo-text-sm);
+  transition: var(--neo-transition);
+}
+
+.neo-input:focus {
+  outline: none;
+  box-shadow: var(--neo-shadow-md), 0 0 0 2px rgba(13, 148, 136, 0.2);
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
+.neo-stat-value {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.neo-stat-label {
+  color: #64748b;
+  font-size: var(--neo-text-xs);
+  font-weight: 500;
+}
+
+.neo-title {
+  font-size: var(--neo-text-base);
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.neo-subtitle {
+  font-size: var(--neo-text-sm);
+  font-weight: 500;
+  color: #64748b;
+}
+
+/* ─── CHART CONTAINER ────────────────────────────────────────────────────── */
+.neo-chart-container {
+  background: rgba(248, 250, 252, 0.6);
+  border-radius: var(--neo-radius-sm);
+  padding: 1rem;
+  box-shadow: inset 2px 2px 6px rgba(174, 174, 192, 0.1);
+}
+
+/* ─── ROW/LIST ITEMS ─────────────────────────────────────────────────────── */
+.neo-row {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(252, 252, 255, 0.8) 100%);
+  border-radius: var(--neo-radius-md);
+  box-shadow: 0 2px 8px rgba(100, 100, 160, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-row:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 255, 0.9) 100%);
+  box-shadow: 0 4px 16px rgba(100, 100, 160, 0.08), 0 1px 4px rgba(100, 100, 160, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.neo-row-highlight {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.9) 0%, rgba(220, 252, 231, 0.85) 100%);
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ─── DIVIDERS (Subtle) ───────────────────�������─────────────�����������────────────────── */
+.neo-divider {
+  border: none;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.neo-divider-vertical {
+  border: none;
+  width: 1px;
+  background: rgba(148, 163, 184, 0.25);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   TOP DRAWER (Dashboard Hero Section) DESIGN TOKENS
+   Applied to: Syndicator, Investor, Buyer-Acquirer, Broker-Seller dashboards
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/* Light theme TopDrawer (used by Syndicator) */
+.top-drawer-light {
+  position: relative;
+  border-radius: var(--neo-radius-lg);
+  overflow: hidden;
+  background: linear-gradient(to right, #ffffff 0%, #ffffff 40%, #EDE9FE 75%, #DBEAFE 100%);
+  box-shadow: 0 4px 24px rgba(100, 100, 140, 0.12), 0 1px 3px rgba(100, 100, 140, 0.06);
+}
+
+.top-drawer-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 25%;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(237, 233, 254, 0.3);
+  border-radius: 9999px;
+  filter: blur(48px);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.top-drawer-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12rem;
+  height: 12rem;
+  background: rgba(219, 234, 254, 0.4);
+  border-radius: 9999px;
+  filter: blur(48px);
+  transform: translateY(33%) translateX(25%);
+  pointer-events: none;
+}
+
+/* Dark theme TopDrawer (available but not currently used - all roles use light theme) */
+.top-drawer-dark {
+  position: relative;
+  border-radius: var(--neo-radius-lg);
+  overflow: hidden;
+  color: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.top-drawer-dark-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a);
+}
+
+.top-drawer-dark-glow-left {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .top-drawer-dark-glow-left {
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
+.top-drawer-dark-glow-right {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .top-drawer-dark-glow-right {
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
+/* TopDrawer content container */
+.top-drawer-content {
+  position: relative;
+  z-index: 10;
+  padding: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .top-drawer-content {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .top-drawer-content {
+    padding: 1.25rem;
+  }
+}
+
+/* TopDrawer property image - dimensions set via Tailwind classes (h-12 w-12 sm:h-14 sm:w-14) */
+.top-drawer-property-image {
+  position: relative;
+  border-radius: var(--neo-radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(100, 100, 140, 0.2), 0 2px 6px rgba(100, 100, 140, 0.1);
+}
+
+.top-drawer-dark .top-drawer-property-image {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* TopDrawer header divider */
+.top-drawer-divider {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.top-drawer-dark .top-drawer-divider {
+  border-bottom-color: rgba(100, 116, 139, 0.35);
+}
+
+/* TopDrawer metric label */
+.top-drawer-metric-label {
+  font-size: 0.625rem;
+  color: #64748b;
+}
+
+.top-drawer-dark .top-drawer-metric-label {
+  color: #94a3b8;
+}
+
+/* TopDrawer buttons - All roles use neo-ghost variant with h-8 text-sm */
+.top-drawer-btn {
+  height: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: var(--neo-radius-xs);
+  transition: var(--neo-transition);
+}
+
+.top-drawer-btn-light {
+  background: rgba(255, 255, 255, 0.9);
+  color: #475569;
+  box-shadow: 0 2px 8px rgba(100, 100, 140, 0.1), 0 1px 2px rgba(100, 100, 140, 0.06);
+}
+
+.top-drawer-btn-light:hover {
+  background: #ffffff;
+  color: #1e293b;
+  box-shadow: 0 4px 12px rgba(100, 100, 140, 0.15), 0 2px 4px rgba(100, 100, 140, 0.08);
+}
+
+.top-drawer-btn-dark {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.top-drawer-btn-dark:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* TopDrawer action button - primary CTA */
+.top-drawer-btn-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.top-drawer-btn-primary:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+/* ═════════════════════════════════════════════════��═══════════════════════════
+   DASHBOARD CARD DESIGN TOKENS
+   Applied to: All role dashboard cards (Syndicator, Investor, Buyer, Broker)
+   ════════════════════════════════════════════════════════════════════════════��� */
+
+/* Dashboard button - Standard action button with 3D depth, no border */
+.dashboard-btn {
+  height: 2rem; /* h-8 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+  border-radius: var(--neo-radius-xs);
+  background: rgba(255, 255, 255, 0.9);
+  color: #475569;
+  border: none;
+  box-shadow: 0 2px 8px rgba(100, 100, 140, 0.1), 0 1px 2px rgba(100, 100, 140, 0.06);
+  transition: var(--neo-transition);
+}
+
+.dashboard-btn:hover {
+  background: #ffffff;
+  color: #1e293b;
+  box-shadow: 0 4px 12px rgba(100, 100, 140, 0.15), 0 2px 4px rgba(100, 100, 140, 0.08);
+}
+
+/* Dashboard button - Blue accent variant */
+.dashboard-btn-blue {
+  color: #2563eb;
+}
+
+.dashboard-btn-blue:hover {
+  color: #1d4ed8;
+}
+
+/* Dashboard metric card - KPI display boxes */
+.dashboard-metric-card {
+  border-radius: var(--neo-radius-md);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.75rem;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Dashboard metric label */
+.dashboard-metric-label {
+  font-size: 0.75rem; /* text-xs */
+  color: #475569; /* text-slate-600 */
+}
+
+/* Dashboard metric value */
+.dashboard-metric-value {
+  font-size: 1rem; /* text-base */
+  font-weight: 700;
+  color: #0f172a; /* text-slate-900 */
+  margin-top: 0.25rem;
+}
+
+/* Dashboard metric value - highlight variant */
+.dashboard-metric-value-highlight {
+  color: #059669; /* text-emerald-600 */
+}
+
+/* Dashboard metric value - accent variant */
+.dashboard-metric-value-accent {
+  color: #d97706; /* text-amber-600 */
+}
+
+/* Dashboard data row - Key-value pairs */
+.dashboard-data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0; /* py-2.5 */
+  border-bottom: 1px solid rgba(241, 245, 249, 0.6); /* border-slate-100/60 */
+}
+
+.dashboard-data-row:last-child {
+  border-bottom: none;
+}
+
+.dashboard-data-row-label {
+  font-size: 0.875rem; /* text-sm */
+  color: #475569; /* text-slate-600 */
+}
+
+.dashboard-data-row-value {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600;
+  color: #0f172a; /* text-slate-900 */
+  text-align: right;
+}
+
+/* Dashboard highlight box - Value-Add Delta, AI Insight, etc. */
+.dashboard-highlight-box {
+  border-radius: var(--neo-radius-md);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-highlight-box-emerald {
+  background: linear-gradient(to right, #ecfdf5, #ccfbf1); /* from-emerald-50 to-teal-50 */
+}
+
+.dashboard-highlight-box-blue {
+  background: linear-gradient(to right, #eff6ff, #f0fdf4); /* from-blue-50 to-green-50 */
+}
+
+.dashboard-highlight-box-amber {
+  background: linear-gradient(135deg, #fffbeb, #fff7ed); /* from-amber-50 to-orange-50 */
+}
+
+/* Dashboard highlight box title */
+.dashboard-highlight-title {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Dashboard highlight box content */
+.dashboard-highlight-content {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.625; /* leading-relaxed */
+}
+
+/* Dashboard scenario row - Base/Upside/Downside cases */
+.dashboard-scenario-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem; /* p-3.5 */
+  border-radius: var(--neo-radius-md);
+}
+
+.dashboard-scenario-row-base {
+  background: rgba(239, 246, 255, 0.7); /* bg-blue-50/70 */
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+}
+
+.dashboard-scenario-row-upside {
+  background: rgba(236, 253, 245, 0.7); /* bg-emerald-50/70 */
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+}
+
+.dashboard-scenario-row-downside {
+  background: rgba(254, 242, 242, 0.7); /* bg-red-50/70 */
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
+}
+
+/* Dashboard scenario label */
+.dashboard-scenario-label {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  color: #334155; /* text-slate-700 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Dashboard scenario sub-label */
+.dashboard-scenario-sub {
+  font-size: 0.75rem; /* text-xs */
+  color: #64748b; /* text-slate-500 */
+  margin-top: 0.25rem;
+}
+
+/* Dashboard scenario value */
+.dashboard-scenario-value {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;
+}
+
+/* Dashboard section header styling */
+.dashboard-section-header {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  color: #334155; /* text-slate-700 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+/* Dashboard sub-card - nested cards like Debt Structure, Equity & Promote */
+.dashboard-sub-card {
+  border-radius: var(--neo-radius-md);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-sub-card-blue {
+  background: rgba(239, 246, 255, 0.6); /* bg-blue-50/60 */
+}
+
+.dashboard-sub-card-emerald {
+  background: rgba(236, 253, 245, 0.6); /* bg-emerald-50/60 */
+}
+
+.dashboard-sub-card-white {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Dashboard sub-card title */
+.dashboard-sub-card-title {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+/* Dashboard badge - AI, status badges */
+.dashboard-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.625rem; /* px-2.5 py-1 */
+  border-radius: 9999px;
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-badge-indigo {
+  background: #ccfbf1; /* teal-100 */
+  color: #0f766e; /* teal-700 */
+}
+
+.dashboard-badge-emerald {
+  background: #d1fae5; /* bg-emerald-100 */
+  color: #059669; /* text-emerald-700 */
+}
+
+.dashboard-badge-blue {
+  background: #dbeafe; /* bg-blue-100 */
+  color: #2563eb; /* text-blue-700 */
+}
+
+.dashboard-badge-amber {
+  background: #fef3c7; /* bg-amber-100 */
+  color: #d97706; /* text-amber-700 */
+}
+
+/* Dashboard investor row */
+.dashboard-investor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem; /* p-2.5 */
+  border-radius: var(--neo-radius-md);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: var(--neo-transition);
+}
+
+.dashboard-investor-row:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dashboard avatar */
+.dashboard-avatar {
+  height: 1.75rem; /* h-7 */
+  width: 1.75rem; /* w-7 */
+  border-radius: 9999px;
+  background: #334155; /* slate-700 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 700;
+  color: #1d4ed8; /* text-blue-700 */
+  flex-shrink: 0;
+}
+
+/* Dashboard stage badge */
+.dashboard-stage-badge {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  padding: 0.125rem 0.5rem; /* px-2 py-0.5 */
+  border-radius: 9999px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Dashboard progress stages */
+.dashboard-stage-funded {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.dashboard-stage-signed {
+  background: #ccfbf1;
+  color: #0d9488;
+}
+
+.dashboard-stage-ppm {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.dashboard-stage-verbal {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.dashboard-stage-soft {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* ─── PAGE BACKGROUNDS ────────────────────────────────────────────��──────── */
+.neo-page-bg {
+  background: var(--neo-gradient);
+  min-height: 100vh;
+}
+
+/* ─── CONTENT CONTAINER ──────────────────────────────────────────────────── */
+.neo-content-area {
+  background: transparent;
+}
+
+/* ═══════════════������═══════════════════════════════════════════════════���═════════
+   PLATFORM-WIDE NEO CARD DESIGN TOKENS
+   Applied to: Documents, Property, Model, Insights, Deal Room
+   All tabs, sub-tabs, content pages across all user roles
+   ═════════════════════════════════════════════════════════════��═══════════════ */
+
+/* Primary content card - white/slate gradient with neo shadow 
+   Note: Main definition is above. This extends with transition for platform-wide consistency */
+.neo-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 255, 0.95) 50%, rgba(248, 248, 255, 0.92) 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 0 4px 20px rgba(100, 100, 160, 0.08), 0 1px 4px rgba(100, 100, 160, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-card:hover {
+  box-shadow: 0 8px 32px rgba(100, 100, 160, 0.12), 0 2px 8px rgba(100, 100, 160, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Secondary card variant - lighter gradient */
+.neo-card-secondary {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(252, 252, 255, 0.9) 100%);
+  border-radius: var(--neo-radius-md);
+  box-shadow: 0 3px 12px rgba(100, 100, 160, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-card-secondary:hover {
+  box-shadow: 0 6px 20px rgba(100, 100, 160, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Nested card inside main cards */
+.neo-card-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 252, 255, 0.8) 100%);
+  border-radius: var(--neo-radius-md);
+  box-shadow: 0 2px 10px rgba(100, 100, 160, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   METRIC CARDS - Neomorphic 3D depth with consistent sizing
+   Cache bust: 2026-03-22-v3
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.neo-card-stats,
+.metric-card-default {
+  background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 50%, #f5f3ff 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px -4px rgba(99,102,241,0.15),
+    0 4px 8px -2px rgba(99,102,241,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 -1px 0 rgba(99,102,241,0.06);
+  border: 1px solid rgba(99,102,241,0.1);
+}
+
+.metric-card-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px -4px rgba(59,130,246,0.18),
+    0 4px 8px -2px rgba(59,130,246,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  border: 1px solid rgba(59,130,246,0.12);
+}
+
+.metric-card-green {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px -4px rgba(16,185,129,0.18),
+    0 4px 8px -2px rgba(16,185,129,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.metric-card-violet {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px -4px rgba(15,23,42,0.10),
+    0 4px 8px -2px rgba(15,23,42,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  border: 1px solid rgba(15,23,42,0.07);
+}
+
+.metric-card-warning {
+  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px -4px rgba(234,179,8,0.15),
+    0 4px 8px -2px rgba(234,179,8,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  border: 1px solid rgba(234,179,8,0.12);
+}
+
+.metric-card-danger {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px -4px rgba(239,68,68,0.15),
+    0 4px 8px -2px rgba(239,68,68,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  border: 1px solid rgba(239,68,68,0.12);
+}
+
+/* Container/wrapper with subtle gradient */
+.neo-container {
+  background: linear-gradient(180deg, rgba(248, 250, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 0 2px 8px rgba(100, 100, 140, 0.04);
+  border: none;
+}
+
+/* Section header inside cards */
+.neo-section-header {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.8) 0%, rgba(241, 245, 249, 0.6) 100%);
+  border-radius: var(--neo-radius-md);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 1px 4px rgba(100, 100, 140, 0.04);
+}
+
+/* Data row styling inside cards */
+.neo-data-row {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.neo-data-row:last-child {
+  border-bottom: none;
+}
+
+/* Table wrapper with neo styling - NO border-radius when inside neo-card */
+/* The parent neo-card provides rounded corners; this fills edge-to-edge */
+.neo-table-wrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 255, 0.95) 100%);
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  overflow: hidden;
+}
+
+/* Grid card for document/property listings */
+.neo-grid-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 255, 0.9) 100%);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: 0 4px 16px rgba(100, 100, 140, 0.08);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-grid-card:hover {
+  box-shadow: 0 8px 24px rgba(100, 100, 140, 0.14);
+  transform: translateY(-2px);
+}
+
+/* ─── HEADER SECTIONS (replace border-b border-slate-200) ────────────────── */
+.neo-header {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(100, 100, 140, 0.06);
+}
+
+/* ─── LIST CONTAINERS ────────────────────────────────────────────────────── */
+.neo-list-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--neo-radius-lg);
+  box-shadow: var(--neo-shadow-md);
+  border: none;
+}
+
+/* ─── DATA TABLE STYLING ─────────────────────────────────────────────────── */
+.neo-table-container {
+  background: #ffffff;
+  border-radius: var(--neo-radius-lg);
+  box-shadow: var(--neo-shadow-md);
+  border: none;
+  overflow: hidden;
+}
+
+.neo-table-row {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.neo-table-row:hover {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+/* ─── STATUS INDICATORS ──────────────────────────────────────────────────── */
+.neo-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.neo-status-dot-success {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+}
+
+.neo-status-dot-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.4);
+}
+
+.neo-status-dot-error {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+}
+
+/* ─── PROPERTY/DEAL IMAGE CARDS ──────────────────────────────────────────── */
+.neo-image-card {
+  border-radius: var(--neo-radius-sm);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(100, 100, 140, 0.2), 0 2px 6px rgba(100, 100, 140, 0.1);
+}
+
+.neo-image-card-dark {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── FORM INPUTS (shadow instead of border) ───────────────��─────────────── */
+.neo-input {
+  background: #ffffff;
+  border-radius: var(--neo-radius-xs);
+  box-shadow: 0 2px 8px rgba(100, 100, 140, 0.06);
+  border: none;
+  transition: var(--neo-transition);
+}
+
+.neo-input:focus {
+  box-shadow: 0 4px 16px rgba(100, 100, 140, 0.12), 0 0 0 2px rgba(20, 184, 166, 0.2);
+  outline: none;
+}
+
+/* ─── ICON CONTAINERS ───��───────────────��────────────────────────────────── */
+.neo-icon-container {
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: var(--neo-radius-xs);
+  box-shadow: 0 2px 6px rgba(100, 100, 140, 0.08);
+}
+
+.neo-icon-container-teal {
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+  color: white;
+}
+
+.neo-icon-container-indigo {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  color: white;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE SHELL UTILITIES
+   Global breakpoint-consistent patterns for the app shell
+   ══════════════════════════════��════════════════════════════════════════════ */
+
+/* Page content container - consistent padding across breakpoints */
+.page-container {
+  @apply w-full mx-auto;
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Shell content area - handles main content spacing */
+.shell-content {
+  @apply flex-1 overflow-auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .shell-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Header actions container - responsive overflow handling */
+.header-actions {
+  @apply flex items-center gap-1;
+}
+
+@media (min-width: 768px) {
+  .header-actions {
+    @apply gap-2;
+  }
+}
+
+/* Scrollable tabs container - horizontal scroll on narrow screens */
+.tabs-scroll-container {
+  @apply flex items-center overflow-x-auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab navigation items - consistent sizing */
+.tab-nav-item {
+  @apply flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap rounded-md shrink-0;
+}
+
+/* Minimum touch target size for mobile */
+@media (max-width: 767px) {
+  .tab-nav-item {
+    min-height: 44px;
+    @apply px-3.5;
+  }
+}
+
+/* Hide icon labels on narrow tablets to prevent overflow */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tab-nav-item .tab-label-optional {
+    @apply hidden;
+  }
+}
+
+/* Safe area padding for notched devices */
+.safe-area-inset {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Header bar responsive heights - neo style */
+.header-bar {
+  @apply flex items-center justify-between bg-white;
+  box-shadow: 0 2px 8px rgba(100, 100, 140, 0.06);
+  height: 3rem; /* 48px on mobile */
+}
+
+@media (min-width: 640px) {
+  .header-bar {
+    height: 3rem; /* 48px consistent */
+  }
+}
+
+/* Sidebar collapse transition helper */
+.sidebar-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Main content offset for fixed header */
+.main-content-offset {
+  padding-top: 3.5rem; /* 56px - mobile header */
+}
+
+@media (min-width: 1024px) {
+  .main-content-offset {
+    padding-top: 3.5rem; /* 56px - desktop header */
+  }
+}
+
+/* Responsive divider - hidden on small screens */
+.divider-responsive {
+  @apply h-5 w-px bg-border mx-1;
+}
+
+@media (max-width: 767px) {
+  .divider-responsive {
+    @apply hidden;
+  }
+}
+
+/* Action button group - collapses gracefully */
+.action-group {
+  @apply flex items-center;
+}
+
+@media (max-width: 639px) {
+  .action-group {
+    @apply gap-0.5;
+  }
+}
+
+@media (min-width: 640px) {
+  .action-group {
+    @apply gap-1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .action-group {
+    @apply gap-2;
+  }
+}
+
+/* ═���═════════════════════════════════════════════════════════════════════════
+   RESPONSIVE CARD & GRID UTILITIES
+   Standardized patterns for cards, grids, and content sections
+   ═══════════════════����═══════════════════════════════════════════════════════ */
+
+/* Standard card padding - responsive */
+.card-padding {
+  @apply p-3 sm:p-4 lg:p-5;
+}
+
+/* Compact card padding - for dense layouts */
+.card-padding-compact {
+  @apply p-2.5 sm:p-3 lg:p-4;
+}
+
+/* Card section spacing - internal sections within cards */
+.card-section {
+  @apply space-y-3 sm:space-y-4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FINANCIAL SAAS DESIGN SYSTEM - KPI Cards
+   Modern, sleek metric display with consistent spacing
+   ══════════════════════════════════════════════════════════════��════════════ */
+
+/* KPI Card - responsive metrics display */
+.kpi-card {
+  @apply rounded-xl bg-white border border-slate-200 shadow-sm p-4 sm:p-5
+         transition-all duration-200 hover:shadow-md hover:border-slate-300;
+}
+
+.kpi-value {
+  @apply text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight;
+}
+
+.kpi-label {
+  @apply text-[10px] sm:text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1;
+}
+
+/* Responsive grid utilities */
+.grid-auto-fit-sm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .grid-auto-fit-sm {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.grid-auto-fit-md {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .grid-auto-fit-md {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Dashboard grid - 12-column responsive system */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Dashboard column spans */
+.dash-col-4 { grid-column: span 1; }
+.dash-col-5 { grid-column: span 1; }
+.dash-col-3 { grid-column: span 1; }
+.dash-col-6 { grid-column: span 1; }
+.dash-col-8 { grid-column: span 1; }
+
+@media (min-width: 640px) {
+  .dash-col-4 { grid-column: span 1; }
+  .dash-col-5 { grid-column: span 1; }
+  .dash-col-3 { grid-column: span 1; }
+  .dash-col-6 { grid-column: span 2; }
+  .dash-col-8 { grid-column: span 2; }
+}
+
+@media (min-width: 1024px) {
+  .dash-col-3 { grid-column: span 3; }
+  .dash-col-4 { grid-column: span 4; }
+  .dash-col-5 { grid-column: span 5; }
+  .dash-col-6 { grid-column: span 6; }
+  .dash-col-8 { grid-column: span 8; }
+}
+
+/* Content section with chart/visualization */
+.chart-container {
+  @apply w-full min-h-[200px] sm:min-h-[250px] lg:min-h-[300px];
+}
+
+/* Two-column layout that stacks on mobile */
+.two-col-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .two-col-stack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Three-column layout that adapts gracefully */
+.three-col-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .three-col-stack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .three-col-stack {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Four-column KPI grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .kpi-grid {
+    gap: 1rem;
+  }
+}
+
+/* Stats row - horizontal metrics bar */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .stats-row {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.75rem;
+    text-align: left;
+  }
+}
+
+/* Section gap utilities */
+.section-gap {
+  @apply space-y-4 sm:space-y-5 lg:space-y-6;
+}
+
+/* Panel sidebar layout - main + side panel */
+.panel-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .panel-layout {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+  
+  .panel-layout-main {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .panel-layout-side {
+    width: 320px;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .panel-layout-side {
+    width: 360px;
+  }
+}
+
+/* ════════════════════════════════════════════��══════════════════════════════
+   RESPONSIVE DENSE COMPONENTS
+   Tables, forms, drawers, modals - high-density responsive patterns
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Responsive table container - horizontal scroll with sticky columns */
+.table-responsive {
+  @apply w-full overflow-x-auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  @apply bg-slate-100 rounded;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded;
+}
+
+/* Table with sticky first column */
+.table-sticky-col table {
+  @apply min-w-full;
+}
+
+.table-sticky-col th:first-child,
+.table-sticky-col td:first-child {
+  @apply sticky left-0 z-10 bg-white;
+  box-shadow: 2px 0 4px -2px rgba(0,0,0,0.1);
+}
+
+.table-sticky-col tr:hover td:first-child {
+  @apply bg-slate-50;
+}
+
+/* Compact table cells for mobile */
+.table-compact th,
+.table-compact td {
+  @apply px-2 py-1.5 text-xs;
+}
+
+@media (min-width: 640px) {
+  .table-compact th,
+  .table-compact td {
+    @apply px-3 py-2 text-sm;
+  }
+}
+
+/* Drawer responsive widths */
+.drawer-responsive {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+@media (min-width: 640px) {
+  .drawer-responsive {
+    width: 380px !important;
+    max-width: 380px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .drawer-responsive {
+    width: 420px !important;
+    max-width: 420px !important;
+  }
+}
+
+/* Wide drawer for complex content */
+.drawer-wide {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+@media (min-width: 640px) {
+  .drawer-wide {
+    width: 90vw !important;
+    max-width: 600px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .drawer-wide {
+    width: 700px !important;
+    max-width: 700px !important;
+  }
+}
+
+/* Modal responsive sizing */
+.modal-responsive {
+  width: calc(100% - 1rem) !important;
+  max-width: calc(100vw - 1rem) !important;
+  max-height: calc(100vh - 2rem) !important;
+  margin: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .modal-responsive {
+    width: auto !important;
+    max-width: 32rem !important;
+    margin: 0;
+  }
+}
+
+/* Wide modal for complex forms */
+.modal-wide {
+  width: calc(100% - 1rem) !important;
+  max-width: calc(100vw - 1rem) !important;
+}
+
+@media (min-width: 640px) {
+  .modal-wide {
+    width: 90vw !important;
+    max-width: 42rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal-wide {
+    max-width: 56rem !important;
+  }
+}
+
+/* Form field groups - stack on mobile */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+.form-row-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .form-row-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-row-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Form section spacing */
+.form-section {
+  @apply space-y-4;
+}
+
+@media (min-width: 640px) {
+  .form-section {
+    @apply space-y-5;
+  }
+}
+
+/* Sticky footer for modals/drawers */
+.sticky-footer {
+  @apply sticky bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-3 sm:p-4 mt-auto;
+  box-shadow: 0 -4px 12px -4px rgba(0,0,0,0.08);
+}
+
+/* Safe area padding for bottom actions */
+.footer-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+@media (min-width: 640px) {
+  .footer-safe {
+    padding-bottom: 1rem;
+  }
+}
+
+/* Mobile card view for tables - show as cards on mobile */
+.table-card-mobile {
+  @apply block;
+}
+
+.table-card-mobile thead {
+  @apply sr-only;
+}
+
+.table-card-mobile tbody tr {
+  @apply block mb-3 rounded-lg border border-slate-200 bg-white p-3;
+}
+
+.table-card-mobile tbody td {
+  @apply block text-sm py-1;
+}
+
+.table-card-mobile tbody td::before {
+  content: attr(data-label);
+  @apply font-medium text-slate-500 mr-2;
+}
+
+@media (min-width: 768px) {
+  .table-card-mobile {
+    @apply table w-full;
+  }
+  
+  .table-card-mobile thead {
+    @apply table-header-group;
+  }
+  
+  .table-card-mobile tbody tr {
+    @apply table-row mb-0 rounded-none border-0 border-b p-0;
+  }
+  
+  .table-card-mobile tbody td {
+    @apply table-cell py-3;
+  }
+  
+  .table-card-mobile tbody td::before {
+    content: none;
+  }
+}
+
+/* Dense action menu - collapse to icon menu on mobile */
+.action-cell {
+  @apply flex items-center justify-end gap-1;
+}
+
+.action-cell .action-text {
+  @apply hidden;
+}
+
+@media (min-width: 1024px) {
+  .action-cell .action-text {
+    @apply inline;
+  }
+}
+
+/* Extraction grid responsive */
+.extraction-split {
+  @apply flex flex-col h-full;
+}
+
+@media (min-width: 1024px) {
+  .extraction-split {
+    @apply flex-row;
+  }
+}
+
+.extraction-panel {
+  @apply w-full h-[40vh] min-h-[300px];
+}
+
+@media (min-width: 1024px) {
+  .extraction-panel {
+    @apply h-full min-h-0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INVESTASSIST DESIGN SYSTEM - TYPOGRAPHY & COMPONENT STANDARDS
+   ─────────────────────────────────────────────────────────────────────────────
+   Source of truth: Syndicator Dashboard design patterns
+   Applied consistently across: Syndicator, Investor, Buyer, Broker dashboards
+   All tabs, pages, modals, and components platform-wide
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY SCALE - PLATFORM STANDARD
+   ═══════��════════════════════��══════════════════════════════════════════════ */
+
+/* Page Titles - Main page headings */
+.text-page-title {
+  @apply text-lg sm:text-xl font-bold text-foreground tracking-tight;
+}
+
+/* Section Titles - Card/widget headers (Syndicator standard: 13px semibold) */
+.text-section-title {
+  @apply text-[13px] font-semibold text-slate-900 tracking-tight;
+}
+
+/* Card Titles - Smaller card headers */
+.text-card-title {
+  @apply text-sm font-semibold text-foreground;
+}
+
+/* Sub-section Headers - Inside cards (12px semibold uppercase) */
+.text-subsection-title {
+  @apply text-xs font-semibold text-slate-700 uppercase tracking-wide;
+}
+
+/* Body Text - Default body copy (14px) */
+.text-body {
+  @apply text-sm text-foreground leading-relaxed;
+}
+
+/* Body Text Small - Secondary body copy (12px) */
+.text-body-sm {
+  @apply text-xs text-foreground leading-relaxed;
+}
+
+/* Body Text Extra Small - Compact UI (11px) */
+.text-body-xs {
+  @apply text-[11px] text-foreground leading-relaxed;
+}
+
+/* Labels - Form labels, metadata (12px medium) */
+.text-label {
+  @apply text-xs font-medium text-slate-600;
+}
+
+/* Muted Labels - Secondary labels (10-12px) */
+.text-muted-label {
+  @apply text-[10px] sm:text-xs text-muted-foreground;
+}
+
+/* Micro Labels - Uppercase category labels (10px semibold uppercase) */
+.text-micro-label {
+  @apply text-[10px] font-semibold text-muted-foreground uppercase tracking-wide;
+}
+
+/* Uppercase Accent Labels - Colored uppercase labels (9-10px medium) */
+.text-accent-label {
+  @apply text-[9px] sm:text-[10px] font-medium uppercase tracking-wide;
+}
+
+/* ─── Stat/KPI Values ────────────────────────────────────────────────────��──── */
+/* Hero Stats - Large dashboard KPIs (24-32px bold) */
+.text-stat-xl {
+  @apply text-xl sm:text-2xl lg:text-[28px] font-bold text-foreground tabular-nums tracking-tight;
+}
+
+/* Large Stats - Primary metrics (18-24px bold) */
+.text-stat-lg {
+  @apply text-lg sm:text-xl lg:text-2xl font-bold text-foreground tabular-nums;
+}
+
+/* Medium Stats - Secondary metrics (16-18px bold) */
+.text-stat-md {
+  @apply text-base sm:text-lg font-bold text-foreground tabular-nums;
+}
+
+/* Small Stats - Compact metrics (14px bold) */
+.text-stat-sm {
+  @apply text-sm font-bold text-foreground tabular-nums;
+}
+
+/* Inline Stats - Within text (14px semibold) */
+.text-stat-inline {
+  @apply text-sm font-semibold text-slate-900 tabular-nums;
+}
+
+/* ─── Data Display ─────────────────────────���───────────────────────────────── */
+/* Table Header Cells */
+.text-table-header {
+  @apply text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wide;
+}
+
+/* Table Data Cells */
+.text-table-cell {
+  @apply text-xs sm:text-sm text-foreground;
+}
+
+/* Monospace Values - Financial figures, IDs */
+.text-mono {
+  @apply font-mono text-sm tabular-nums;
+}
+
+/* ═════���═══════���═══════════════���═══════════════════════════��═════════════════
+   BUTTON SIZING - PLATFORM STANDARD
+   Standard: h-8 (32px) with text-sm for most buttons
+   ═══════════════════════════════════════════════════════════════���═══════════ */
+
+/* Card Action Buttons - Inside card headers (h-7 or h-8, text-xs/text-sm) */
+.btn-card-action {
+  @apply h-7 sm:h-8 px-2.5 sm:px-3 text-xs sm:text-sm;
+}
+
+/* Standard Buttons - Default size (h-8, text-sm) */
+.btn-standard {
+  @apply h-8 px-3 text-sm;
+}
+
+/* Large Buttons - Primary CTAs (h-9 or h-10, text-sm) */
+.btn-large {
+  @apply h-9 sm:h-10 px-4 sm:px-6 text-sm;
+}
+
+/* Icon Buttons - Square buttons with icons only */
+.btn-icon-sm {
+  @apply h-7 w-7 p-0;
+}
+
+.btn-icon-md {
+  @apply h-8 w-8 p-0;
+}
+
+.btn-icon-lg {
+  @apply h-9 w-9 p-0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BADGE SIZING - PLATFORM STANDARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Micro Badges - AI indicators, tiny status (9-10px) */
+.badge-micro {
+  @apply px-1.5 py-0.5 text-[9px] font-medium rounded;
+}
+
+/* Small Badges - Status chips, stage indicators (10-11px) */
+.badge-sm {
+  @apply px-2 py-0.5 text-[10px] sm:text-[11px] font-semibold rounded-md;
+}
+
+/* Standard Badges - Default size (11-12px) */
+.badge-md {
+  @apply px-2.5 py-0.5 text-[11px] sm:text-xs font-semibold rounded-md;
+}
+
+/* Pill Badges - Rounded full badges for stages */
+.badge-pill {
+  @apply px-2.5 py-0.5 text-[10px] sm:text-xs font-semibold rounded-full;
+}
+
+/* ══════��════════════════════════════════════════════════════════════════════
+   AVATAR SIZING - PLATFORM STANDARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.avatar-xs {
+  @apply h-6 w-6 text-[10px];
+}
+
+.avatar-sm {
+  @apply h-7 w-7 text-xs;
+}
+
+.avatar-md {
+  @apply h-8 w-8 text-xs;
+}
+
+.avatar-lg {
+  @apply h-10 w-10 text-sm;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ICON SIZING - PLATFORM STANDARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Icons in Buttons - Match button size */
+.icon-in-btn-sm {
+  @apply h-3 w-3;
+}
+
+.icon-in-btn-md {
+  @apply h-3.5 w-3.5;
+}
+
+.icon-in-btn-lg {
+  @apply h-4 w-4;
+}
+
+/* Icons in Badges/Labels */
+.icon-in-badge {
+  @apply h-3 w-3;
+}
+
+/* Icons in Cards - Feature icons */
+.icon-feature {
+  @apply h-4 w-4;
+}
+
+.icon-feature-lg {
+  @apply h-5 w-5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SPACING STANDARDS - PLATFORM STANDARD
+   Consistent spacing across all components and layouts
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Card Padding */
+.spacing-card {
+  @apply p-4 sm:p-5;
+}
+
+.spacing-card-compact {
+  @apply p-3 sm:p-4;
+}
+
+/* Section Gaps (between cards/sections) */
+.spacing-section {
+  @apply space-y-4 sm:space-y-5;
+}
+
+/* Inner Card Gaps (between elements inside cards) */
+.spacing-inner {
+  @apply space-y-3 sm:space-y-4;
+}
+
+/* Row/List Item Spacing */
+.spacing-row {
+  @apply py-2.5 border-b border-slate-100/60;
+}
+
+.spacing-row:last-child {
+  @apply border-none;
+}
+
+/* Grid Gaps */
+.spacing-grid {
+  @apply gap-3 sm:gap-4;
+}
+
+.spacing-grid-tight {
+  @apply gap-2 sm:gap-3;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLOR SEMANTICS - PLATFORM STANDARD
+   Consistent status colors across all components
+   ══════════════════════════════════════════���════════════════════════════════ */
+
+/* Success - Green/Teal for positive states, gains, completed */
+.color-success {
+  @apply text-success;
+}
+
+.color-success-muted {
+  @apply text-success-muted-foreground;
+}
+
+.bg-success-soft {
+  @apply bg-success-muted;
+}
+
+/* Warning - Amber/Yellow for attention, pending, moderate risk */
+.color-warning {
+  @apply text-warning;
+}
+
+.color-warning-muted {
+  @apply text-warning-muted-foreground;
+}
+
+.bg-warning-soft {
+  @apply bg-warning-muted;
+}
+
+/* Destructive - Red for errors, losses, high risk */
+.color-danger {
+  @apply text-destructive;
+}
+
+.bg-danger-soft {
+  @apply bg-destructive/10;
+}
+
+/* Info - Blue for information, neutral status */
+.color-info {
+  @apply text-info;
+}
+
+.color-info-muted {
+  @apply text-info-muted-foreground;
+}
+
+.bg-info-soft {
+  @apply bg-info-muted;
+}
+
+/* Neutral - Slate for default, inactive states */
+.color-neutral {
+  @apply text-slate-600;
+}
+
+.bg-neutral-soft {
+  @apply bg-slate-50;
+}
+
+/* ─── Card Patterns ────────────────────────────────────────────────────────── */
+/* Standard section card - Neomorphic white card style */
+.ia-card {
+  @apply rounded-2xl p-4 sm:p-5 transition-all;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    8px 8px 20px rgba(174, 174, 192, 0.2),
+    -8px -8px 20px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.ia-card-hover {
+  @apply hover:-translate-y-0.5;
+}
+
+.ia-card-hover:hover {
+  box-shadow: 
+    10px 10px 24px rgba(174, 174, 192, 0.25),
+    -10px -10px 24px rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Compact card (less padding) */
+.ia-card-compact {
+  @apply rounded-xl p-3 sm:p-4 transition-all;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    6px 6px 16px rgba(174, 174, 192, 0.15),
+    -6px -6px 16px rgba(255, 255, 255, 0.8);
+}
+
+/* Stat/KPI mini card */
+.ia-stat-card {
+  @apply rounded-xl p-2.5 text-center;
+  background: rgba(248, 250, 252, 0.8);
+  box-shadow: inset 2px 2px 4px rgba(174, 174, 192, 0.1);
+}
+
+/* Highlighted stat card (colored bg) */
+.ia-stat-card-accent {
+  @apply rounded-xl border p-2.5 text-center;
+}
+
+/* List item row inside card */
+.ia-list-row {
+  @apply flex items-center justify-between py-2 border-b border-slate-100/80 last:border-none;
+}
+
+/* ���── Button Patterns ─────────────����──────────────────────────��────────────── */
+/* Small action button in card headers */
+.ia-btn-card-action {
+  @apply h-7 text-xs px-2.5;
+}
+
+/* Icon-only button */
+.ia-btn-icon {
+  @apply h-8 w-8 p-0;
+}
+
+.ia-btn-icon-sm {
+  @apply h-7 w-7 p-0;
+}
+
+/* ─── Badge/Chip Patterns ──────────────────────────────────────────────────── */
+/* Status badge - base */
+.ia-badge {
+  @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-medium border;
+}
+
+/* Stage/status chips */
+.ia-chip {
+  @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold;
+}
+
+/* AI indicator */
+.ia-ai-badge {
+  @apply inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[9px] font-medium bg-teal-50 text-teal-600 border border-teal-200/50;
+}
+
+/* ─── Layout Helpers ───────────────────────────────��───────────────────────── */
+/* Page content wrapper */
+.ia-page {
+  @apply min-h-screen p-2 sm:p-3 lg:p-4;
+}
+
+/* Max-width container */
+.ia-container {
+  @apply mx-auto max-w-[1920px];
+}
+
+/* Section spacing */
+.ia-section-gap {
+  @apply space-y-4 sm:space-y-5;
+}
+
+/* Grid layouts */
+.ia-grid-2 {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5;
+}
+
+.ia-grid-3 {
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5;
+}
+
+.ia-grid-4 {
+  @apply grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4;
+}
+
+/* ─── Color Semantics ──────────────────────────────────────────────────────── */
+/* Success states */
+.ia-success {
+  @apply bg-emerald-50 border-emerald-200/60 text-emerald-700;
+}
+
+.ia-success-text {
+  @apply text-emerald-600;
+}
+
+/* Warning states */
+.ia-warning {
+  @apply bg-amber-50 border-amber-200/60 text-amber-700;
+}
+
+.ia-warning-text {
+  @apply text-amber-600;
+}
+
+/* Danger states */
+.ia-danger {
+  @apply bg-red-50 border-red-200/60 text-red-700;
+}
+
+.ia-danger-text {
+  @apply text-red-600;
+}
+
+/* Info states */
+.ia-info {
+  @apply bg-blue-50 border-blue-200/60 text-blue-700;
+}
+
+.ia-info-text {
+  @apply text-blue-600;
+}
+
+/* Neutral/muted states */
+.ia-neutral {
+  background-color: #f8fafc; /* slate-50 */
+  border-color: rgb(226 232 240 / 0.6); /* slate-200/60 */
+  color: #334155; /* slate-700 */
+}
+
+/* ─── Extraction Row Color Coding (Income/Expense/Other) ─────��─────────────── */
+/* Color coding for extracted table rows to help users identify account types */
+/* Using plain CSS to avoid Tailwind v4 @apply conflicts */
+.ia-row-income {
+  background-color: rgb(236 253 245 / 0.4); /* emerald-50/40 */
+}
+
+.ia-row-income-mapped {
+  background-color: rgb(236 253 245 / 0.6); /* emerald-50/60 */
+  border-left: 2px solid #34d399; /* emerald-400 */
+}
+
+.ia-row-expense {
+  background-color: rgb(254 242 242 / 0.3); /* red-50/30 */
+}
+
+.ia-row-expense-mapped {
+  background-color: rgb(254 242 242 / 0.5); /* red-50/50 */
+  border-left: 2px solid #f87171; /* red-400 */
+}
+
+.ia-row-other {
+  background-color: rgb(248 250 252 / 0.4); /* slate-50/40 */
+}
+
+.ia-row-other-mapped {
+  background-color: rgb(248 250 252 / 0.6); /* slate-50/60 */
+  border-left: 2px solid #94a3b8; /* slate-400 */
+}
+
+/* Category header colors */
+.ia-category-income {
+  background-color: rgb(209 250 229 / 0.5); /* emerald-100/50 */
+  color: #065f46; /* emerald-800 */
+}
+
+.ia-category-expense {
+  background-color: rgb(254 226 226 / 0.5); /* red-100/50 */
+  color: #991b1b; /* red-800 */
+}
+
+.ia-category-other {
+  background-color: rgb(241 245 249 / 0.5); /* slate-100/50 */
+  color: #334155; /* slate-700 */
+}
+
+/* ─── KPI/Metric Card Accents ──────────────────────────────────────────────── */
+/* Financial SaaS: plain CSS (no @apply) - renamed to avoid shared template cache conflict */
+.ia-metric-card {
+  position: relative;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.875rem;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-metric-card:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; }
+
+.ia-kpi-success {
+  position: relative; border-radius: 0.5rem; background-color: #ffffff;
+  border: 1px solid #e2e8f0; border-top: 2px solid #10b981;
+  padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-kpi-success:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #10b981; }
+
+.ia-kpi-warning {
+  position: relative; border-radius: 0.5rem; background-color: #ffffff;
+  border: 1px solid #e2e8f0; border-top: 2px solid #f59e0b;
+  padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-kpi-warning:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #f59e0b; }
+
+.ia-kpi-danger {
+  position: relative; border-radius: 0.5rem; background-color: #ffffff;
+  border: 1px solid #e2e8f0; border-top: 2px solid #ef4444;
+  padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-kpi-danger:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #ef4444; }
+
+.ia-kpi-info {
+  position: relative; border-radius: 0.5rem; background-color: #ffffff;
+  border: 1px solid #e2e8f0; border-top: 2px solid #3b82f6;
+  padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #3b82f6; }
+
+.ia-kpi-teal {
+  position: relative; border-radius: 0.5rem; background-color: #ffffff;
+  border: 1px solid #e2e8f0; border-top: 2px solid #14b8a6;
+  padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-kpi-teal:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #14b8a6; }
+
+.ia-kpi-neutral {
+  position: relative; border-radius: 0.5rem; background-color: #ffffff;
+  border: 1px solid #e2e8f0; border-top: 2px solid #cbd5e1;
+  padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ia-kpi-neutral:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; }
+
+/* ─── Simple Stat Cards ─────────────────────────────────���──────────────────── */
+.ia-stat-simple {
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem;
+  text-align: center;
+  transition: box-shadow 0.15s ease;
+}
+.ia-stat-simple:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); }
+
+.ia-stat-simple-hover:hover { background-color: #f8fafc; border-color: #cbd5e1; }
+
+/* Stat card with accent highlight — plain CSS */
+.ia-stat-accent-teal,
+.ia-stat-accent-blue,
+.ia-stat-accent-emerald,
+.ia-stat-accent-amber,
+.ia-stat-accent-violet {
+  position: relative;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem;
+  text-align: center;
+  transition: box-shadow 0.15s ease;
+}
+.ia-stat-accent-teal:hover,
+.ia-stat-accent-blue:hover,
+.ia-stat-accent-emerald:hover,
+.ia-stat-accent-amber:hover,
+.ia-stat-accent-violet:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); }
+
+.ia-stat-accent-teal::before,
+.ia-stat-accent-blue::before,
+.ia-stat-accent-emerald::before,
+.ia-stat-accent-amber::before,
+.ia-stat-accent-violet::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0.75rem; right: 0.75rem;
+  height: 2px;
+  border-radius: 9999px;
+}
+.ia-stat-accent-teal::before    { background-color: #14b8a6; }
+.ia-stat-accent-blue::before    { background-color: #3b82f6; }
+.ia-stat-accent-emerald::before { background-color: #10b981; }
+.ia-stat-accent-amber::before   { background-color: #f59e0b; }
+.ia-stat-accent-violet::before  { background-color: #475569; }
+
+/* ─── Value/Label Typography ────��──────────────────────────────────────────── */
+/* Large stat value - for hero KPIs */
+.ia-stat-value-xl {
+  @apply text-lg sm:text-xl font-semibold text-slate-900 tabular-nums tracking-tight;
+}
+
+/* Medium stat value - for primary metrics */  
+.ia-stat-value-lg {
+  @apply text-base sm:text-lg font-semibold text-slate-900 tabular-nums;
+}
+
+/* Regular stat value */
+.ia-stat-value-md {
+  @apply text-sm font-semibold text-slate-900 tabular-nums;
+}
+
+/* Micro uppercase label */
+.ia-stat-label {
+  @apply text-[9px] sm:text-[10px] font-medium text-muted-foreground uppercase tracking-wider;
+}
+
+/* Sub-value (secondary info below main value) */
+.ia-stat-subvalue {
+  @apply text-[10px] text-muted-foreground mt-1;
+}
+
+/* ─── Kanban/Pipeline Patterns ─────────────────────────────────────────────── */
+/* Stage column header */
+.ia-stage-header {
+  @apply px-2.5 py-2 rounded-t-md border transition-all;
+}
+
+/* Stage column body */
+.ia-stage-body {
+  @apply rounded-b-md border border-t-0 p-1.5 space-y-1.5 bg-muted/20 flex-1 overflow-y-auto;
+}
+
+/* Pipeline card */
+.ia-pipeline-card {
+  @apply rounded-lg bg-white border p-2.5 shadow-sm cursor-grab active:cursor-grabbing transition-all hover:shadow-md;
+}
+
+/* ─── Table Patterns ───────────────────────────────────────────────────────── */
+/* Table header cell */
+.ia-th {
+  @apply text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wide px-3 py-2 text-left;
+}
+
+/* Table data cell */
+.ia-td {
+  @apply text-xs sm:text-sm text-foreground px-3 py-2.5 border-b border-slate-100;
+}
+
+/* Table row hover */
+.ia-tr-hover {
+  @apply hover:bg-slate-50/50 transition-colors;
+}
+
+/* ─── Neo Financial Table Row System ──────────────────────────────────────────
+   Semi-transparent row backgrounds so the neo-gradient-bg from DashboardLayout
+   bleeds through. Opaque sticky cells use backdrop-blur for readability.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Section header band — translucent lavender tint */
+.neo-tr-section-header {
+  background: rgba(240, 243, 250, 0.55);
+}
+
+.neo-td-section-sticky {
+  background: rgba(248, 249, 252, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.neo-td-section-cell {
+  background: rgba(240, 243, 250, 0.45);
+}
+
+/* Total/Summary rows (NOI, BTCF) — gradient-primary from design tokens */
+.neo-tr-total {
+  background: linear-gradient(90deg, var(--gradient-primary-from) 0%, var(--gradient-primary-to) 100%);
+  color: white;
+}
+
+.neo-td-total-sticky {
+  background: var(--gradient-primary-from);
+}
+
+/* Rollup rows (subtotals) — deeper translucent tint */
+.neo-tr-rollup {
+  background: rgba(235, 238, 248, 0.65);
+}
+
+.neo-td-rollup-sticky {
+  background: rgba(242, 244, 251, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.neo-td-rollup-cell {
+  background: rgba(235, 238, 248, 0.55);
+}
+
+/* Regular line items — nearly transparent */
+.neo-tr-line-item {
+  transition: background 100ms ease;
+}
+
+.neo-tr-line-item:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.neo-td-line-sticky {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 100ms ease;
+}
+
+.neo-tr-line-item:hover .neo-td-line-sticky {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+.neo-td-line-cell {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Table head row */
+.neo-thead-row {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+.neo-th-sticky {
+  background: rgba(255, 255, 255, 0.99);
+}
+
+.neo-th-cell {
+  background: rgba(248, 249, 252, 0.96);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DOCUMENTS PAGE DESIGN SYSTEM - T-12, Rent Roll, OM, Others
+   Unified styles for vertical strips, panels, and document layouts
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── VERTICAL STRIP BASE ───────────────────────────────────────────────────── */
+/* Collapsed drawer indicators - consistent across all document types */
+.docs-vertical-strip {
+  width: 52px;
+  min-width: 52px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.docs-vertical-strip:hover {
+  transform: translateX(2px);
+}
+
+/* Strip icon container */
+.docs-strip-icon {
+  padding: 0.625rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px var(--strip-shadow-color, rgba(99,102,241,0.5)), 
+              inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.docs-vertical-strip:hover .docs-strip-icon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px var(--strip-shadow-color, rgba(99,102,241,0.65)), 
+              inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Strip vertical label */
+.docs-strip-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transition: color 0.2s ease;
+}
+
+/* Strip chevron */
+.docs-strip-chevron {
+  padding: 0.375rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+/* ─── DOCUMENT STRIP (Teal) ─────────────────────────────────────────────────── */
+.docs-strip-document {
+  background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
+  border-right: 1px solid rgba(13, 148, 136, 0.15);
+  box-shadow: 2px 0 20px rgba(13, 148, 136, 0.12), 4px 0 32px rgba(0, 0, 0, 0.06);
+  --strip-shadow-color: rgba(13, 148, 136, 0.5);
+}
+
+.docs-strip-document:hover {
+  background: linear-gradient(to bottom, #ccfbf1, #f0fdfa, #ffffff);
+  box-shadow: 2px 0 28px rgba(13, 148, 136, 0.22), 4px 0 40px rgba(0, 0, 0, 0.09);
+}
+
+.docs-strip-document .docs-strip-icon {
+  background: linear-gradient(135deg, #0d9488, #14b8a6, #0f766e);
+}
+
+.docs-strip-document .docs-strip-label {
+  color: #0d9488;
+}
+
+.docs-strip-document:hover .docs-strip-label {
+  color: #0f766e;
+}
+
+.docs-strip-document .docs-strip-chevron {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+}
+
+.docs-strip-document:hover .docs-strip-chevron {
+  background: rgba(13, 148, 136, 0.2);
+}
+
+/* ─── T-12 STRIP (Emerald) ──────────────���──────────────────────────────────���── */
+.docs-strip-t12 {
+  background: linear-gradient(to bottom, #ecfdf5, #ffffff, #f8fafc);
+  border-right: 1px solid rgba(16, 185, 129, 0.15);
+  box-shadow: 2px 0 20px rgba(16, 185, 129, 0.12), 4px 0 32px rgba(0, 0, 0, 0.06);
+  --strip-shadow-color: rgba(16, 185, 129, 0.5);
+}
+
+.docs-strip-t12:hover {
+  background: linear-gradient(to bottom, #d1fae5, #ecfdf5, #ffffff);
+  box-shadow: 2px 0 28px rgba(16, 185, 129, 0.22), 4px 0 40px rgba(0, 0, 0, 0.09);
+}
+
+.docs-strip-t12 .docs-strip-icon {
+  background: linear-gradient(135deg, #10b981, #34d399, #14b8a6);
+}
+
+.docs-strip-t12 .docs-strip-label {
+  color: #059669;
+}
+
+.docs-strip-t12:hover .docs-strip-label {
+  color: #047857;
+}
+
+.docs-strip-t12 .docs-strip-chevron {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+/* ─── RENT ROLL STRIP (Teal) ────────────────────────────────────────────────── */
+.docs-strip-rentroll {
+  background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
+  border-right: 1px solid rgba(13, 148, 136, 0.15);
+  box-shadow: 2px 0 20px rgba(13, 148, 136, 0.12), 4px 0 32px rgba(0, 0, 0, 0.06);
+  --strip-shadow-color: rgba(13, 148, 136, 0.5);
+}
+
+.docs-strip-rentroll:hover {
+  background: linear-gradient(to bottom, #ccfbf1, #f0fdfa, #ffffff);
+  box-shadow: 2px 0 28px rgba(13, 148, 136, 0.22), 4px 0 40px rgba(0, 0, 0, 0.09);
+}
+
+.docs-strip-rentroll .docs-strip-icon {
+  background: linear-gradient(135deg, #0d9488, #2dd4bf, #0f766e);
+}
+
+.docs-strip-rentroll .docs-strip-label {
+  color: #0d9488;
+}
+
+.docs-strip-rentroll:hover .docs-strip-label {
+  color: #0f766e;
+}
+
+.docs-strip-rentroll .docs-strip-chevron {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+}
+
+/* ─── OM STRIP (Amber) ──────────────────────────────────────────────────────── */
+.docs-strip-om {
+  background: linear-gradient(to bottom, #fffbeb, #ffffff, #f8fafc);
+  border-right: 1px solid rgba(245, 158, 11, 0.15);
+  box-shadow: 2px 0 20px rgba(245, 158, 11, 0.12), 4px 0 32px rgba(0, 0, 0, 0.06);
+  --strip-shadow-color: rgba(245, 158, 11, 0.5);
+}
+
+.docs-strip-om:hover {
+  background: linear-gradient(to bottom, #fef3c7, #fffbeb, #ffffff);
+  box-shadow: 2px 0 28px rgba(245, 158, 11, 0.22), 4px 0 40px rgba(0, 0, 0, 0.09);
+}
+
+.docs-strip-om .docs-strip-icon {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24, #f97316);
+}
+
+.docs-strip-om .docs-strip-label {
+  color: #d97706;
+}
+
+.docs-strip-om:hover .docs-strip-label {
+  color: #b45309;
+}
+
+.docs-strip-om .docs-strip-chevron {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+/* ─── ANALYSIS STRIP (Teal) ─────────────────────────────────────────────────── */
+.docs-strip-analysis {
+  background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
+  border-left: 1px solid rgba(13, 148, 136, 0.15);
+  box-shadow: -2px 0 20px rgba(13, 148, 136, 0.12), -4px 0 32px rgba(0, 0, 0, 0.06);
+  --strip-shadow-color: rgba(13, 148, 136, 0.5);
+}
+
+.docs-strip-analysis:hover {
+  background: linear-gradient(to bottom, #ccfbf1, #f0fdfa, #ffffff);
+  box-shadow: -2px 0 28px rgba(13, 148, 136, 0.22), -4px 0 40px rgba(0, 0, 0, 0.09);
+}
+
+.docs-strip-analysis .docs-strip-icon {
+  background: linear-gradient(135deg, #0d9488, #2dd4bf, #0f766e);
+}
+
+.docs-strip-analysis .docs-strip-label {
+  color: #0d9488;
+}
+
+.docs-strip-analysis:hover .docs-strip-label {
+  color: #0f766e;
+}
+
+.docs-strip-analysis .docs-strip-chevron {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+}
+
+/* ─── TRI-PANEL LAYOUT ──────────────────────────────────────────────────────── */
+/* Main container for Document | Data | Analysis layout */
+.docs-tri-panel {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+/* Panel transitions */
+.docs-panel {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.docs-panel-expanded {
+  flex: 1;
+  min-width: 0;
+}
+
+.docs-panel-collapsed {
+  flex: 0 0 52px;
+  min-width: 52px;
+  max-width: 52px;
+}
+
+/* ���── PANEL HEADER ─��─────────────────────────────────────────────���─���────────── */
+.docs-panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.docs-panel-header-expanded {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* ─── RESIZE HANDLE ─────────────────────────────────────────────────────────── */
+.docs-resize-handle {
+  width: 8px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.docs-resize-handle:hover {
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.docs-resize-handle-pill {
+  width: 4px;
+  height: 48px;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, #e2e8f0, #cbd5e1);
+  transition: all 0.2s ease;
+}
+
+.docs-resize-handle:hover .docs-resize-handle-pill {
+  background: linear-gradient(to bottom, #a5b4fc, #818cf8);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* ─── TOOLBAR BUTTONS ───────────────────────────────────────────────────────── */
+.docs-toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.docs-toolbar-btn-inactive {
+  background: rgba(255, 255, 255, 0.6);
+  color: #475569;
+  backdrop-filter: blur(8px);
+}
+
+.docs-toolbar-btn-inactive:hover {
+  background: white;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.docs-toolbar-btn-active {
+  background: linear-gradient(to bottom, #1e293b, #0f172a);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.docs-toolbar-btn-emerald {
+  background: linear-gradient(to bottom, #10b981, #059669);
+  color: white;
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.docs-toolbar-btn-indigo {
+  background: linear-gradient(to bottom, #1e293b, #0f172a);
+  color: white;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ─── ANALYSIS PANEL CARDS ──────────────────────────────────────────────────── */
+/* Hero KPI Card - Dark gradient primary card */
+.docs-hero-kpi {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.90) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.docs-hero-kpi::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, transparent 50%, rgba(20, 184, 166, 0.06) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.docs-hero-kpi:hover::before {
+  opacity: 1;
+}
+
+/* Metric Card - Light glassmorphic */
+.docs-metric-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(100, 100, 140, 0.08), 0 2px 8px rgba(100, 100, 140, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.docs-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(100, 100, 140, 0.12), 0 4px 12px rgba(100, 100, 140, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Summary Card */
+.docs-summary-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(100, 100, 140, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.docs-summary-card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Progress Card */
+.docs-progress-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.docs-progress-bar {
+  height: 0.625rem;
+  background: rgba(241, 245, 249, 0.8);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.docs-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.7s ease-out;
+}
+
+.docs-progress-fill-emerald {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+}
+
+.docs-progress-fill-indigo {
+  background: linear-gradient(90deg, #0d9488 0%, #0f766e 100%);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.35);
+}
+
+.docs-progress-fill-amber {
+  background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+}
+
+/* ─── ICON CONTAINERS ───────────────────────────────────────────────────────── */
+.docs-icon-gradient {
+  padding: 0.375rem;
+  border-radius: 0.5rem;
+}
+
+.docs-icon-gradient-indigo {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+}
+
+.docs-icon-gradient-emerald {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.docs-icon-gradient-violet {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.28);
+}
+
+.docs-icon-gradient-amber {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+/* ─── KPI VALUE TYPOGRAPHY ──────────────────────────────────────────────────── */
+.docs-kpi-value-hero {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.docs-kpi-value-lg {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.docs-kpi-value-md {
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.docs-kpi-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748b;
+}
+
+/* ─── ALERT BANNERS ─────────────────────────────────────────────────────────── */
+.docs-alert {
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.docs-alert-warning {
+  background: linear-gradient(to right, #fffbeb, #fff7ed);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.docs-alert-error {
+  background: linear-gradient(to right, #fef2f2, #fff1f2);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.docs-alert-success {
+  background: linear-gradient(to right, #ecfdf5, #f0fdf4);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.docs-alert-info {
+  background: linear-gradient(to right, #eff6ff, #eef2ff);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLORFUL GRADIENT MARKETING UTILITIES (light theme)
+   Purple → violet → magenta → rose pink.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Hero gradient: LEFT → RIGHT deep purple → violet → magenta → rose pink,
+   with a soft vertical fade to white across the bottom ~30% so the hero melts
+   directly into the white section beneath it (no visible seam). Contrast stays
+   even because the trust indicators are solid white chips, not bare text. */
+.hero-gradient {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0) 64%, rgba(255,255,255,0.35) 84%, #ffffff 100%),
+    radial-gradient(70% 80% at 88% 45%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(100deg,
+      #6d28d9 0%,
+      #7c3aed 22%,
+      #9333ea 42%,
+      #c026d3 60%,
+      #db2777 80%,
+      #f8709f 100%);
+}
+
+/* Text gradient for inline accent words on light surfaces */
+.super-gradient-text {
+  background: linear-gradient(110deg, #6d28d9 0%, #9333ea 38%, #c026d3 70%, #f8709f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Solid colorful gradient fill for buttons/accents */
+.super-gradient-glow {
+  background: linear-gradient(110deg, #6d28d9 0%, #9333ea 45%, #c026d3 75%, #f8709f 100%);
+  box-shadow: 0 10px 30px -8px rgba(124, 58, 237, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+/* Page background — plain white. The hero fades to white at its own bottom
+   edge, so the section below continues seamlessly with no color step. */
+.super-gradient-bg {
+  background: #ffffff;
+}
+
+/* Auth page: ONE continuous LEFT → RIGHT gradient spanning the whole screen.
+   Saturated purple → magenta on the left (behind the showcase) that fades to
+   white on the right (behind the form), so the two halves flow through each
+   other with no panel seam or divider. */
+.auth-gradient {
+  background:
+    radial-gradient(55% 70% at 16% 28%, rgba(124, 58, 237, 0.40) 0%, rgba(124, 58, 237, 0) 60%),
+    radial-gradient(50% 65% at 42% 82%, rgba(219, 39, 119, 0.30) 0%, rgba(219, 39, 119, 0) 60%),
+    linear-gradient(100deg,
+      #5b1fb8 0%,
+      #6d28d9 16%,
+      #7c3aed 30%,
+      #9333ea 44%,
+      #c026d3 56%,
+      #db2777 66%,
+      #f06ba0 74%,
+      #f6b3cd 82%,
+      #fbe3ee 88%,
+      #ffffff 95%);
+}
