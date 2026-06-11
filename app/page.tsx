@@ -112,6 +112,7 @@ export default async function LandingPage({
   searchParams: Promise<{ redirect?: string }>
 }) {
   const { redirect } = await searchParams
+  const signInUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://app.investassist.ai"}/auth`
   const authUrl = redirect ? `/auth?redirect=${encodeURIComponent(redirect)}` : "/auth"
   const signupUrl = `${authUrl}${authUrl.includes("?") ? "&" : "?"}mode=signup`
 
@@ -140,14 +141,14 @@ export default async function LandingPage({
               </div>
               <div className="flex items-center gap-2 md:gap-3">
                 {/* Desktop: text labels */}
-                <Link href={authUrl} className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white/90 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                <Link href={signInUrl} className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white/90 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <LogIn className="w-4 h-4" /> Sign in
                 </Link>
                 <Link href={signupUrl} data-analytics="homepage-nav-cta" className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold text-[#7c3aed] bg-white hover:bg-white/90 hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <UserPlus className="w-4 h-4" /> Sign up
                 </Link>
                 {/* Mobile: icon-only */}
-                <Link href={authUrl} aria-label="Sign in" className="md:hidden p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                <Link href={signInUrl} aria-label="Sign in" className="md:hidden p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <LogIn className="w-5 h-5" />
                 </Link>
                 <Link href={signupUrl} aria-label="Sign up" className="md:hidden p-2.5 rounded-full text-[#7c3aed] bg-white hover:bg-white/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
@@ -388,7 +389,7 @@ export default async function LandingPage({
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href={signupUrl}
+                  href={authUrl}
                   data-analytics="homepage-primary-cta"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                   style={{ ...designSystem.buttons.primary }}
