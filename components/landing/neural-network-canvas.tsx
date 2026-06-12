@@ -74,8 +74,10 @@ export function NeuralNetworkCanvas({
 
     // Document glyph nodes scattered across the right side and right-half of the
     // left column. Kept clear of the far-left headline band by the fade mask.
+    // First node relocated to middle-right to avoid "Pricing" header animation overlap.
+    // Rest remain at original high positions for visual impact.
     const docDefs: Array<Pick<DocNode, "nx" | "ny" | "size">> = [
-      { nx: 0.5, ny: 0.16, size: 16 },
+      { nx: 0.75, ny: 0.42, size: 16 },   // Relocated middle-right to clear "Pricing" nav
       { nx: 0.62, ny: 0.08, size: 18 },
       { nx: 0.74, ny: 0.2, size: 15 },
       { nx: 0.87, ny: 0.12, size: 17 },
@@ -102,8 +104,10 @@ export function NeuralNetworkCanvas({
         driftAmp: 4 + Math.random() * 5,
       }))
 
-      // Connect each node to its 2 nearest neighbors (in normalized space) to
-      // form a flowing, decentralized mesh. Dedupe pairs.
+      // Connect each node to its 3-4 nearest neighbors (in normalized space) to
+      // form a more densely interconnected mesh. This creates more curved links
+      // throughout the network, especially visible for bottom and top-right nodes.
+      // Dedupe pairs.
       const seen = new Set<string>()
       links = []
       docs.forEach((d, i) => {
@@ -111,7 +115,8 @@ export function NeuralNetworkCanvas({
           .map((o, j) => ({ j, dist: Math.hypot(o.nx - d.nx, o.ny - d.ny) }))
           .filter((o) => o.j !== i)
           .sort((p, q) => p.dist - q.dist)
-        dists.slice(0, 2).forEach((n, k) => {
+        // Increase from 2 to 3 nearest neighbors for denser connectivity
+        dists.slice(0, 3).forEach((n, k) => {
           const key = i < n.j ? `${i}-${n.j}` : `${n.j}-${i}`
           if (seen.has(key)) return
           seen.add(key)

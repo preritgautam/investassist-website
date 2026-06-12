@@ -9,21 +9,10 @@ interface UploadedFile {
   label: 'om' | 'rr' | 't12' | 'other'
 }
 
-export type AnalysisMode = 'batch' | 'single'
-
-export type AnalyzeInput = {
-  type: 'file'
-  value: string
-  files?: UploadedFile[]
-  processingStrategy?: 'xtrct_batch' | 'xtrct_single'
-}
-
 interface UniversalInputProps {
-  onAnalyze?: (input: AnalyzeInput) => void
+  onAnalyze?: (input: { type: 'file'; value: string; files?: UploadedFile[] }) => void
   className?: string
   size?: 'default' | 'large'
-  enableProcessingMode?: boolean
-  defaultAnalysisMode?: AnalysisMode
 }
 
 const FILE_LABELS: { value: UploadedFile['label']; display: string; description: string }[] = [
@@ -93,18 +82,11 @@ async function fetchMapboxFeatures(
   return data.features || []
 }
 
-export function UniversalInput({
-  onAnalyze,
-  className,
-  size = 'default',
-  enableProcessingMode = false,
-  defaultAnalysisMode = 'batch',
-}: UniversalInputProps) {
+export function UniversalInput({ onAnalyze, className, size = 'default' }: UniversalInputProps) {
   const [inputValue, setInputValue] = useState('')
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
   const [isDragging, setIsDragging] = useState(false)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [analysisMode, setAnalysisMode] = useState<AnalysisMode>(defaultAnalysisMode)
   const fileInputRef = useRef<HTMLInputElement>(null)
   
   // Address autocomplete state
@@ -251,9 +233,8 @@ export function UniversalInput({
       type: 'file',
       value: inputValue.trim(),
       files: uploadedFiles,
-      processingStrategy: analysisMode === 'single' ? 'xtrct_single' : 'xtrct_batch',
     })
-  }, [analysisMode, inputValue, onAnalyze, uploadedFiles])
+  }, [inputValue, uploadedFiles, onAnalyze])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) { 
@@ -409,45 +390,6 @@ export function UniversalInput({
               </ul>
             )}
           </div>
-
-          {enableProcessingMode && (
-            <div className="mt-5">
-              <label className="block text-sm font-medium text-slate-600 mb-1.5">
-                Processing mode
-              </label>
-              <div className="grid grid-cols-2 gap-2 rounded-xl border border-slate-200 bg-slate-50 p-1">
-                <button
-                  type="button"
-                  onClick={() => setAnalysisMode('batch')}
-                  className={cn(
-                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    analysisMode === 'batch'
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-500 hover:text-slate-700"
-                  )}
-                >
-                  Batch
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setAnalysisMode('single')}
-                  className={cn(
-                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    analysisMode === 'single'
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-500 hover:text-slate-700"
-                  )}
-                >
-                  Single
-                </button>
-              </div>
-              <p className="mt-2 text-xs text-slate-400">
-                {analysisMode === 'single'
-                  ? 'Single mode sends each document through the single-file Xtrct API.'
-                  : 'Batch mode keeps the current multi-document batch extraction flow.'}
-              </p>
-            </div>
-          )}
 
           {/* Analyze button */}
           <div className="mt-5">

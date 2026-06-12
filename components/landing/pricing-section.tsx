@@ -161,7 +161,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
         <div className="rounded-2xl p-6 md:p-8" style={neu.card}>
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5">
-              <h3 className="text-xl font-bold text-slate-900 mb-3 text-balance">What a credit actually buys</h3>
+              <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3 text-balance">What a credit actually buys</h3>
               <p className="text-sm text-slate-500 leading-relaxed mb-4">
                 Document size barely moves the meter — a 30-page OM uses a fraction of a credit&apos;s token budget.
                 Credits are spent on the reasoning that turns raw files into a defensible underwrite, which is why
@@ -174,18 +174,18 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="rounded-xl p-2" style={neu.inset}>
+              <div className="rounded-xl p-2 overflow-x-auto" style={neu.inset}>
                 <ul className="divide-y divide-slate-200/60">
                   {creditUsage.map((row) => (
-                    <li key={row.label} className="flex items-center gap-4 px-4 py-3">
-                      <div className="shrink-0 w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center">
-                        <row.icon className="w-4.5 h-4.5 text-teal-600" />
+                    <li key={row.label} className="flex items-center gap-2 md:gap-3 px-2 md:px-4 py-2 md:py-4 text-xs md:text-sm">
+                      <div className="shrink-0 w-7 md:w-9 h-7 md:h-9 rounded-lg bg-teal-50 flex items-center justify-center">
+                        <row.icon className="w-3.5 md:w-4.5 h-3.5 md:h-4.5 text-teal-600" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-slate-900 truncate">{row.label}</p>
-                        <p className="text-xs text-slate-500">{row.detail}</p>
+                        <p className="font-semibold text-slate-900 line-clamp-2">{row.label}</p>
+                        <p className="text-xs text-slate-500 line-clamp-1">{row.detail}</p>
                       </div>
-                      <span className="text-sm font-bold text-slate-900 whitespace-nowrap">{row.credits}</span>
+                      <span className="font-bold text-slate-900 whitespace-nowrap text-xs md:text-sm ml-1">{row.credits}</span>
                     </li>
                   ))}
                 </ul>

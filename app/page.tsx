@@ -21,9 +21,11 @@ import { ProductWalkthrough } from "@/components/landing/product-walkthrough"
 import { FeatureShowcase } from "@/components/landing/feature-showcase"
 import { PricingSection } from "@/components/landing/pricing-section"
 import { FaqSection } from "@/components/landing/faq-section"
+import { HeroInput } from "@/components/landing/hero-input"
 import { PersonaTabs } from "@/components/landing/persona-tabs"
 import { Reveal } from "@/components/landing/reveal"
 import { NeuralNetworkCanvas } from "@/components/landing/neural-network-canvas"
+import { buildAuthUrl, buildMainAppUrl, buildSignupUrl } from "@/lib/app-url"
 import { cn } from "@/lib/utils"
 import { designSystem, LOGO_PATH, LOGO_ALT } from "@/lib/design-system"
 
@@ -112,22 +114,25 @@ export default async function LandingPage({
   searchParams: Promise<{ redirect?: string }>
 }) {
   const { redirect } = await searchParams
-  const signInUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://app.investassist.ai"}/auth`
-  const authUrl = redirect ? `/auth?redirect=${encodeURIComponent(redirect)}` : "/auth"
+  const authUrl = buildAuthUrl(redirect)
+  const signupUrl = buildSignupUrl(redirect)
+  const privacyUrl = buildMainAppUrl("/privacy")
+  const termsUrl = buildMainAppUrl("/terms")
+  const contactUrl = buildMainAppUrl("/contact")
 
   return (
     <div className="min-h-screen overflow-x-hidden super-gradient-bg">
       {/* Hero Section — vivid colorful gradient band with the header merged in */}
       <main>
         <section className="relative overflow-hidden hero-gradient">
-          {/* Document-extraction network (homepage hero only) */}
+          {/* Document-extraction network (desktop only, hidden on mobile to reduce clutter) */}
           <NeuralNetworkCanvas
             variant="light"
-            className="absolute inset-0 h-full w-full"
+            className="hidden lg:block absolute inset-0 h-full w-full"
           />
 
-          {/* Merged transparent navigation — part of the hero, not a separate strip */}
-          <nav className="relative z-50 px-4 pt-5 pb-2">
+          {/* Merged transparent navigation — floats at top on mobile, relative on desktop */}
+          <nav className="relative md:relative md:z-50 md:px-4 md:pt-5 md:pb-2 fixed md:relative top-0 inset-x-0 z-50 px-4 pt-4 pb-3 md:pt-5 md:pb-2 bg-gradient-to-b from-purple-900/90 via-purple-800/70 to-transparent md:from-transparent md:via-transparent md:to-transparent backdrop-blur-md md:backdrop-blur-none safe-area-inset-top">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
               <Link href="/" className="relative h-10 w-36 md:h-12 md:w-52">
                 <Image src={LOGO_PATH} alt={LOGO_ALT} fill className="object-contain object-left brightness-0 invert" priority />
@@ -138,29 +143,49 @@ export default async function LandingPage({
                 <a href="#documents" className="hover:text-white transition-colors">What We Analyze</a>
                 <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
               </div>
+              {/* Mobile: Dropdown menu for navigation links */}
+              <div className="md:hidden flex items-center">
+                <details className="group relative">
+                  <summary className="cursor-pointer list-none p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-all">
+                    <svg className="w-5 h-5 group-open:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg className="w-5 h-5 hidden group-open:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </summary>
+                  <div className="absolute right-0 top-full mt-2 w-48 rounded-xl bg-white shadow-lg border border-slate-200 p-2 z-50">
+                    <a href="#who-its-for" className="block px-4 py-2.5 text-sm font-medium text-slate-900 hover:bg-slate-100 rounded-lg transition-colors">Who It&apos;s For</a>
+                    <a href="#how-it-works" className="block px-4 py-2.5 text-sm font-medium text-slate-900 hover:bg-slate-100 rounded-lg transition-colors">How It Works</a>
+                    <a href="#documents" className="block px-4 py-2.5 text-sm font-medium text-slate-900 hover:bg-slate-100 rounded-lg transition-colors">What We Analyze</a>
+                    <a href="#pricing" className="block px-4 py-2.5 text-sm font-medium text-slate-900 hover:bg-slate-100 rounded-lg transition-colors">Pricing</a>
+                  </div>
+                </details>
+              </div>
               <div className="flex items-center gap-2 md:gap-3">
                 {/* Desktop: text labels */}
-                <Link href={signInUrl} className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white/90 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                <Link href={authUrl} className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white/90 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <LogIn className="w-4 h-4" /> Sign in
                 </Link>
-                <Link href={signInUrl} data-analytics="homepage-nav-cta" className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold text-[#7c3aed] bg-white hover:bg-white/90 hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                <Link href={signupUrl} data-analytics="homepage-nav-cta" className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold text-[#7c3aed] bg-white hover:bg-white/90 hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <UserPlus className="w-4 h-4" /> Sign up
                 </Link>
                 {/* Mobile: icon-only */}
-                <Link href={signInUrl} aria-label="Sign in" className="md:hidden p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                <Link href={authUrl} aria-label="Sign in" className="md:hidden p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <LogIn className="w-5 h-5" />
                 </Link>
-                <Link href={signInUrl} aria-label="Sign up" className="md:hidden p-2.5 rounded-full text-[#7c3aed] bg-white hover:bg-white/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                <Link href={signupUrl} aria-label="Sign up" className="md:hidden p-2.5 rounded-full text-[#7c3aed] bg-white hover:bg-white/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                   <UserPlus className="w-5 h-5" />
                 </Link>
               </div>
             </div>
           </nav>
 
-          {/* Hero content */}
-          <div className="relative z-10 px-4 pt-10 md:pt-16 pb-16 md:pb-24 max-w-7xl mx-auto">
-            <div className="lg:pt-4">
-              <div className="text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
+          {/* Hero content — add top padding on mobile for floating header */}
+          <div className="relative z-10 px-4 pt-24 sm:pt-20 md:pt-16 lg:pt-24 pb-16 md:pb-24 max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-16 items-center lg:pt-4">
+              {/* Left column: value proposition */}
+              <div className="text-center lg:text-left">
                 {/* Announcement Badge */}
                 <div className="flex justify-center lg:justify-start mb-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-white/15 border border-white/25 backdrop-blur-sm">
@@ -206,6 +231,9 @@ export default async function LandingPage({
                   </span>
                 </div>
               </div>
+
+              {/* Right column: interactive input island */}
+              <HeroInput authUrl={authUrl} />
             </div>
           </div>
         </section>
@@ -388,7 +416,7 @@ export default async function LandingPage({
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href={signInUrl}
+                  href={signupUrl}
                   data-analytics="homepage-primary-cta"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                   style={{ ...designSystem.buttons.primary }}
@@ -417,9 +445,9 @@ export default async function LandingPage({
             <Image src={LOGO_PATH} alt={LOGO_ALT} fill className="object-contain object-left" />
           </div>
           <div className="flex items-center gap-6 text-sm text-slate-600">
-            <Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-slate-900 transition-colors">Terms</Link>
-            <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
+            <Link href={privacyUrl} className="hover:text-slate-900 transition-colors">Privacy</Link>
+            <Link href={termsUrl} className="hover:text-slate-900 transition-colors">Terms</Link>
+            <Link href={contactUrl} className="hover:text-slate-900 transition-colors">Contact</Link>
           </div>
           <p className="text-sm text-slate-500">
             © {new Date().getFullYear()} InvestAssist. All rights reserved.

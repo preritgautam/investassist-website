@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react"
 import { faqItems } from "@/lib/faq-data"
 
 export function FaqSection() {
-  const [open, setOpen] = useState<number | null>(0)
+  const [open, setOpen] = useState<number | null>(null)
 
   return (
     <div className="max-w-5xl mx-auto">
