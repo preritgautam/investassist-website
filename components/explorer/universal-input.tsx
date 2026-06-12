@@ -13,6 +13,7 @@ interface UniversalInputProps {
   onAnalyze?: (input: { type: 'file'; value: string; files?: UploadedFile[] }) => void
   className?: string
   size?: 'default' | 'large'
+  addressOnly?: boolean  // If true, only show address input and hide file uploads
 }
 
 const FILE_LABELS: { value: UploadedFile['label']; display: string; description: string }[] = [
@@ -82,7 +83,7 @@ async function fetchMapboxFeatures(
   return data.features || []
 }
 
-export function UniversalInput({ onAnalyze, className, size = 'default' }: UniversalInputProps) {
+export function UniversalInput({ onAnalyze, className, size = 'default', addressOnly = false }: UniversalInputProps) {
   const [inputValue, setInputValue] = useState('')
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
   const [isDragging, setIsDragging] = useState(false)
@@ -225,7 +226,18 @@ export function UniversalInput({ onAnalyze, className, size = 'default' }: Unive
     const hasFiles = uploadedFiles.length > 0
     const hasAddress = inputValue.trim().length > 0
 
-    // Require both address AND at least one document
+    // In address-only mode, just need the address
+    if (addressOnly) {
+      if (!hasAddress) return
+      onAnalyze?.({
+        type: 'file',
+        value: inputValue.trim(),
+        files: [],
+      })
+      return
+    }
+
+    // Normal mode: require both address AND at least one document
     if (!hasFiles || !hasAddress) return
 
     setIsAnalyzing(true)
@@ -234,7 +246,7 @@ export function UniversalInput({ onAnalyze, className, size = 'default' }: Unive
       value: inputValue.trim(),
       files: uploadedFiles,
     })
-  }, [inputValue, uploadedFiles, onAnalyze])
+  }, [inputValue, uploadedFiles, onAnalyze, addressOnly])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) { 
@@ -250,8 +262,8 @@ export function UniversalInput({ onAnalyze, className, size = 'default' }: Unive
     }
   }
 
-  // Require both address AND files
-  const canAnalyze = uploadedFiles.length > 0 && inputValue.trim().length > 0
+  // Require both address AND files in normal mode, address-only in landing mode
+  const canAnalyze = addressOnly ? inputValue.trim().length > 0 : uploadedFiles.length > 0 && inputValue.trim().length > 0
 
   return (
     <div
@@ -317,79 +329,81 @@ export function UniversalInput({ onAnalyze, className, size = 'default' }: Unive
             )}
           </div>
 
-          {/* Upload Documents */}
-          <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1.5">
-              Deal documents
-            </label>
+          {/* Upload Documents — only show in full mode */}
+          {!addressOnly && (
+            <div>
+              <label className="block text-sm font-medium text-slate-600 mb-1.5">
+                Deal documents
+              </label>
 
-            {/* Drop zone */}
-            <label
-              className={cn(
-                "flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-xl cursor-pointer transition-all",
-                isDragging
-                  ? "border-teal-400 bg-teal-50/40"
-                  : "border-slate-200 hover:border-teal-300 hover:bg-teal-50/20",
-                uploadedFiles.length > 0 ? "py-3" : "py-5"
+              {/* Drop zone */}
+              <label
+                className={cn(
+                  "flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-xl cursor-pointer transition-all",
+                  isDragging
+                    ? "border-teal-400 bg-teal-50/40"
+                    : "border-slate-200 hover:border-teal-300 hover:bg-teal-50/20",
+                  uploadedFiles.length > 0 ? "py-3" : "py-5"
+                )}
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".pdf,.xlsx,.csv,.xls"
+                  multiple
+                  onChange={handleFileSelect}
+                  className="sr-only"
+                />
+                <div className={cn(
+                  "w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center transition-all",
+                  isDragging && "bg-teal-100 scale-110"
+                )}>
+                  <Upload className={cn("h-5 w-5 text-teal-500", isDragging && "text-teal-700")} />
+                </div>
+                <div className="text-center">
+                  <p className={cn("font-semibold text-slate-700 text-sm", isLarge && "text-base")}>
+                    {isDragging ? "Drop files here" : uploadedFiles.length > 0 ? "Add more documents" : "Drop or click to upload"}
+                  </p>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    OM, Rent Roll, T-12, Operating Statements - PDF, Excel, CSV
+                  </p>
+                </div>
+              </label>
+
+              {/* Uploaded files list */}
+              {uploadedFiles.length > 0 && (
+                <ul className="mt-3 space-y-2">
+                  {uploadedFiles.map((uf, i) => (
+                    <li key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center">
+                        <FileText className="h-4 w-4 text-slate-500" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-slate-800 truncate">{uf.file.name}</p>
+                        <p className="text-xs text-slate-400">{(uf.file.size / 1024 / 1024).toFixed(2)} MB</p>
+                      </div>
+                      {/* Label selector */}
+                      <select
+                        value={uf.label}
+                        onChange={e => updateLabel(i, e.target.value as UploadedFile['label'])}
+                        className="text-xs font-medium border border-slate-200 rounded-lg px-2 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300"
+                      >
+                        {FILE_LABELS.map(l => (
+                          <option key={l.value} value={l.value}>{l.display}</option>
+                        ))}
+                      </select>
+                      <button
+                        onClick={() => removeFile(i)}
+                        className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors flex-shrink-0"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               )}
-            >
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept=".pdf,.xlsx,.csv,.xls"
-                multiple
-                onChange={handleFileSelect}
-                className="sr-only"
-              />
-              <div className={cn(
-                "w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center transition-all",
-                isDragging && "bg-teal-100 scale-110"
-              )}>
-                <Upload className={cn("h-5 w-5 text-teal-500", isDragging && "text-teal-700")} />
-              </div>
-              <div className="text-center">
-                <p className={cn("font-semibold text-slate-700 text-sm", isLarge && "text-base")}>
-                  {isDragging ? "Drop files here" : uploadedFiles.length > 0 ? "Add more documents" : "Drop or click to upload"}
-                </p>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  OM, Rent Roll, T-12, Operating Statements - PDF, Excel, CSV
-                </p>
-              </div>
-            </label>
-
-            {/* Uploaded files list */}
-            {uploadedFiles.length > 0 && (
-              <ul className="mt-3 space-y-2">
-                {uploadedFiles.map((uf, i) => (
-                  <li key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center">
-                      <FileText className="h-4 w-4 text-slate-500" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-800 truncate">{uf.file.name}</p>
-                      <p className="text-xs text-slate-400">{(uf.file.size / 1024 / 1024).toFixed(2)} MB</p>
-                    </div>
-                    {/* Label selector */}
-                    <select
-                      value={uf.label}
-                      onChange={e => updateLabel(i, e.target.value as UploadedFile['label'])}
-                      className="text-xs font-medium border border-slate-200 rounded-lg px-2 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300"
-                    >
-                      {FILE_LABELS.map(l => (
-                        <option key={l.value} value={l.value}>{l.display}</option>
-                      ))}
-                    </select>
-                    <button
-                      onClick={() => removeFile(i)}
-                      className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors flex-shrink-0"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Analyze button */}
           <div className="mt-5">
@@ -403,10 +417,10 @@ export function UniversalInput({ onAnalyze, className, size = 'default' }: Unive
             >
               {isAnalyzing
                 ? <><Sparkles className="h-4 w-4 animate-pulse" /><span>Analyzing...</span></>
-                : <><span>Analyze Property</span><ArrowRight className="h-4 w-4" /></>
+                : <><span>{addressOnly ? "Continue" : "Analyze Property"}</span><ArrowRight className="h-4 w-4" /></>
               }
             </button>
-            {!canAnalyze && (
+            {!canAnalyze && !addressOnly && (
               <p className="text-center text-xs text-slate-400 mt-2">
                 Add an address and at least one document to begin
               </p>

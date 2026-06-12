@@ -3,9 +3,8 @@
 import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Sparkles, UserPlus, LogIn, Loader2, AlertCircle } from "lucide-react"
+import { Sparkles, UserPlus, LogIn } from "lucide-react"
 import { UniversalInput } from "@/components/explorer/universal-input"
-import { stageIntake } from "@/lib/uploads/stage-intake-files"
 import { designSystem } from "@/lib/design-system"
 
 const neu = {
@@ -16,73 +15,42 @@ interface HeroInputProps {
   authUrl: string
 }
 
-type UploadedFile = { file: File; label: "om" | "rr" | "t12" | "other" }
-
-// Map the hero's compact labels to the document file types the pipeline expects.
-const LABEL_TO_FILE_TYPE: Record<UploadedFile["label"], string> = {
-  om: "om",
-  rr: "rent_roll",
-  t12: "t12",
-  other: "other",
-}
-
 /**
  * Client island holding the interactive underwriting input + auth-prompt modal.
  *
- * When a logged-out visitor clicks "Analyze Property" with documents attached,
- * we stage those files to a private bucket immediately (Option B) and thread the
- * resulting intakeId through the auth flow via `redirect=/explore?claim=<id>`.
- * After they authenticate, /explore claims the intake — creating the deal and
- * starting processing with no need to re-attach anything.
+ * Implements cross-domain Option A: capture lightweight intent (address only),
+ * redirect to auth with address in URL params, then land on /explore?address=<encoded>.
+ * User re-attaches documents after signup — one-step friction, honest UX.
  */
 export function HeroInput({ authUrl }: HeroInputProps) {
   const [showAuthPrompt, setShowAuthPrompt] = useState(false)
-  const [intakeId, setIntakeId] = useState<string | null>(null)
-  const [isStaging, setIsStaging] = useState(false)
-  const [stageError, setStageError] = useState<string | null>(null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
 
   const landingAuthUrl = "https://app.investassist.ai/auth"
 
-  const handleAnalyze = async (input: {
+  const handleAnalyze = (input: {
     type: string
-    value: string | File[]
-    files?: UploadedFile[]
+    value: string
   }) => {
-    setStageError(null)
     const address = typeof input.value === "string" ? input.value.trim() : ""
-    const files = Array.isArray(input.files) ? input.files : []
-
-    // No documents yet → just open the auth prompt (blank new-deal flow).
-    if (files.length === 0) {
-      setIntakeId(null)
-      setShowAuthPrompt(true)
+    
+    if (!address) {
       return
     }
 
-    // Stage the documents immediately so they survive the auth handoff.
-    setIsStaging(true)
+    // Capture the address and show auth prompt
+    setSelectedAddress(address)
     setShowAuthPrompt(true)
-    try {
-      const { intakeId: newIntakeId } = await stageIntake({
-        address,
-        dealName: address || "Untitled deal",
-        files: files.map(({ file, label }) => ({
-          file,
-          fileType: LABEL_TO_FILE_TYPE[label] ?? "other",
-        })),
-      })
-      setIntakeId(newIntakeId)
-    } catch (err) {
-      console.error("[HeroInput] staging failed:", err)
-      setStageError(err instanceof Error ? err.message : "We couldn't prepare your upload. Please try again.")
-    } finally {
-      setIsStaging(false)
-    }
   }
 
   const handleContinueToAuth = () => {
-    if (isStaging) return
-    window.location.assign(landingAuthUrl)
+    if (!selectedAddress) return
+    
+    // Encode address and pass to /explore via URL param after auth
+    const encodedAddress = encodeURIComponent(selectedAddress)
+    const exploreUrl = `https://app.investassist.ai/explore?address=${encodedAddress}`
+    const redirectUrl = encodeURIComponent(exploreUrl)
+    window.location.assign(`${landingAuthUrl}?redirect=${redirectUrl}`)
   }
 
   return (
@@ -108,7 +76,7 @@ export function HeroInput({ authUrl }: HeroInputProps) {
               <h2 className="text-lg font-semibold text-slate-900">Start your underwriting</h2>
             </div>
 
-            <UniversalInput onAnalyze={handleAnalyze} />
+            <UniversalInput onAnalyze={handleAnalyze} addressOnly />
           </div>
         </div>
       </motion.div>
@@ -128,34 +96,15 @@ export function HeroInput({ authUrl }: HeroInputProps) {
                 <Sparkles className="w-8 h-8 text-teal-400" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Ready to Underwrite</h3>
-              <p className="text-slate-500">
-                Create a free account to start your analysis. Your documents are already saved and will be
-                processed automatically once you sign in.
+              <p className="text-slate-500 text-sm">
+                Create a free account and we&apos;ll have your property address ready. Upload your documents to begin the analysis.
               </p>
             </div>
-
-            {/* Staging status */}
-            {isStaging && (
-              <div className="flex items-center justify-center gap-2 mb-4 text-sm text-slate-600">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Securely uploading your documents…
-              </div>
-            )}
-            {stageError && (
-              <div
-                className="flex items-start gap-2 mb-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
-                role="alert"
-              >
-                <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>{stageError}</span>
-              </div>
-            )}
 
             <div className="space-y-3">
               <button
                 onClick={handleContinueToAuth}
-                disabled={isStaging}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-white font-semibold transition-all hover:shadow-lg hover:shadow-slate-900/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-white font-semibold transition-all hover:shadow-lg hover:shadow-slate-900/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                 style={{ background: designSystem.gradients.brand }}
               >
                 <UserPlus className="w-5 h-5" />
@@ -163,11 +112,7 @@ export function HeroInput({ authUrl }: HeroInputProps) {
               </button>
               <Link
                 href={landingAuthUrl}
-                aria-disabled={isStaging}
-                onClick={(e) => {
-                  if (isStaging) e.preventDefault()
-                }}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-slate-700 font-medium border border-slate-200 hover:bg-slate-50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 aria-disabled:opacity-60 aria-disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-slate-700 font-medium border border-slate-200 hover:bg-slate-50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
               >
                 <LogIn className="w-5 h-5" />
                 I Already Have an Account
