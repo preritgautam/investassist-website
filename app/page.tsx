@@ -129,7 +129,7 @@ export default async function LandingPage({
           {/* Document-extraction network (desktop only, hidden on mobile to reduce clutter) */}
           <NeuralNetworkCanvas
             variant="light"
-            className="hidden lg:block absolute inset-0 h-full w-full"
+            className="hidden lg:block absolute top-[5%] right-0 bottom-0 left-0 h-[95%] w-full pointer-events-none"
           />
 
           {/* Merged transparent navigation — floats at top on mobile, relative on desktop */}
@@ -210,23 +210,23 @@ export default async function LandingPage({
                   </p>
                 </div>
 
-                {/* Trust Indicators — solid chips so they stand out on the gradient */}
+                {/* Trust Indicators — transparent chips with backdrop blur for contrast */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white shadow-sm text-sm font-semibold text-slate-800">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-sm font-semibold text-white">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/30 border border-emerald-300">
+                      <Check className="w-3.5 h-3.5 text-emerald-200" />
                     </span>
                     No credit card required
                   </span>
-                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white shadow-sm text-sm font-semibold text-slate-800">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-sm font-semibold text-white">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/30 border border-emerald-300">
+                      <Check className="w-3.5 h-3.5 text-emerald-200" />
                     </span>
                     Free credits to start
                   </span>
-                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white shadow-sm text-sm font-semibold text-slate-800">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-sm font-semibold text-white">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/30 border border-emerald-300">
+                      <Check className="w-3.5 h-3.5 text-emerald-200" />
                     </span>
                     First verdict in under 5 minutes
                   </span>
