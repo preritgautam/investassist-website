@@ -212,21 +212,21 @@ export default async function LandingPage({
 
                 {/* Trust Indicators — transparent chips with backdrop blur for contrast */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-sm font-semibold text-white">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/30 border border-emerald-300">
-                      <Check className="w-3.5 h-3.5 text-emerald-200" />
+                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-sm font-semibold text-white">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/40 border border-emerald-300">
+                      <Check className="w-3.5 h-3.5 text-emerald-100" />
                     </span>
                     No credit card required
                   </span>
-                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-sm font-semibold text-white">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/30 border border-emerald-300">
-                      <Check className="w-3.5 h-3.5 text-emerald-200" />
+                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-sm font-semibold text-white">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/40 border border-emerald-300">
+                      <Check className="w-3.5 h-3.5 text-emerald-100" />
                     </span>
                     Free credits to start
                   </span>
-                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-sm font-semibold text-white">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/30 border border-emerald-300">
-                      <Check className="w-3.5 h-3.5 text-emerald-200" />
+                  <span className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-sm font-semibold text-white">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/40 border border-emerald-300">
+                      <Check className="w-3.5 h-3.5 text-emerald-100" />
                     </span>
                     First verdict in under 5 minutes
                   </span>
