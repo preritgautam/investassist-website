@@ -212,19 +212,19 @@ export default async function LandingPage({
 
                 {/* Trust Indicators — clean text with checkmarks, no boxes */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/40 border border-emerald-300">
                       <Check className="w-3.5 h-3.5 text-emerald-100" />
                     </span>
                     No credit card required
                   </span>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/40 border border-emerald-300">
                       <Check className="w-3.5 h-3.5 text-emerald-100" />
                     </span>
                     Free credits to start
                   </span>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-400/40 border border-emerald-300">
                       <Check className="w-3.5 h-3.5 text-emerald-100" />
                     </span>
