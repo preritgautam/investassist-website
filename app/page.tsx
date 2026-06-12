@@ -128,7 +128,7 @@ export default async function LandingPage({
           {/* Document-extraction network (desktop only, hidden on mobile to reduce clutter) */}
           <NeuralNetworkCanvas
             variant="light"
-            className="hidden lg:block absolute top-[-10%] right-0 bottom-0 left-0 h-[110%] w-full pointer-events-none"
+            className="hidden lg:block absolute inset-0 h-full w-full pointer-events-none"
           />
 
           {/* Merged transparent navigation — floats at top on mobile, relative on desktop */}
