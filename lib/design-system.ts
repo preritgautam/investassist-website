@@ -17,12 +17,12 @@
 export const designSystem = {
   // Page backgrounds
   backgrounds: {
-    // Vivid colorful hero gradient - teal → cyan → emerald → aqua
-    landing: "radial-gradient(120% 90% at 85% 110%, #c0f9f8 0%, rgba(192,249,248,0) 55%), linear-gradient(135deg, #0d7d7a 0%, #099268 22%, #0f9a7a 45%, #14a596 68%, #1bb598 86%, #a7f3d0 100%)",
-    // Dashboard background - soft light with subtle teal glows
-    dashboard: "radial-gradient(ellipse 70% 50% at 12% 8%, rgba(15,172,150,0.10) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 90% 90%, rgba(20,184,166,0.08) 0%, transparent 60%), linear-gradient(160deg, #f0fdf4 0%, #ecfdf5 45%, #e6f9f6 100%)",
+    // Vivid colorful hero gradient - indigo → violet → magenta → soft pink
+    landing: "radial-gradient(120% 90% at 85% 110%, #fbd5e8 0%, rgba(251,213,232,0) 55%), linear-gradient(135deg, #3b1d9e 0%, #5b34d6 22%, #8b3bd6 45%, #c23bb8 68%, #f06ba8 86%, #ffd0e4 100%)",
+    // Dashboard background - soft light with subtle colorful glows
+    dashboard: "radial-gradient(ellipse 70% 50% at 12% 8%, rgba(99,102,241,0.10) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 90% 90%, rgba(240,107,168,0.08) 0%, transparent 60%), linear-gradient(160deg, #fbfaff 0%, #f6f4ff 45%, #fdf5fb 100%)",
     // App background - near-white
-    app: "#f0fdf4",
+    app: "#fbfaff",
   },
   
   // Light card styles
@@ -52,16 +52,16 @@ export const designSystem = {
   
   // Button styles
   buttons: {
-    // Primary CTA - teal → emerald → cyan → aqua
+    // Primary CTA - purple → magenta → rose pink
     primary: {
-      background: "linear-gradient(110deg, #0d7d7a 0%, #099268 45%, #0f9a7a 75%, #14a596 100%)",
-      boxShadow: "0 10px 30px -8px rgba(20,184,166,0.5), inset 0 1px 0 rgba(255,255,255,0.18)",
+      background: "linear-gradient(110deg, #6d28d9 0%, #9333ea 45%, #c026d3 75%, #f8709f 100%)",
+      boxShadow: "0 10px 30px -8px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.18)",
     },
     // Secondary button - light glass
     secondary: {
-      background: "linear-gradient(145deg, #ffffff 0%, #f0fef9 100%)",
-      boxShadow: "0 6px 16px rgba(20,184,166,0.10), inset 0 1px 0 rgba(255,255,255,0.9)",
-      border: "1px solid rgba(20,184,166,0.16)",
+      background: "linear-gradient(145deg, #ffffff 0%, #f7f3fc 100%)",
+      boxShadow: "0 6px 16px rgba(124,58,237,0.10), inset 0 1px 0 rgba(255,255,255,0.9)",
+      border: "1px solid rgba(147,51,234,0.16)",
       borderRadius: "14px",
     },
     // Success button
@@ -81,14 +81,14 @@ export const designSystem = {
   
   // Gradients for text and accents
   gradients: {
-    // Primary brand gradient - teal → emerald → cyan → aqua
-    brand: "linear-gradient(110deg, #0d7d7a 0%, #099268 45%, #0f9a7a 75%, #14a596 100%)",
-    // Text gradient - for highlighted headings (teal → emerald → cyan → aqua)
-    text: "linear-gradient(110deg, #0d7d7a, #099268 40%, #0f9a7a 70%, #14a596)",
+    // Primary brand gradient - purple → magenta → rose pink
+    brand: "linear-gradient(110deg, #6d28d9 0%, #9333ea 45%, #c026d3 75%, #f8709f 100%)",
+    // Text gradient - for highlighted headings (purple → violet → magenta → rose)
+    text: "linear-gradient(110deg, #6d28d9, #9333ea 40%, #c026d3 70%, #f8709f)",
     // Accent gradient - for secondary highlights
-    teal: "linear-gradient(135deg, #0d7d7a 0%, #099268 100%)",
+    teal: "linear-gradient(135deg, #6d28d9 0%, #9333ea 100%)",
     // Subtle light card tint
-    cardTint: "linear-gradient(145deg, #ffffff 0%, #f0fef9 100%)",
+    cardTint: "linear-gradient(145deg, #ffffff 0%, #fdf9ff 100%)",
   },
 } as const
 
@@ -139,7 +139,7 @@ export const tw = {
   checkItem: "flex items-center gap-1.5",
 } as const
 
-// ════════════════���════════════════════════════════════��════�����════════��══════
+// ════════════════���════════════════════════════════════��════�����════════��═══���══
 // LOGO - Always use the official logo
 // ═══════════════════════════════════════════════════════════════════════════
 
