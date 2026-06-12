@@ -205,7 +205,7 @@ export default async function LandingPage({
                   <p className="text-lg md:text-xl text-white/85 max-w-xl mx-auto lg:mx-0 leading-relaxed text-pretty">
                     Automated commercial real estate deal analysis. Upload the T-12, rent roll, and offering
                     memorandum, and InvestAssist extracts every line item, builds in-place NOI and cap rate,
-                    and benchmarks the deal against the market — in minutes, not days.
+                    and benchmarks the deal against the market — <span className="text-emerald-400">in minutes, not days</span>.
                   </p>
                 </div>
 
