@@ -112,7 +112,7 @@ export default function AICREUnderwritingPage() {
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
                 The CRE Underwriting Bottleneck
               </h2>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              <p className="text-lg text-slate-700 mb-6 leading-relaxed">
                 Commercial real estate analysis is stuck in the past. Underwriters spend days manually extracting
                 data from PDFs, spreadsheets, and offering memorandums—tedious work prone to errors.
               </p>
@@ -158,7 +158,7 @@ export default function AICREUnderwritingPage() {
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Meet InvestAssist AI Underwriting
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Upload your deal documents and get comprehensive, analyst-quality analysis in minutes—powered by
               advanced machine learning and real estate domain expertise.
             </p>
@@ -172,7 +172,7 @@ export default function AICREUnderwritingPage() {
                 <Brain className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Intelligent Document Analysis</h3>
-              <p className="text-slate-600">
+              <p className="text-slate-700">
                 AI extracts T-12s, rent rolls, and offering memorandums instantly. No manual data entry. No
                 copy-paste errors.
               </p>
@@ -184,7 +184,7 @@ export default function AICREUnderwritingPage() {
                 <TrendingUp className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Instant Financial Modeling</h3>
-              <p className="text-slate-600">
+              <p className="text-slate-700">
                 Calculate in-place NOI, cap rates, debt service coverage, and cash-on-cash returns in seconds.
                 Real-time scenario modeling.
               </p>
@@ -196,7 +196,7 @@ export default function AICREUnderwritingPage() {
                 <BarChart3 className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Market Benchmarking</h3>
-              <p className="text-slate-600">
+              <p className="text-slate-700">
                 Compare properties against market comps instantly. See how the deal stacks up in its submarket and
                 asset class.
               </p>
@@ -208,7 +208,7 @@ export default function AICREUnderwritingPage() {
                 <Clock className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Lightning-Fast Processing</h3>
-              <p className="text-slate-600">
+              <p className="text-slate-700">
                 From document upload to investor-ready report in under 5 minutes. No waiting for manual review.
               </p>
             </div>
@@ -219,7 +219,7 @@ export default function AICREUnderwritingPage() {
                 <Shield className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Enterprise Security</h3>
-              <p className="text-slate-600">
+              <p className="text-slate-700">
                 Bank-grade encryption, SOC 2 compliance, and role-based access controls for deal confidentiality.
               </p>
             </div>
@@ -230,7 +230,7 @@ export default function AICREUnderwritingPage() {
                 <Zap className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">API & Integration Ready</h3>
-              <p className="text-slate-600">
+              <p className="text-slate-700">
                 Embed analysis workflows into your existing software. Full API for white-label or custom
                 integrations.
               </p>
@@ -244,7 +244,7 @@ export default function AICREUnderwritingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">How It Works in 3 Steps</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-700 max-w-2xl mx-auto">
               Get from documents to insights faster than ever before
             </p>
           </div>
@@ -261,7 +261,7 @@ export default function AICREUnderwritingPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-slate-900 mb-2">Upload Documents</h3>
-                  <p className="text-slate-600">
+                  <p className="text-slate-700">
                     Share T-12s, rent rolls, offering memorandums, and operating statements—PDF, Excel, or CSV.
                   </p>
                 </div>
@@ -280,7 +280,7 @@ export default function AICREUnderwritingPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-slate-900 mb-2">AI Processes Your Deal</h3>
-                  <p className="text-slate-600">
+                  <p className="text-slate-700">
                     Our AI extracts financials, calculates metrics, and benchmarks against market comparables in
                     seconds.
                   </p>
@@ -300,7 +300,7 @@ export default function AICREUnderwritingPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-slate-900 mb-2">Get Investor-Ready Report</h3>
-                  <p className="text-slate-600">
+                  <p className="text-slate-700">
                     Download a professional analysis with visuals, metrics, and market context—ready to share
                     instantly.
                   </p>
@@ -316,7 +316,7 @@ export default function AICREUnderwritingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Built for Real Estate Professionals</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-700 max-w-2xl mx-auto">
               Whether you&apos;re analyzing deals for investment or due diligence, InvestAssist adapts to your workflow.
             </p>
           </div>
@@ -329,10 +329,10 @@ export default function AICREUnderwritingPage() {
                 <Brain className="w-6 h-6 text-slate-900" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Investment Teams</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-slate-700 mb-4">
                 Evaluate more deals faster. Screen portfolios and build thesis in hours instead of weeks.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-600 font-bold">✓</span> Deal screening at scale
                 </li>
@@ -348,10 +348,10 @@ export default function AICREUnderwritingPage() {
                 <Shield className="w-6 h-6 text-slate-900" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Due Diligence Teams</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-slate-700 mb-4">
                 Verify deal assumptions with AI-powered analysis. Reduce manual effort and improve accuracy.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-600 font-bold">✓</span> Assumption validation
                 </li>
@@ -367,10 +367,10 @@ export default function AICREUnderwritingPage() {
                 <TrendingUp className="w-6 h-6 text-slate-900" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">Commercial Brokers</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-slate-700 mb-4">
                 Provide buyers and sellers with professional analysis. Differentiate your service offering.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-600 font-bold">✓</span> Professional reporting
                 </li>
@@ -388,7 +388,7 @@ export default function AICREUnderwritingPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-slate-700">
               Everything you need to know about InvestAssist AI Underwriting
             </p>
           </div>
