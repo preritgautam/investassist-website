@@ -1,10 +1,7 @@
 const DEFAULT_APP_URL = "http://localhost:3000"
 
 function getConfiguredAppUrl() {
-  const rawUrl = (process.env.NEXT_PUBLIC_APP_URL || DEFAULT_APP_URL).trim().replace(/\/$/, "")
-  if (/^https?:\/\//i.test(rawUrl)) return rawUrl
-  if (/^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(rawUrl)) return `http://${rawUrl}`
-  return `https://${rawUrl}`
+  return (process.env.NEXT_PUBLIC_APP_URL || DEFAULT_APP_URL).trim().replace(/\/$/, "")
 }
 
 export function buildMainAppUrl(path: string) {

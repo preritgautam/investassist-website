@@ -114,8 +114,9 @@ export default async function LandingPage({
   searchParams: Promise<{ redirect?: string }>
 }) {
   const { redirect } = await searchParams
-  const landingAuthUrl = buildAuthUrl()
+  const landingAuthUrl = "https://app.investassist.ai/auth"
   const authUrl = buildAuthUrl(redirect)
+  const signupUrl = buildSignupUrl(redirect)
   const privacyUrl = buildMainAppUrl("/privacy")
   const termsUrl = buildMainAppUrl("/terms")
   const contactUrl = buildMainAppUrl("/contact")

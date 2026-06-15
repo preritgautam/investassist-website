@@ -5,7 +5,6 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Sparkles, UserPlus, LogIn } from "lucide-react"
 import { UniversalInput } from "@/components/explorer/universal-input"
-import { buildAuthUrl, buildMainAppUrl } from "@/lib/app-url"
 import { designSystem } from "@/lib/design-system"
 
 const neu = {
@@ -27,7 +26,7 @@ export function HeroInput({ authUrl }: HeroInputProps) {
   const [showAuthPrompt, setShowAuthPrompt] = useState(false)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
 
-  const landingAuthUrl = buildAuthUrl()
+  const landingAuthUrl = "https://app.investassist.ai/auth"
 
   const handleAnalyze = (input: {
     type: string
@@ -46,9 +45,12 @@ export function HeroInput({ authUrl }: HeroInputProps) {
 
   const handleContinueToAuth = () => {
     if (!selectedAddress) return
-
-    const exploreUrl = buildMainAppUrl(`/explore?address=${encodeURIComponent(selectedAddress)}`)
-    window.location.assign(buildAuthUrl(exploreUrl))
+    
+    // Encode address and pass to /explore via URL param after auth
+    const encodedAddress = encodeURIComponent(selectedAddress)
+    const exploreUrl = `https://app.investassist.ai/explore?address=${encodedAddress}`
+    const redirectUrl = encodeURIComponent(exploreUrl)
+    window.location.assign(`${landingAuthUrl}?redirect=${redirectUrl}`)
   }
 
   return (
