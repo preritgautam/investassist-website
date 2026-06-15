@@ -3,15 +3,20 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
-import { faqItems } from "@/lib/faq-data"
+import { faqItems, type FaqItem } from "@/lib/faq-data"
 
-export function FaqSection() {
+interface FaqSectionProps {
+  faqs?: FaqItem[]
+}
+
+export function FaqSection({ faqs }: FaqSectionProps) {
   const [open, setOpen] = useState<number | null>(null)
+  const items = faqs || faqItems
 
   return (
     <div className="max-w-5xl mx-auto">
       <dl className="grid lg:grid-cols-2 gap-3 items-start">
-        {faqItems.map((item, index) => {
+        {items.map((item, index) => {
           const isOpen = open === index
           return (
             <div key={item.question} className="rounded-2xl neo-card overflow-hidden">

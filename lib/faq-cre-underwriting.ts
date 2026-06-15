@@ -1,4 +1,4 @@
-import type { FaqItem } from '@/components/landing/faq-section'
+import type { FaqItem } from '@/lib/faq-data'
 
 export const creUnderwritingFaqs: FaqItem[] = [
   {
