@@ -77,7 +77,7 @@ export function NeuralNetworkCanvas({
     // First node relocated to middle-right to avoid "Pricing" header animation overlap.
     // Rest remain at original high positions for visual impact.
     const docDefs: Array<Pick<DocNode, "nx" | "ny" | "size">> = [
-      { nx: 0.75, ny: 0.78, size: 16 },   // Moved down significantly to clear "Pricing" nav
+      { nx: 0.75, ny: 0.42, size: 16 },   // Relocated middle-right to clear "Pricing" nav
       { nx: 0.62, ny: 0.08, size: 18 },
       { nx: 0.74, ny: 0.2, size: 15 },
       { nx: 0.87, ny: 0.12, size: 17 },

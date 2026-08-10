@@ -35,8 +35,8 @@ export function FeatureShowcase() {
         className="rounded-2xl p-6 md:p-8 neo-card"
       >
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
-            <Calculator className="w-5 h-5 text-teal-600" />
+          <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+            <Calculator className="w-5 h-5 text-brand-700" />
           </div>
           <h3 className="text-xl font-bold text-slate-900">Underwriting Summary</h3>
         </div>
@@ -58,7 +58,7 @@ export function FeatureShowcase() {
                   <span className={`text-[11px] ${l.strong ? "font-semibold text-slate-800" : "text-slate-500"}`}>
                     {l.label}
                   </span>
-                  <span className={`text-[11px] font-bold whitespace-nowrap ${l.strong ? "text-teal-700" : "text-slate-700"}`}>
+                  <span className={`text-[11px] font-bold whitespace-nowrap ${l.strong ? "text-brand-700" : "text-slate-700"}`}>
                     {l.value}
                   </span>
                 </div>
@@ -83,7 +83,7 @@ export function FeatureShowcase() {
                 <tr className="border-t border-slate-200">
                   <td className="py-1.5 text-[11px] font-semibold text-slate-800">148 units</td>
                   <td className="py-1.5" />
-                  <td className="py-1.5 text-[11px] text-right font-bold text-teal-700">$1,548</td>
+                  <td className="py-1.5 text-[11px] text-right font-bold text-brand-700">$1,548</td>
                 </tr>
               </tbody>
             </table>
@@ -100,8 +100,8 @@ export function FeatureShowcase() {
         className="rounded-2xl p-6 md:p-8 neo-card"
       >
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
-            <TrendingUp className="w-5 h-5 text-teal-600" />
+          <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+            <TrendingUp className="w-5 h-5 text-brand-700" />
           </div>
           <h3 className="text-xl font-bold text-slate-900">Valuation Scenarios</h3>
         </div>
@@ -121,10 +121,10 @@ export function FeatureShowcase() {
             </thead>
             <tbody>
               {scenarios.map((s) => (
-                <tr key={s.cap} className={`border-t border-slate-100 ${s.base ? "bg-teal-50/50" : ""}`}>
+                <tr key={s.cap} className={`border-t border-slate-100 ${s.base ? "bg-brand-50/50" : ""}`}>
                   <td className="py-2.5 px-4 text-xs font-medium text-slate-700">
                     {s.cap}
-                    {s.base && <span className="ml-1.5 text-[9px] font-semibold text-teal-600 uppercase">Base</span>}
+                    {s.base && <span className="ml-1.5 text-[9px] font-semibold text-brand-700 uppercase">Base</span>}
                   </td>
                   <td className="py-2.5 px-4 text-xs text-right font-bold text-slate-900">{s.value}</td>
                   <td className={`py-2.5 px-4 text-xs text-right font-semibold ${s.base ? "text-slate-500" : "text-slate-500"}`}>

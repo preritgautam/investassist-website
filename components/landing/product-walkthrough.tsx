@@ -45,8 +45,8 @@ function PanelCard({
   return (
     <div className="rounded-xl bg-white/80 border border-slate-100 p-4 md:p-5 flex flex-col h-full">
       <div className="flex items-center gap-2 mb-3">
-        <Icon className="w-4 h-4 text-teal-700" />
-        <span className="text-sm font-semibold text-slate-900">{title}</span>
+        <Icon className="w-4 h-4 text-brand-700" />
+        <span className="ia-card-title">{title}</span>
       </div>
       <div className="flex-1 flex flex-col">{children}</div>
       {footer ? <div className="mt-auto pt-3">{footer}</div> : null}
@@ -96,12 +96,12 @@ function UploadPanel() {
   return (
     <div className="h-full flex flex-col gap-4">
       <div className="rounded-xl bg-white/80 border border-slate-100 px-4 py-3 flex items-center gap-3">
-        <MapPin className="w-4 h-4 text-teal-600 shrink-0" />
-        <span className="text-sm font-medium text-slate-700">1234 Maple Court, Austin, TX 78704</span>
+        <MapPin className="w-4 h-4 text-brand-700 shrink-0" />
+        <span className="ia-card-body text-foreground">{`1234 Maple Court, Austin, TX 78704`}</span>
       </div>
-      <div className="flex-1 rounded-xl border-2 border-dashed border-teal-200 bg-teal-50/40 flex flex-col items-center justify-center gap-3 min-h-0">
+      <div className="flex-1 rounded-xl border-2 border-dashed border-brand-200/70 bg-brand-50/30 flex flex-col items-center justify-center gap-3 min-h-0">
         <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-          <Upload className="w-6 h-6 text-teal-600" />
+          <Upload className="w-6 h-6 text-brand-700" />
         </div>
         <p className="text-base font-semibold text-slate-700">Drop your deal documents</p>
         <p className="text-xs text-slate-500">PDF, Excel, or scans — OM, T-12, Rent Roll</p>
@@ -116,13 +116,13 @@ function UploadPanel() {
             <span className="text-[13px] font-medium text-slate-700 truncate flex-1">{d.name}</span>
             <span
               className={`inline-flex items-center gap-1 text-[11px] font-semibold ${
-                d.done ? "text-emerald-600" : "text-amber-600"
+                d.done ? "text-emerald-600" : "text-brand-600"
               }`}
             >
               {d.done ? (
                 <CheckCircle2 className="w-3.5 h-3.5" />
               ) : (
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
               )}
               {d.status}
             </span>
@@ -178,7 +178,7 @@ function ExtractPanel() {
         </div>
         <div className="mt-auto pt-3 flex items-center justify-between border-t-2 border-slate-200">
           <span className="text-sm font-semibold text-slate-900 pt-2">Net operating income</span>
-          <span className="text-sm font-bold text-teal-700 tabular-nums pt-2">$1.48M</span>
+          <span className="text-sm font-bold text-brand-700 tabular-nums pt-2">$1.48M</span>
         </div>
       </PanelCard>
 
@@ -222,7 +222,7 @@ function ExtractPanel() {
               <td className="py-2.5 text-[13px] font-semibold text-slate-800">Total</td>
               <td className="py-2.5 text-[13px] text-right font-semibold text-slate-800 tabular-nums">148</td>
               <td className="py-2.5 text-[13px] text-right text-slate-500 tabular-nums">962</td>
-              <td className="py-2.5 text-[13px] text-right font-bold text-teal-700 tabular-nums">$1,548</td>
+                <td className="py-2.5 text-[13px] text-right font-bold text-brand-700 tabular-nums">$1,548</td>
             </tr>
           </tbody>
         </table>
@@ -322,10 +322,10 @@ function UnderwritePanel() {
             </thead>
             <tbody>
               {scenarios.map((s) => (
-                <tr key={s.cap} className={`border-t border-slate-100 ${s.base ? "bg-teal-50/50" : ""}`}>
+                <tr key={s.cap} className={`border-t border-slate-100 ${s.base ? "bg-brand-50/50" : ""}`}>
                   <td className="py-2.5 text-[13px] font-medium text-slate-700">
                     {s.cap}
-                    {s.base && <span className="ml-1.5 text-[9px] font-semibold text-teal-600 uppercase">Base</span>}
+                    {s.base && <span className="ml-1.5 text-[9px] font-semibold text-brand-700 uppercase">Base</span>}
                   </td>
                   <td className="py-2.5 text-[13px] text-right font-bold text-slate-900 tabular-nums">{s.value}</td>
                   <td
@@ -386,7 +386,7 @@ function ComparePanel() {
                   <td
                     key={i}
                     className={`py-2.5 px-3 text-[13px] text-right font-bold tabular-nums ${
-                      row.best === i ? "text-teal-700" : "text-slate-900"
+                      row.best === i ? "text-brand-700" : "text-slate-900"
                     }`}
                   >
                     {row.best === i ? (
@@ -404,8 +404,8 @@ function ComparePanel() {
           </tbody>
         </table>
       </div>
-      <div className="mt-4 flex items-center gap-2 rounded-xl bg-teal-50/60 border border-teal-100 px-4 py-3">
-        <TrendingUp className="w-4 h-4 text-teal-600 shrink-0" />
+      <div className="mt-4 flex items-center gap-2 rounded-xl bg-brand-50/60 border border-brand-100 px-4 py-3">
+        <TrendingUp className="w-4 h-4 text-brand-700 shrink-0" />
         <span className="text-[13px] text-slate-600">
           <span className="font-semibold text-slate-800">Oakline Residences</span> leads on cap rate, price per unit,
           NOI, and expense efficiency.
@@ -420,11 +420,11 @@ function ComparePanel() {
           <div
             key={p.name}
             className={`rounded-xl border px-3 py-3 ${
-              p.win ? "bg-teal-50/60 border-teal-200" : "bg-white/80 border-slate-100"
+              p.win ? "bg-brand-50/60 border-brand-200" : "bg-white/80 border-slate-100"
             }`}
           >
             <div className="flex items-center gap-2 mb-2">
-              <Building2 className={`w-4 h-4 shrink-0 ${p.win ? "text-teal-600" : "text-slate-500"}`} />
+              <Building2 className={`w-4 h-4 shrink-0 ${p.win ? "text-brand-700" : "text-slate-500"}`} />
               <div className="min-w-0">
                 <p className="text-[12px] font-semibold text-slate-800 truncate">{p.name}</p>
                 <p className="text-[10px] text-slate-500 truncate">{p.loc}</p>
@@ -516,10 +516,10 @@ export function ProductWalkthrough() {
               aria-controls={`walkthrough-panel-${step.id}`}
               id={`walkthrough-tab-${step.id}`}
               onClick={() => setActive(index)}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
                 isActive
                   ? "text-white shadow-md"
-                  : "text-slate-600 bg-white/70 hover:bg-white border border-white/60"
+                  : "text-slate-600 neo-btn-elevated hover:shadow-sm"
               }`}
               style={isActive ? { background: designSystem.gradients.brand } : undefined}
             >
@@ -541,7 +541,7 @@ export function ProductWalkthrough() {
         {/* Browser chrome */}
         <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-white/80">
           <span className="w-3 h-3 rounded-full bg-red-300" aria-hidden="true" />
-          <span className="w-3 h-3 rounded-full bg-amber-300" aria-hidden="true" />
+          <span className="w-3 h-3 rounded-full bg-brand-300" aria-hidden="true" />
           <span className="w-3 h-3 rounded-full bg-emerald-300" aria-hidden="true" />
           <div className="ml-3 flex-1 max-w-sm">
             <div className="text-xs text-slate-500 bg-slate-50 rounded-md px-3 py-1 text-center truncate">

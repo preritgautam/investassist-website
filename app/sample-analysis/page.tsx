@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
+import { Logo } from "@/components/ui/logo"
+import { getAppUrl } from "@/lib/utils"
 import {
   ArrowRight,
   ArrowLeft,
@@ -15,8 +16,7 @@ import {
   ShieldCheck,
 } from "lucide-react"
 import { FeatureShowcase } from "@/components/landing/feature-showcase"
-import { buildSignupUrl } from "@/lib/app-url"
-import { designSystem, LOGO_PATH, LOGO_ALT } from "@/lib/design-system"
+import { designSystem } from "@/lib/design-system"
 
 const neu = {
   card: designSystem.cards.neo,
@@ -73,8 +73,6 @@ const risks = [
 ]
 
 export default function SampleAnalysisPage() {
-  const signupUrl = buildSignupUrl("/explore?new=true")
-
   return (
     <div className="min-h-screen overflow-x-hidden bg-app">
       {/* Institutional dashboard background */}
@@ -85,9 +83,7 @@ export default function SampleAnalysisPage() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 px-4 py-4 border-b border-white/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="relative h-9 w-32 md:h-11 md:w-48">
-            <Image src={LOGO_PATH} alt={LOGO_ALT} fill className="object-contain object-left" priority />
-          </Link>
+          <Logo priority />
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
@@ -109,7 +105,7 @@ export default function SampleAnalysisPage() {
           <section className="rounded-2xl p-6 md:p-8 mb-8" style={neu.card}>
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
               <div>
-                <div className="flex items-center gap-2 text-indigo-600 mb-2">
+                <div className="flex items-center gap-2 text-brand-800 mb-2">
                   <Building2 className="w-5 h-5" />
                   <span className="text-xs font-semibold uppercase tracking-wider">148-Unit Multifamily</span>
                 </div>
@@ -122,7 +118,7 @@ export default function SampleAnalysisPage() {
               </div>
               <div className="rounded-xl px-5 py-4 text-center" style={neu.inset}>
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Verdict</p>
-                <p className="text-lg font-bold text-indigo-700">Proceed with conditions</p>
+                <p className="text-lg font-bold text-brand-800">Proceed with conditions</p>
                 <p className="text-xs text-slate-600 mt-1">Underwrites at the comp band, not the pitch</p>
               </div>
             </div>
@@ -134,8 +130,8 @@ export default function SampleAnalysisPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {keyMetrics.map((m) => (
                 <div key={m.label} className="rounded-2xl p-5" style={neu.card}>
-                  <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center mb-3">
-                    <m.icon className="w-4.5 h-4.5 text-indigo-600" />
+                  <div className="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center mb-3">
+                    <m.icon className="w-4.5 h-4.5 text-brand-800" />
                   </div>
                   <p className="text-2xl font-extrabold text-slate-900">{m.value}</p>
                   <p className="text-sm font-medium text-slate-700">{m.label}</p>
@@ -179,7 +175,7 @@ export default function SampleAnalysisPage() {
                     </thead>
                     <tbody>
                       {rentComps.map((c) => (
-                        <tr key={c.property} className={`border-b border-slate-100 last:border-0 ${c.subject ? "bg-indigo-50/30" : ""}`}>
+                        <tr key={c.property} className={`border-b border-slate-100 last:border-0 ${c.subject ? "bg-brand-50/30" : ""}`}>
                           <td className="py-2.5 pr-3 text-sm font-medium text-slate-800">{c.property}</td>
                           <td className="py-2.5 px-3 text-sm text-right text-slate-500">{c.distance}</td>
                           <td className="py-2.5 px-3 text-sm text-right text-slate-700">{c.rentPsf}</td>
@@ -276,7 +272,7 @@ export default function SampleAnalysisPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href={signupUrl}
+                href={getAppUrl("/auth")}
                 data-analytics="sample-analysis-cta"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
                 style={{ ...designSystem.buttons.primary }}

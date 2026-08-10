@@ -1,94 +1,134 @@
 /**
  * InvestAssist Design System
- * 
- * This file documents and exports the unified design system used across the platform.
- * All components should reference these constants for visual consistency.
- * 
- * Color Palette: Colorful Gradient Theme (light)
- * - Hero gradient: indigo → violet → magenta → soft pink
- * - Accent: Indigo (#4f46e5) for CTAs and highlights
- * - Surfaces: light/white with soft colorful glows
+ *
+ * Centralised inline-style constants for the cool off-white / royal blue institutional palette.
+ * Mirrors the CSS tokens defined in globals.css.
+ *
+ * Color Palette: Cool Off-White + Deep Navy + Royal Blue
+ * - Page background:  #eef2f9  (cool off-white)
+ * - Primary surface:  rgba(255,255,255,0.85)  (frosted white glass)
+ * - Brand accent:     #26548f / #1d4074  (royal blue)
+ * - Primary dark:     #0f1a2e  (deep navy)
+ * - Body text:        #0f172a  (slate ink)
  */
 
 // ═══════════════════════════════════════════════════════════════════════════
-// STYLE CONSTANTS - Use these in inline styles when Tailwind classes aren't sufficient
+// CANONICAL PALETTE — the ONE place components read inline-style colors from.
+// Every value points at a CSS variable in globals.css, so a token change there
+// cascades everywhere. No component should hardcode hex for these roles again.
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const palette = {
+  ink: "var(--foreground)",
+  inkMuted: "var(--muted-foreground)",
+  // Faint text tier. Points at the dedicated --text-faint token (readable, AA)
+  // rather than slate-400/#94a3b8 which failed contrast. Changing --text-faint
+  // in globals.css cascades to every inkFaint consumer across the app.
+  inkFaint: "var(--text-faint, #5f6b7b)",
+  brand: "var(--primary)",
+  brandLight: "var(--accent)",
+  rule: "var(--border)",
+  ivory: "var(--surface-muted)",
+  parchment: "var(--background)",
+  surface: "var(--surface)",
+} as const
+
+// ═══════════════════════════════════════════════════════════════════════════
+// STYLE CONSTANTS – inline-style values that must match globals.css tokens
 // ═══════════════════════════════════════════════════════════════════════════
 
 export const designSystem = {
-  // Page backgrounds
+  // Page backgrounds — token-driven so they invert with the theme toggle
   backgrounds: {
-    // Vivid colorful hero gradient - indigo → violet → magenta → soft pink
-    landing: "radial-gradient(120% 90% at 85% 110%, #fbd5e8 0%, rgba(251,213,232,0) 55%), linear-gradient(135deg, #3b1d9e 0%, #5b34d6 22%, #8b3bd6 45%, #c23bb8 68%, #f06ba8 86%, #ffd0e4 100%)",
-    // Dashboard background - soft light with subtle colorful glows
-    dashboard: "radial-gradient(ellipse 70% 50% at 12% 8%, rgba(99,102,241,0.10) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 90% 90%, rgba(240,107,168,0.08) 0%, transparent 60%), linear-gradient(160deg, #fbfaff 0%, #f6f4ff 45%, #fdf5fb 100%)",
-    // App background - near-white
-    app: "#fbfaff",
+    // Landing / app canvas
+    landing: "var(--background)",
+    // App/dashboard canvas
+    dashboard: "var(--background)",
+    // Near-white for card sections
+    app: "var(--surface-elevated)",
   },
-  
-  // Light card styles
+
+  // Card surfaces — all reference glass tokens that flip in .dark / .on-ink
   cards: {
-    // Primary card - clean white with soft depth
+    // Primary card — frosted glass
     neo: {
-      background: "linear-gradient(145deg, #ffffff 0%, #fbfaff 100%)",
-      boxShadow: "0 16px 48px rgba(91,52,214,0.10), 0 2px 6px rgba(15,23,42,0.04)",
-      border: "1px solid rgba(139,59,214,0.10)",
+      background: "var(--glass-bg-strong)",
+      backdropFilter: "blur(var(--glass-blur)) saturate(var(--glass-saturate))",
+      WebkitBackdropFilter: "blur(var(--glass-blur)) saturate(var(--glass-saturate))",
+      boxShadow: "var(--elev-3)",
+      border: "1px solid var(--glass-border)",
       borderRadius: "20px",
     },
-    // Inner nested element - subtle tinted inset
+    // Inner nested card
     inset: {
-      background: "linear-gradient(145deg, #f8f7ff 0%, #fdf6fb 100%)",
-      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9), inset 0 0 24px rgba(139,59,214,0.04)",
-      border: "1px solid rgba(139,59,214,0.08)",
-      borderRadius: "14px",
+      background: "var(--glass-bg)",
+      backdropFilter: "blur(8px)",
+      WebkitBackdropFilter: "blur(8px)",
+      boxShadow: "var(--elev-1)",
+      border: "1px solid var(--glass-border-hairline)",
+      borderRadius: "12px",
     },
     // Small card variant
     small: {
-      background: "linear-gradient(145deg, #ffffff 0%, #fbfaff 100%)",
-      boxShadow: "0 8px 24px rgba(91,52,214,0.08), 0 1px 3px rgba(15,23,42,0.04)",
-      border: "1px solid rgba(139,59,214,0.10)",
+      background: "var(--glass-bg)",
+      backdropFilter: "blur(16px) saturate(140%)",
+      WebkitBackdropFilter: "blur(16px) saturate(140%)",
+      boxShadow: "var(--elev-2)",
+      border: "1px solid var(--glass-border)",
       borderRadius: "16px",
     },
   },
-  
-  // Button styles
+
+  // Button styles — matches neo-btn-primary and neo-btn-elevated
   buttons: {
-    // Primary CTA - purple → magenta → rose pink
+    // Primary CTA — brand blue (flips brighter in dark via --primary token)
     primary: {
-      background: "linear-gradient(110deg, #6d28d9 0%, #9333ea 45%, #c026d3 75%, #f8709f 100%)",
-      boxShadow: "0 10px 30px -8px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.18)",
+      background: "var(--primary)",
+      boxShadow: "var(--elev-2)",
+      color: "var(--primary-foreground)",
     },
-    // Secondary button - light glass
+    // Secondary — frosted glass (matches neo-btn-elevated)
     secondary: {
-      background: "linear-gradient(145deg, #ffffff 0%, #f7f3fc 100%)",
-      boxShadow: "0 6px 16px rgba(124,58,237,0.10), inset 0 1px 0 rgba(255,255,255,0.9)",
-      border: "1px solid rgba(147,51,234,0.16)",
-      borderRadius: "14px",
+      background: "var(--glass-bg)",
+      backdropFilter: "blur(12px) saturate(140%)",
+      WebkitBackdropFilter: "blur(12px) saturate(140%)",
+      boxShadow: "var(--elev-2)",
+      border: "1px solid var(--glass-border)",
+      borderRadius: "12px",
     },
-    // Success button
+    // Success / confirmation button
     success: {
-      background: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
-      boxShadow: "0 8px 24px rgba(16,185,129,0.30), 0 2px 6px rgba(16,185,129,0.15)",
+      background: "var(--success)",
+      boxShadow: "var(--elev-2)",
+      color: "var(--success-foreground)",
     },
   },
-  
-  // Background orb overlays - use for visual depth
+
+  // Background orb/glow overlays — cool royal blue tones only
   orbs: {
-    slate: "radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, transparent 70%)",
-    blue: "radial-gradient(circle, rgba(147, 51, 234, 0.18) 0%, transparent 70%)",
-    indigo: "radial-gradient(circle, rgba(192, 38, 211, 0.16) 0%, transparent 70%)",
-    teal: "radial-gradient(circle, rgba(248, 112, 159, 0.16) 0%, transparent 70%)",
+    amber:  "radial-gradient(circle, rgba(53, 102, 170, 0.14) 0%, transparent 70%)",
+    gold:   "radial-gradient(circle, rgba(38, 84, 143, 0.12) 0%, transparent 70%)",
+    warm:   "radial-gradient(circle, rgba(96, 165, 250, 0.10) 0%, transparent 70%)",
+    muted:  "radial-gradient(circle, rgba(15, 23, 42, 0.06) 0%, transparent 70%)",
+    // Legacy aliases kept so existing callers don't break; these now render blue
+    slate:  "radial-gradient(circle, rgba(53, 102, 170, 0.14) 0%, transparent 70%)",
+    blue:   "radial-gradient(circle, rgba(38, 84, 143, 0.12) 0%, transparent 70%)",
+    indigo: "radial-gradient(circle, rgba(53, 102, 170, 0.10) 0%, transparent 70%)",
+    teal:   "radial-gradient(circle, rgba(96, 165, 250, 0.10) 0%, transparent 70%)",
   },
-  
-  // Gradients for text and accents
+
+  // Gradients for text and accents — royal blue/navy brand palette only
   gradients: {
-    // Primary brand gradient - purple → magenta → rose pink
-    brand: "linear-gradient(110deg, #6d28d9 0%, #9333ea 45%, #c026d3 75%, #f8709f 100%)",
-    // Text gradient - for highlighted headings (purple → violet → magenta → rose)
-    text: "linear-gradient(110deg, #6d28d9, #9333ea 40%, #c026d3 70%, #f8709f)",
-    // Accent gradient - for secondary highlights
-    teal: "linear-gradient(135deg, #6d28d9 0%, #9333ea 100%)",
-    // Subtle light card tint
-    cardTint: "linear-gradient(145deg, #ffffff 0%, #fdf9ff 100%)",
+    // Primary brand gradient — royal blue (matches --brand-gradient)
+    brand: "linear-gradient(110deg, #1d4074 0%, #1d4074 55%, #26548f 100%)",
+    // Text gradient — for highlighted headings (blue → light blue)
+    text:  "linear-gradient(110deg, #1d4074 0%, #26548f 55%, #3566aa 100%)",
+    // Accent gradient — same blue range, slightly softer
+    teal:  "linear-gradient(135deg, #26548f 0%, #3566aa 100%)",
+    // Subtle card tint
+    cardTint: "linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(248,250,252,0.88) 100%)",
+    // Deep navy — for dark surfaces (matches neo-card-accent background)
+    navy:  "linear-gradient(135deg, #0f1a2e 0%, #1a2540 50%, #243060 100%)",
   },
 } as const
 
@@ -97,8 +137,8 @@ export const designSystem = {
 // ═══════════════════════════════════════════════════════════════════════════
 
 export const tw = {
-  // Page wrapper with gradient background
-  pageBackground: "min-h-screen bg-gradient-to-br from-[#fbfaff] via-[#f6f4ff] to-[#fdf5fb]",
+  // Page wrapper — token background so it inverts with the theme
+  pageBackground: "min-h-screen bg-background",
   
   // Landing page specific background
   landingBackground: "min-h-screen overflow-x-hidden",
@@ -129,10 +169,10 @@ export const tw = {
   
   // Badge/pill
   badge: "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold",
-  badgePrimary: "text-indigo-700 bg-white/90 border border-indigo-100",
+  badgePrimary: "text-brand-700 bg-white/90 border border-brand-100",
   
   // Input fields
-  input: "w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 transition-all",
+  input: "w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-400 transition-all",
   
   // Feature checkmarks
   checkList: "flex flex-wrap items-center gap-3 text-sm text-slate-600",
@@ -143,7 +183,7 @@ export const tw = {
 // LOGO - Always use the official logo
 // ═══════════════════════════════════════════════════════════════════════════
 
-export const LOGO_PATH = "/investassist-logo-bgrmd.png"
+export const LOGO_PATH = "/investassist-logo-bgrmd.svg"
 export const LOGO_ALT = "InvestAssist"
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -205,16 +245,16 @@ export const propertyColors = {
     textBold: "text-emerald-700",
   },
   secondary: {
-    border: "border-amber-200",
-    bg: "bg-amber-50/50",
-    text: "text-amber-600",
-    textBold: "text-amber-700",
+    border: "border-brand-200",
+    bg: "bg-brand-50/50",
+    text: "text-brand-600",
+    textBold: "text-brand-700",
   },
   tertiary: {
-    border: "border-blue-200",
-    bg: "bg-blue-50/50",
-    text: "text-blue-600",
-    textBold: "text-blue-700",
+    border: "border-brand-200",
+    bg: "bg-brand-50/50",
+    text: "text-brand-700",
+    textBold: "text-brand-800",
   },
   neutral: {
     border: "border-slate-200/70",

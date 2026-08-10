@@ -6,202 +6,477 @@
 
 :root {
   /* ═══════════════════════════════════════════════════════════════════════════
-     INSTITUTIONAL FINANCE THEME - Bloomberg/Carta/Juniper Square Inspired
-     Deep navy foundations, crisp whites, muted professional accents
+     INVESTASSIST — INSTITUTIONAL THEME (light only, Carta-inspired)
+     Graphite INK neutrals · deep CLASSIC BLUE accent (no indigo/violet) ·
+     flat crisp surfaces + hairlines, minimal glass, zero decorative gradients.
+     Single source of truth: color · surfaces · elevation · radius · typography.
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* Core backgrounds - Clean, professional white with subtle warmth */
-  --background: #fafbfc;
-  --foreground: #0f172a;
+  /* ── Brand deep classic-blue ramp (pure blue hue, desaturated) ──────────── */
+  --brand-50:  #eef4fb;
+  --brand-100: #d9e6f4;
+  --brand-200: #bcd0ea;
+  --brand-300: #8fb0da;
+  --brand-400: #5b87c4;
+  --brand-500: #3566aa;
+  --brand-600: #26548f;  /* interactive / hover */
+  --brand-700: #1d4074;  /* primary */
+  --brand-800: #1a3560;
+  --brand-900: #162a4d;
 
-  /* Cards - Pure white with sophisticated depth */
+  /* ── Electric AZURE accent ramp (the "AI / alive" spark; use sparingly) ──
+     Lives mainly on dark ink surfaces, data-viz highlights & active states. */
+  --azure-300: #7cc7ff;
+  --azure-400: #4db8ff;
+  --azure-500: #22a3ff;   /* primary accent */
+  --azure-600: #0d8ae6;
+  --azure-700: #0a6fbd;
+  --azure-glow: rgba(34, 163, 255, 0.45);
+  --azure-glow-soft: rgba(34, 163, 255, 0.18);
+
+  /* ── INK surface system (dark duotone chrome on the light canvas) ───────
+     Structural dark bands: top nav, hero, footer, spotlight KPI panels. */
+  --ink-950: #0b1220;
+  --ink-900: #0f1826;
+  --ink-800: #16202e;
+  --ink-700: #1f2c3e;
+  --ink-600: #26344a;
+  --ink-fg: #eaf0f8;         /* primary text on ink */
+  --ink-fg-muted: #9aa8bc;   /* secondary text on ink */
+  --ink-border: #26344a;
+  --ink-border-strong: #33445f;
+  --on-ink-accent: var(--azure-400);   /* accent tuned for legibility on ink */
+
+  /* Core backgrounds - Cool paper white */
+  --background: #f6f8fb;
+  --foreground: #16202e;   /* graphite ink */
+
+  /* Cards - Flat crisp white */
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #16202e;
 
-  /* Popovers - Elevated surfaces */
+  /* Popovers - Elevated white surfaces */
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
+  --popover-foreground: #16202e;
 
-  /* Primary - Deep navy (institutional trust) */
-  --primary: #0f172a;
+  /* Primary - Deep classic blue */
+  --primary: #1d4074;
   --primary-foreground: #ffffff;
 
-  /* Secondary - Cool slate gray */
-  --secondary: #f1f5f9;
-  --secondary-foreground: #334155;
+  /* Secondary - Cool ice */
+  --secondary: #eef1f6;
+  --secondary-foreground: #2f3b4d;
 
-  /* Muted - Subtle backgrounds */
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
+  /* Muted - Soft cool tint */
+  --muted: #eef1f6;
+  --muted-foreground: #4d5766;
+  /* Faint text tier — the readable replacement for slate-400 (#94a3b8, which
+     failed AA at ~2.4:1) as a TEXT color. Kept a step lighter than
+     --muted-foreground so the muted→faint hierarchy survives, but now passes
+     AA. Consumed via palette.inkFaint; slate-400/neutral-400 stay untouched so
+     borders and icons that use them are unaffected. */
+  --text-faint: #5f6b7b;
 
-  /* Accent - Refined teal (financial growth) */
-  --accent: #f0fdfa;
-  --accent-foreground: #0d9488;
+  /* Accent - Soft blue wash */
+  --accent: #eef4fb;
+  --accent-foreground: #1d4074;
 
-  /* Destructive - Muted professional red */
-  --destructive: #dc2626;
+  /* Destructive - Professional red */
+  --destructive: #c33636;
   --destructive-foreground: #ffffff;
 
-  /* Borders - Hairline precise */
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #0f172a;
+  /* Borders - Cool hairline */
+  --border: #e2e7ef;
+  --input: #e2e7ef;
+  --ring: #26548f;
 
-  /* Charts - Institutional palette */
-  --chart-1: #0d9488;
-  --chart-2: #3b82f6;
-  --chart-3: #0d9488;
-  --chart-4: #f59e0b;
-  --chart-5: #ec4899;
+  /* Charts - Blue-anchored institutional palette */
+  --chart-1: #26548f;
+  --chart-2: #16202e;
+  --chart-3: #5b87c4;
+  --chart-4: #2f7d5b;
+  --chart-5: #c33636;
 
-  /* Radius - Refined, not bubbly */
-  --radius: 0.5rem;
+  /* Radius - Restrained, crisp */
+  --radius: 0.625rem;
 
-  /* Sidebar - Deep navy institutional */
-  --sidebar: #0f172a;
-  --sidebar-foreground: #e2e8f0;
-  --sidebar-primary: #0d9488;
+  /* Sidebar - Deep navy ink with classic-blue active states */
+  --sidebar: #16202e;
+  --sidebar-foreground: #d3dae4;
+  --sidebar-primary: #3566aa;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1e293b;
-  --sidebar-accent-foreground: #f1f5f9;
-  --sidebar-border: #1e293b;
-  --sidebar-ring: #0d9488;
+  --sidebar-accent: #1f2c3e;
+  --sidebar-accent-foreground: #e6ecf4;
+  --sidebar-border: #26344a;
+  --sidebar-ring: #3566aa;
 
-  /* Status - Muted, professional indicators */
-  --success: #059669;
+  /* Status - Muted, professional indicators (semantic only) */
+  --success: #2f7d5b;
   --success-foreground: #ffffff;
-  --success-muted: #ecfdf5;
-  --success-muted-foreground: #047857;
+  --success-muted: #eaf4ee;
+  --success-muted-foreground: #1f5b40;
 
-  --warning: #d97706;
+  --warning: #b7791f;
   --warning-foreground: #ffffff;
-  --warning-muted: #fffbeb;
-  --warning-muted-foreground: #b45309;
+  --warning-muted: #fbf3e2;
+  --warning-muted-foreground: #8a5a12;
 
-  --info: #0284c7;
+  --info: #26548f;
   --info-foreground: #ffffff;
-  --info-muted: #f0f9ff;
-  --info-muted-foreground: #0369a1;
+  --info-muted: #eef4fb;
+  --info-muted-foreground: #1d4074;
 
-  --attention: #ea580c;
+  --attention: #b7791f;
   --attention-foreground: #ffffff;
-  --attention-muted: #fff7ed;
-  --attention-muted-foreground: #c2410c;
+  --attention-muted: #fbf3e2;
+  --attention-muted-foreground: #8a5a12;
 
-  /* Gradients - Sophisticated depth */
-  --gradient-primary-from: #0f172a;
-  --gradient-primary-to: #1e293b;
-  --gradient-secondary-from: #0d9488;
-  --gradient-secondary-to: #0f766e;
-  --gradient-success-from: #059669;
-  --gradient-success-to: #047857;
-  --gradient-warning-from: #d97706;
-  --gradient-warning-to: #b45309;
-  --gradient-accent-from: #0d9488;
-  --gradient-accent-to: #0f766e;
+  /* Gradients - Blue-anchored (used sparingly; app is flat) */
+  --gradient-primary-from: #1d4074;
+  --gradient-primary-to: #26548f;
+  --gradient-secondary-from: #26548f;
+  --gradient-secondary-to: #1d4074;
+  --gradient-success-from: #2f7d5b;
+  --gradient-success-to: #1f5b40;
+  --gradient-warning-from: #b7791f;
+  --gradient-warning-to: #8a5a12;
+  --gradient-accent-from: #26548f;
+  --gradient-accent-to: #1d4074;
 
   /* Surfaces - Layered depth */
   --surface: #ffffff;
-  --surface-elevated: #f8fafc;
-  --surface-muted: #f1f5f9;
+  --surface-elevated: #fbfcfe;
+  --surface-muted: #eef1f6;
 
-  /* Interactive - Clean state management */
-  --interactive-bg: #f8fafc;
-  --interactive-fg: #0f172a;
-  --interactive-border: #e2e8f0;
-  --interactive-hover-bg: #f1f5f9;
-  --interactive-hover-fg: #0f172a;
+  /* Interactive - Cool state management (flat, opaque) */
+  --interactive-bg: #ffffff;
+  --interactive-fg: #16202e;
+  --interactive-border: #e2e7ef;
+  --interactive-hover-bg: #f6f8fb;
+  --interactive-hover-fg: #16202e;
 
-  --interactive-secondary-bg: #f1f5f9;
-  --interactive-secondary-fg: #334155;
-  --interactive-secondary-border: #e2e8f0;
-  --interactive-secondary-hover-bg: #e2e8f0;
-  --interactive-secondary-hover-fg: #0f172a;
+  --interactive-secondary-bg: #eef1f6;
+  --interactive-secondary-fg: #2f3b4d;
+  --interactive-secondary-border: #e2e7ef;
+  --interactive-secondary-hover-bg: #e5eaf1;
+  --interactive-secondary-hover-fg: #16202e;
+
+  /* ── Glass tokens — RETOKENIZED to flat institutional (single source).
+     The whole neo-card/glass-card family references these, so making them solid
+     + hairline flattens every card platform-wide in one place and matches the
+     theme's stated "flat crisp surfaces + hairlines, minimal glass" intent.
+     Kept as glass-* names so the ~200 existing consumers need no churn; the blur
+     is a no-op over an opaque surface, and dark mode auto-adapts via --card. ── */
+  --glass-bg: var(--card);
+  --glass-bg-strong: var(--card);
+  --glass-border: var(--border);
+  --glass-border-hairline: var(--border);
+  --glass-highlight: transparent;   /* no glossy inset — flat elevation ladder */
+  --glass-blur: 0px;
+  --glass-saturate: 100%;
+
+  /* ── Elevation ladder (cool blue-tinted shadows + inset highlight) ─────── */
+  --elev-0: none;
+  --elev-1: 0 1px 2px rgba(22,32,46,0.05), 0 1px 3px rgba(22,32,46,0.05);
+  --elev-2: 0 2px 8px rgba(22,32,46,0.06), 0 1px 3px rgba(22,32,46,0.04), inset 0 1px 0 var(--glass-highlight);
+  --elev-3: 0 4px 24px rgba(22,32,46,0.08), 0 1px 4px rgba(22,32,46,0.05), inset 0 1px 0 var(--glass-highlight);
+  --elev-4: 0 14px 44px rgba(22,32,46,0.13), 0 4px 12px rgba(22,32,46,0.07), inset 0 1px 0 var(--glass-highlight);
+  --ring-brand: 0 0 0 3px rgba(38, 84, 143, 0.24);
+  /* Brand glow — classic-blue, used on hero/primary accents */
+  --glow-brand: 0 0 24px rgba(38, 84, 143, 0.30), 0 0 48px rgba(29, 64, 116, 0.14);
+  --glow-brand-soft: 0 0 20px rgba(53, 102, 170, 0.20), 0 0 40px rgba(38, 84, 143, 0.10);
+
+  /* ── Typography — single family (Geist), modern low-contrast grotesk ── */
+  --font-display: var(--font-geist-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-geist-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --text-caption-size: 0.6875rem;   /* 11px */
+  --text-caption-weight: 500;
+  --text-label-size: 0.75rem;        /* 12px */
+  --text-label-weight: 600;
+  --text-body-size: 0.875rem;        /* 14px */
+  --text-body-weight: 400;
+  --text-value-size: 0.9375rem;      /* 15px */
+  --text-value-weight: 700;
+  --text-value-lg-size: 1.375rem;    /* 22px hero figure */
+  --text-section-size: 0.875rem;     /* 14px */
+  --text-section-weight: 700;
+  --text-card-title-size: 1rem;      /* 16px */
+  --text-card-title-weight: 700;
+  --text-headline-size: 1.5rem;      /* 24px */
+  --text-headline-weight: 700;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+
+  /* ── Neutral scale (cool slate) — single source for BOTH slate-* & gray-*.
+     Referenced (not inlined) by @theme so `.dark` can invert the whole scale
+     at runtime, which is what flips the ~90% of the app that uses slate/gray. */
+  --neutral-50:  #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+  --neutral-950: #0f1a2e;
+  --neutral-white: #ffffff;
 }
 
-.dark {
-  /* ═══════════════════════════════════════════════════════════════════════════
-     SUPER-GRADIENT / NEURAL THEME
-     Deep navy foundations with electric blue, indigo, magenta & cyan glows
-     ═══════════════════════════════════════════════════════════════════════════ */
-  --background: #060a18;
-  --foreground: #e8edff;
-  --card: #0e1530;
-  --card-foreground: #e8edff;
-  --popover: #0e1530;
-  --popover-foreground: #e8edff;
-  --primary: #6366f1;
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE — inverts the canvas to deep ink; keeps classic-blue brand and
+   layers the electric-azure accent for a modern, alive AI-fintech feel.
+   The inverted neutral scale is what flips the many slate and gray utilities.
+
+   `.on-ink` shares this exact dark token context so it can be dropped onto
+   individual sections (hero, stat bar, footer) to create dark bands that frame
+   the light content — the "Ink + Light" duotone — in BOTH light and dark mode.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.dark,
+.on-ink {
+  /* Inverted neutral scale (lightest to darkest) flips slate and gray app-wide */
+  --neutral-50:  #0f1826;
+  --neutral-100: #16202e;
+  --neutral-200: #1f2c3e;
+  --neutral-300: #26344a;
+  --neutral-400: #667689;
+  --neutral-500: #8b98a9;
+  --neutral-600: #a7b3c4;
+  --neutral-700: #c2ccd9;
+  --neutral-800: #dbe2ec;
+  --neutral-900: #eaf0f8;
+  --neutral-950: #f4f7fb;
+  --neutral-white: #0f1826;   /* raw bg-white surfaces become ink in dark */
+
+  /* ── Status color families inverted for dark ──────────────────────────────
+     emerald/green/teal/sky/cyan/blue/amber/yellow/orange/red/rose/pink are NOT
+     part of the neutral scale, so without this block their pale steps (e.g.
+     `bg-emerald-50`) stay near-white in dark mode → a washed "veil" over dark
+     cards, and `text-*-800` on top flips to light → invisible. We mirror the
+     neutral inversion: low steps (50–300) become DARK hue-tints of the family
+     over the canvas, 400–600 stay the vivid accent (icons / solid buttons),
+     and 700–950 become LIGHT hue tints so text stays legible on the dark tint.
+     `:root` intentionally leaves these undefined so the @theme fallbacks (exact
+     Tailwind defaults) drive light mode unchanged; only dark/on-ink overrides. */
+  --emerald-50: color-mix(in srgb, #10b981 12%, var(--background)); --emerald-100: color-mix(in srgb, #10b981 18%, var(--background)); --emerald-200: color-mix(in srgb, #10b981 32%, var(--background)); --emerald-300: color-mix(in srgb, #10b981 48%, var(--background)); --emerald-400: #10b981; --emerald-500: #10b981; --emerald-600: #10b981; --emerald-700: #a7f3d0; --emerald-800: color-mix(in srgb, #a7f3d0 82%, #fff); --emerald-900: color-mix(in srgb, #a7f3d0 64%, #fff); --emerald-950: color-mix(in srgb, #a7f3d0 46%, #fff);
+  --green-50: color-mix(in srgb, #22c55e 12%, var(--background)); --green-100: color-mix(in srgb, #22c55e 18%, var(--background)); --green-200: color-mix(in srgb, #22c55e 32%, var(--background)); --green-300: color-mix(in srgb, #22c55e 48%, var(--background)); --green-400: #22c55e; --green-500: #22c55e; --green-600: #22c55e; --green-700: #bbf7d0; --green-800: color-mix(in srgb, #bbf7d0 82%, #fff); --green-900: color-mix(in srgb, #bbf7d0 64%, #fff); --green-950: color-mix(in srgb, #bbf7d0 46%, #fff);
+  --teal-50: color-mix(in srgb, #14b8a6 12%, var(--background)); --teal-100: color-mix(in srgb, #14b8a6 18%, var(--background)); --teal-200: color-mix(in srgb, #14b8a6 32%, var(--background)); --teal-300: color-mix(in srgb, #14b8a6 48%, var(--background)); --teal-400: #14b8a6; --teal-500: #14b8a6; --teal-600: #14b8a6; --teal-700: #99f6e4; --teal-800: color-mix(in srgb, #99f6e4 82%, #fff); --teal-900: color-mix(in srgb, #99f6e4 64%, #fff); --teal-950: color-mix(in srgb, #99f6e4 46%, #fff);
+  --sky-50: color-mix(in srgb, #0ea5e9 12%, var(--background)); --sky-100: color-mix(in srgb, #0ea5e9 18%, var(--background)); --sky-200: color-mix(in srgb, #0ea5e9 32%, var(--background)); --sky-300: color-mix(in srgb, #0ea5e9 48%, var(--background)); --sky-400: #0ea5e9; --sky-500: #0ea5e9; --sky-600: #0ea5e9; --sky-700: #bae6fd; --sky-800: color-mix(in srgb, #bae6fd 82%, #fff); --sky-900: color-mix(in srgb, #bae6fd 64%, #fff); --sky-950: color-mix(in srgb, #bae6fd 46%, #fff);
+  --cyan-50: color-mix(in srgb, #06b6d4 12%, var(--background)); --cyan-100: color-mix(in srgb, #06b6d4 18%, var(--background)); --cyan-200: color-mix(in srgb, #06b6d4 32%, var(--background)); --cyan-300: color-mix(in srgb, #06b6d4 48%, var(--background)); --cyan-400: #06b6d4; --cyan-500: #06b6d4; --cyan-600: #06b6d4; --cyan-700: #a5f3fc; --cyan-800: color-mix(in srgb, #a5f3fc 82%, #fff); --cyan-900: color-mix(in srgb, #a5f3fc 64%, #fff); --cyan-950: color-mix(in srgb, #a5f3fc 46%, #fff);
+  --blue-50: color-mix(in srgb, #3b82f6 12%, var(--background)); --blue-100: color-mix(in srgb, #3b82f6 18%, var(--background)); --blue-200: color-mix(in srgb, #3b82f6 32%, var(--background)); --blue-300: color-mix(in srgb, #3b82f6 48%, var(--background)); --blue-400: #3b82f6; --blue-500: #3b82f6; --blue-600: #3b82f6; --blue-700: #bfdbfe; --blue-800: color-mix(in srgb, #bfdbfe 82%, #fff); --blue-900: color-mix(in srgb, #bfdbfe 64%, #fff); --blue-950: color-mix(in srgb, #bfdbfe 46%, #fff);
+  --amber-50: color-mix(in srgb, #f59e0b 12%, var(--background)); --amber-100: color-mix(in srgb, #f59e0b 18%, var(--background)); --amber-200: color-mix(in srgb, #f59e0b 32%, var(--background)); --amber-300: color-mix(in srgb, #f59e0b 48%, var(--background)); --amber-400: #f59e0b; --amber-500: #f59e0b; --amber-600: #f59e0b; --amber-700: #fde68a; --amber-800: color-mix(in srgb, #fde68a 82%, #fff); --amber-900: color-mix(in srgb, #fde68a 64%, #fff); --amber-950: color-mix(in srgb, #fde68a 46%, #fff);
+  --yellow-50: color-mix(in srgb, #eab308 12%, var(--background)); --yellow-100: color-mix(in srgb, #eab308 18%, var(--background)); --yellow-200: color-mix(in srgb, #eab308 32%, var(--background)); --yellow-300: color-mix(in srgb, #eab308 48%, var(--background)); --yellow-400: #eab308; --yellow-500: #eab308; --yellow-600: #eab308; --yellow-700: #fef08a; --yellow-800: color-mix(in srgb, #fef08a 82%, #fff); --yellow-900: color-mix(in srgb, #fef08a 64%, #fff); --yellow-950: color-mix(in srgb, #fef08a 46%, #fff);
+  --orange-50: color-mix(in srgb, #f97316 12%, var(--background)); --orange-100: color-mix(in srgb, #f97316 18%, var(--background)); --orange-200: color-mix(in srgb, #f97316 32%, var(--background)); --orange-300: color-mix(in srgb, #f97316 48%, var(--background)); --orange-400: #f97316; --orange-500: #f97316; --orange-600: #f97316; --orange-700: #fed7aa; --orange-800: color-mix(in srgb, #fed7aa 82%, #fff); --orange-900: color-mix(in srgb, #fed7aa 64%, #fff); --orange-950: color-mix(in srgb, #fed7aa 46%, #fff);
+  --red-50: color-mix(in srgb, #ef4444 12%, var(--background)); --red-100: color-mix(in srgb, #ef4444 18%, var(--background)); --red-200: color-mix(in srgb, #ef4444 32%, var(--background)); --red-300: color-mix(in srgb, #ef4444 48%, var(--background)); --red-400: #ef4444; --red-500: #ef4444; --red-600: #f87171; --red-700: #fecaca; --red-800: color-mix(in srgb, #fecaca 82%, #fff); --red-900: color-mix(in srgb, #fecaca 64%, #fff); --red-950: color-mix(in srgb, #fecaca 46%, #fff);
+  --rose-50: color-mix(in srgb, #f43f5e 12%, var(--background)); --rose-100: color-mix(in srgb, #f43f5e 18%, var(--background)); --rose-200: color-mix(in srgb, #f43f5e 32%, var(--background)); --rose-300: color-mix(in srgb, #f43f5e 48%, var(--background)); --rose-400: #f43f5e; --rose-500: #f43f5e; --rose-600: #fb7185; --rose-700: #fecdd3; --rose-800: color-mix(in srgb, #fecdd3 82%, #fff); --rose-900: color-mix(in srgb, #fecdd3 64%, #fff); --rose-950: color-mix(in srgb, #fecdd3 46%, #fff);
+  --pink-50: color-mix(in srgb, #ec4899 12%, var(--background)); --pink-100: color-mix(in srgb, #ec4899 18%, var(--background)); --pink-200: color-mix(in srgb, #ec4899 32%, var(--background)); --pink-300: color-mix(in srgb, #ec4899 48%, var(--background)); --pink-400: #ec4899; --pink-500: #ec4899; --pink-600: #f472b6; --pink-700: #fbcfe8; --pink-800: color-mix(in srgb, #fbcfe8 82%, #fff); --pink-900: color-mix(in srgb, #fbcfe8 64%, #fff); --pink-950: color-mix(in srgb, #fbcfe8 46%, #fff);
+
+  /* Core canvas */
+  --background: #0b1220;
+  --foreground: #eaf0f8;
+  --card: #111c2c;
+  --card-foreground: #eaf0f8;
+  --popover: #111c2c;
+  --popover-foreground: #eaf0f8;
+
+  /* Primary stays classic blue but a touch brighter for dark legibility */
+  --primary: #4a7fc0;
   --primary-foreground: #ffffff;
-  --secondary: #1a2348;
-  --secondary-foreground: #cdd6ff;
-  --muted: #121a38;
-  --muted-foreground: #8b97c9;
-  --accent: #1a2348;
-  --accent-foreground: #38bdf8;
-  --destructive: #f43f5e;
+
+  /* ── Brand ramp inverted for dark ─────────────────────────────────────────
+     The :root brand ramp is a light→dark deep-blue scale (brand-50 pale …
+     brand-700 #1d4074 deep). Without a dark override it never flips, so
+     `text-brand-700` links (Forgot password, magic link, invitation copy) and
+     `bg-brand-50`/`border-brand-200` pills render deep-blue-on-dark = invisible.
+     We rebuild it for dark like the neutral/status scales: low steps (50–300)
+     become DARK blue tints over the canvas (pill/badge backgrounds + borders),
+     mids (400–600) stay a usable solid-button blue with white text, and
+     700–900 become LIGHT azure so brand-colored TEXT reads on dark. Every
+     `text-brand-700`, `bg-brand-50`, `border-brand-200`, etc. now inverts for
+     free — existing and future usage, no per-component edits. */
+  --brand-50:  color-mix(in srgb, var(--primary) 10%, var(--background));
+  --brand-100: color-mix(in srgb, var(--primary) 16%, var(--background));
+  --brand-200: color-mix(in srgb, var(--primary) 28%, var(--background));
+  --brand-300: color-mix(in srgb, var(--primary) 44%, var(--background));
+  --brand-400: #3f70b4;
+  --brand-500: #4a7fc0;
+  --brand-600: #4f83c4;   /* solid bg-brand-600 buttons keep white text legible */
+  --brand-700: #6b9bd8;   /* primary link/text color — reads on dark */
+  --brand-800: #93bae9;   /* hover:text-brand-800 → lighter */
+  --brand-900: #c1d8f4;
+
+  --secondary: #1f2c3e;
+  --secondary-foreground: #dbe2ec;
+  --muted: #16202e;
+  --muted-foreground: #9aa8bc;
+  /* Faint text tier for dark/on-ink — dimmer than --muted-foreground but still
+     readable (replaces the dim neutral-400 #667689 as a text color). */
+  --text-faint: #8492a6;
+
+  /* Accent → azure wash (the alive spark) */
+  --accent: #14263a;
+  --accent-foreground: var(--azure-300);
+
+  --destructive: #e06666;
   --destructive-foreground: #ffffff;
-  --border: #25305c;
-  --input: #25305c;
-  --ring: #6366f1;
-  --chart-1: #38bdf8;
-  --chart-2: #6366f1;
-  --chart-3: #a855f7;
-  --chart-4: #ec4899;
-  --chart-5: #22d3ee;
-  --sidebar: #080d20;
-  --sidebar-foreground: #e8edff;
-  --sidebar-primary: #6366f1;
+
+  --border: #26344a;
+  --input: #26344a;
+  --ring: var(--azure-500);
+
+  /* Charts — brighter on dark, azure-led */
+  --chart-1: #4db8ff;
+  --chart-2: #7cc7ff;
+  --chart-3: #5b87c4;
+  --chart-4: #46c08a;
+  --chart-5: #e06666;
+
+  /* Sidebar — deepest ink */
+  --sidebar: #0b1220;
+  --sidebar-foreground: #c2ccd9;
+  --sidebar-primary: var(--azure-500);
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #141d40;
-  --sidebar-accent-foreground: #38bdf8;
-  --sidebar-border: #25305c;
-  --sidebar-ring: #6366f1;
-  --success: #10b981;
-  --success-foreground: #ffffff;
-  --success-muted: #05312a;
-  --success-muted-foreground: #34d399;
-  --warning: #f59e0b;
-  --warning-foreground: #0f172a;
-  --warning-muted: #3a2606;
-  --warning-muted-foreground: #fbbf24;
-  --info: #38bdf8;
-  --info-foreground: #06121f;
-  --info-muted: #0c2942;
-  --info-muted-foreground: #7dd3fc;
-  --attention: #ec4899;
-  --attention-foreground: #ffffff;
-  --attention-muted: #3a0f29;
-  --attention-muted-foreground: #f9a8d4;
-  /* Super-gradient stops - electric blue → indigo → magenta → cyan */
-  --gradient-primary-from: #6366f1;
-  --gradient-primary-to: #a855f7;
-  --gradient-secondary-from: #38bdf8;
-  --gradient-secondary-to: #6366f1;
-  --gradient-success-from: #10b981;
-  --gradient-success-to: #34d399;
-  --gradient-warning-from: #f59e0b;
-  --gradient-warning-to: #fbbf24;
-  --gradient-accent-from: #a855f7;
-  --gradient-accent-to: #ec4899;
-  --surface: #0e1530;
-  --surface-elevated: #16203f;
-  --surface-muted: #0a1024;
-  --interactive-bg: #16203f;
-  --interactive-fg: #e8edff;
-  --interactive-border: #2d3a6b;
-  --interactive-hover-bg: #20294f;
+  --sidebar-accent: #16202e;
+  --sidebar-accent-foreground: #eaf0f8;
+  --sidebar-border: #1f2c3e;
+  --sidebar-ring: var(--azure-500);
+
+  /* Status muted surfaces re-tinted for dark */
+  --success: #46c08a;
+  --success-muted: #12281f;
+  --success-muted-foreground: #7fd9b0;
+  --warning: #d9a441;
+  --warning-muted: #2a2010;
+  --warning-muted-foreground: #e6c27a;
+  --info: #4db8ff;
+  --info-muted: #10273c;
+  --info-muted-foreground: #9dd3ff;
+  --attention: #d9a441;
+  --attention-muted: #2a2010;
+  --attention-muted-foreground: #e6c27a;
+
+  /* Surfaces */
+  --surface: #111c2c;
+  --surface-elevated: #16202e;
+  --surface-muted: #1a2636;
+
+  /* Interactive */
+  --interactive-bg: #16202e;
+  --interactive-fg: #eaf0f8;
+  --interactive-border: #26344a;
+  --interactive-hover-bg: #1f2c3e;
   --interactive-hover-fg: #ffffff;
-  --interactive-secondary-bg: #121a38;
-  --interactive-secondary-fg: #cdd6ff;
-  --interactive-secondary-border: #25305c;
-  --interactive-secondary-hover-bg: #1a2348;
-  --interactive-secondary-hover-fg: #e8edff;
+  --interactive-secondary-bg: #1f2c3e;
+  --interactive-secondary-fg: #dbe2ec;
+  --interactive-secondary-border: #26344a;
+  --interactive-secondary-hover-bg: #26344a;
+  --interactive-secondary-hover-fg: #ffffff;
+
+  /* Glass — dark translucent */
+  /* Flat institutional (dark) — solid card + hairline, no translucency/gloss. */
+  --glass-bg: var(--card);
+  --glass-bg-strong: var(--card);
+  --glass-border: var(--border);
+  --glass-border-hairline: var(--border);
+  --glass-highlight: transparent;
+
+  /* Elevation — deeper shadows on dark */
+  --elev-1: 0 1px 2px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
+  --elev-2: 0 2px 10px rgba(0,0,0,0.42), 0 1px 3px rgba(0,0,0,0.3), inset 0 1px 0 var(--glass-highlight);
+  --elev-3: 0 6px 26px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-highlight);
+  --elev-4: 0 16px 48px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 var(--glass-highlight);
+
+  /* Brand glow → azure on dark */
+  --glow-brand: 0 0 24px var(--azure-glow), 0 0 48px var(--azure-glow-soft);
+  --glow-brand-soft: 0 0 20px var(--azure-glow-soft), 0 0 40px rgba(34,163,255,0.08);
 }
+
+/* Dark-mode overrides for glass classes that hardcode white fills (they don't
+   read tokens, so they'd stay white-on-dark otherwise). */
+.dark .glass-inner,
+.on-ink .glass-inner {
+  background: rgba(120, 150, 190, 0.08);
+  border: 1px solid rgba(120, 150, 190, 0.14);
+  box-shadow: inset 0 1px 0 rgba(120, 150, 190, 0.10);
+}
+.dark .glass-icon,
+.on-ink .glass-icon {
+  background: linear-gradient(135deg, rgba(38,52,74,0.9) 0%, rgba(28,42,62,0.8) 100%);
+  border: 1px solid rgba(120, 150, 190, 0.18);
+}
+.dark .glass-btn,
+.on-ink .glass-btn {
+  background: linear-gradient(135deg, rgba(38,52,74,0.85) 0%, rgba(28,42,62,0.7) 100%);
+  border: 1px solid rgba(120, 150, 190, 0.18);
+}
+/* Round icon buttons (e.g. notification bell) on ink chrome — the base class
+   is a light-gray circle with a dark glyph, invisible on the gradient. */
+.dark .neo-btn-icon,
+.on-ink .neo-btn-icon {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--ink-fg);
+  box-shadow: none;
+}
+.dark .neo-btn-icon:hover,
+.on-ink .neo-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* `.on-ink` paints itself as a deep-ink band and re-scopes semantic tokens to
+   their dark values (via the shared block above), so descendants using
+   bg-card/text-foreground/border/etc. automatically read correctly on it.
+   Use for the hero, stat bar and footer to frame the light content canvas. */
+.on-ink {
+  background-color: var(--ink-900);
+  color: var(--ink-fg);
+}
+
+/* Azure spark helpers usable in either mode */
+.text-azure { color: var(--azure-500); }
+.dark .text-azure, .on-ink .text-azure { color: var(--azure-400); }
+.glow-azure { box-shadow: 0 0 24px var(--azure-glow), 0 0 48px var(--azure-glow-soft); }
 
 @theme inline {
-  --font-sans: var(--font-display, 'Plus Jakarta Sans'), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
-  
+  --font-sans: var(--font-geist-sans, 'Geist'), var(--font-inter, 'Inter'), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geist-sans, 'Geist'), var(--font-inter, 'Inter'), ui-sans-serif, system-ui, sans-serif;
+  /* legacy font-serif spots now resolve to the single family */
+  --font-serif: var(--font-geist-sans, 'Geist'), var(--font-inter, 'Inter'), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono, 'Geist Mono'), ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+
+  /* Brand indigo ramp as Tailwind utilities (bg-brand-600, text-brand-700, …) */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+
+  /* Electric azure accent utilities (bg-azure-500, text-azure-400, …) */
+  --color-azure-300: var(--azure-300);
+  --color-azure-400: var(--azure-400);
+  --color-azure-500: var(--azure-500);
+  --color-azure-600: var(--azure-600);
+  --color-azure-700: var(--azure-700);
+
+  /* Ink dark-surface utilities (bg-ink-900, text-ink-fg, border-ink-border, …) */
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-ink-600: var(--ink-600);
+  --color-ink-fg: var(--ink-fg);
+  --color-ink-fg-muted: var(--ink-fg-muted);
+  --color-ink-border: var(--ink-border);
+  --color-ink-border-strong: var(--ink-border-strong);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -214,6 +489,13 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  /* Faint text tier as a first-class Tailwind utility (`text-faint`). Closes the
+     last single-source gap: previously --text-faint could only be reached via the
+     inline palette.inkFaint bridge, so Tailwind-side code had no canonical class
+     and risked drifting to a hardcoded text-slate-400. Now BOTH channels — the
+     `text-faint` class AND palette.inkFaint — resolve to the SAME --text-faint
+     token, so one edit in :root/.dark cascades everywhere regardless of style. */
+  --color-text-faint: var(--text-faint);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -279,6 +561,69 @@
   --color-interactive-secondary-border: var(--interactive-secondary-border);
   --color-interactive-secondary-hover-bg: var(--interactive-secondary-hover-bg);
   --color-interactive-secondary-hover-fg: var(--interactive-secondary-hover-fg);
+
+  /* ── White / gray overrides ──────────────────────────────────────────────
+     bg-white → warm card surface; text-white stays pure for contrast-critical
+     labels on dark backgrounds (buttons, badges) — so only the background
+     token is remapped, not the text token.
+     ──────────────────────────────────────────────────────────────────────── */
+  --color-white: var(--neutral-white);
+
+  /* Gray scale → cool slate shift for full consistency (flips in dark mode) */
+  --color-gray-50:  var(--neutral-50);
+  --color-gray-100: var(--neutral-100);
+  --color-gray-200: var(--neutral-200);
+  --color-gray-300: var(--neutral-300);
+  --color-gray-400: var(--neutral-400);
+  --color-gray-500: var(--neutral-500);
+  --color-gray-600: var(--neutral-600);
+  --color-gray-700: var(--neutral-700);
+  --color-gray-800: var(--neutral-800);
+  --color-gray-900: var(--neutral-900);
+  --color-gray-950: var(--neutral-950);
+
+  /* ── Slate palette override ───────────────────────────────────────────────
+     Re-map the entire Tailwind slate scale to the platform's warm parchment
+     token palette. Every existing text-slate-* / bg-slate-* / border-slate-*
+     class in any component now renders the correct warm institutional color
+     without needing individual edits. The scale mirrors the semantic tokens:
+       slate-50/100  = muted surfaces (warm parchment tint)
+       slate-200/300 = borders / dividers
+       slate-400/500 = muted-foreground (warm brown)
+       slate-600/700 = card-foreground (dimmer warm text)
+       slate-800/900 = foreground (near-black warm)
+       slate-950     = primary (deep navy)
+     ──────────────────────────────────────────────────────────────────────── */
+  --color-slate-50:  var(--neutral-50);
+  --color-slate-100: var(--neutral-100);
+  --color-slate-200: var(--neutral-200);
+  --color-slate-300: var(--neutral-300);
+  --color-slate-400: var(--neutral-400);
+  --color-slate-500: var(--neutral-500);
+  --color-slate-600: var(--neutral-600);
+  --color-slate-700: var(--neutral-700);
+  --color-slate-800: var(--neutral-800);
+  --color-slate-900: var(--neutral-900);
+  --color-slate-950: var(--neutral-950);
+
+  /* ── Status color families → invertible vars ���────────────────────────────
+     Each maps to `var(--fam-step, <exact Tailwind default>)`. In LIGHT mode the
+     fam-* vars are undefined so the fallback (unchanged Tailwind color) is used;
+     in DARK/.on-ink the `.dark` block above defines fam-* with inverted values,
+     so every `bg-emerald-50`, `text-red-700`, `border-amber-200`, etc. flips
+     automatically — no per-component edits, and future usage is safe too. */
+  --color-emerald-50: var(--emerald-50, #ecfdf5); --color-emerald-100: var(--emerald-100, #d1fae5); --color-emerald-200: var(--emerald-200, #a7f3d0); --color-emerald-300: var(--emerald-300, #6ee7b7); --color-emerald-400: var(--emerald-400, #34d399); --color-emerald-500: var(--emerald-500, #10b981); --color-emerald-600: var(--emerald-600, #059669); --color-emerald-700: var(--emerald-700, #047857); --color-emerald-800: var(--emerald-800, #065f46); --color-emerald-900: var(--emerald-900, #064e3b); --color-emerald-950: var(--emerald-950, #022c22);
+  --color-green-50: var(--green-50, #f0fdf4); --color-green-100: var(--green-100, #dcfce7); --color-green-200: var(--green-200, #bbf7d0); --color-green-300: var(--green-300, #86efac); --color-green-400: var(--green-400, #4ade80); --color-green-500: var(--green-500, #22c55e); --color-green-600: var(--green-600, #16a34a); --color-green-700: var(--green-700, #15803d); --color-green-800: var(--green-800, #166534); --color-green-900: var(--green-900, #14532d); --color-green-950: var(--green-950, #052e16);
+  --color-teal-50: var(--teal-50, #f0fdfa); --color-teal-100: var(--teal-100, #ccfbf1); --color-teal-200: var(--teal-200, #99f6e4); --color-teal-300: var(--teal-300, #5eead4); --color-teal-400: var(--teal-400, #2dd4bf); --color-teal-500: var(--teal-500, #14b8a6); --color-teal-600: var(--teal-600, #0d9488); --color-teal-700: var(--teal-700, #0f766e); --color-teal-800: var(--teal-800, #115e59); --color-teal-900: var(--teal-900, #134e4a); --color-teal-950: var(--teal-950, #042f2e);
+  --color-sky-50: var(--sky-50, #f0f9ff); --color-sky-100: var(--sky-100, #e0f2fe); --color-sky-200: var(--sky-200, #bae6fd); --color-sky-300: var(--sky-300, #7dd3fc); --color-sky-400: var(--sky-400, #38bdf8); --color-sky-500: var(--sky-500, #0ea5e9); --color-sky-600: var(--sky-600, #0284c7); --color-sky-700: var(--sky-700, #0369a1); --color-sky-800: var(--sky-800, #075985); --color-sky-900: var(--sky-900, #0c4a6e); --color-sky-950: var(--sky-950, #082f49);
+  --color-cyan-50: var(--cyan-50, #ecfeff); --color-cyan-100: var(--cyan-100, #cffafe); --color-cyan-200: var(--cyan-200, #a5f3fc); --color-cyan-300: var(--cyan-300, #67e8f9); --color-cyan-400: var(--cyan-400, #22d3ee); --color-cyan-500: var(--cyan-500, #06b6d4); --color-cyan-600: var(--cyan-600, #0891b2); --color-cyan-700: var(--cyan-700, #0e7490); --color-cyan-800: var(--cyan-800, #155e75); --color-cyan-900: var(--cyan-900, #164e63); --color-cyan-950: var(--cyan-950, #083344);
+  --color-blue-50: var(--blue-50, #eff6ff); --color-blue-100: var(--blue-100, #dbeafe); --color-blue-200: var(--blue-200, #bfdbfe); --color-blue-300: var(--blue-300, #93c5fd); --color-blue-400: var(--blue-400, #60a5fa); --color-blue-500: var(--blue-500, #3b82f6); --color-blue-600: var(--blue-600, #2563eb); --color-blue-700: var(--blue-700, #1d4ed8); --color-blue-800: var(--blue-800, #1e40af); --color-blue-900: var(--blue-900, #1e3a8a); --color-blue-950: var(--blue-950, #172554);
+  --color-amber-50: var(--amber-50, #fffbeb); --color-amber-100: var(--amber-100, #fef3c7); --color-amber-200: var(--amber-200, #fde68a); --color-amber-300: var(--amber-300, #fcd34d); --color-amber-400: var(--amber-400, #fbbf24); --color-amber-500: var(--amber-500, #f59e0b); --color-amber-600: var(--amber-600, #d97706); --color-amber-700: var(--amber-700, #b45309); --color-amber-800: var(--amber-800, #92400e); --color-amber-900: var(--amber-900, #78350f); --color-amber-950: var(--amber-950, #451a03);
+  --color-yellow-50: var(--yellow-50, #fefce8); --color-yellow-100: var(--yellow-100, #fef9c3); --color-yellow-200: var(--yellow-200, #fef08a); --color-yellow-300: var(--yellow-300, #fde047); --color-yellow-400: var(--yellow-400, #facc15); --color-yellow-500: var(--yellow-500, #eab308); --color-yellow-600: var(--yellow-600, #ca8a04); --color-yellow-700: var(--yellow-700, #a16207); --color-yellow-800: var(--yellow-800, #854d0e); --color-yellow-900: var(--yellow-900, #713f12); --color-yellow-950: var(--yellow-950, #422006);
+  --color-orange-50: var(--orange-50, #fff7ed); --color-orange-100: var(--orange-100, #ffedd5); --color-orange-200: var(--orange-200, #fed7aa); --color-orange-300: var(--orange-300, #fdba74); --color-orange-400: var(--orange-400, #fb923c); --color-orange-500: var(--orange-500, #f97316); --color-orange-600: var(--orange-600, #ea580c); --color-orange-700: var(--orange-700, #c2410c); --color-orange-800: var(--orange-800, #9a3412); --color-orange-900: var(--orange-900, #7c2d12); --color-orange-950: var(--orange-950, #431407);
+  --color-red-50: var(--red-50, #fef2f2); --color-red-100: var(--red-100, #fee2e2); --color-red-200: var(--red-200, #fecaca); --color-red-300: var(--red-300, #fca5a5); --color-red-400: var(--red-400, #f87171); --color-red-500: var(--red-500, #ef4444); --color-red-600: var(--red-600, #dc2626); --color-red-700: var(--red-700, #b91c1c); --color-red-800: var(--red-800, #991b1b); --color-red-900: var(--red-900, #7f1d1d); --color-red-950: var(--red-950, #450a0a);
+  --color-rose-50: var(--rose-50, #fff1f2); --color-rose-100: var(--rose-100, #ffe4e6); --color-rose-200: var(--rose-200, #fecdd3); --color-rose-300: var(--rose-300, #fda4af); --color-rose-400: var(--rose-400, #fb7185); --color-rose-500: var(--rose-500, #f43f5e); --color-rose-600: var(--rose-600, #e11d48); --color-rose-700: var(--rose-700, #be123c); --color-rose-800: var(--rose-800, #9f1239); --color-rose-900: var(--rose-900, #881337); --color-rose-950: var(--rose-950, #4c0519);
+  --color-pink-50: var(--pink-50, #fdf2f8); --color-pink-100: var(--pink-100, #fce7f3); --color-pink-200: var(--pink-200, #fbcfe8); --color-pink-300: var(--pink-300, #f9a8d4); --color-pink-400: var(--pink-400, #f472b6); --color-pink-500: var(--pink-500, #ec4899); --color-pink-600: var(--pink-600, #db2777); --color-pink-700: var(--pink-700, #be185d); --color-pink-800: var(--pink-800, #9d174d); --color-pink-900: var(--pink-900, #831843); --color-pink-950: var(--pink-950, #500724);
 }
 
 @layer base {
@@ -297,15 +642,19 @@
      Radix UI never removes it, eliminating the layout-shift on Select/Dialog open */
   html {
     height: auto;
+    /* Both axes set explicitly so neither is coerced to `auto`.
+       If overflow-x lived on body instead, the spec's visible→auto rule
+       would turn body into a scroll container — which breaks position:sticky
+       on descendants (e.g. the app navbar scrolls away instead of sticking). */
+    overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     scrollbar-gutter: stable; /* reserves space even when scrollbar is hidden */
   }
-  
+
   body {
     min-height: 100vh;
-    overflow-x: hidden;
     /* Counteract Radix UI's scroll-lock padding injection.
        When Radix removes the scrollbar it sets padding-right on body
        equal to the scrollbar width — but since we force overflow-y:scroll
@@ -335,12 +684,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--border);
+    background: rgba(38, 84, 143, 0.22);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-foreground);
+    background: rgba(38, 84, 143, 0.40);
   }
 
   /* Ticker animation */
@@ -380,170 +729,153 @@
     100% { transform: translateX(100%); }
   }
 
+  /* Indeterminate progress — honest "actively working" motion for jobs that
+     report no real percentage (e.g. XTRCT submit-then-poll extraction). A short
+     bar sweeps across the track instead of a fake, static number. */
+  @keyframes progress-indeterminate {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(360%); }
+  }
+  .animate-progress-indeterminate {
+    animation: progress-indeterminate 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform;
+  }
+
   /* Focus states - refined */
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
 
-  /* Selection */
+  /* Selection — amber highlight */
   ::selection {
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: rgba(38, 84, 143, 0.24);
+    color: #16202e;
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    GLASSMORPHISM DESIGN SYSTEM - Premium Analysis Dashboard
    Award-winning UI with depth, light, and modern frosted glass effects
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════════════════════════════════���══════════════════ */
 
-/* Premium Dashboard Background - Clean institutional slate */
+/* Dashboard Background — flat cool paper (no decorative radials) */
 .glass-dashboard-bg {
-  background: 
-    radial-gradient(ellipse 70% 50% at 15% 35%, rgba(13, 148, 136, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 85% 70%, rgba(15, 23, 42, 0.04) 0%, transparent 60%),
-    linear-gradient(160deg, #fafbfc 0%, #f8fafc 40%, #f4f7fa 100%);
-  background-attachment: fixed;
+  background: var(--background);
 }
 
-/* Glass Card - Primary frosted glass effect */
+/* Glass Card — translucent frosted glass with depth (classic-blue tinted) */
 .glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 
-    0 8px 32px rgba(100, 100, 140, 0.08),
-    0 2px 8px rgba(100, 100, 140, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--elev-3);
 }
 
 .glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .glass-card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 
-    0 12px 40px rgba(100, 100, 140, 0.12),
-    0 4px 12px rgba(100, 100, 140, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--glass-border));
+  box-shadow: var(--elev-4);
 }
 
-/* Glass Card Dark - For hero/primary KPIs */
+/* Dark card - For hero/primary KPIs (deep navy ink glass) */
 .glass-card-dark {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.90) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgba(22,32,46,0.96) 0%, rgba(31,44,62,0.92) 100%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid rgba(53, 102, 170, 0.24);
+  box-shadow: var(--elev-4);
 }
 
-/* Glass Card Accent - Colored tint variants */
-.glass-card-teal {
-  background: linear-gradient(135deg, rgba(240, 253, 250, 0.95) 0%, rgba(204, 251, 241, 0.85) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(20, 184, 166, 0.2);
-  box-shadow: 0 4px 24px rgba(20, 184, 166, 0.12);
-}
-
-.glass-card-indigo {
-  background: linear-gradient(135deg, rgba(240, 253, 250, 0.95) 0%, rgba(204, 251, 241, 0.85) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(13, 148, 136, 0.2);
-  box-shadow: 0 4px 24px rgba(13, 148, 136, 0.12);
-}
-
+/* Accent variants — translucent blue-tinted glass */
+.glass-card-teal,
+.glass-card-indigo,
 .glass-card-amber {
-  background: linear-gradient(135deg, rgba(255, 251, 235, 0.95) 0%, rgba(254, 243, 199, 0.85) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  box-shadow: 0 4px 24px rgba(245, 158, 11, 0.12);
+  background: linear-gradient(135deg, rgba(238,244,251,0.92) 0%, rgba(217,230,244,0.82) 100%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(38, 84, 143, 0.24);
+  box-shadow: var(--elev-2);
 }
 
 .glass-card-emerald {
-  background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, rgba(209, 250, 229, 0.85) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  box-shadow: 0 4px 24px rgba(16, 185, 129, 0.12);
+  background: linear-gradient(135deg, rgba(234,244,238,0.92) 0%, rgba(214,233,222,0.82) 100%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid color-mix(in srgb, var(--success) 24%, transparent);
+  box-shadow: var(--elev-2);
 }
 
-/* Glass Inner Card - Nested frosted elements */
+/* Inner card - nested element, flat institutional (solid muted + hairline) */
 .glass-inner {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  box-shadow: none;
 }
 
-/* Glass Button - Premium button styling */
+/* Button - frosted glass */
 .glass-btn {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,245,251,0.7) 100%);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 
-    0 4px 16px rgba(100, 100, 140, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transition: all 0.2s ease;
+  box-shadow: var(--elev-2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 
-    0 6px 20px rgba(100, 100, 140, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+  box-shadow: var(--elev-3);
 }
 
-/* Glass Progress Bar */
+/* Progress Bar — frosted track + classic-blue gradient fill with glow */
 .glass-progress {
-  background: rgba(241, 245, 249, 0.8);
+  background: rgba(238, 242, 249, 0.7);
   backdrop-filter: blur(4px);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 2px rgba(22, 32, 46, 0.06);
 }
 
 .glass-progress-fill {
-  background: linear-gradient(90deg, var(--progress-from, #0d9488) 0%, var(--progress-to, #14b8a6) 100%);
-  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+  background: linear-gradient(90deg, var(--progress-from, #1d4074) 0%, var(--progress-to, #3566aa) 100%);
+  box-shadow: 0 2px 8px rgba(38, 84, 143, 0.30);
 }
 
-/* Premium Text Gradients */
+/* Text gradients — ink and classic-blue */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  background: linear-gradient(135deg, #16202e 0%, #2f3b4d 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  background: linear-gradient(135deg, #1d4074 0%, #3566aa 55%, #5b87c4 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Glow Effects */
-.glow-teal {
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.3), 0 0 40px rgba(20, 184, 166, 0.1);
-}
-
+/* Glow Effects — classic-blue / semantic */
+.glow-teal,
 .glow-indigo {
-  box-shadow: 0 0 20px rgba(13, 148, 136, 0.25), 0 0 40px rgba(13, 148, 136, 0.10);
+  box-shadow: var(--glow-brand);
 }
 
 .glow-emerald {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 0 20px rgba(47, 125, 91, 0.28), 0 0 40px rgba(47, 125, 91, 0.10);
 }
 
-/* Premium Icon Container */
+/* Icon container — flat institutional (solid muted + hairline + subtle depth) */
 .glass-icon {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  box-shadow: var(--elev-1);
 }
 
 /* Animated Shine Effect */
@@ -564,12 +896,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 60%
-  );
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%);
   animation: glass-shine 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -587,17 +914,57 @@
 /* Premium Divider */
 .glass-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.3) 20%, rgba(148, 163, 184, 0.3) 80%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(38, 84, 143, 0.18) 20%, rgba(203, 213, 225, 0.6) 50%, rgba(38, 84, 143, 0.18) 80%, transparent 100%);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* Interactive row inside a glass card/list. No hard rules between rows —
+   separation comes from a clearly-visible brand-blue tinted hover wash + a soft
+   inset ring, so hovering a row is obvious (the plain white/0.55 wash was too
+   faint over the already-light glass background). */
+.glass-row {
+  border-radius: 0.75rem;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+.glass-row:hover {
+  background: rgba(38, 84, 143, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(38, 84, 143, 0.14);
+}
+
+/* Alternating (zebra) striping for glass-row lists. Opt-in via `glass-row-striped`
+   on the list CONTAINER — every even .glass-row child gets a faint cool tint so
+   long lists (Deal Pipeline, Assumptions, Property Overrides) read with visual
+   rhythm. Single global source: apply the class to the container and all rows
+   stripe consistently. Hover still wins over the stripe (declared after). */
+.glass-row-striped > .glass-row:nth-child(even) {
+  background: color-mix(in srgb, var(--foreground) 3.5%, transparent);
+}
+.dark .glass-row-striped > .glass-row:nth-child(even),
+.on-ink .glass-row-striped > .glass-row:nth-child(even) {
+  background: color-mix(in srgb, #ffffff 4%, transparent);
+}
+.glass-row-striped > .glass-row:hover {
+  background: rgba(38, 84, 143, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(38, 84, 143, 0.14);
+}
+.dark .glass-row-striped > .glass-row:hover,
+.on-ink .glass-row-striped > .glass-row:hover {
+  background: rgba(120, 165, 225, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(120, 165, 225, 0.20);
+}
+.dark .glass-row:hover,
+.on-ink .glass-row:hover {
+  background: rgba(120, 165, 225, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(120, 165, 225, 0.20);
+}
+
+/* ══════════════════�����������════════════════════════════════════════════════════════
    NEOMORPHIC DESIGN SYSTEM - GLOBAL TOKENS
    Clean slate/teal with white neomorphic cards
    3D depth, borderless design, consistent shadows across platform
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ═════════════════════════════════════════�����═════════════════════════════════ */
 
-/* ─── CSS CUSTOM PROPERTIES (Design Tokens) ─────────────────────────────── */
-/* ═══════════════════════════════════════════════════════════════════════════════
+/* ─── CSS CUSTOM PROPERTIES (Design Tokens) ─────────────────��──��─���──────── */
+/* ═════════════════════════════════════���═════════════════��══════════��════════════
    NEOMORPHISM DESIGN SYSTEM - InvestAssist Platform
    
    USAGE GUIDE:
@@ -634,30 +1001,30 @@
       - Icon container: `neo-icon-btn`
       - Inset elements: `neo-inset`
    
-   ═══════════════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════════════════════════════�����══════════════════════════ */
 
 :root {
-  /* Neo Shadows - 3D Depth */
-  --neo-shadow-sm: 0 2px 8px rgba(100, 100, 140, 0.06), 0 1px 2px rgba(100, 100, 140, 0.03);
-  --neo-shadow-md: 0 4px 16px rgba(100, 100, 140, 0.08), 0 2px 4px rgba(100, 100, 140, 0.04);
-  --neo-shadow-lg: 0 4px 24px rgba(100, 100, 140, 0.08), 0 1px 3px rgba(100, 100, 140, 0.04);
-  --neo-shadow-xl: 0 8px 32px rgba(100, 100, 140, 0.12), 0 2px 6px rgba(100, 100, 140, 0.06);
-  --neo-shadow-hover: 0 6px 20px rgba(100, 100, 140, 0.15), 0 2px 8px rgba(100, 100, 140, 0.08);
-  --neo-shadow-active: 0 2px 8px rgba(100, 100, 140, 0.1);
+  /* Neo Shadows - Warm depth on parchment (boosted for visibility) */
+  --neo-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.12), 0 1px 2px rgba(15, 23, 42, 0.07);
+  --neo-shadow-md: 0 4px 16px rgba(15, 23, 42, 0.13), 0 2px 4px rgba(15, 23, 42, 0.08);
+  --neo-shadow-lg: 0 8px 28px rgba(15, 23, 42, 0.14), 0 2px 6px rgba(15, 23, 42, 0.08);
+  --neo-shadow-xl: 0 12px 40px rgba(15, 23, 42, 0.18), 0 4px 10px rgba(15, 23, 42, 0.10);
+  --neo-shadow-hover: 0 20px 56px rgba(15, 23, 42, 0.22), 0 6px 14px rgba(15, 23, 42, 0.12);
+  --neo-shadow-active: 0 2px 8px rgba(15, 23, 42, 0.12);
   
-  /* Neo Button Shadows with 3D Depth */
-  --neo-btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --neo-btn-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
-  --neo-btn-shadow-primary: 0 4px 16px rgba(15, 23, 42, 0.22);
-  --neo-btn-shadow-primary-hover: 0 6px 24px rgba(15, 23, 42, 0.30);
+  /* Neo Button Shadows */
+  --neo-btn-shadow: 0 4px 12px rgba(15, 23, 42, 0.09);
+  --neo-btn-shadow-hover: 0 6px 20px rgba(15, 23, 42, 0.13);
+  --neo-btn-shadow-primary: 0 4px 16px rgba(15, 26, 46, 0.22);
+  --neo-btn-shadow-primary-hover: 0 6px 24px rgba(15, 26, 46, 0.30);
   
   /* Neo Inner Card Shadows (colored tints) */
-  --neo-shadow-indigo: 0 4px 16px rgba(13, 148, 136, 0.15);
-  --neo-shadow-emerald: 0 4px 16px rgba(16, 185, 129, 0.15);
-  --neo-shadow-amber: 0 4px 16px rgba(245, 158, 11, 0.15);
-  --neo-shadow-red: 0 4px 16px rgba(239, 68, 68, 0.15);
-  --neo-shadow-blue: 0 4px 16px rgba(59, 130, 246, 0.15);
-  --neo-shadow-teal: 0 4px 16px rgba(20, 184, 166, 0.15);
+  --neo-shadow-indigo: 0 4px 16px rgba(38, 84, 143, 0.14);
+  --neo-shadow-emerald: 0 4px 16px rgba(16, 185, 129, 0.13);
+  --neo-shadow-amber: 0 4px 16px rgba(38, 84, 143, 0.18);
+  --neo-shadow-red: 0 4px 16px rgba(220, 38, 38, 0.14);
+  --neo-shadow-blue: 0 4px 16px rgba(15, 23, 42, 0.10);
+  --neo-shadow-teal: 0 4px 16px rgba(38, 84, 143, 0.14);
   
   /* Neo Border Radius */
   --neo-radius-xs: 8px;
@@ -672,7 +1039,7 @@
   --neo-transition-fast: all 0.15s ease;
   --neo-transition-slow: all 0.3s ease;
   
-  /* ═══════════════════════════════════════════════════════════════════════════
+  /* ════════════════════════════════════════════════════════════════�����══════════
      TYPOGRAPHY SCALE - InvestAssist Platform Standard
      Consistent across Syndicator, Investor, Buyer, Broker dashboards
      ═══════════════════════════════════════════════════════════════════════════ */
@@ -706,10 +1073,10 @@
   --ia-tracking-wide: 0.05em;
   --ia-tracking-wider: 0.1em;
   
-  /* ═══════════════════════════════════════════════════════════════════════════
+  /* �����══════════════════════════════════════════════════════════════════════════
      COMPONENT SIZING - InvestAssist Platform Standard
      Consistent button, badge, input sizes across all pages
-     ═════════════════════�����������═════════════════════════════════════════════════════ */
+     ═════════════════════�����������═════════════════════════�����═══════════════════════════ */
   
   /* Button Heights */
   --ia-btn-xs: 1.5rem;         /* 24px - micro buttons */
@@ -746,34 +1113,33 @@
   --neo-text-lg: 1.125rem;     /* 18px */
   --neo-text-xl: 1.25rem;      /* 20px */
   
-  /* Neo Gradient Background */
-  --neo-gradient: linear-gradient(90deg, #f0f4f8 0%, #eaeff5 15%, #e5ecf3 30%, #dfe9f2 50%, #daeaf3 70%, #d6ecf4 85%, #d2eef5 100%);
-  --neo-section-gradient: linear-gradient(135deg, #ffffff 0%, #fafbfc 50%, #f4f7fa 80%, #eef2f6 100%);
-  --neo-top-drawer-gradient: linear-gradient(to right, #ffffff 0%, #fafbfc 40%, #f4f7fa 75%, #eef2f6 100%);
-  --neo-surface: linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(244, 247, 250, 0.95) 50%, rgba(240, 244, 248, 0.92) 100%);
+  /* Neo Gradient Background — warm parchment */
+  --neo-gradient: linear-gradient(90deg, #eef1f8 0%, #e8ecf6 20%, #e2e8f3 40%, #dde4f1 60%, #d7deec 80%, #d2dae9 100%);
+  --neo-section-gradient: linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(248,250,252,0.76) 50%, rgba(241,245,251,0.70) 80%, rgba(238,242,249,0.65) 100%);
+  --neo-top-drawer-gradient: linear-gradient(to right, rgba(255,255,255,0.90) 0%, rgba(248,250,252,0.84) 40%, rgba(241,245,251,0.78) 75%, rgba(238,242,249,0.72) 100%);
+  --neo-surface: linear-gradient(135deg, rgba(255,255,255,0.84) 0%, rgba(248,250,252,0.78) 50%, rgba(241,245,251,0.72) 100%);
 
-  /* ─── TABLE TYPOGRAPHY TOKENS ───────────────────────────────────────────── */
-  /* These tokens ensure legibility and visual hierarchy in financial tables */
+  /* ─── TABLE TYPOGRAPHY TOKENS — warm ink on frosted glass ���─���─���─���───────── */
   --neo-table-header-font-size: 12px;
   --neo-table-header-font-weight: 700;
-  --neo-table-header-color: #0f172a; /* slate-900 */
+  --neo-table-header-color: #0f1729;
   --neo-table-header-tracking: 0.05em;
-  --neo-table-header-bg: linear-gradient(135deg, rgba(248,250,252,0.98) 0%, rgba(241,245,249,0.95) 50%, rgba(236,241,247,0.92) 100%);
+  --neo-table-header-bg: linear-gradient(135deg, rgba(255,255,255,0.86) 0%, rgba(248,250,252,0.82) 50%, rgba(241,245,251,0.78) 100%);
   --neo-table-header-shadow: 0 2px 8px rgba(15,23,42,0.06);
   
   --neo-table-section-font-size: 11px;
   --neo-table-section-font-weight: 700;
-  --neo-table-section-color: #1e293b; /* slate-800 */
-  --neo-table-section-bg: linear-gradient(135deg, rgba(248,250,252,0.95) 0%, rgba(241,245,249,0.9) 100%);
+  --neo-table-section-color: #33405c;
+  --neo-table-section-bg: linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(244,247,251,0.76) 100%);
   
   --neo-table-row-font-size: 13px;
   --neo-table-row-font-weight: 500;
-  --neo-table-row-color: #0f172a; /* slate-900 */
+  --neo-table-row-color: #0f1729;
   --neo-table-row-padding: 14px 16px;
   
   --neo-table-cell-font-size: 13px;
   --neo-table-value-font-weight: 600;
-  --neo-table-value-color: #0f172a; /* slate-900 */
+  --neo-table-value-color: #0f1729;
   
   /* ─── TOOLTIP TOKENS ────────────────────────────────────────────────────── */
   --neo-tooltip-bg: #1e293b; /* slate-800 */
@@ -786,14 +1152,14 @@
 }
 
 /* ─── METRICS BAR (compact KPI strip inside financial tables) ────────────── */
-/* Use this class on the strip containing KeyMetricsBar in any table layout.  */
-/* It provides a neo-surface tint, inset border, and compact vertical sizing. */
 .neo-metrics-bar {
   background: var(--neo-surface);
-  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 1px 4px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 -1px 0 rgba(203, 213, 225, 0.60), 0 1px 4px rgba(15, 23, 42, 0.04);
 }
 
-/* ─── TABLE HEADER ROW ───────────────────────────────────────────────────── */
+/* ─── TABLE HEADER ROW ──────────────���─���──────────────────────────────────── */
 /* Strong neomorphic header with depth and legible typography */
 .neo-table-header {
   background: var(--neo-table-header-bg);
@@ -824,7 +1190,7 @@
   padding: 14px 16px;
 }
 
-/* ─── TABLE DATA ROW ─────────────────────────────────────────────────────── */
+/* ─── TABLE DATA ROW ──────────────────────────���──────────────────────────── */
 /* Regular data rows with legible values */
 .neo-table-row {
   font-size: var(--neo-table-row-font-size);
@@ -834,7 +1200,7 @@
 }
 
 .neo-table-row:hover {
-  background: rgba(248, 250, 252, 0.7);
+  background: rgba(255, 255, 255, 0.70);
 }
 
 .neo-table-row td {
@@ -849,22 +1215,16 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ─── BACKGROUND ───────────────────────────────────────��─����─���─��─��─────────── */
+/* ─── BACKGROUND ─────���───────���───────────────────────��������─��─����─���─��─��─────────── */
 .neo-gradient-bg {
   background: var(--neo-gradient);
   min-height: 100vh;
   position: relative;
 }
 
-/* Auth super-gradient: deep navy left panel for login/invite pages */
+/* Auth left panel — deep navy ink with classic-blue glow orbs (modern-AI depth) */
 .auth-super-gradient {
-  background: linear-gradient(
-    135deg,
-    #0f172a 0%,
-    #1e293b 40%,
-    rgba(13, 148, 136, 0.15) 80%,
-    rgba(99, 102, 241, 0.10) 100%
-  );
+  background: linear-gradient(150deg, #16202e 0%, #1a2c47 55%, #16202e 100%);
   position: relative;
   overflow: hidden;
 }
@@ -872,133 +1232,138 @@
 .auth-super-gradient::before {
   content: "";
   position: absolute;
-  top: -120px;
-  left: -120px;
+  top: -80px;
+  left: -80px;
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(13,148,136,0.22) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(53,102,170,0.42) 0%, transparent 65%);
+  filter: blur(20px);
   pointer-events: none;
 }
 
 .auth-super-gradient::after {
   content: "";
   position: absolute;
-  bottom: -80px;
-  right: -80px;
+  bottom: -60px;
+  right: -60px;
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(38,84,143,0.34) 0%, transparent 65%);
+  filter: blur(20px);
   pointer-events: none;
 }
 
 /* ─── MAIN CARD STYLES ───────────────────────────────────────────────────── */
-/* White neomorphic card - main card style with 3D depth and subtle gradient */
+/* Frosted glass card with depth (classic-blue tinted, modern-AI look) */
 .neo-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 252, 0.96) 50%, rgba(248, 249, 252, 0.93) 100%);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border-radius: var(--neo-radius-lg);
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06), 0 1px 4px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: none;
+  box-shadow: var(--elev-3);
+  border: 1px solid var(--glass-border);
 }
 
 /* Hover state for interactive cards */
 .neo-card-hover {
-  transition: var(--neo-transition);
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .neo-card-hover:hover {
-  box-shadow: 0 8px 32px rgba(100, 100, 160, 0.12), 0 2px 8px rgba(100, 100, 160, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 28%, var(--glass-border));
+  box-shadow: var(--elev-4);
 }
 
 /* Smaller variant */
 .neo-card-sm {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(252, 252, 252, 0.92) 100%);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border-radius: var(--neo-radius-md);
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: none;
+  box-shadow: var(--elev-2);
+  border: 1px solid var(--glass-border);
 }
 
-/* ─── NEO-CARD-ELEVATED: Primary elevated card with 3D depth ────────────── */
-/* Use for: Loan cards, metric cards, prominent sections */
+/* ─── NEO-CARD-ELEVATED: Primary elevated frosted card ─────────────────── */
 .neo-card-elevated {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.99) 0%, rgba(252, 252, 252, 0.97) 40%, rgba(248, 250, 252, 0.95) 100%);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-radius: var(--neo-radius-lg);
-  box-shadow: 
-    0 4px 20px rgba(15, 23, 42, 0.07),
-    0 2px 8px rgba(15, 23, 42, 0.04),
-    0 1px 2px rgba(15, 23, 42, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
-  border: 1px solid rgba(15, 23, 42, 0.06);
-  transition: var(--neo-transition);
+  box-shadow: var(--elev-4);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .neo-card-elevated:hover {
-  box-shadow: 
-    0 8px 32px rgba(15, 23, 42, 0.10),
-    0 4px 12px rgba(15, 23, 42, 0.05),
-    0 1px 3px rgba(15, 23, 42, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
   transform: translateY(-1px);
+  box-shadow: var(--elev-4), var(--glow-brand-soft);
 }
 
 /* ─── NEO-CARD-INSET: Inset/pressed style for nested elements ───────────── */
-/* Use for: Metric chips, stat boxes, inner containers */
 .neo-card-inset {
-  background: linear-gradient(135deg, rgba(241, 244, 248, 0.85) 0%, rgba(237, 241, 246, 0.75) 50%, rgba(242, 245, 249, 0.65) 100%);
+  background: rgba(238, 242, 249, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--neo-radius-sm);
-  box-shadow: 
-    inset 0 2px 4px rgba(15, 23, 42, 0.05),
-    inset 0 1px 2px rgba(15, 23, 42, 0.03);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  box-shadow: inset 0 2px 4px rgba(22, 32, 46, 0.06);
+  border: 1px solid var(--border);
 }
 
-/* ─── NEO-CARD-STATS: Stats card with clean slate tint ──────────────────── */
-/* Use for: KPI cards, summary metrics */
+/* ─── NEO-CARD-STATS: KPI / summary metric cards ───────────────────────── */
 .neo-card-stats-elevated {
-  background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 40%, #eef2f7 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(248, 250, 252, 0.80) 40%, rgba(241, 245, 251, 0.75) 100%);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   border-radius: var(--neo-radius-lg);
   box-shadow: 
-    0 4px 16px rgba(15, 23, 42, 0.06),
-    0 2px 6px rgba(15, 23, 42, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+    0 4px 16px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   transition: var(--neo-transition);
 }
 
-/* ─── NEO-PAGE-GRADIENT: Full page gradient background ──────────────────── */
-/* Use for: Page wrappers, content areas */
+/* ─── NEO-PAGE-GRADIENT: Full page background ───────────────────────────── */
 .neo-page-gradient {
-  background: linear-gradient(135deg, #fafbfc 0%, #f8fafc 25%, #f5f7fa 50%, #f2f5f8 75%, #eef2f6 100%);
+  background: linear-gradient(145deg, #eef1f8 0%, #e8ecf6 30%, #e2e8f3 60%, #d7deec 100%);
   min-height: 100%;
 }
 
 /* Section card with gradient */
 .neo-section-card {
-  background: var(--neo-section-gradient);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(248, 250, 252, 0.74) 50%, rgba(241, 245, 251, 0.68) 100%);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   border-radius: var(--neo-radius-lg);
   box-shadow: var(--neo-shadow-lg);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.60);
   position: relative;
   overflow: hidden;
 }
 
-/* Navy accent card (for special/highlighted sections) */
+/* Deep navy accent card */
 .neo-card-accent {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, #0f1a2e 0%, #1a2540 50%, #243060 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--neo-radius-lg);
-  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.25), 0 2px 8px rgba(15, 23, 42, 0.15);
-  border: none;
-  color: white;
+  box-shadow: 0 8px 32px rgba(15, 26, 46, 0.28), 0 2px 8px rgba(15, 26, 46, 0.16);
+  border: 1px solid rgba(53, 102, 170, 0.18);
+  color: #eef1f8;
 }
 
-/* Teal accent card */
+/* Amber accent card — replaces teal */
 .neo-accent-teal {
-  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  background: linear-gradient(135deg, #3566aa 0%, #5b87c4 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: var(--neo-radius-lg);
-  color: white;
-  box-shadow: var(--neo-shadow-teal);
+  color: #0f1729;
+  box-shadow: var(--neo-shadow-amber);
 }
 
 /* ─── INNER CARDS (Colored Tints) ────────────────────────────────────────── */
@@ -1009,68 +1374,93 @@
 }
 
 .neo-inner-card-white {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.60);
 }
 
 .neo-inner-card-indigo {
-  background: rgba(236, 253, 245, 0.8);
-  box-shadow: var(--neo-shadow-teal);
+  background: linear-gradient(135deg, rgba(255, 251, 235, 0.85) 0%, rgba(254, 243, 199, 0.75) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--neo-shadow-amber);
+  border: 1px solid rgba(38, 84, 143, 0.18);
 }
 
 .neo-inner-card-emerald {
-  background: rgba(236, 253, 245, 0.8);
+  background: rgba(236, 253, 245, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 .neo-inner-card-amber {
-  background: rgba(255, 251, 235, 0.8);
+  background: linear-gradient(135deg, rgba(255, 251, 235, 0.88) 0%, rgba(254, 243, 199, 0.80) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-amber);
+  border: 1px solid rgba(38, 84, 143, 0.22);
 }
 
 .neo-inner-card-red {
-  background: rgba(254, 242, 242, 0.8);
+  background: rgba(254, 242, 242, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-red);
+  border: 1px solid rgba(220, 38, 38, 0.14);
 }
 
 .neo-inner-card-blue {
-  background: rgba(239, 246, 255, 0.8);
-  box-shadow: var(--neo-shadow-blue);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--neo-shadow-md);
+  border: 1px solid rgba(203, 213, 225, 0.55);
 }
 
 .neo-inner-card-teal {
-  background: linear-gradient(135deg, rgba(236, 253, 245, 0.9) 0%, rgba(204, 251, 241, 0.9) 100%);
-  box-shadow: var(--neo-shadow-teal);
+  background: linear-gradient(135deg, rgba(255, 251, 235, 0.88) 0%, rgba(254, 243, 199, 0.80) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--neo-shadow-amber);
+  border: 1px solid rgba(38, 84, 143, 0.18);
 }
 
 /* ─── INSET ELEMENTS ─────────────────────────────────────────────────────── */
 .neo-inset {
-  background: linear-gradient(135deg, rgba(245, 247, 252, 0.9) 0%, rgba(240, 243, 250, 0.85) 100%);
+  background: linear-gradient(135deg, rgba(238, 242, 249, 0.72) 0%, rgba(226, 232, 240, 0.65) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--neo-radius-md);
-  box-shadow: inset 2px 2px 6px rgba(140, 150, 180, 0.12), inset -2px -2px 6px rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 2px 2px 6px rgba(15, 23, 42, 0.08), inset -2px -2px 6px rgba(255, 255, 255, 0.70);
+  border: 1px solid rgba(203, 213, 225, 0.50);
 }
 
 /* ─── TAB STYLES ────────────────────────────────────��─────����──────────────── */
-/* Neo tab container - inset look with depth */
+/* Neo tab container - warm glass inset */
 .neo-tabs {
-  background: linear-gradient(135deg, rgba(240, 243, 250, 0.95) 0%, rgba(235, 238, 248, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(238, 242, 249, 0.68) 0%, rgba(226, 232, 240, 0.62) 100%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border-radius: var(--neo-radius-lg);
   box-shadow: 
-    inset 2px 2px 6px rgba(140, 150, 180, 0.15),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.95),
-    0 1px 2px rgba(100, 100, 140, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+    inset 2px 2px 6px rgba(15, 23, 42, 0.06),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.70),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(203, 213, 225, 0.50);
 }
 
-/* Active tab - elevated with shadow depth */
+/* Active tab - frosted white glass elevated */
 .neo-tab-active {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 252, 255, 0.95) 100%);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
   border-radius: var(--neo-radius-md);
-  box-shadow: 
-    0 3px 10px rgba(100, 100, 160, 0.1),
-    0 1px 3px rgba(100, 100, 160, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: var(--elev-2);
+  border: 1px solid var(--glass-border);
 }
 
 /* Inactive tab */
@@ -1081,19 +1471,217 @@
 }
 
 .neo-tab-inactive:hover {
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 1px 4px rgba(100, 100, 160, 0.06);
+  background: var(--surface-muted);
 }
 
-/* ─── INPUT STYLES ───────────────────────────────────────────────────────── */
-/* Elevated input with neo depth */
+/* ═══════════════════════════════════════════════════════════════════════════
+   PREMIUM APP NAVIGATION — CENTRALIZED DESIGN LANGUAGE
+   One source of truth for the in-product top bar + sub-tab navigation.
+   Mirrors the InvestAssist brand gradient (indigo → violet → magenta → rose)
+   used on the marketing site so chrome feels unified across the whole product.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Brand chrome — flat solid classic blue (no gradient) */
+:root {
+  --brand-gradient: linear-gradient(110deg, #1d4074 0%, #26548f 55%, #3566aa 100%);
+  --brand-gradient-soft: linear-gradient(110deg, rgba(38,84,143,0.12) 0%, rgba(53,102,170,0.10) 70%, rgba(91,135,196,0.08) 100%);
+  --brand-ring: rgba(38, 84, 143, 0.40);
+  --brand-foreground: #ffffff;
+}
+
+  /* Notification dropdown must fully occlude sticky deal content beneath it. */
+  .notification-panel {
+    background: #ffffff !important;
+    opacity: 1 !important;
+    isolation: isolate;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* ── Top navigation bar ───────────────────────────────────────────��───────── */
+  /* Deep-blue SUPER-GRADIENT chrome band framing the light workspace (duotone).
+     Not flat black — a living navy→classic-blue gradient with an azure glow so
+     the nav reads modern and premium. `.on-ink` re-scopes descendant tokens. */
+  .app-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background:
+    radial-gradient(120% 180% at 15% -40%, rgba(34,163,255,0.20) 0%, transparent 55%),
+    radial-gradient(90% 160% at 92% -30%, rgba(53,102,170,0.28) 0%, transparent 60%),
+    linear-gradient(100deg, #0d1a30 0%, #12294a 45%, #14203a 78%, #0d1626 100%);
+  border-bottom: 1px solid rgba(34,163,255,0.18);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 10px 30px rgba(9, 18, 34, 0.5);
+}
+
+/* Pill nav links (top bar) — ink-aware */
+.app-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 11px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink-fg-muted);
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.app-nav-link:hover {
+  color: var(--ink-fg);
+  background: rgba(120, 150, 190, 0.10);
+}
+
+  /* Active pill — electric azure, the alive accent on the dark bar */
+  .app-nav-link-active {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--azure-600) 0%, var(--azure-500) 100%);
+  box-shadow:
+    0 6px 16px -5px var(--azure-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+  .app-nav-link-active:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--azure-600) 0%, var(--azure-500) 100%);
+  transform: translateY(-1px);
+}
+
+/* ── Segmented sub-tab control (Overview / Financials / Units ��) ────────── */
+.app-segment {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(238, 242, 249, 0.72) 0%, rgba(226, 232, 240, 0.66) 100%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(203, 213, 225, 0.55);
+  box-shadow:
+    inset 2px 2px 6px rgba(15, 23, 42, 0.05),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.70);
+}
+
+.app-segment-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #55627a;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-segment-item:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.70);
+}
+
+  .app-segment-item-active {
+  color: var(--brand-foreground);
+  background: var(--brand-gradient);
+  box-shadow:
+    0 6px 16px -5px var(--brand-ring),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+}
+
+  .app-segment-item-active:hover {
+  color: var(--brand-foreground);
+  background: var(--brand-gradient);
+}
+
+/* Royal blue brand text gradient */
+.text-brand-gradient {
+  background: linear-gradient(110deg, #1d4074 0%, #26548f 55%, #3566aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Property / Deal page header ────────────────────────────────────────── */
+.app-page-header {
+  background: var(--surface-elevated);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Asset-type pill */
+.app-type-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #1d4074;
+  background: var(--brand-gradient-soft);
+  border: 1px solid rgba(38, 84, 143, 0.22);
+}
+
+/* Icon + text fact in the header metadata row */
+.app-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+.app-meta-item svg {
+  height: 1rem;
+  width: 1rem;
+  color: color-mix(in srgb, var(--muted-foreground) 75%, transparent);
+  flex-shrink: 0;
+}
+
+/* Subtle dot separator between metadata facts */
+.app-meta-sep {
+  height: 4px;
+  width: 4px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+
+/* Right-aligned financial callout in the header (Asking Price / Cap Rate) */
+.app-stat-callout-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+}
+
+.app-stat-callout-value {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: #0f172a;
+}
+
+/* ─── INPUT STYLES ────────────────────────────────────────────────────�������─�����── */
+/* Elevated input — frosted glass with amber focus ring */
 .neo-input-elevated {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 252, 255, 0.95) 100%);
-  border: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.80) 100%);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(203, 213, 225, 0.55);
   border-radius: var(--neo-radius-md);
   box-shadow: 
-    0 2px 8px rgba(100, 100, 160, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 2px 8px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
   transition: var(--neo-transition);
 }
 
@@ -1101,27 +1689,31 @@
   outline: none;
   box-shadow: 
     0 4px 12px rgba(15, 23, 42, 0.08),
-    0 0 0 2px rgba(13, 148, 136, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 0 0 2px rgba(38, 84, 143, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  border-color: rgba(38, 84, 143, 0.35);
 }
 
-/* Elevated button with neo depth */
+/* Elevated button — frosted glass */
 .neo-btn-elevated {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 252, 255, 0.95) 100%);
-  border: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.80) 100%);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(203, 213, 225, 0.55);
   border-radius: var(--neo-radius-md);
   box-shadow: 
-    0 2px 8px rgba(100, 100, 160, 0.08),
-    0 1px 2px rgba(100, 100, 160, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 2px 8px rgba(15, 23, 42, 0.07),
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.80);
   transition: var(--neo-transition);
 }
 
 .neo-btn-elevated:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.92) 100%);
   box-shadow: 
-    0 4px 12px rgba(100, 100, 160, 0.12),
-    0 2px 4px rgba(100, 100, 160, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    0 6px 18px rgba(15, 23, 42, 0.10),
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
   transform: translateY(-1px);
 }
 
@@ -1147,15 +1739,18 @@
   transform: translateY(-1px);
 }
 
-/* Icon container with neo depth */
+/* Icon container — warm glass */
 .neo-icon-btn {
-  background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(244, 247, 251, 0.75) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(203, 213, 225, 0.50);
   box-shadow: 
-    0 2px 6px rgba(100, 100, 160, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 2px 6px rgba(15, 23, 42, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-/* ─── BUTTONS ────────────────────────────────────────────────────────────── */
+/* ─── BUTTONS ───────────────────────────────────��─────────────────���──────── */
 /* Base neomorphic button with 3D depth */
 .neo-btn {
   background: #ffffff;
@@ -1177,34 +1772,42 @@
   transform: translateY(0);
 }
 
-/* White/ghost button with depth */
+/* Ghost button — frosted warm glass */
 .neo-btn-ghost {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--neo-radius-sm);
+  border: 1px solid rgba(203, 213, 225, 0.48);
   box-shadow: var(--neo-btn-shadow);
-  border: none;
   transition: var(--neo-transition);
 }
 
 .neo-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.88);
   box-shadow: var(--neo-btn-shadow-hover);
 }
 
 /* Primary action button */
 .neo-btn-primary {
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--azure-500) 0%, var(--brand-700) 100%);
+  color: #ffffff;
   border-radius: var(--neo-radius-sm);
-  box-shadow: var(--neo-btn-shadow-primary);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 22px -6px var(--azure-glow),
+    0 2px 6px rgba(9, 18, 34, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition: var(--neo-transition);
 }
 
 .neo-btn-primary:hover {
-  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  background: linear-gradient(135deg, var(--azure-400) 0%, var(--brand-700) 100%);
   transform: translateY(-1px);
-  box-shadow: var(--neo-btn-shadow-primary-hover);
+  box-shadow:
+    0 12px 28px -6px var(--azure-glow),
+    0 3px 8px rgba(9, 18, 34, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 /* Round icon button with 3D depth */
@@ -1230,7 +1833,7 @@
   box-shadow: 0 4px 16px rgba(30, 41, 59, 0.3);
 }
 
-/* ─── BADGES (No Borders) ────────────────────────────────────────────────── */
+/* ─── BADGES (No Borders) ─────────────────────────────────────────────��──── */
 .neo-badge {
   border-radius: var(--neo-radius-xs);
   padding: 0.125rem 0.5rem;
@@ -1263,7 +1866,7 @@
   box-shadow: 0 2px 6px rgba(13, 148, 136, 0.15);
 }
 
-/* ─── PROGRESS BAR ───────────────────────────────────────────────────────── */
+/* ─── PROGRESS BAR ────────────────────────��──────────────────────────────── */
 .neo-progress {
   background: rgba(226, 232, 240, 0.8);
   border-radius: var(--neo-radius-xs);
@@ -1278,7 +1881,7 @@
   transition: width 0.5s ease;
 }
 
-/* ─── INPUTS ─────────────────────────────────────────────────────────────── */
+/* ─── INPUTS ────────────────────────────────────────────────────────��────── */
 .neo-input {
   background: #ffffff;
   border-radius: var(--neo-radius-sm);
@@ -1294,29 +1897,632 @@
   box-shadow: var(--neo-shadow-md), 0 0 0 2px rgba(13, 148, 136, 0.2);
 }
 
-/* ─── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
-.neo-stat-value {
-  color: #1e293b;
-  font-weight: 700;
+/* ─── TYPOGRAPHY ────────────────────��────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════���═���═══���═══���══
+   CANONICAL STAT-TILE TYPOGRAPHY — single source of truth for every metric
+   tile across all tabs (Underwriting Summary, Deal Metrics, Unit Mix, etc.).
+   Matches the approved Underwriting Summary scale. All legacy stat-typography
+   classes are aliased to these so they cascade uniformly platform-wide.
+   ════════���══════════════════════════════════════════════════════════════════ */
+
+/* Tiny uppercase tile label */
+.stat-tile-label,
+.neo-stat-label,
+.dashboard-metric-label,
+.ia-stat-label {
+  font-size: 0.625rem;          /* 10px */
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
 }
 
-.neo-stat-label {
-  color: #64748b;
-  font-size: var(--neo-text-xs);
+/* Primary tile value */
+.stat-tile-value,
+.neo-stat-value,
+.dashboard-metric-value {
+  font-size: 1rem;              /* 16px */
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+/* Secondary caption beneath the value */
+.stat-tile-caption,
+.ia-stat-subvalue {
+  font-size: 0.625rem;          /* 10px */
+  line-height: 1.3;
   font-weight: 500;
+  color: color-mix(in srgb, var(--muted-foreground) 88%, transparent);
+}
+
+/* ────────────��─────────────────────────────────────────────────────────────
+   Unified data table — one refreshed, legible table treatment used across
+   Units / Financials / Comps / Deal Info / Assumptions. Add class="ua-table"
+   to a <table>. Descendant selectors intentionally out-specify bare
+   text-slate-* utilities on <th>/<td> so legibility is consistent, while
+   explicit colors on inner <span>/<div> (semantic green/amber) still win.
+   ────────────────────────────────────────────────────────────────────────── */
+.ua-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.ua-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--surface-muted);
+  color: var(--foreground);
+  font-size: 0.6875rem;                /* 11px */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  text-align: left;
+  white-space: nowrap;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ua-table thead th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+.ua-table thead th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+.ua-table tbody td {
+  padding: 0.6rem 1rem;
+  font-size: 0.8125rem;                /* 13px */
+  line-height: 1.35;
+  color: var(--card-foreground);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+/* First column reads as the row's identity */
+.ua-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Zebra + warm hover for fast row scanning — theme-aware tint that inverts in dark */
+.ua-table tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+}
+.ua-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.ua-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Right-align + tabular numerics on numeric columns (add class="ua-num") */
+.ua-table th.ua-num,
+.ua-table td.ua-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Emphasized total / summary rows */
+.ua-table tbody tr.ua-total td {
+  font-weight: 700;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-top: 1px solid var(--border);
+}
+
+/* Selected / active row — wins over zebra + hover */
+.ua-table tbody tr.ua-active td,
+.ua-table tbody tr.ua-active:hover td {
+  background: rgba(16, 122, 87, 0.1);
+}
+.ua-table tbody tr.ua-active td:first-child {
+  box-shadow: inset 3px 0 0 0 #0f8a5f;
+}
+
+/* ── Variants for dense / structured tables (operating statement, rent roll) ── */
+
+/* Compact density for wide multi-column tables */
+.ua-table.ua-compact thead th,
+.ua-table.ua-compact tbody td {
+  padding: 0.4rem 0.65rem;
+  font-size: 0.75rem;                  /* 12px */
+}
+
+/* Frozen first column — stays put during horizontal scroll.
+   Solid bg so scrolling content doesn't bleed through. */
+.ua-table th.ua-sticky-col,
+.ua-table td.ua-sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: var(--card);
+  box-shadow: 1px 0 0 0 var(--border);
+}
+/* Top-left corner sits above both axes and matches the header tint */
+.ua-table thead th.ua-sticky-col {
+  z-index: 4;
+  background: var(--surface-muted);
+}
+/* Keep the frozen column legible on zebra/hover/total rows — token tints so the
+   frozen column never shows the old cream fills and follows light/dark. */
+.ua-table tbody tr:nth-child(even) td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 3%, var(--card));
+}
+.ua-table tbody tr:hover td.ua-sticky-col {
+  background: color-mix(in srgb, var(--primary) 10%, var(--card));
+}
+.ua-table tbody tr.ua-total td.ua-sticky-col,
+.ua-table tbody tr.ua-grand-total td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--card));
+}
+.ua-table tbody tr.ua-section-row td.ua-sticky-col {
+  background: var(--surface-muted);
+}
+
+/* ── Canonical InvestAssist typography utilities ───────────────────────────────
+   ONE source of truth for text inside cards, rows, and tables. Every component
+   that currently uses hard-coded text-slate-* should use these instead so the
+   design tokens (foreground / muted-foreground / accent-foreground) cascade
+   consistently in both light and dark modes.
+
+   ia-label         Row / field label — medium weight, normal foreground
+   ia-label-sm      Compact label — for dense tables and inner cards
+   ia-value         The primary data value in a row or tile
+   ia-caption       Secondary / sub-text beneath a value or label
+   ia-section-title Section heading inside a card (like a sub-group divider)
+   ia-body-text     Prose paragraph text (empty states, descriptions)
+   ia-tooltip       Tooltip/popover inner text
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* NOTE: canonical .ia-label and .ia-section-title live in the semantic block
+   below (single source of truth). The older duplicates were removed to end a
+   cascade conflict that oversized card sub-headers. */
+
+.ia-label-sm {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;               /* 13px */
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--foreground);
+}
+
+.ia-value {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;               /* 15px */
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+.ia-caption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;                 /* 12px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+
+.ia-body-text {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;                /* 14px */
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+/* ── Canonical STAT-CARD typography — one look for every metric tile ─────────
+   Used by Seller's Representation, Source Figures, assumptions rows, KPI tiles.
+   Change here → every stat card in the app updates. */
+.ia-stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;               /* 11px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  color: var(--muted-foreground);
+}
+.ia-stat-value {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;               /* 15px — restrained, matches NOI-bridge scale */
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+.ia-stat-value-sm {
+  font-size: 0.875rem;                /* 14px — compact tiles / editable rows */
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+.ia-stat-sub {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;                /* 10px */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  color: color-mix(in srgb, var(--muted-foreground) 80%, transparent);
+}
+
+.ia-tooltip {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;                 /* 12px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--card-foreground);
+  background: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--neo-radius-sm);
+  box-shadow: var(--neo-shadow-md);
+}
+
+/* Subsection header row (e.g. "Income", "Operating Expenses") */
+.ua-table tbody tr.ua-section-row td {
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+  color: var(--foreground);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Grand total — the strongest emphasis (final NOI, totals) */
+.ua-table tbody tr.ua-grand-total td {
+  font-weight: 800;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border-top: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
+  border-bottom: none;
+}
+
+/* No-zebra modifier — for QA/audit tables that carry their own semantic
+   cell/row backgrounds (e.g. rent-roll charge marking). Keeps the themed
+   header + borders + type, but lets component bg classes show through. */
+.ua-table.ua-no-zebra tbody tr:nth-child(even) td {
+  background: transparent;
+}
+.ua-table.ua-no-zebra tbody tr:hover td {
+  background: rgba(38, 84, 143, 0.05);
 }
 
 .neo-title {
   font-size: var(--neo-text-base);
   font-weight: 600;
-  color: #1e293b;
+  color: var(--foreground);
 }
 
 .neo-subtitle {
   font-size: var(--neo-text-sm);
   font-weight: 500;
-  color: #64748b;
+  color: var(--muted-foreground);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITY CLASSES — Platform-wide semantic text scale
+   SINGLE SOURCE OF TRUTH: every text element on every page uses one of these.
+   No loose font-size, font-weight, or color values anywhere in component code.
+   ══════════��════════════════════════════════════════════════════════════════
+
+   SCALE (token → px → use-case):
+   .ia-text-2xs  9px   micro AI-badge labels, timestamp chips
+   .ia-text-xs  10px   uppercase stat labels, badge text, eyebrows
+   .ia-text-sm  11px   captions, footnotes, card sub-labels
+   .ia-text-base 12px  body-small, table cells, tooltip text
+   .ia-text-md  13px   standard body, row labels, card descriptions
+   .ia-text-lg  14px   body text, button labels, nav links
+   .ia-text-xl  16px   card titles, stat values
+   .ia-text-2xl 18px   sub-page titles
+   .ia-text-3xl 20px   section headings
+   .ia-text-4xl 24px   page titles, hero KPI values
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── NUMERIC SCALE ───────────────────────────────────────────────────────── */
+.ia-text-2xs  { font-size: var(--ia-text-2xs);  }   /* 9px  */
+.ia-text-xs   { font-size: var(--ia-text-xs);   }   /* 10px */
+.ia-text-sm   { font-size: var(--ia-text-sm);   }   /* 11px */
+.ia-text-base { font-size: var(--ia-text-base); }   /* 12px */
+.ia-text-md   { font-size: var(--ia-text-md);   }   /* 13px */
+.ia-text-lg   { font-size: var(--ia-text-lg);   }   /* 14px */
+.ia-text-xl   { font-size: var(--ia-text-xl);   }   /* 16px */
+.ia-text-2xl  { font-size: var(--ia-text-2xl);  }   /* 18px */
+.ia-text-3xl  { font-size: var(--ia-text-3xl);  }   /* 20px */
+.ia-text-4xl  { font-size: var(--ia-text-4xl);  }   /* 24px */
+
+/* ── PAGE-LEVEL HEADINGS ─────────────────────────────────────────────────── */
+
+/* Hero / marketing headline — Playfair Display, large */
+.ia-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+/* App page title — shown above the content of each main route */
+.ia-page-title {
+  font-family: var(--font-display);
+  font-size: var(--ia-text-4xl);
+  font-weight: var(--ia-font-bold);
+  line-height: var(--ia-leading-tight);
+  letter-spacing: var(--ia-tracking-tight);
+  color: var(--foreground);
+}
+
+/* Section heading — balanced NOI-bridge scale (14px bold, not oversized).
+   Canonical single definition (older 11px-uppercase + 20px duplicates removed). */
+.ia-section-title {
+  font-family: var(--font-display);
+  font-size: var(--ia-text-lg);       /* 14px */
+  font-weight: var(--ia-font-bold);
+  line-height: var(--ia-leading-tight);
+  letter-spacing: -0.005em;
+  color: var(--foreground);
+}
+
+/* Sub-section title (inside a card, above a group of metrics) */
+.ia-subsection-title {
+  font-family: var(--font-display);
+  font-size: var(--ia-text-xl);       /* 16px */
+  font-weight: var(--ia-font-semibold);
+  line-height: var(--ia-leading-tight);
+  color: var(--foreground);
+}
+
+/* Eyebrow label — displayed above a section or card title */
+.ia-eyebrow {
+  font-size: var(--ia-text-xs);
+  font-weight: var(--ia-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ia-tracking-wider);
+  color: var(--accent-foreground);
+}
+
+/* ── CARD-LEVEL TEXT ─────────────────────────────────────────────────────── */
+
+/* Primary card heading */
+.ia-card-title {
+  font-size: var(--ia-text-lg);
+  font-weight: var(--ia-font-bold);
+  line-height: var(--ia-leading-tight);
+  color: var(--foreground);
+}
+
+/* Section label inside a card (column header, group header) */
+.ia-card-section {
+  font-size: var(--ia-text-xs);
+  font-weight: var(--ia-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ia-tracking-wide);
+  color: var(--muted-foreground);
+}
+
+/* Standard card body text */
+.ia-card-body {
+  font-size: var(--ia-text-md);
+  font-weight: var(--ia-font-normal);
+  line-height: var(--ia-leading-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* Secondary / supporting line under a card title or value */
+.ia-card-caption {
+  font-size: var(--ia-text-sm);
+  font-weight: var(--ia-font-normal);
+  line-height: var(--ia-leading-normal);
+  color: var(--muted-foreground);
+}
+
+/* Micro footnote below cards / tables */
+.ia-footnote {
+  font-size: var(--ia-text-xs);
+  font-weight: var(--ia-font-normal);
+  line-height: var(--ia-leading-normal);
+  color: var(--muted-foreground);
+  opacity: 0.8;
+}
+
+/* ── BUTTON TYPOGRAPHY ───────────────────────────────────���───────────────── */
+
+/* Large primary CTA button */
+.ia-btn-label-lg {
+  font-size: var(--ia-text-lg);
+  font-weight: var(--ia-font-bold);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+/* Standard button (h-8 / h-9) */
+.ia-btn-label {
+  font-size: var(--ia-text-md);
+  font-weight: var(--ia-font-semibold);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+/* Small / ghost button */
+.ia-btn-label-sm {
+  font-size: var(--ia-text-base);
+  font-weight: var(--ia-font-medium);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+/* ── BADGE / STATUS CHIP TEXT ────────────────────────────────────────���───── */
+
+/* Badge label — uppercase pill inside cards, tables, and flags */
+.ia-badge-label {
+  font-size: var(--ia-text-xs);
+  font-weight: var(--ia-font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ia-tracking-wide);
+  line-height: 1;
+}
+
+/* ── TABLE TYPOGRAPHY ────────────────────────────────────────────────────── */
+
+/* Column header row */
+.ia-table-col-header {
+  font-size: var(--ia-text-xs);
+  font-weight: var(--ia-font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--foreground);
+}
+
+/* Row key / label column */
+.ia-table-row-label {
+  font-size: var(--ia-text-md);
+  font-weight: var(--ia-font-medium);
+  color: var(--foreground);
+  line-height: var(--ia-leading-normal);
+}
+
+/* Row value column */
+.ia-table-row-value {
+  font-size: var(--ia-text-md);
+  font-weight: var(--ia-font-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+/* ── NAVIGATION TEXT ──────────────────────��─��───────────────────────────�����── */
+
+/* Top-bar and sidebar nav item */
+.ia-nav-label {
+  font-size: var(--ia-text-lg);
+  font-weight: var(--ia-font-semibold);
+  line-height: 1;
+}
+
+/* Breadcrumb / page context */
+.ia-breadcrumb {
+  font-size: var(--ia-text-base);
+  font-weight: var(--ia-font-medium);
+  color: var(--muted-foreground);
+}
+
+/* ── METRIC / KPI DISPLAY ────────────────────────────────────────────────── */
+
+/* Hero KPI / large dashboard metric value */
+.ia-kpi-value {
+  font-size: var(--ia-text-4xl);
+  font-weight: var(--ia-font-bold);
+  line-height: 1.1;
+  letter-spacing: var(--ia-tracking-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+/* Medium stat value inside a card */
+.ia-stat-value-xl {
+  font-size: var(--ia-text-xl);
+  font-weight: var(--ia-font-bold);
+  line-height: 1.2;
+  letter-spacing: var(--ia-tracking-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+/* Small metric inside dense/inner cards */
+.ia-stat-value-sm {
+  font-size: var(--ia-text-base);
+  font-weight: var(--ia-font-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+/* ── FORM / INPUT TEXT ──────────────────────────────���────────────────────── */
+
+/* Input field value and placeholder */
+.ia-input-text {
+  font-size: var(--ia-text-lg);
+  font-weight: var(--ia-font-normal);
+  line-height: var(--ia-leading-normal);
+  color: var(--foreground);
+}
+
+/* Form field label above an input */
+.ia-label {
+  font-size: var(--ia-text-base);
+  font-weight: var(--ia-font-semibold);
+  line-height: var(--ia-leading-normal);
+  color: var(--foreground);
+}
+
+/* Form helper / validation message */
+.ia-helper-text {
+  font-size: var(--ia-text-sm);
+  font-weight: var(--ia-font-normal);
+  line-height: var(--ia-leading-normal);
+  color: var(--muted-foreground);
+}
+
+/* ��─ COLOR MODIFIERS (apply alongside any .ia-* class) ──────────────────── */
+
+/* Primary foreground (near-black ink) */
+.ia-color-primary   { color: var(--foreground); }
+/* Muted / secondary text */
+.ia-color-muted     { color: var(--muted-foreground); }
+/* Amber accent */
+.ia-color-accent    { color: var(--accent-foreground); }
+/* Success green */
+.ia-color-success   { color: var(--success); }
+/* Warning amber */
+.ia-color-warning   { color: var(--warning); }
+/* Destructive red */
+.ia-color-error     { color: var(--destructive); }
+/* Info blue */
+.ia-color-info      { color: var(--info); }
+
+/* ── WEIGHT MODIFIERS ────────────────────────────────────────────────────── */
+.ia-weight-normal   { font-weight: var(--ia-font-normal);   }
+.ia-weight-medium   { font-weight: var(--ia-font-medium);   }
+.ia-weight-semibold { font-weight: var(--ia-font-semibold); }
+.ia-weight-bold     { font-weight: var(--ia-font-bold);     }
+
+/* ── NUMERIC TABULAR MODIFIER ────────────────────────────────────────────── */
+.ia-tabular         { font-variant-numeric: tabular-nums; }
+
+/* ── MONO TABULAR FIGURES for ALL metrics/KPIs (modern fintech signature) ────
+   One rule so every numeric class renders in Geist Mono with aligned tabular
+   figures. Tracking is neutralized (mono needs no negative tracking). */
+.ia-stat-value,
+.ia-stat-value-sm,
+.ia-stat-value-xl,
+.ia-kpi-value,
+.metric-value,
+.ua-num,
+.ia-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  font-feature-settings: "tnum" 1, "cv01" 1;
+}
+
+/* ── UPPERCASE LABEL MODIFIER ──────────────────────────────────��─────────── */
+.ia-uppercase       { text-transform: uppercase; letter-spacing: var(--ia-tracking-wide); }
 
 /* ─── CHART CONTAINER ────────────────────────────────────────────────────── */
 .neo-chart-container {
@@ -1346,7 +2552,7 @@
   box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-/* ─── DIVIDERS (Subtle) ───────────────────�������─────────────�����������────────────────── */
+/* ─── DIVIDERS (Subtle) ───────────────────�������─��─��─────────�����������────────���───────── */
 .neo-divider {
   border: none;
   height: 1px;
@@ -1359,18 +2565,21 @@
   background: rgba(148, 163, 184, 0.25);
 }
 
-/* ═════════════════════════════════════════════════════════════════════════════
+/* ══��════════════════════════════════════════════════════════════════════��═════
    TOP DRAWER (Dashboard Hero Section) DESIGN TOKENS
    Applied to: Syndicator, Investor, Buyer-Acquirer, Broker-Seller dashboards
-   ═════════════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════��═══════════════════════��════════════════════════ */
 
-/* Light theme TopDrawer (used by Syndicator) */
+/* Light theme TopDrawer (used by Syndicator) — frosted glass + classic-blue glow orbs */
 .top-drawer-light {
   position: relative;
   border-radius: var(--neo-radius-lg);
   overflow: hidden;
-  background: linear-gradient(to right, #ffffff 0%, #ffffff 40%, #EDE9FE 75%, #DBEAFE 100%);
-  box-shadow: 0 4px 24px rgba(100, 100, 140, 0.12), 0 1px 3px rgba(100, 100, 140, 0.06);
+  background: linear-gradient(to right, rgba(255,255,255,0.94) 0%, rgba(246,248,251,0.86) 55%, rgba(238,244,251,0.8) 100%);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--elev-3);
 }
 
 .top-drawer-light::before {
@@ -1380,7 +2589,7 @@
   right: 25%;
   width: 16rem;
   height: 16rem;
-  background: rgba(237, 233, 254, 0.3);
+  background: radial-gradient(circle, rgba(53,102,170,0.16) 0%, transparent 65%);
   border-radius: 9999px;
   filter: blur(48px);
   transform: translateY(-50%);
@@ -1394,7 +2603,7 @@
   right: 0;
   width: 12rem;
   height: 12rem;
-  background: rgba(219, 234, 254, 0.4);
+  background: radial-gradient(circle, rgba(38,84,143,0.12) 0%, transparent 65%);
   border-radius: 9999px;
   filter: blur(48px);
   transform: translateY(33%) translateX(25%);
@@ -1422,7 +2631,7 @@
   left: 25%;
   width: 18rem;
   height: 18rem;
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(53, 102, 170, 0.08);
   border-radius: 9999px;
   filter: blur(48px);
   pointer-events: none;
@@ -1441,7 +2650,7 @@
   right: 25%;
   width: 18rem;
   height: 18rem;
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(53, 102, 170, 0.08);
   border-radius: 9999px;
   filter: blur(48px);
   pointer-events: none;
@@ -1551,10 +2760,10 @@
   box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
 }
 
-/* ═════════════════════════════════════════════════��═══════════════════════════
+/* ═════════════════════════════════════════════════��══════��════════════════════
    DASHBOARD CARD DESIGN TOKENS
    Applied to: All role dashboard cards (Syndicator, Investor, Buyer, Broker)
-   ════════════════════════════════════════════════════════════════════════════��� */
+   ════════════════════���════════���══════════════════════════════════════════════��� */
 
 /* Dashboard button - Standard action button with 3D depth, no border */
 .dashboard-btn {
@@ -1577,11 +2786,11 @@
 
 /* Dashboard button - Blue accent variant */
 .dashboard-btn-blue {
-  color: #2563eb;
+  color: #26548f;
 }
 
 .dashboard-btn-blue:hover {
-  color: #1d4ed8;
+  color: #1d4074;
 }
 
 /* Dashboard metric card - KPI display boxes */
@@ -1594,16 +2803,9 @@
 }
 
 /* Dashboard metric label */
-.dashboard-metric-label {
-  font-size: 0.75rem; /* text-xs */
-  color: #475569; /* text-slate-600 */
-}
-
-/* Dashboard metric value */
+/* Dashboard metric label/value inherit the canonical stat-tile scale
+   (aliased above). Only layout + semantic color variants remain local. */
 .dashboard-metric-value {
-  font-size: 1rem; /* text-base */
-  font-weight: 700;
-  color: #0f172a; /* text-slate-900 */
   margin-top: 0.25rem;
 }
 
@@ -1632,13 +2834,13 @@
 
 .dashboard-data-row-label {
   font-size: 0.875rem; /* text-sm */
-  color: #475569; /* text-slate-600 */
+  color: var(--muted-foreground);
 }
 
 .dashboard-data-row-value {
   font-size: 0.875rem; /* text-sm */
   font-weight: 600;
-  color: #0f172a; /* text-slate-900 */
+  color: var(--foreground);
   text-align: right;
 }
 
@@ -1651,15 +2853,16 @@
 }
 
 .dashboard-highlight-box-emerald {
-  background: linear-gradient(to right, #ecfdf5, #ccfbf1); /* from-emerald-50 to-teal-50 */
+  /* Token tints over the card surface so they invert with the theme. */
+  background: linear-gradient(to right, color-mix(in srgb, var(--success) 12%, var(--card)), color-mix(in srgb, var(--success) 8%, var(--card)));
 }
 
 .dashboard-highlight-box-blue {
-  background: linear-gradient(to right, #eff6ff, #f0fdf4); /* from-blue-50 to-green-50 */
+  background: linear-gradient(to right, color-mix(in srgb, var(--info) 12%, var(--card)), color-mix(in srgb, var(--success) 8%, var(--card)));
 }
 
 .dashboard-highlight-box-amber {
-  background: linear-gradient(135deg, #fffbeb, #fff7ed); /* from-amber-50 to-orange-50 */
+  background: linear-gradient(135deg, color-mix(in srgb, var(--warning) 14%, var(--card)), color-mix(in srgb, var(--warning) 8%, var(--card)));
 }
 
 /* Dashboard highlight box title */
@@ -1686,17 +2889,17 @@
 }
 
 .dashboard-scenario-row-base {
-  background: rgba(239, 246, 255, 0.7); /* bg-blue-50/70 */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+  background: color-mix(in srgb, var(--info) 12%, var(--card));
+  box-shadow: 0 4px 16px rgba(53, 102, 170, 0.15);
 }
 
 .dashboard-scenario-row-upside {
-  background: rgba(236, 253, 245, 0.7); /* bg-emerald-50/70 */
+  background: color-mix(in srgb, var(--success) 12%, var(--card));
   box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
 }
 
 .dashboard-scenario-row-downside {
-  background: rgba(254, 242, 242, 0.7); /* bg-red-50/70 */
+  background: color-mix(in srgb, var(--destructive) 12%, var(--card));
   box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
 }
 
@@ -1704,7 +2907,7 @@
 .dashboard-scenario-label {
   font-size: 0.75rem; /* text-xs */
   font-weight: 600;
-  color: #334155; /* text-slate-700 */
+  color: var(--card-foreground);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1712,7 +2915,7 @@
 /* Dashboard scenario sub-label */
 .dashboard-scenario-sub {
   font-size: 0.75rem; /* text-xs */
-  color: #64748b; /* text-slate-500 */
+  color: var(--muted-foreground);
   margin-top: 0.25rem;
 }
 
@@ -1784,8 +2987,8 @@
 }
 
 .dashboard-badge-blue {
-  background: #dbeafe; /* bg-blue-100 */
-  color: #2563eb; /* text-blue-700 */
+  background: #d9e6f4; /* bg-blue-100 */
+  color: #26548f; /* text-blue-700 */
 }
 
 .dashboard-badge-amber {
@@ -1820,7 +3023,7 @@
   justify-content: center;
   font-size: 0.75rem; /* text-xs */
   font-weight: 700;
-  color: #1d4ed8; /* text-blue-700 */
+  color: #1d4074; /* text-blue-700 */
   flex-shrink: 0;
 }
 
@@ -1846,8 +3049,8 @@
 }
 
 .dashboard-stage-ppm {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #d9e6f4;
+  color: #1d4074;
 }
 
 .dashboard-stage-verbal {
@@ -1860,7 +3063,7 @@
   color: #475569;
 }
 
-/* ─── PAGE BACKGROUNDS ────────────────────────────────────────────��──────── */
+/* ─── PAGE BACKGROUNDS ───────────────────────────────────────────�����──────── */
 .neo-page-bg {
   background: var(--neo-gradient);
   min-height: 100vh;
@@ -1871,24 +3074,29 @@
   background: transparent;
 }
 
-/* ═══════════════������═══════════════════════════════════════════════════���═════════
+/* ═══════════════������════════════════��══════════════════════════════════���═════════
    PLATFORM-WIDE NEO CARD DESIGN TOKENS
    Applied to: Documents, Property, Model, Insights, Deal Room
    All tabs, sub-tabs, content pages across all user roles
-   ═════════════════════════════════════════════════════════════��═══════════════ */
+   ═══════════════════════════════════════════════════════════��═��══════════���════ */
 
-/* Primary content card - white/slate gradient with neo shadow 
-   Note: Main definition is above. This extends with transition for platform-wide consistency */
+/* Primary content card — warm frosted-glass over parchment.
+   Explicitly sets font-family so every card surface inherits Inter regardless
+   of where in the DOM it sits, eliminating browser-default font bleed. */
 .neo-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 255, 0.95) 50%, rgba(248, 248, 255, 0.92) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.90) 0%, rgba(248, 250, 252, 0.84) 50%, rgba(244, 247, 251, 0.80) 100%);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   border-radius: var(--neo-radius-lg);
-  box-shadow: 0 4px 20px rgba(100, 100, 160, 0.08), 0 1px 4px rgba(100, 100, 160, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: none;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08), 0 1px 4px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  font-family: var(--font-sans);
+  color: var(--foreground);
   transition: var(--neo-transition);
 }
 
 .neo-card:hover {
-  box-shadow: 0 8px 32px rgba(100, 100, 160, 0.12), 0 2px 8px rgba(100, 100, 160, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.11), 0 2px 8px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 /* Secondary card variant - lighter gradient */
@@ -1904,40 +3112,55 @@
   box-shadow: 0 6px 20px rgba(100, 100, 160, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-/* Nested card inside main cards */
+/* Nested card inside main cards — raised white surface with real depth so it
+   reads as a distinct, prominent element on top of the parent neo-card. */
 .neo-card-inner {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 252, 255, 0.8) 100%);
-  border-radius: var(--neo-radius-md);
-  box-shadow: 0 2px 10px rgba(100, 100, 160, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  border: none;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: var(--neo-radius-sm);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 8px 18px -8px rgba(15, 23, 42, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(203, 213, 225, 0.55);
+  font-family: var(--font-sans);
+  color: var(--foreground);
   transition: var(--neo-transition);
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
+/* Optional interactive lift for clickable inner cards */
+.neo-card-inner-hover:hover {
+  box-shadow:
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 12px 24px -8px rgba(15, 23, 42, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════���═════���════════════════════���═══════════════��════════
    METRIC CARDS - Neomorphic 3D depth with consistent sizing
    Cache bust: 2026-03-22-v3
    ══════════════════════════════════════════════════════════════════════════ */
 
 .neo-card-stats,
 .metric-card-default {
-  background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 50%, #f5f3ff 100%);
+  background: linear-gradient(135deg, #eef4fb 0%, #eef2ff 50%, #f5f3ff 100%);
   border-radius: 14px;
   box-shadow: 
-    0 8px 24px -4px rgba(99,102,241,0.15),
-    0 4px 8px -2px rgba(99,102,241,0.08),
+    0 8px 24px -4px rgba(53, 102, 170,0.15),
+    0 4px 8px -2px rgba(53, 102, 170,0.08),
     inset 0 1px 0 rgba(255,255,255,0.95),
-    inset 0 -1px 0 rgba(99,102,241,0.06);
-  border: 1px solid rgba(99,102,241,0.1);
+    inset 0 -1px 0 rgba(53, 102, 170,0.06);
+  border: 1px solid rgba(53, 102, 170,0.1);
 }
 
 .metric-card-blue {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  background: linear-gradient(135deg, #eef4fb 0%, #d9e6f4 100%);
   border-radius: 14px;
   box-shadow: 
-    0 8px 24px -4px rgba(59,130,246,0.18),
-    0 4px 8px -2px rgba(59,130,246,0.1),
+    0 8px 24px -4px rgba(53, 102, 170,0.18),
+    0 4px 8px -2px rgba(53, 102, 170,0.1),
     inset 0 1px 0 rgba(255,255,255,0.95);
-  border: 1px solid rgba(59,130,246,0.12);
+  border: 1px solid rgba(53, 102, 170,0.12);
 }
 
 .metric-card-green {
@@ -2036,7 +3259,7 @@
   box-shadow: 0 2px 8px rgba(100, 100, 140, 0.06);
 }
 
-/* ─── LIST CONTAINERS ────────────────────────────────────────────────────── */
+/* ─── LIST CONTAINERS ───────────────────────────��────────────────────────── */
 .neo-list-container {
   background: rgba(255, 255, 255, 0.95);
   border-radius: var(--neo-radius-lg);
@@ -2044,7 +3267,7 @@
   border: none;
 }
 
-/* ─── DATA TABLE STYLING ─────────────────────────────────────────────────── */
+/* ─── DATA TABLE STYLING ���───���────────────────────────────────────────────── */
 .neo-table-container {
   background: #ffffff;
   border-radius: var(--neo-radius-lg);
@@ -2061,7 +3284,7 @@
   background: rgba(248, 250, 252, 0.8);
 }
 
-/* ─── STATUS INDICATORS ──────────────────────────────────────────────────── */
+/* ─── STATUS INDICATORS ─���────────────────────────────────────────────────── */
 .neo-status-dot {
   width: 8px;
   height: 8px;
@@ -2084,7 +3307,7 @@
   box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
 }
 
-/* ─── PROPERTY/DEAL IMAGE CARDS ──────────────────────────────────────────── */
+/* ─── PROPERTY/DEAL IMAGE CARDS ───────────�����──���───────────────────────────── */
 .neo-image-card {
   border-radius: var(--neo-radius-sm);
   overflow: hidden;
@@ -2131,7 +3354,7 @@
 /* ═════════════════════════════════════════════════════════════════════════════
    RESPONSIVE SHELL UTILITIES
    Global breakpoint-consistent patterns for the app shell
-   ══════════════════════════════��════════════════════════════════════════════ */
+   ══════════��═══════════════════��═══��══════════════════════════════════��═════ */
 
 /* Page content container - consistent padding across breakpoints */
 .page-container {
@@ -2279,10 +3502,10 @@
   }
 }
 
-/* ═���═════════════════════════════════════════════════════════════════════════
+/* ═�����══��══════════════════════════════════════════════════════════════════════
    RESPONSIVE CARD & GRID UTILITIES
    Standardized patterns for cards, grids, and content sections
-   ═══════════════════����═══════════════════════════════════════════════════════ */
+   ═══════════════════����════════════════════════════════════════════��══════════ */
 
 /* Standard card padding - responsive */
 .card-padding {
@@ -2302,7 +3525,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    FINANCIAL SAAS DESIGN SYSTEM - KPI Cards
    Modern, sleek metric display with consistent spacing
-   ══════════════════════════════════════════════════════════════��════════════ */
+   ═══════════════════════════��═════════════════════════���════════��════════════ */
 
 /* KPI Card - responsive metrics display */
 .kpi-card {
@@ -2500,10 +3723,10 @@
   }
 }
 
-/* ════════════════════════════════════════════��══════════════════════════════
+/* ════════════════════════════════════════════��══════════════��═══════════════
    RESPONSIVE DENSE COMPONENTS
    Tables, forms, drawers, modals - high-density responsive patterns
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════���══════════════��� */
 
 /* Responsive table container - horizontal scroll with sticky columns */
 .table-responsive {
@@ -2767,17 +3990,17 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════���═���════���════════════════════���═══
    INVESTASSIST DESIGN SYSTEM - TYPOGRAPHY & COMPONENT STANDARDS
-   ─────────────────────────────────────────────────────────────────────────────
+   ──────────────────────���───────���─────────────────────────────────���────────────
    Source of truth: Syndicator Dashboard design patterns
    Applied consistently across: Syndicator, Investor, Buyer, Broker dashboards
    All tabs, pages, modals, and components platform-wide
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════════════��══════════════════════════════════════ */
 
 /* ═══════════════════════════════════════════════════════════════════════════
    TYPOGRAPHY SCALE - PLATFORM STANDARD
-   ═══════��════════════════════��══════════════════════════════════════════════ */
+   ═══════��════════════════════��════════════════════════════════��═════════════ */
 
 /* Page Titles - Main page headings */
 .text-page-title {
@@ -2834,7 +4057,7 @@
   @apply text-[9px] sm:text-[10px] font-medium uppercase tracking-wide;
 }
 
-/* ─── Stat/KPI Values ────────────────────────────────────────────────────��──── */
+/* ─── Stat/KPI Values ────────────────────────���────────────���──────────────��──── */
 /* Hero Stats - Large dashboard KPIs (24-32px bold) */
 .text-stat-xl {
   @apply text-xl sm:text-2xl lg:text-[28px] font-bold text-foreground tabular-nums tracking-tight;
@@ -2876,10 +4099,10 @@
   @apply font-mono text-sm tabular-nums;
 }
 
-/* ═════���═══════���═══════════════���═══════════════════════════��═════════════════
+/* ═════���═══���═══���═══���═══════════���══════════════════════��════��═════════════════
    BUTTON SIZING - PLATFORM STANDARD
    Standard: h-8 (32px) with text-sm for most buttons
-   ═══════════════════════════════════════════════════════════════���═══════════ */
+   ═══════════════════════════════════════════════════════��══��════��������═������═══════ */
 
 /* Card Action Buttons - Inside card headers (h-7 or h-8, text-xs/text-sm) */
 .btn-card-action {
@@ -2935,7 +4158,7 @@
 
 /* ══════��════════════════════════════════════════════════════════════════════
    AVATAR SIZING - PLATFORM STANDARD
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ═════��════════════════════════════════════════��════════════════════════════ */
 
 .avatar-xs {
   @apply h-6 w-6 text-[10px];
@@ -2984,10 +4207,10 @@
   @apply h-5 w-5;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ══════════��════════════════════════════════════════════════════════════════
    SPACING STANDARDS - PLATFORM STANDARD
    Consistent spacing across all components and layouts
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ═══��═══════════════════════════════════════════════════════════════════════ */
 
 /* Card Padding */
 .spacing-card {
@@ -3026,7 +4249,7 @@
   @apply gap-2 sm:gap-3;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═════════��══════════════���══════════════════════════════════════════════════
    COLOR SEMANTICS - PLATFORM STANDARD
    Consistent status colors across all components
    ══════════════════════════════════════════���════════════════════════════════ */
@@ -3088,7 +4311,7 @@
   @apply bg-slate-50;
 }
 
-/* ─── Card Patterns ────────────────────────────────────────────────────────── */
+/* ���── Card Patterns ────────────────────────────────────────────────────────── */
 /* Standard section card - Neomorphic white card style */
 .ia-card {
   @apply rounded-2xl p-4 sm:p-5 transition-all;
@@ -3138,7 +4361,7 @@
   @apply flex items-center justify-between py-2 border-b border-slate-100/80 last:border-none;
 }
 
-/* ���── Button Patterns ─────────────����──────────────────────────��────────────── */
+/* ���── Button Patterns ────────��────����───��──────────────────────��────────────���─ */
 /* Small action button in card headers */
 .ia-btn-card-action {
   @apply h-7 text-xs px-2.5;
@@ -3153,7 +4376,7 @@
   @apply h-7 w-7 p-0;
 }
 
-/* ─── Badge/Chip Patterns ──────────────────────────────────────────────────── */
+/* ─── Badge/Chip Patterns ──────────────────────────────────────────���─���───���─── */
 /* Status badge - base */
 .ia-badge {
   @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-medium border;
@@ -3169,7 +4392,7 @@
   @apply inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[9px] font-medium bg-teal-50 text-teal-600 border border-teal-200/50;
 }
 
-/* ─── Layout Helpers ───────────────────────────────��───────────────────────── */
+/* ─── Layout Helpers ──────────────��────────────────��───────────────────────── */
 /* Page content wrapper */
 .ia-page {
   @apply min-h-screen p-2 sm:p-3 lg:p-4;
@@ -3198,7 +4421,7 @@
   @apply grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4;
 }
 
-/* ─── Color Semantics ──────────────────────────────────────────────────────── */
+/* ─── Color Semantics ────────��─────────────────────────────────────────────── */
 /* Success states */
 .ia-success {
   @apply bg-emerald-50 border-emerald-200/60 text-emerald-700;
@@ -3242,7 +4465,7 @@
   color: #334155; /* slate-700 */
 }
 
-/* ─── Extraction Row Color Coding (Income/Expense/Other) ─────��─────────────── */
+/* ─���─ Extraction Row Color Coding (Income/Expense/Other) ─────��─────────────── */
 /* Color coding for extracted table rows to help users identify account types */
 /* Using plain CSS to avoid Tailwind v4 @apply conflicts */
 .ia-row-income {
@@ -3288,7 +4511,7 @@
   color: #334155; /* slate-700 */
 }
 
-/* ─── KPI/Metric Card Accents ──────────────────────────────────────────────── */
+/* ─── KPI/Metric Card Accents ──────────────���───────────────────────────────── */
 /* Financial SaaS: plain CSS (no @apply) - renamed to avoid shared template cache conflict */
 .ia-metric-card {
   position: relative;
@@ -3323,10 +4546,10 @@
 
 .ia-kpi-info {
   position: relative; border-radius: 0.5rem; background-color: #ffffff;
-  border: 1px solid #e2e8f0; border-top: 2px solid #3b82f6;
+  border: 1px solid #e2e8f0; border-top: 2px solid #3566aa;
   padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #3b82f6; }
+.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #3566aa; }
 
 .ia-kpi-teal {
   position: relative; border-radius: 0.5rem; background-color: #ffffff;
@@ -3342,7 +4565,7 @@
 }
 .ia-kpi-neutral:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; }
 
-/* ─── Simple Stat Cards ─────────────────────────────────���──────────────────── */
+/* ─── Simple Stat Cards ─────────────────────────────────���───────────������───���─── */
 .ia-stat-simple {
   border-radius: 0.5rem;
   background-color: #ffffff;
@@ -3387,35 +4610,38 @@
   border-radius: 9999px;
 }
 .ia-stat-accent-teal::before    { background-color: #14b8a6; }
-.ia-stat-accent-blue::before    { background-color: #3b82f6; }
+.ia-stat-accent-blue::before    { background-color: #3566aa; }
 .ia-stat-accent-emerald::before { background-color: #10b981; }
 .ia-stat-accent-amber::before   { background-color: #f59e0b; }
 .ia-stat-accent-violet::before  { background-color: #475569; }
 
-/* ─── Value/Label Typography ────��──────────────────────────────────────────── */
+/* ─── Value/Label Typography ────��─────────────────────────────���───────���────── */
 /* Large stat value - for hero KPIs */
-.ia-stat-value-xl {
-  @apply text-lg sm:text-xl font-semibold text-slate-900 tabular-nums tracking-tight;
-}
-
-/* Medium stat value - for primary metrics */  
-.ia-stat-value-lg {
-  @apply text-base sm:text-lg font-semibold text-slate-900 tabular-nums;
-}
-
-/* Regular stat value */
+/* Value scales converged to the single canonical compact tile size (16px).
+   One scale everywhere per global design consolidation. */
+.ia-stat-value-xl,
+.ia-stat-value-lg,
 .ia-stat-value-md {
-  @apply text-sm font-semibold text-slate-900 tabular-nums;
+  @apply text-base font-bold text-slate-900 tabular-nums tracking-tight;
 }
 
-/* Micro uppercase label */
+/* Micro uppercase label — converged to the canonical stat-tile scale */
 .ia-stat-label {
-  @apply text-[9px] sm:text-[10px] font-medium text-muted-foreground uppercase tracking-wider;
+  font-size: 0.625rem;          /* 10px */
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;               /* slate-500 */
 }
 
-/* Sub-value (secondary info below main value) */
+/* Sub-value (secondary info below main value) — canonical caption */
 .ia-stat-subvalue {
-  @apply text-[10px] text-muted-foreground mt-1;
+  font-size: 0.625rem;          /* 10px */
+  line-height: 1.3;
+  font-weight: 400;
+  color: #94a3b8;               /* slate-400 */
+  margin-top: 0.25rem;
 }
 
 /* ─── Kanban/Pipeline Patterns ─────────────────────────────────────────────── */
@@ -3434,7 +4660,7 @@
   @apply rounded-lg bg-white border p-2.5 shadow-sm cursor-grab active:cursor-grabbing transition-all hover:shadow-md;
 }
 
-/* ─── Table Patterns ───────────────────────────────────────────────────────── */
+/* ─── Table Patterns ───────────────────────────────────────────────��───────── */
 /* Table header cell */
 .ia-th {
   @apply text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wide px-3 py-2 text-left;
@@ -3450,7 +4676,7 @@
   @apply hover:bg-slate-50/50 transition-colors;
 }
 
-/* ─── Neo Financial Table Row System ──────────────────────────────────────────
+/* ─── Neo Financial Table Row System ──────────────────────────������──────────────
    Semi-transparent row backgrounds so the neo-gradient-bg from DashboardLayout
    bleeds through. Opaque sticky cells use backdrop-blur for readability.
    ─────────────────────────────────────────────────────────────────────────── */
@@ -3532,12 +4758,12 @@
   background: rgba(248, 249, 252, 0.96);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════════
+/* ══════════════���═════���═���═════════════════��═════════════════════════���═══════��════
    DOCUMENTS PAGE DESIGN SYSTEM - T-12, Rent Roll, OM, Others
    Unified styles for vertical strips, panels, and document layouts
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ─── VERTICAL STRIP BASE ───────────────────────────────────────────────────── */
+/* ─── VERTICAL STRIP BASE ───────────���────────────────────��──────��───────────── */
 /* Collapsed drawer indicators - consistent across all document types */
 .docs-vertical-strip {
   width: 52px;
@@ -3562,13 +4788,13 @@
   padding: 0.625rem;
   border-radius: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px var(--strip-shadow-color, rgba(99,102,241,0.5)), 
+  box-shadow: 0 4px 14px var(--strip-shadow-color, rgba(53, 102, 170,0.5)), 
               inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .docs-vertical-strip:hover .docs-strip-icon {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px var(--strip-shadow-color, rgba(99,102,241,0.65)), 
+  box-shadow: 0 6px 20px var(--strip-shadow-color, rgba(53, 102, 170,0.65)), 
               inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
@@ -3624,7 +4850,7 @@
   background: rgba(13, 148, 136, 0.2);
 }
 
-/* ─── T-12 STRIP (Emerald) ──────────────���──────────────────────────────────���── */
+/* ─── T-12 STRIP (Emerald) ──────────────���───────────────���──────────────────���── */
 .docs-strip-t12 {
   background: linear-gradient(to bottom, #ecfdf5, #ffffff, #f8fafc);
   border-right: 1px solid rgba(16, 185, 129, 0.15);
@@ -3654,7 +4880,7 @@
   color: #10b981;
 }
 
-/* ─── RENT ROLL STRIP (Teal) ────────────────────────────────────────────────── */
+/* ─── RENT ROLL STRIP (Teal) ───────────────────────────────────────��────────── */
 .docs-strip-rentroll {
   background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
   border-right: 1px solid rgba(13, 148, 136, 0.15);
@@ -3714,7 +4940,7 @@
   color: #f59e0b;
 }
 
-/* ─── ANALYSIS STRIP (Teal) ─────────────────────────────────────────────────── */
+/* ─── ANALYSIS STRIP (Teal) ─────────────────────────────────────��───────────── */
 .docs-strip-analysis {
   background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
   border-left: 1px solid rgba(13, 148, 136, 0.15);
@@ -3802,7 +5028,7 @@
 }
 
 .docs-resize-handle:hover {
-  background: rgba(99, 102, 241, 0.05);
+  background: rgba(53, 102, 170, 0.05);
 }
 
 .docs-resize-handle-pill {
@@ -3814,11 +5040,11 @@
 }
 
 .docs-resize-handle:hover .docs-resize-handle-pill {
-  background: linear-gradient(to bottom, #a5b4fc, #818cf8);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  background: linear-gradient(to bottom, #a5b4fc, #5b87c4);
+  box-shadow: 0 2px 8px rgba(53, 102, 170, 0.3);
 }
 
-/* ─── TOOLBAR BUTTONS ───────────────────────────────────────────────────────── */
+/* ─── TOOLBAR BUTTONS ─────────────────────────���─────────────────────────────── */
 .docs-toolbar-btn {
   display: flex;
   align-items: center;
@@ -3987,7 +5213,7 @@
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
 }
 
-/* ─── KPI VALUE TYPOGRAPHY ──────────────────────────────────────────────────── */
+/* ─── KPI VALUE TYPOGRAPHY ─────────────────────────────────��────────────────── */
 .docs-kpi-value-hero {
   font-size: 2rem;
   font-weight: 700;
@@ -4042,8 +5268,8 @@
 }
 
 .docs-alert-info {
-  background: linear-gradient(to right, #eff6ff, #eef2ff);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: linear-gradient(to right, #eef4fb, #eef2ff);
+  border: 1px solid rgba(53, 102, 170, 0.2);
 }
 
 /* Respect users who prefer reduced motion */
@@ -4061,63 +5287,277 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    COLORFUL GRADIENT MARKETING UTILITIES (light theme)
    Purple → violet → magenta → rose pink.
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ══════����════════════════════════════════════════════════════════════════════ */
 
-/* Hero gradient: LEFT → RIGHT deep purple → violet → magenta → rose pink,
-   with a soft vertical fade to white across the bottom ~30% so the hero melts
-   directly into the white section beneath it (no visible seam). Contrast stays
-   even because the trust indicators are solid white chips, not bare text. */
+/* ─── HERO: cool paper with soft classic-blue radial glows (modern-AI depth) ── */
 .hero-gradient {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0) 64%, rgba(255,255,255,0.35) 84%, #ffffff 100%),
-    radial-gradient(70% 80% at 88% 45%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 55%),
-    linear-gradient(100deg,
-      #6d28d9 0%,
-      #7c3aed 22%,
-      #9333ea 42%,
-      #c026d3 60%,
-      #db2777 80%,
-      #f8709f 100%);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 60% 55% at 18% 30%, rgba(38, 84, 143, 0.12) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 60% at 85% 72%, rgba(53, 102, 170, 0.10) 0%, transparent 62%);
 }
 
-/* Text gradient for inline accent words on light surfaces */
+/* Fine dot-grid texture — ultra-subtle cool ink, adds restrained paper depth */
+.hero-grid-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(22, 32, 46, 0.04) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+/* Inline accent words — classic-blue gradient clip */
 .super-gradient-text {
-  background: linear-gradient(110deg, #6d28d9 0%, #9333ea 38%, #c026d3 70%, #f8709f 100%);
+  background: linear-gradient(110deg, #1d4074 0%, #26548f 45%, #3566aa 72%, #5b87c4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Solid colorful gradient fill for buttons/accents */
+/* Accent fill for buttons/accents — classic-blue gradient with glow */
 .super-gradient-glow {
-  background: linear-gradient(110deg, #6d28d9 0%, #9333ea 45%, #c026d3 75%, #f8709f 100%);
-  box-shadow: 0 10px 30px -8px rgba(124, 58, 237, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  background: linear-gradient(110deg, #1d4074 0%, #26548f 50%, #3566aa 100%);
+  box-shadow: 0 10px 30px -8px rgba(38, 84, 143, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
 }
 
-/* Page background — plain white. The hero fades to white at its own bottom
-   edge, so the section below continues seamlessly with no color step. */
+/* Page background — cool paper with a faint blue wash */
 .super-gradient-bg {
-  background: #ffffff;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(38, 84, 143, 0.08) 0%, transparent 60%),
+    var(--background);
 }
 
-/* Auth page: ONE continuous LEFT → RIGHT gradient spanning the whole screen.
-   Saturated purple → magenta on the left (behind the showcase) that fades to
-   white on the right (behind the form), so the two halves flow through each
-   other with no panel seam or divider. */
+/* Auth page background — cool paper with soft classic-blue radial glows */
 .auth-gradient {
-  background:
-    radial-gradient(55% 70% at 16% 28%, rgba(124, 58, 237, 0.40) 0%, rgba(124, 58, 237, 0) 60%),
-    radial-gradient(50% 65% at 42% 82%, rgba(219, 39, 119, 0.30) 0%, rgba(219, 39, 119, 0) 60%),
-    linear-gradient(100deg,
-      #5b1fb8 0%,
-      #6d28d9 16%,
-      #7c3aed 30%,
-      #9333ea 44%,
-      #c026d3 56%,
-      #db2777 66%,
-      #f06ba0 74%,
-      #f6b3cd 82%,
-      #fbe3ee 88%,
-      #ffffff 95%);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(55% 70% at 18% 28%, rgba(38, 84, 143, 0.20) 0%, transparent 60%),
+    radial-gradient(50% 65% at 82% 78%, rgba(53, 102, 170, 0.16) 0%, transparent 60%);
 }
+
+/* Hide scrollbar while keeping horizontal scroll (used by sticky tab strips) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SITE LOGO - Single source of truth for logo size + position on every page.
+   Drives the shared <Logo> component (components/ui/logo.tsx). Change here to
+   resize/reposition the brand logo everywhere at once.
+   ══════════════════��════════════════════════════════════════════════════════ */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.site-logo__img {
+  display: block;
+  /* Artwork scaled down 10% globally (32→28.8, 148→133.2); proportions unchanged. */
+  height: 28.8px;
+  width: 133.2px;
+  object-fit: contain;
+  object-position: left top;
+  /* 10px transparent breathing room directly below the logo artwork. */
+  box-sizing: content-box;
+  padding-bottom: 10px;
+  /* Smooth the brightness lift when toggling themes. */
+  transition: filter 0.2s ease;
+}
+/* The brand mark is a single classic-blue (#155E97) that reads dim on dark
+   surfaces. On any dark scope (.dark theme or an .on-ink band) lift its
+   brightness + saturation so it stays crisp and legible against the dark
+   backdrop — one rule brightens the logo everywhere it appears. */
+.dark .site-logo__img,
+.on-ink .site-logo__img {
+  filter: brightness(1.55) saturate(1.15);
+}
+
+/* ── `text-white` stays white on colored surfaces in dark mode ──────────────
+   R5 remapped `--neutral-white` to dark ink so `bg-white` card SURFACES flip
+   to ink in dark — correct. But the same var also drives `text-white`, which
+   is almost always an ON-ACCENT foreground (white label on a brand gradient
+   button/pill/badge). Those backgrounds are fixed accent colors that don't
+   flip, so the flipped `text-white` turned dark → dark-on-blue (e.g. the
+   "Investors & Sponsors" active pill). `bg-white` must stay remapped, but the
+   FOREGROUND utility must remain white. `.dark`/`.on-ink` beats the layered
+   Tailwind utility, so this restores white text everywhere it sits on an accent
+   — existing and future — without un-flipping any `bg-white` surface. */
+.dark .text-white,
+.on-ink .text-white {
+  color: #ffffff;
+}
+
+/* ── Inverted-callout safety net ────────────────────────────────────────────
+   `bg-slate-900`/`bg-slate-950` are used as INVERTED callout/toolbar/tooltip
+   surfaces with white text. The neutral remap correctly flips those surfaces to
+   LIGHT in dark mode, but the rule above keeps `text-white` white → white-on-
+   light = invisible. When the white text sits directly ON the flipped surface
+   (same element), flip it back to dark so it stays legible. Child-text cases
+   (text on a nested node) should instead use the self-inverting idiom
+   `bg-foreground text-background`, which flips surface + text together. */
+.dark .bg-slate-900.text-white,
+.dark .bg-slate-950.text-white,
+.on-ink .bg-slate-900.text-white,
+.on-ink .bg-slate-950.text-white {
+  color: var(--background);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════��═
+   DEAL REPORT — print / Save-as-PDF isolation.
+   When the browser print dialog opens, hide the entire app and render ONLY the
+   report document (.deal-report-print-root). The report is authored on white
+   with print-safe colors so it reproduces cleanly in PDF.
+   ══��════════════════════════════════════════════════════════════════════════ */
+@media print {
+  /* Bulletproof pattern: hide everything by PAINT (visibility, not display, so
+     we don't fight Radix's portal nesting), then re-reveal only the report
+     subtree. This is robust regardless of how deep the dialog portal wraps it. */
+  body * {
+    visibility: hidden !important;
+  }
+  .deal-report-print-root,
+  .deal-report-print-root * {
+    visibility: visible !important;
+  }
+  /* The dialog overlay paints an opaque bg-black/50 and the content paints white;
+     kill both backgrounds so they can't tint or blank the printed page. */
+  [data-slot="dialog-overlay"] {
+    display: none !important;
+  }
+  /* Anything explicitly marked must never print (modal chrome, buttons). */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+  /* Neutralize EVERY positioned/clipped ancestor between the report root and the
+     page: the Radix content is `fixed` + translate(-50%,-50%) with max-h:88vh and
+     overflow-hidden wrappers. Left in place, an absolutely-positioned child
+     anchors to that translated 88vh box instead of the page — the blank-pages
+     bug. Static-ize the content and release its scroll shells. */
+  [data-slot="dialog-content"] {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+  /* Release any nested flex/scroll shells inside the content (the 88vh column,
+     the preview scroll area) so they contribute no clipped/blank height. */
+  [data-slot="dialog-content"] div {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  /* Lift the report to the page origin. With all ancestors static-ized above,
+     this now anchors to the initial containing block (the page). */
+  .deal-report-print-root {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+  .deal-report-page {
+    break-after: page;
+    page-break-after: always;
+  }
+  .deal-report-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+  .report-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+}
+
+/* ═════════════════════════════════════════════════��═════════════════════════
+   DARK-MODE CARD SURFACES — override every class that HARDCODES a white/light
+   background so cards become ink in dark mode (they don't read tokens, so
+   without this they stay white with invisible light text). `.dark .x` (0-2-0)
+   outranks the base `.x` (0-1-0) regardless of source order.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.dark .neo-card,
+.dark .neo-card-sm,
+.dark .neo-card-secondary,
+.dark .neo-section-card,
+.dark .neo-card-stats,
+.dark .metric-card-default {
+  background: linear-gradient(135deg, #131f30 0%, #0f1a29 100%);
+  border: 1px solid var(--ink-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.38), 0 1px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(120,150,190,0.06);
+  color: var(--foreground);
+}
+.dark .neo-card:hover,
+.dark .neo-card-hover:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(120,150,190,0.08);
+  border-color: color-mix(in srgb, var(--azure-500) 30%, var(--ink-border));
+}
+.dark .neo-card-elevated,
+.dark .neo-card-stats-elevated {
+  background: linear-gradient(135deg, #182535 0%, #111d2c 100%);
+  border: 1px solid var(--ink-border-strong);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(120,150,190,0.08);
+  color: var(--foreground);
+}
+.dark .neo-card-inner {
+  background: rgba(120,150,190,0.07);
+  border: 1px solid var(--ink-border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 rgba(120,150,190,0.06);
+  color: var(--foreground);
+}
+.dark .neo-card-inset {
+  background: rgba(8,14,24,0.55);
+  border: 1px solid var(--ink-border);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+}
+/* Tinted metric cards → subtle ink tints (keep their hue as a wash) */
+.dark .metric-card-blue   { background: linear-gradient(135deg, #14263a 0%, #0f1c2c 100%); border: 1px solid rgba(34,163,255,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
+.dark .metric-card-green  { background: linear-gradient(135deg, #10281f 0%, #0d1f19 100%); border: 1px solid rgba(70,192,138,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
+.dark .metric-card-violet { background: linear-gradient(135deg, #16202e 0%, #111a26 100%); border: 1px solid var(--ink-border); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
+/* Glass cards → dark translucent */
+.dark .glass-card,
+.dark .glass-card-hover,
+.dark .glass-card-strong {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--foreground);
+}
+/* Neomorphic tab track + inactive tabs read on ink */
+.dark .neo-tabs { background: rgba(8,14,24,0.5); border: 1px solid var(--ink-border); }
+.dark .neo-tab-inactive { color: var(--ink-fg-muted); }
+.dark .neo-tab-inactive:hover { color: var(--ink-fg); background: rgba(120,150,190,0.08); }
+/* Secondary/ghost buttons on ink */
+.dark .neo-btn,
+.dark .neo-btn-ghost,
+.dark .neo-btn-elevated { background: rgba(120,150,190,0.08); border: 1px solid var(--ink-border); color: var(--foreground); }
+.dark .neo-btn:hover,
+.dark .neo-btn-ghost:hover,
+.dark .neo-btn-elevated:hover { background: rgba(120,150,190,0.14); }
+/* Full-page gradient background in dark */
+.dark .neo-page-gradient { background: linear-gradient(145deg, #0b1220 0%, #0d1626 60%, #0b1220 100%); }
+/* Progress track */
+.dark .glass-progress { background: rgba(8,14,24,0.6); border: 1px solid var(--ink-border); }
