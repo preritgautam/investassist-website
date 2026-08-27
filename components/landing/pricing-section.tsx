@@ -170,7 +170,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
                     </>
                   )}
                 </div>
-                <p className="text-sm font-semibold text-brand-700 mb-1.5">
+                <p className="text-sm font-semibold text-brand-700 mb-1.5 min-h-[40px]">
                   {plan.isFree ? (
                     <>
                       {plan.credits} credits to start
@@ -183,7 +183,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
                     </>
                   )}
                 </p>
-                <p className="text-xs text-slate-500 mb-5">
+                <p className="text-xs text-slate-500 mb-5 min-h-[32px]">
                   {plan.isFree ? (
                     "One-time credits · no top-ups — upgrade when they run out"
                   ) : (
