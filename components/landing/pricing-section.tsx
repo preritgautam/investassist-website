@@ -25,6 +25,8 @@ interface DisplayPlan {
   /** Dollars per month. 0 for the free trial. */
   price: number
   credits: number
+  /** Prepaid top-up rate ($/credit); null for the trial (no top-ups). */
+  topUpRate: string | null
   tagline: string
   fullDeals: string
   highlighted: boolean
@@ -53,6 +55,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
                 name: catalog.trial.name,
                 price: 0,
                 credits: catalog.trial.credits,
+                topUpRate: null,
                 tagline: catalog.trial.tagline,
                 fullDeals: catalog.trial.fullDeals,
                 highlighted: false,
@@ -66,6 +69,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
           name: p.name,
           price: p.priceInCents / 100,
           credits: p.credits,
+          topUpRate: p.topUpRate,
           tagline: p.tagline,
           fullDeals: p.fullDeals,
           highlighted: p.highlighted,
@@ -95,7 +99,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-brand-700 bg-white/90 border border-brand-200/60 mb-4">
             <Coins className="w-3.5 h-3.5" />
-            Simple credit-based pricing
+            Simple prepaid credit pricing
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 text-balance">
             Pay for Underwriting, Not Tokens
@@ -104,6 +108,20 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
             One credit covers a unit of analysis — an extracted document or a benchmarked verdict.
             A typical full deal runs about sixteen to eighteen credits, so you always know what a plan buys you.
           </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5 text-xs font-medium text-slate-500">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/70">
+              <Sparkles className="w-3.5 h-3.5 text-brand-600" />
+              Monthly credits refill every billing cycle
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/70">
+              <Coins className="w-3.5 h-3.5 text-brand-600" />
+              Top-up credits roll over and never expire
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/70">
+              <Check className="w-3.5 h-3.5 text-emerald-500" />
+              Prepaid only — no overage bills, no card on file
+            </span>
+          </div>
         </div>
 
         {/* Plan cards */}
@@ -152,17 +170,24 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
                     </>
                   )}
                 </div>
-                <p className="text-sm font-semibold text-brand-700 mb-5">
+                <p className="text-sm font-semibold text-brand-700 mb-1.5">
                   {plan.isFree ? (
                     <>
                       {plan.credits} credits to start
-                      <span className="text-slate-500 font-normal"> · ~{plan.fullDeals} full deal</span>
+                      <span className="text-slate-500 font-normal"> · {plan.fullDeals}</span>
                     </>
                   ) : (
                     <>
                       {plan.credits} credits / mo
-                      <span className="text-slate-500 font-normal"> · ~{plan.fullDeals} full deals</span>
+                      <span className="text-slate-500 font-normal"> · {plan.fullDeals}</span>
                     </>
+                  )}
+                </p>
+                <p className="text-xs text-slate-500 mb-5">
+                  {plan.isFree ? (
+                    "One-time credits · no top-ups — upgrade when they run out"
+                  ) : (
+                    <>Top-up credits at ${plan.topUpRate}/credit · roll over, never expire</>
                   )}
                 </p>
 
