@@ -35,10 +35,10 @@ interface DisplayPlan {
 }
 
 const creditUsage = [
-  { icon: Calculator, label: "Operating Statement (T-12)", detail: "~4 pages", credits: "~3 credits" },
-  { icon: FileText, label: "Rent Roll", detail: "~10 pages", credits: "~3 credits" },
-  { icon: Building2, label: "Offering Memorandum", detail: "~30 pages · incl. comps", credits: "~6 credits" },
-  { icon: BarChart3, label: "Benchmark + underwriting verdict", detail: "per deal", credits: "~6 credits" },
+  { icon: Calculator, label: "T-12", detail: "operating statement", credits: "3 credits" },
+  { icon: FileText, label: "Rent roll", detail: "extracted document", credits: "3 credits" },
+  { icon: Building2, label: "OM with comps", detail: "offering memorandum + comps", credits: "6 credits" },
+  { icon: BarChart3, label: "Benchmarking and verdict", detail: "per deal", credits: "6 credits" },
 ]
 
 export function PricingSection({ authUrl }: PricingSectionProps) {
@@ -90,7 +90,9 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
       return authUrl
     }
     const dest = `/pricing?plan=${plan.planId}`
-    return getAppUrl(`/auth?redirect=${encodeURIComponent(dest)}`)
+    const url = new URL(authUrl)
+    url.searchParams.set("redirect", dest)
+    return url.toString()
   }
 
   return (
@@ -106,7 +108,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto text-pretty">
             One credit covers a unit of analysis — an extracted document or a benchmarked verdict.
-            A typical full deal runs about sixteen to eighteen credits, so you always know what a plan buys you.
+          A typical full deal runs about sixteen to eighteen credits, so you always know what a plan buys you.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5 text-xs font-medium text-slate-500">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/70">
@@ -185,9 +187,9 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
                 </p>
                 <p className="text-xs text-slate-500 mb-5 min-h-[32px]">
                   {plan.isFree ? (
-                    "One-time credits · no top-ups — upgrade when they run out"
+                    "No credit card required"
                   ) : (
-                    <>Top-up credits at ${plan.topUpRate}/credit · roll over, never expire</>
+                    <>Top-up credits roll over and never expire</>
                   )}
                 </p>
 

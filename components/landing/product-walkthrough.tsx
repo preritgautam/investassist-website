@@ -475,105 +475,18 @@ const STEPS: WalkthroughStep[] = [
 const AUTO_ADVANCE_MS = 5000
 
 export function ProductWalkthrough() {
-  const [active, setActive] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const reducedMotionRef = useRef(false)
-
-  useEffect(() => {
-    if (typeof window === "undefined") return
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    reducedMotionRef.current = mq.matches
-    if (mq.matches) setPaused(true)
-  }, [])
-
-  const advance = useCallback(() => {
-    setActive((prev) => (prev + 1) % STEPS.length)
-  }, [])
-
-  useEffect(() => {
-    if (paused) return
-    const timer = setInterval(advance, AUTO_ADVANCE_MS)
-    return () => clearInterval(timer)
-  }, [paused, advance])
-
-  const current = STEPS[active]
-
   return (
     <div className="max-w-5xl mx-auto">
-      {/* Tabs */}
-      <div
-        className="flex flex-wrap items-center justify-center gap-2 mb-6"
-        role="tablist"
-        aria-label="Product walkthrough steps"
-      >
-        {STEPS.map((step, index) => {
-          const isActive = index === active
-          return (
-            <button
-              key={step.id}
-              role="tab"
-              aria-selected={isActive}
-              aria-controls={`walkthrough-panel-${step.id}`}
-              id={`walkthrough-tab-${step.id}`}
-              onClick={() => setActive(index)}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                isActive
-                  ? "text-white shadow-md"
-                  : "text-slate-600 neo-btn-elevated hover:shadow-sm"
-              }`}
-              style={isActive ? { background: designSystem.gradients.brand } : undefined}
-            >
-              <step.icon className="w-4 h-4" />
-              <span className="hidden sm:inline">{`${index + 1}. ${step.label}`}</span>
-              <span className="sm:hidden">{step.label}</span>
-            </button>
-          )
-        })}
-      </div>
-
-      {/* Browser-framed product panel */}
-      <div
-        className="relative rounded-2xl overflow-hidden"
-        style={designSystem.cards.neo}
-        onMouseEnter={() => !reducedMotionRef.current && setPaused(true)}
-        onMouseLeave={() => !reducedMotionRef.current && setPaused(false)}
-      >
-        {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-white/80">
-          <span className="w-3 h-3 rounded-full bg-red-300" aria-hidden="true" />
-          <span className="w-3 h-3 rounded-full bg-brand-300" aria-hidden="true" />
-          <span className="w-3 h-3 rounded-full bg-emerald-300" aria-hidden="true" />
-          <div className="ml-3 flex-1 max-w-sm">
-            <div className="text-xs text-slate-500 bg-slate-50 rounded-md px-3 py-1 text-center truncate">
-              app.investassist.ai/explore
-            </div>
-          </div>
-        </div>
-
-        {/* Panel area — content-driven height (no rigid aspect ratio), filled edge to edge */}
-        <div className="relative bg-slate-50/60 min-h-[520px] md:h-[560px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              id={`walkthrough-panel-${current.id}`}
-              role="tabpanel"
-              aria-labelledby={`walkthrough-tab-${current.id}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0 overflow-auto p-5 md:p-7"
-            >
-              {current.panel}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* Caption */}
-      <p className="text-center text-slate-500 mt-4 text-sm md:text-base" aria-live="polite">
-        {current.caption}
-      </p>
+      <video
+        className="block w-full rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.12)]"
+        src={process.env.NEXT_PUBLIC_LANDING_VIDEO_URL}
+        autoPlay
+        controls
+        loop
+        muted
+        playsInline
+        preload="metadata"
+      />
     </div>
   )
 }

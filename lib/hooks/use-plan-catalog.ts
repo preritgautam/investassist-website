@@ -40,11 +40,17 @@ export interface PublicPlanCatalog {
 const STATIC_CATALOG: PublicPlanCatalog = {
   trial: {
     id: "trial",
-    name: "Free Trial",
+    name: "Trial",
     credits: 20,
     fullDeals: "~1 full deal",
-    tagline: "Try InvestAssist on your next deal, no card required.",
-    features: ["Upload T-12, Rent Roll & OM", "Underwriting verdict", "Comps & benchmarking"],
+    tagline: "20 credits for new users. One-time grant; upgrade to a paid plan when credits run out.",
+    features: [
+      "20 credits free the moment you sign up",
+      "Enough for roughly one full deal end-to-end",
+      "T-12, rent roll & OM extraction",
+      "In-place NOI, cap rate & valuation",
+      "No credit card required",
+    ],
   },
   plans: [
     {
@@ -54,9 +60,15 @@ const STATIC_CATALOG: PublicPlanCatalog = {
       credits: 100,
       topUpRate: "1.00",
       fullDeals: "~5-6 full deals / mo",
-      tagline: "For individual investors analyzing a few deals a month.",
+      tagline: "For solo buyers underwriting their own deals.",
       highlighted: false,
-      features: ["Everything in Trial", "Priority extraction", "Saved pipeline & watchlist"],
+      features: [
+        "~5-6 full deals / month",
+        "T-12, rent roll & OM extraction",
+        "In-place pro forma NOI, cap rate, valuation",
+        "Source-line traceability on every figure",
+        "$1.00 / credit on overage",
+      ],
     },
     {
       id: "growth",
@@ -65,9 +77,16 @@ const STATIC_CATALOG: PublicPlanCatalog = {
       credits: 300,
       topUpRate: "0.90",
       fullDeals: "~16-18 full deals / mo",
-      tagline: "For active buyers underwriting weekly across a pipeline.",
+      tagline: "The default plan for active investors and analysts.",
       highlighted: true,
-      features: ["Everything in Starter", "Team sharing", "IC-ready reports"],
+      features: [
+        "~16-18 full deals / month",
+        "Everything in Starter",
+        "Market benchmarking on every metric",
+        "Comp extraction pulled from the OM",
+        "Side-by-side deal comparison",
+        "$0.90 / credit on overage",
+      ],
     },
     {
       id: "pro",
@@ -76,9 +95,15 @@ const STATIC_CATALOG: PublicPlanCatalog = {
       credits: 900,
       topUpRate: "0.80",
       fullDeals: "~50-55 full deals / mo",
-      tagline: "For funds and teams running high deal volume.",
+      tagline: "For acquisition teams and funds running pipeline volume.",
       highlighted: false,
-      features: ["Everything in Growth", "Lowest top-up rate", "Highest monthly volume"],
+      features: [
+        "~50-55 full deals / month",
+        "Everything in Growth",
+        "Priority extraction queue",
+        "Shared workspace & deal history",
+        "$0.80 / credit on overage",
+      ],
     },
   ],
 }
