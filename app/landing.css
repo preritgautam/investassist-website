@@ -277,7 +277,7 @@
   color: var(--muted);
 }
 
-/* ── Hero ───────────────────────────────����────────────────────────────────── */
+/* ── Hero ─���─────────────────────────────����────────────────────────────────── */
 .ia-landing .hero {
   padding: var(--hero-y) 0;
   border-bottom: 1px solid var(--line);
@@ -887,6 +887,7 @@
   gap: 8px;
   font-size: 12px;
   line-height: 1.6;
+  color: var(--ink);
   padding: 12px 0 0;
   margin-top: auto;
   border-top: 1px solid var(--line);
@@ -1306,7 +1307,7 @@
   gap: 16px;
 }
 
-/* ── Footer ──────────────────────────────────────────────────────────────── */
+/* ── Footer ─────���────────────────────────────────────────────────────────── */
 .ia-landing .footer {
   display: flex;
   flex-direction: column;
