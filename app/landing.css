@@ -169,6 +169,14 @@
   font-size: 18px;
   line-height: 1;
 }
+/* On the narrowest phones the logo + toggle label + CTA don't fit the gutter,
+   pushing the nav past the screen edge. Drop the toggle to its icon (the
+   button keeps its aria-label) so the row stays inside `--pad-x`. */
+@media (max-width: 419px) {
+  .ia-landing .theme-toggle > span:last-child {
+    display: none;
+  }
+}
 
 /* ── Buttons ─────────────────────────────────────────────────────────────── */
 .ia-landing .btn {
@@ -222,8 +230,12 @@
 .ia-landing h2 span {
   color: var(--blue);
 }
+/* Vertical rhythm only. Uses padding-block so that when `.section` is combined
+   with `.wrap` on the same element, it never resets the horizontal `--pad-x`
+   gutter that `.wrap` sets (a shorthand `padding: … 0` here would, since
+   `.section` is later in source order). */
 .ia-landing .section {
-  padding: var(--section-y) 0;
+  padding-block: var(--section-y);
 }
 .ia-landing .section-head {
   display: flex;
@@ -1063,10 +1075,13 @@
 }
 
 /* ── Closing ─────────────────────────────────────────────────────────────── */
+/* A full-width band like `.hero` / `.compound-section`: the horizontal gutter
+   comes from the inner `.wrap`, so the band itself pads vertically only.
+   (Previously it added `--pad-x` here as well, double-insetting its content.) */
 .ia-landing .closing {
   background: var(--pale);
   border-top: 1px solid var(--line);
-  padding: var(--section-y) var(--pad-x);
+  padding: var(--section-y) 0;
 }
 .ia-landing .closing h2 {
   margin: 16px 0 16px;
