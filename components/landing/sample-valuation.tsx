@@ -1,40 +1,22 @@
 "use client"
 
 import * as React from "react"
+import { SAMPLE_DEAL, computeValuation } from "@/lib/sample-valuation-calc"
 
 /**
  * Interactive valuation panel for the in-page sample (#sample).
  *
  * Self-contained illustrative fixture — Oakline Residences. It is deliberately
  * isolated from any production financial logic, store, or the existing
- * /sample-analysis route dataset. The arithmetic mirrors the approved landing
- * reference exactly: value = in-place NOI ÷ cap rate.
+ * /sample-analysis route dataset. All displayed fields derive from a single
+ * `rate` state via `computeValuation`, so no two fields can reflect different
+ * states. The pure math lives in `lib/sample-valuation-calc` and is covered by
+ * `lib/sample-valuation-calc.test.ts`.
  */
-const SAMPLE_DEAL = { inPlaceNoi: 1_480_000, askingPrice: 25_000_000 }
-
-function formatGap(difference: number): string {
-  const abs = Math.abs(difference)
-  if (abs < 0.5) return "At asking price"
-  const direction = difference < 0 ? "below" : "above"
-  const amount =
-    abs >= 1_000_000
-      ? `$${(abs / 1_000_000).toFixed(2)}M`
-      : `$${Math.round(abs / 1_000).toLocaleString("en-US")}K`
-  const pct = ((abs / SAMPLE_DEAL.askingPrice) * 100).toFixed(2)
-  return `${amount} ${direction} ask (${pct}%)`
-}
-
 export function SampleValuation() {
   const [rate, setRate] = React.useState(6)
 
-  const value = SAMPLE_DEAL.inPlaceNoi / (rate / 100)
-  const difference = value - SAMPLE_DEAL.askingPrice
-  const capLabel = `${rate.toFixed(2)}%`
-  const valueLabel = `$${(value / 1_000_000).toFixed(2)}M`
-  const equation = `$${SAMPLE_DEAL.inPlaceNoi.toLocaleString("en-US")} ÷ ${capLabel} = $${Math.round(
-    value,
-  ).toLocaleString("en-US")}`
-  const gap = formatGap(difference)
+  const { capLabel, valueLabel, equation, gap } = computeValuation(rate)
 
   return (
     <div className="analysis">
