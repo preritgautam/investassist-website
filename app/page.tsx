@@ -138,7 +138,7 @@ export default async function HomePage({
                   </div>
                   <div>
                     <span className="doc-name">
-                      <FileText size={16} aria-hidden="true" /> Offering memoranda
+                      <FileText size={16} aria-hidden="true" /> Offering memorandum
                     </span>
                     <small>03</small>
                   </div>
@@ -482,17 +482,21 @@ export default async function HomePage({
 
         {/* ── Closing ──────────────────────────────────────────────────── */}
         <section className="closing">
-          <div className="wrap">
-            <div className="eyebrow">Bring the documents. Build the investment case.</div>
-            <h2>
-              Bring your next deal <br />
-              into clearer focus.
-            </h2>
-            <p>Review the financials. Test the assumptions. Decide what comes next.</p>
-            <a className="btn" href={signupUrl} data-analytics="homepage-primary-cta">
-              Analyze your first deal free <span aria-hidden="true">→</span>
-            </a>
-            <div className="micro">20 free credits &nbsp; · &nbsp; No credit card required</div>
+          <div className="wrap closing-inner">
+            <div className="closing-text">
+              <div className="eyebrow">Bring the documents. Build the investment case.</div>
+              <h2>
+                Bring your next deal <br />
+                into clearer focus.
+              </h2>
+              <p>Review the financials. Test the assumptions. Decide what comes next.</p>
+            </div>
+            <div className="closing-action">
+              <a className="btn" href={signupUrl} data-analytics="homepage-primary-cta">
+                Analyze your first deal free <span aria-hidden="true">→</span>
+              </a>
+              <div className="micro">20 free credits &nbsp; · &nbsp; No credit card required</div>
+            </div>
           </div>
         </section>
       </main>
