@@ -360,7 +360,7 @@ export default async function HomePage({
           </div>
         </section>
 
-        {/* ── Built to compound ────────────────────────────────────────── */}
+        {/* ── Built to compound ────────────────��───────────────────────── */}
         <section className="compound-section" id="compound" aria-labelledby="compound-title">
           <div className="wrap">
             <div className="compound-heading">
@@ -469,6 +469,14 @@ export default async function HomePage({
               <p>
                 The free trial includes 20 credits. The current pricing model estimates about 16–18 credits for a
                 typical full deal, so you can explore the workflow before choosing a paid plan.
+              </p>
+            </details>
+            <details>
+              <summary>Is my data secure, and who controls it?</summary>
+              <p>
+                Yes. InvestAssist is SOC 2 compliant and follows strict security and data-handling standards. Your
+                documents and deals stay yours — you decide what to upload, how it&apos;s used and when to remove it. We
+                don&apos;t repurpose your data, and you stay in control of your deal information at every step.
               </p>
             </details>
           </div>
