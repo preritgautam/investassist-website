@@ -189,7 +189,7 @@
   line-height: 1.6;
 }
 .ia-landing h2 {
-  font-size: clamp(34px, 3.8vw, 48px);
+  font-size: clamp(26px, 3vw + 15px, 48px);
   line-height: 1.1;
   font-weight: 600;
   letter-spacing: -0.045em;
@@ -228,7 +228,7 @@
   max-width: none;
 }
 .ia-landing .hero h1 {
-  font-size: clamp(52px, 6.8vw, 92px);
+  font-size: clamp(38px, 8vw + 8px, 92px);
   line-height: 1.045;
   letter-spacing: -0.055em;
   font-weight: 750;
@@ -718,7 +718,7 @@
   border-top: 1px solid var(--line);
 }
 .ia-landing .editorial-heading h2 {
-  font-size: 36px;
+  font-size: clamp(28px, 4vw + 14px, 36px);
   line-height: 1.15;
   margin-top: 12px;
 }
@@ -784,7 +784,7 @@
   max-width: 900px;
 }
 .ia-landing .compound-heading h2 {
-  font-size: clamp(36px, 4.3vw, 58px);
+  font-size: clamp(28px, 4vw + 14px, 58px);
   line-height: 1.08;
   letter-spacing: -0.045em;
   margin: 20px 0 24px;
@@ -1084,6 +1084,12 @@
   color: var(--muted);
   flex-wrap: wrap;
 }
+.ia-landing .footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 6px 0;
+}
 .ia-landing .footer a:hover {
   color: var(--ink);
 }
@@ -1107,7 +1113,7 @@
     gap: 7px;
   }
   .ia-landing .hero h1 {
-    font-size: clamp(52px, 7.5vw, 80px);
+    font-size: clamp(36px, 8vw + 6px, 80px);
   }
 }
 
@@ -1129,7 +1135,7 @@
     padding: 48px 0;
   }
   .ia-landing .hero h1 {
-    font-size: clamp(46px, 9vw, 60px);
+    font-size: clamp(32px, 8vw + 6px, 60px);
     letter-spacing: -0.05em;
   }
   .ia-landing .hero .sub {
