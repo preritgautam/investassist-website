@@ -50,6 +50,13 @@ interface PriceCard {
   creditsLabel: string
   for: string
   support: string
+  /**
+   * Footnote line above the CTA. For paid plans this is the prepaid overage
+   * rate, derived from the catalog's per-plan `topUpRate` (never hard-coded, so
+   * it stays in lockstep with billing). For the trial it names what the credits
+   * unlock instead, since a free grant has no overage.
+   */
+  overage: string
   cta: string
   badge?: string
   highlighted: boolean
@@ -76,6 +83,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
                 creditsLabel: `${catalog.trial.credits} credits · one-time grant`,
                 for: COPY.trial.for,
                 support: COPY.trial.support,
+                overage: "T-12, RR & OM extraction",
                 cta: COPY.trial.cta,
                 highlighted: false,
               },
@@ -92,6 +100,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
             creditsLabel: `${p.credits} credits / month`,
             for: copy.for,
             support: copy.support,
+            overage: `$${p.topUpRate} / credit on overage`,
             cta: copy.cta,
             badge: copy.badge,
             highlighted: p.highlighted,
@@ -139,6 +148,7 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
             </strong>
             <p className="credits">{card.creditsLabel}</p>
             <p className="support">{card.support}</p>
+            <p className="overage">{card.overage}</p>
             <a
               className={card.highlighted ? "btn cta" : "btn light cta"}
               href={planHref(card)}
