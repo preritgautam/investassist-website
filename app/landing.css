@@ -1196,6 +1196,21 @@
   }
 }
 
+@media (max-width: 600px) {
+  /* The sample-workspace top bar is decorative app chrome; its tab strip
+     overflows on narrow screens, so collapse it and keep brand + sample chip. */
+  .ia-landing .apptabs {
+    display: none;
+  }
+  .ia-landing .appbar {
+    gap: 10px;
+    padding: 0 14px;
+  }
+  .ia-landing .appbody {
+    padding: 20px 16px;
+  }
+}
+
 @media (max-width: 480px) {
   .ia-landing .metric-grid {
     grid-template-columns: 1fr;

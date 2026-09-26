@@ -32,7 +32,7 @@ export function FeatureShowcase() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="rounded-2xl p-6 md:p-8 neo-card"
+        className="min-w-0 rounded-2xl p-6 md:p-8 neo-card"
       >
         <div className="flex items-center gap-3 mb-2">
           <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
@@ -97,7 +97,7 @@ export function FeatureShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="rounded-2xl p-6 md:p-8 neo-card"
+        className="min-w-0 rounded-2xl p-6 md:p-8 neo-card"
       >
         <div className="flex items-center gap-3 mb-2">
           <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">

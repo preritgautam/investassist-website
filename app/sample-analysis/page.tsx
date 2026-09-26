@@ -167,25 +167,25 @@ export default function SampleAnalysisPage() {
 
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Rent comps */}
-              <div className="rounded-2xl p-6 md:p-7" style={neu.card}>
+              <div className="min-w-0 rounded-2xl p-6 md:p-7" style={neu.card}>
                 <h3 className="text-lg font-bold text-slate-900 mb-4">Rent Comparables</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
                     <thead>
                       <tr className="border-b border-slate-200">
-                        <th className="py-2 pr-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Property</th>
-                        <th className="py-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Dist.</th>
-                        <th className="py-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">$/SF</th>
-                        <th className="py-2 pl-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Avg Rent</th>
+                        <th className="py-2 pr-2 md:pr-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Property</th>
+                        <th className="py-2 px-2 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Dist.</th>
+                        <th className="py-2 px-2 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">$/SF</th>
+                        <th className="py-2 pl-2 md:pl-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Avg Rent</th>
                       </tr>
                     </thead>
                     <tbody>
                       {rentComps.map((c) => (
                         <tr key={c.property} className={`border-b border-slate-100 last:border-0 ${c.subject ? "bg-brand-50/30" : ""}`}>
-                          <td className="py-2.5 pr-3 text-sm font-medium text-slate-800">{c.property}</td>
-                          <td className="py-2.5 px-3 text-sm text-right text-slate-500">{c.distance}</td>
-                          <td className="py-2.5 px-3 text-sm text-right text-slate-700">{c.rentPsf}</td>
-                          <td className="py-2.5 pl-3 text-sm text-right font-bold text-slate-900">{c.avgRent}</td>
+                          <td className="py-2.5 pr-2 md:pr-3 text-sm font-medium text-slate-800">{c.property}</td>
+                          <td className="py-2.5 px-2 md:px-3 text-sm text-right text-slate-500">{c.distance}</td>
+                          <td className="py-2.5 px-2 md:px-3 text-sm text-right text-slate-700">{c.rentPsf}</td>
+                          <td className="py-2.5 pl-2 md:pl-3 text-sm text-right font-bold text-slate-900">{c.avgRent}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -197,27 +197,27 @@ export default function SampleAnalysisPage() {
               </div>
 
               {/* Sales comps */}
-              <div className="rounded-2xl p-6 md:p-7" style={neu.card}>
+              <div className="min-w-0 rounded-2xl p-6 md:p-7" style={neu.card}>
                 <h3 className="text-lg font-bold text-slate-900 mb-4">Sales Comparables</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
                     <thead>
                       <tr className="border-b border-slate-200">
-                        <th className="py-2 pr-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Property</th>
-                        <th className="py-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Price</th>
-                        <th className="py-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">$/Unit</th>
-                        <th className="py-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Cap</th>
-                        <th className="py-2 pl-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Date</th>
+                        <th className="py-2 pr-2 md:pr-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Property</th>
+                        <th className="py-2 px-1.5 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Price</th>
+                        <th className="py-2 px-1.5 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">$/Unit</th>
+                        <th className="py-2 px-1.5 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Cap</th>
+                        <th className="py-2 pl-1.5 md:pl-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       {salesComps.map((c) => (
                         <tr key={c.property} className="border-b border-slate-100 last:border-0">
-                          <td className="py-2.5 pr-3 text-sm font-medium text-slate-800">{c.property}</td>
-                          <td className="py-2.5 px-3 text-sm text-right text-slate-700">{c.price}</td>
-                          <td className="py-2.5 px-3 text-sm text-right text-slate-700">{c.perUnit}</td>
-                          <td className="py-2.5 px-3 text-sm text-right font-bold text-slate-900">{c.capRate}</td>
-                          <td className="py-2.5 pl-3 text-sm text-right text-slate-500">{c.date}</td>
+                          <td className="py-2.5 pr-2 md:pr-3 text-sm font-medium text-slate-800">{c.property}</td>
+                          <td className="py-2.5 px-1.5 md:px-3 text-sm text-right text-slate-700">{c.price}</td>
+                          <td className="py-2.5 px-1.5 md:px-3 text-sm text-right text-slate-700">{c.perUnit}</td>
+                          <td className="py-2.5 px-1.5 md:px-3 text-sm text-right font-bold text-slate-900">{c.capRate}</td>
+                          <td className="py-2.5 pl-1.5 md:pl-3 text-sm text-right text-slate-500">{c.date}</td>
                         </tr>
                       ))}
                     </tbody>
