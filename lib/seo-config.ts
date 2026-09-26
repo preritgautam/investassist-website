@@ -77,6 +77,42 @@ export function shouldIndex(): boolean {
   return env === "production"
 }
 
+/**
+ * Whether OpenAI's GPTBot (used for model *training*) is allowed to crawl.
+ * Kept as a separate, opt-in policy from search/answer crawlers. Defaults to
+ * disallowed; set NEXT_PUBLIC_ALLOW_GPTBOT="true" to permit training crawls.
+ */
+export function allowGptBot(): boolean {
+  return process.env.NEXT_PUBLIC_ALLOW_GPTBOT?.trim().toLowerCase() === "true"
+}
+
+/**
+ * Robots.txt user-agent rules for an indexable deployment. Search and AI
+ * *answer/search* crawlers (including OAI-SearchBot) are allowed; the GPTBot
+ * *training* crawler is governed by its own configurable policy.
+ */
+export function crawlerRules(): { userAgent: string; allow?: string; disallow?: string }[] {
+  const rules: { userAgent: string; allow?: string; disallow?: string }[] = [
+    { userAgent: "*", allow: "/" },
+    // OpenAI's answer/search crawler — explicitly welcomed.
+    { userAgent: "OAI-SearchBot", allow: "/" },
+    // Common AI answer engines.
+    { userAgent: "PerplexityBot", allow: "/" },
+    { userAgent: "ChatGPT-User", allow: "/" },
+  ]
+  // GPTBot (training) — separate, opt-in policy.
+  rules.push({ userAgent: "GPTBot", ...(allowGptBot() ? { allow: "/" } : { disallow: "/" }) })
+  return rules
+}
+
+/** Site-verification tokens for search consoles, sourced from env vars. */
+export function verificationTokens(): { google?: string; bing?: string } {
+  return {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+    bing: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim() || undefined,
+  }
+}
+
 /** Robots directive shared by layout metadata and app/robots.ts. */
 export function robotsDirective(): Metadata["robots"] {
   const index = shouldIndex()

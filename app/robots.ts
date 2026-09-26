@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-import { absoluteUrl, shouldIndex } from "@/lib/seo-config"
+import { absoluteUrl, crawlerRules, shouldIndex } from "@/lib/seo-config"
 
 export default function robots(): MetadataRoute.Robots {
   // Preview and development deployments must never be indexed.
@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
   }
 
   return {
-    rules: [{ userAgent: "*", allow: "/" }],
+    rules: crawlerRules(),
     sitemap: absoluteUrl("/sitemap.xml"),
     host: absoluteUrl("/").replace(/\/+$/, ""),
   }

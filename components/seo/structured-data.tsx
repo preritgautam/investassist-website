@@ -3,6 +3,8 @@ import {
   organizationSchema,
   webSiteSchema,
   webPageSchema,
+  softwareApplicationSchema,
+  type JsonLdNode,
   type WebPageInput,
 } from "@/lib/structured-data"
 
@@ -18,13 +20,21 @@ export function SiteStructuredData() {
   )
 }
 
-/** Per-route WebPage JSON-LD. Render once inside each page. */
-export function PageStructuredData(page: WebPageInput) {
-  const graph = buildGraph([webPageSchema(page)])
+/**
+ * Per-route WebPage JSON-LD, optionally accompanied by extra nodes
+ * (e.g. BreadcrumbList, SoftwareApplication) folded into the same @graph.
+ */
+export function PageStructuredData({ extra, ...page }: WebPageInput & { extra?: JsonLdNode[] }) {
+  const graph = buildGraph([webPageSchema(page), ...(extra ?? [])])
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   )
+}
+
+/** SoftwareApplication node for the product, for use in a page's `extra`. */
+export function homeSoftwareApplicationNode(): JsonLdNode {
+  return softwareApplicationSchema()
 }

@@ -15,7 +15,10 @@ import {
   SITE_NAME,
   getSiteUrl,
   robotsDirective,
+  verificationTokens,
 } from "@/lib/seo-config"
+
+const verification = verificationTokens()
 
 // Modern AI-fintech type system: Geist (Vercel's precise, low-contrast grotesk)
 // for ALL UI + display — clean, technical, and pairs 1:1 with Geist Mono for
@@ -49,6 +52,14 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: OG_DESCRIPTION,
   },
+  ...(verification.google || verification.bing
+    ? {
+        verification: {
+          ...(verification.google ? { google: verification.google } : {}),
+          ...(verification.bing ? { other: { "msvalidate.01": verification.bing } } : {}),
+        },
+      }
+    : {}),
 }
 
 export const viewport: Viewport = {

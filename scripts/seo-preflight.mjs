@@ -16,7 +16,14 @@
  */
 
 const BASE = (process.argv[2] || process.env.BASE_URL || "http://localhost:3000").replace(/\/+$/, "")
-const ROUTES = ["/", "/sample-analysis"]
+const ROUTES = ["/", "/sample-analysis", "/insights"]
+
+/**
+ * Article routes get a BlogPosting + BreadcrumbList assertion on top of the
+ * base contract. Slugs are resolved at runtime from the Insights index page so
+ * this stays in sync with published content without hardcoding.
+ */
+const ARTICLE_ROUTE_TYPES = ["BlogPosting", "BreadcrumbList"]
 
 /**
  * Whether this target is expected to be search-indexable.
@@ -44,7 +51,7 @@ function all(re, html) {
   return [...html.matchAll(re)]
 }
 
-function checkRoute(path, html) {
+function checkRoute(path, html, requiredTypes = ["Organization", "WebSite", "WebPage"]) {
   console.log(`\nRoute ${path}`)
 
   // Title
@@ -100,8 +107,27 @@ function checkRoute(path, html) {
     }
   }
   if (parsedOk) pass("all JSON-LD blocks parse")
-  for (const t of ["Organization", "WebSite", "WebPage"]) {
+  for (const t of requiredTypes) {
     types.includes(t) ? pass(`JSON-LD has ${t}`) : fail(`JSON-LD missing ${t}`)
+  }
+}
+
+/** Discover the first published article slug from the Insights index links. */
+function firstArticlePath(indexHtml) {
+  const m = /href=["'](\/insights\/[a-z0-9-]+)["']/i.exec(indexHtml)
+  return m ? m[1] : null
+}
+
+async function checkFeed() {
+  console.log("\n/feed.xml")
+  try {
+    const xml = await fetchText("/feed.xml")
+    const hasFeedRoot = /<rss|<feed/i.test(xml)
+    hasFeedRoot ? pass("valid RSS/Atom root") : fail("no <rss>/<feed> root")
+    const items = all(/<item>|<entry>/gi, xml)
+    items.length ? pass(`${items.length} feed item(s)`) : fail("no feed items")
+  } catch (e) {
+    fail(e.message)
   }
 }
 
@@ -139,16 +165,33 @@ async function checkSitemap() {
 
 async function main() {
   console.log(`SEO preflight against ${BASE}`)
+  let insightsHtml = null
   for (const path of ROUTES) {
     try {
       const html = await fetchText(path)
       checkRoute(path, html)
+      if (path === "/insights") insightsHtml = html
     } catch (e) {
       fail(`could not fetch ${path}: ${e.message}`)
     }
   }
+
+  // Resolve and check the first published article, if any.
+  const articlePath = insightsHtml ? firstArticlePath(insightsHtml) : null
+  if (articlePath) {
+    try {
+      const html = await fetchText(articlePath)
+      checkRoute(articlePath, html, [...["Organization", "WebSite"], ...ARTICLE_ROUTE_TYPES])
+    } catch (e) {
+      fail(`could not fetch ${articlePath}: ${e.message}`)
+    }
+  } else {
+    fail("could not resolve an article link from /insights")
+  }
+
   await checkRobotsTxt()
   await checkSitemap()
+  await checkFeed()
 
   console.log("")
   if (failures) {
