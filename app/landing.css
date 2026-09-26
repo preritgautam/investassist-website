@@ -240,8 +240,12 @@
   font-weight: 600;
   color: var(--blue);
   line-height: 1.6;
-}
-.ia-landing h2 {
+  }
+  .ia-landing .hero-top .eyebrow {
+  font-size: 15px;
+  letter-spacing: 2.2px;
+  }
+  .ia-landing h2 {
   font-size: clamp(30px, 3.8vw, 48px);
   line-height: 1.08;
   font-weight: 600;
@@ -273,7 +277,7 @@
   color: var(--muted);
 }
 
-/* ── Hero ───────────────────────────────���────────────────────────────────── */
+/* ── Hero ───────────────────────────────����────────────────────────────────── */
 .ia-landing .hero {
   padding: var(--hero-y) 0;
   border-bottom: 1px solid var(--line);
