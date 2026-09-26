@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+import { LOGO_ALT } from "@/lib/design-system"
 
 interface BrandLogoProps {
   /** Link destination. Pass `null` to render without a surrounding link. */

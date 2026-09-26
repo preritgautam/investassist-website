@@ -4852,7 +4852,7 @@
   background: rgba(13, 148, 136, 0.2);
 }
 
-/* ─── T-12 STRIP (Emerald) ──────────────���───────────────���──────────────────���── */
+/* ─── T-12 STRIP (Emerald) ──────────��───���───────────────���──────────────────���── */
 .docs-strip-t12 {
   background: linear-gradient(to bottom, #ecfdf5, #ffffff, #f8fafc);
   border-right: 1px solid rgba(16, 185, 129, 0.15);
@@ -5348,34 +5348,12 @@
   display: none;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   SITE LOGO - Single source of truth for logo size + position on every page.
-   Drives the shared <Logo> component (components/ui/logo.tsx). Change here to
-   resize/reposition the brand logo everywhere at once.
-   ══════════════════��══════════════════════════════════════���═════════════════ */
-.site-logo {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.site-logo__img {
-  display: block;
-  /* Artwork scaled down 10% globally (32→28.8, 148→133.2); proportions unchanged. */
-  height: 28.8px;
-  width: 133.2px;
-  object-fit: contain;
-  object-position: left top;
-  /* 10px transparent breathing room directly below the logo artwork. */
-  box-sizing: content-box;
-  padding-bottom: 10px;
-}
-
 /* ── Global theme-aware logo swap ────────────────────────────────────────────
    Two real marks (black+brown for light, white+brown for dark) are both in the
    DOM; CSS shows the right one so there's no theme-flash and no filter hack.
-   Applies to BOTH the <Logo> (.site-logo__img) and <BrandLogo> (.brand-logo)
-   components, everywhere they appear — including `.on-ink` bands (hero/footer)
-   that stay dark even while the app is in light mode. */
+   Drives the single <BrandLogo> component (components/ui/brand-logo.tsx)
+   everywhere it appears — including `.on-ink` bands (hero/footer) that stay
+   dark even while the app is in light mode. */
 .logo-on-dark {
   display: none;
 }

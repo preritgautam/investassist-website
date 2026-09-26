@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Logo } from "@/components/ui/logo"
+import { BrandLogo } from "@/components/ui/brand-logo"
 import { getAppUrl } from "@/lib/utils"
 import {
   ArrowRight,
@@ -87,9 +87,9 @@ export default function SampleAnalysisPage() {
       </div>
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 px-4 py-4 border-b border-white/40 backdrop-blur-sm">
+      <nav className="sticky top-0 z-50 px-5 py-4 border-b border-white/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Logo priority />
+          <BrandLogo width={140} />
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
@@ -99,7 +99,7 @@ export default function SampleAnalysisPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 px-4 py-8 md:py-12">
+      <main className="relative z-10 px-5 py-8 md:py-12">
         <div className="max-w-6xl mx-auto">
           {/* Sample banner */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-white/50 border border-white/60 mb-8">

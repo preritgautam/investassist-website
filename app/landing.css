@@ -1,14 +1,30 @@
 /* ==========================================================================
    InvestAssist landing presentation — scoped under `.ia-landing`.
 
-   Ported from the approved reference (final InvestAssist-blue palette). Themes
-   are driven by the app's existing next-themes provider: the base rules are the
-   LIGHT palette (app default), and `.dark .ia-landing` supplies the DARK
-   palette. No `data-theme` attribute, no second theme store. All selectors are
-   scoped so nothing leaks into the authenticated app or shared primitives.
+   MOBILE-FIRST. Base rules describe the single-column phone layout that
+   matches the reference; `@media (min-width: …)` blocks progressively add the
+   multi-column tablet/desktop composition. Nothing is desktop-first.
+
+   One source of truth for the page frame:
+     --pad-x      horizontal page padding (the left/right gutter)
+     --maxw       content max width
+     --section-y  vertical rhythm between major sections
+     --hero-y     hero vertical padding
+   Every gutter and section pad reads these tokens — no hard-coded 22px/40px
+   scattered across rules — so the whole page rescales from four values.
+
+   Themes are driven by the app's next-themes provider: base rules are the
+   LIGHT palette (app default); `.dark .ia-landing` supplies the DARK palette.
+   All selectors are scoped so nothing leaks into the authenticated app.
    ========================================================================== */
 
 .ia-landing {
+  /* Page frame — mobile defaults, widened at the breakpoints below. */
+  --maxw: 1320px;
+  --pad-x: 20px;
+  --section-y: 56px;
+  --hero-y: 40px;
+
   /* Light palette (default — app renders light unless `.dark` is present) */
   --ia-brand: #8b5e24;
   --bg: #faf9f6;
@@ -80,10 +96,12 @@
   border-radius: 2px;
 }
 
+/* The single page gutter. Every full-width band and inner block reads --pad-x
+   so the left/right edge lines up identically across the whole page. */
 .ia-landing .wrap {
-  max-width: 1320px;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 var(--pad-x);
 }
 
 /* ── Brand logo swap ─────────────────────────────────────────────────────── */
@@ -109,18 +127,24 @@
 
 /* ── Navigation ──────────────────────────────────────────────────────────── */
 .ia-landing .nav {
-  height: 86px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   border-bottom: 1px solid var(--line);
 }
 .ia-landing .navlinks {
   display: flex;
-  gap: 25px;
+  gap: 14px;
   align-items: center;
   font-size: 14px;
   color: var(--muted);
+}
+/* On phones only the theme toggle and the primary CTA show; the text links
+   appear once there is room for them. */
+.ia-landing .navlinks > a:not(.btn) {
+  display: none;
 }
 .ia-landing .navlinks > a:hover {
   color: var(--ink);
@@ -189,7 +213,7 @@
   line-height: 1.6;
 }
 .ia-landing h2 {
-  font-size: clamp(32px, 4vw + 16px, 48px);
+  font-size: clamp(30px, 7vw, 48px);
   line-height: 1.08;
   font-weight: 600;
   letter-spacing: -0.045em;
@@ -199,28 +223,26 @@
   color: var(--blue);
 }
 .ia-landing .section {
-  padding: 100px 0;
+  padding: var(--section-y) 0;
 }
 .ia-landing .section-head {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
+  flex-direction: column;
+  gap: 14px;
   margin-bottom: 8px;
 }
 .ia-landing .section-head h2 {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .ia-landing .section-lead {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.6;
   color: var(--muted);
-  max-width: 420px;
 }
 
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 .ia-landing .hero {
-  padding: 76px 0 70px;
+  padding: var(--hero-y) 0;
   border-bottom: 1px solid var(--line);
   background: radial-gradient(ellipse at 92% 8%, var(--hero-tint), transparent 58%), var(--bg);
 }
@@ -228,11 +250,11 @@
   max-width: none;
 }
 .ia-landing .hero h1 {
-  font-size: clamp(46px, 9vw, 92px);
+  font-size: clamp(44px, 12vw, 92px);
   line-height: 1.03;
   letter-spacing: -0.055em;
   font-weight: 750;
-  margin: 24px 0;
+  margin: 20px 0;
   max-width: 1090px;
   color: var(--ink);
   text-wrap: balance;
@@ -241,16 +263,19 @@
   color: var(--ink);
 }
 .ia-landing .hero .sub {
-  font-size: 20px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.6;
   color: var(--muted);
   max-width: 775px;
 }
+/* Stacked, full-width CTAs on phones (the clean reference default); side by
+   side once there is horizontal room. */
 .ia-landing .ctas {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
   gap: 12px;
-  margin: 32px 0 16px;
-  flex-wrap: wrap;
+  margin: 28px 0 16px;
 }
 .ia-landing .micro {
   font-size: 14px;
@@ -266,8 +291,8 @@
 .ia-landing .hero-proof {
   display: flex;
   flex-wrap: wrap;
-  gap: 34px;
-  margin-top: 52px;
+  gap: 12px 22px;
+  margin-top: 34px;
   font-size: 13px;
   color: var(--muted);
 }
@@ -284,7 +309,8 @@
   margin-right: 10px;
 }
 
-/* Document-to-decision flow */
+/* Document-to-decision flow — stacked groups with hairline separators on
+   mobile; a five-track grid with arrow connectors on desktop. */
 .ia-landing .document-flow {
   margin-top: 30px;
   border: 1px solid var(--line);
@@ -295,9 +321,10 @@
 }
 .ia-landing .flow-heading {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 16px;
-  padding: 20px 25px;
+  gap: 8px 16px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
   font: 12px var(--font-mono, ui-monospace, monospace);
@@ -309,17 +336,16 @@
 }
 .ia-landing .flow-body {
   display: grid;
-  grid-template-columns: 1.2fr 45px 0.85fr 45px 1.1fr;
-  gap: 15px;
-  align-items: center;
-  padding: 29px 25px;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 24px 20px;
 }
 .ia-landing .label {
   font: 12px var(--font-mono, ui-monospace, monospace);
   letter-spacing: 1.7px;
   color: var(--muted);
   display: block;
-  margin-bottom: 17px;
+  margin-bottom: 14px;
 }
 .ia-landing .flow-documents > div {
   border: 1px solid var(--line);
@@ -335,14 +361,18 @@
   font: 11px var(--font-mono, ui-monospace, monospace);
   color: var(--muted);
 }
+/* Arrow connectors are desktop-only chrome. */
 .ia-landing .flow-arrow {
+  display: none;
   text-align: center;
   color: var(--blue);
   font-size: 22px;
 }
-.ia-landing .flow-result {
-  border-left: 2px solid var(--blue);
-  padding-left: 18px;
+/* Stacked: separate each stage with a top rule. */
+.ia-landing .flow-result,
+.ia-landing .flow-next {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
 }
 .ia-landing .flow-result strong {
   font-size: 30px;
@@ -367,14 +397,14 @@
   margin-top: 2px;
 }
 
-/* Hero principles */
+/* Hero principles — one column on mobile, three across on desktop. */
 .ia-landing .hero-principles {
-  margin-top: 38px;
-  padding-top: 30px;
+  margin-top: 34px;
+  padding-top: 28px;
   border-top: 1px solid var(--line);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 .ia-landing .hero-principles h3 {
   font-size: 16px;
@@ -390,10 +420,10 @@
 
 /* ── Sample workspace ────────────────────────────────────────────────────── */
 .ia-landing .sample-section {
-  padding-bottom: 50px;
+  padding-bottom: var(--section-y);
 }
 .ia-landing .workspace {
-  margin-top: 35px;
+  margin-top: 28px;
   border: 1px solid var(--line);
   border-top: 2px solid var(--ia-brand);
   border-radius: 4px;
@@ -404,8 +434,8 @@
 .ia-landing .appbar {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 0 20px;
+  gap: 10px;
+  padding: 0 14px;
   height: 52px;
   background: var(--surface2);
   border-bottom: 1px solid var(--line);
@@ -418,8 +448,9 @@
   margin-right: 4px;
   color: var(--ink);
 }
+/* The decorative tab strip is desktop-only; it overflows a phone. */
 .ia-landing .apptabs {
-  display: flex;
+  display: none;
   gap: 20px;
   font-size: 13px;
 }
@@ -441,7 +472,7 @@
 }
 .ia-landing .appbody {
   background: var(--bg);
-  padding: 25px 24px;
+  padding: 20px 16px;
 }
 .ia-landing .dealhead {
   display: flex;
@@ -465,9 +496,10 @@
   color: var(--muted);
   font-family: var(--font-mono, ui-monospace, monospace);
 }
+/* Metrics stack on mobile (row separators), three across on wider screens. */
 .ia-landing .metric-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   margin: 20px 0;
   border: 1px solid var(--line);
   border-radius: 3px;
@@ -476,10 +508,10 @@
 }
 .ia-landing .metric {
   padding: 16px 18px;
-  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 .ia-landing .metric:last-child {
-  border-right: 0;
+  border-bottom: 0;
 }
 .ia-landing .metric label {
   font-size: 12px;
@@ -506,15 +538,15 @@
 }
 .ia-landing .appbottom {
   display: grid;
-  grid-template-columns: 1.13fr 1fr;
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 14px;
   align-items: stretch;
 }
 .ia-landing .analysis {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 3px;
-  padding: 20px 22px;
+  padding: 20px 18px;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -691,12 +723,12 @@
 /* ── Walkthrough video ───────────────────────────────────────────────────── */
 .ia-landing .walkthrough {
   display: grid;
-  grid-template-columns: 0.75fr 1.4fr;
-  gap: 65px;
+  grid-template-columns: 1fr;
+  gap: 28px;
   align-items: center;
 }
 .ia-landing .walkthrough h2 {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .ia-landing .walkthrough figure {
   margin: 0;
@@ -713,24 +745,26 @@
 /* ── Editorial "how it works" ────────────────────────────────────────────── */
 .ia-landing .editorial {
   display: grid;
-  grid-template-columns: 0.75fr 1.6fr;
-  gap: 80px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   border-top: 1px solid var(--line);
 }
 .ia-landing .editorial-heading h2 {
-  font-size: clamp(34px, 6.5vw, 40px);
+  font-size: clamp(30px, 7vw, 40px);
   line-height: 1.1;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .ia-landing .editorial-heading .section-lead {
-  font-size: 18px;
-  margin-top: 16px;
+  font-size: 17px;
+  margin-top: 14px;
 }
+/* Each review step stacks index → title → body on mobile; three tracks on
+   desktop. */
 .ia-landing .review-rows article {
   display: grid;
-  grid-template-columns: 35px 1fr 1.15fr;
-  gap: 23px;
-  padding: 30px 0;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 28px 0;
   border-top: 1px solid var(--line);
 }
 .ia-landing .review-rows article:last-of-type {
@@ -739,10 +773,9 @@
 .ia-landing .review-rows article > span {
   font: 13px var(--font-mono, ui-monospace, monospace);
   color: var(--blue);
-  padding-top: 6px;
 }
 .ia-landing .review-rows h3 {
-  font-size: 23px;
+  font-size: 24px;
   line-height: 1.25;
   letter-spacing: -0.6px;
   font-weight: 600;
@@ -754,11 +787,11 @@
 }
 .ia-landing .workflow-invitation {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
   padding-top: 28px;
-  margin-top: 32px;
+  margin-top: 28px;
 }
 .ia-landing .workflow-invitation p {
   font-size: 16px;
@@ -776,7 +809,7 @@
 
 /* ── Compound section ────────────────────────────────────────────────────── */
 .ia-landing .compound-section {
-  padding: 76px 0;
+  padding: var(--section-y) 0;
   background: var(--pale);
   border-block: 1px solid var(--line);
 }
@@ -784,42 +817,42 @@
   max-width: 900px;
 }
 .ia-landing .compound-heading h2 {
-  font-size: clamp(34px, 5vw + 16px, 58px);
+  font-size: clamp(30px, 6vw + 8px, 58px);
   line-height: 1.06;
   letter-spacing: -0.045em;
-  margin: 20px 0 24px;
+  margin: 16px 0 20px;
 }
 .ia-landing .compound-heading .section-lead {
   max-width: 760px;
-  font-size: 18px;
+  font-size: 17px;
 }
 .ia-landing .compound-direction {
   font-size: 13px;
   line-height: 1.6;
   color: var(--muted);
   max-width: 820px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
+/* Progression stacks on mobile with hairline separators; four tracks on
+   desktop. */
 .ia-landing .compound-progression {
   list-style: none;
   padding: 0;
-  margin: 32px 0 0;
+  margin: 28px 0 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr) 1.18fr;
+  grid-template-columns: 1fr;
   border-block: 1px solid var(--line);
 }
 .ia-landing .compound-progression li {
   min-width: 0;
-  padding: 25px 22px 28px;
-  border-right: 1px solid var(--line);
+  padding: 24px 18px;
+  border-top: 1px solid var(--line);
 }
 .ia-landing .compound-progression li:first-child {
-  padding-left: 0;
+  border-top: 0;
 }
 .ia-landing .compound-progression li:last-child {
-  border: 0;
   background: var(--soft);
-  padding-left: 24px;
 }
 .ia-landing .progress-stage {
   display: flex;
@@ -861,10 +894,10 @@
 }
 .ia-landing .compound-close {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  margin-top: 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  margin-top: 32px;
   padding-top: 28px;
   border-top: 1px solid var(--line);
 }
@@ -884,16 +917,17 @@
 /* ── Pricing ─────────────────────────────────────────────────────────────── */
 .ia-landing .pricing .section-lead {
   max-width: 640px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 .ia-landing .pricing h2 {
-  margin-top: 12px;
+  margin-top: 8px;
 }
+/* One card per row on mobile → two → four. */
 .ia-landing .price-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
-  margin-top: 46px;
+  margin-top: 34px;
   align-items: stretch;
 }
 .ia-landing .price {
@@ -933,7 +967,6 @@
   line-height: 1.5;
   color: var(--muted);
   margin-top: 6px;
-  min-height: 42px;
 }
 .ia-landing .price strong {
   display: block;
@@ -960,7 +993,6 @@
   line-height: 1.55;
   color: var(--muted);
   margin-top: 12px;
-  min-height: 60px;
 }
 .ia-landing .price .overage {
   font-size: 12px;
@@ -982,30 +1014,16 @@
   text-align: center;
   margin-top: 30px;
 }
-@media (max-width: 1000px) {
-  .ia-landing .price-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 640px) {
-  .ia-landing .price-grid {
-    grid-template-columns: 1fr;
-  }
-  .ia-landing .price .for,
-  .ia-landing .price .support {
-    min-height: 0;
-  }
-}
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
 .ia-landing .faq {
   display: grid;
-  grid-template-columns: 0.75fr 1.6fr;
-  gap: 80px;
-  padding: 100px 40px;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding: var(--section-y) var(--pad-x);
 }
 .ia-landing .faq h2 {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .ia-landing .faq details {
   border-top: 1px solid var(--line);
@@ -1048,19 +1066,19 @@
 .ia-landing .closing {
   background: var(--pale);
   border-top: 1px solid var(--line);
-  padding: 75px 40px;
+  padding: var(--section-y) var(--pad-x);
 }
 .ia-landing .closing h2 {
-  margin: 20px 0 18px;
+  margin: 16px 0 16px;
 }
 .ia-landing .closing p {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.6;
   color: var(--muted);
   max-width: 640px;
 }
 .ia-landing .closing .btn {
-  margin-top: 28px;
+  margin-top: 24px;
 }
 .ia-landing .closing .micro {
   margin-top: 16px;
@@ -1069,17 +1087,16 @@
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 .ia-landing .footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
-  padding: 40px;
+  padding: 40px var(--pad-x);
   border-top: 1px solid var(--line);
-  flex-wrap: wrap;
 }
 .ia-landing .footer > div {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 20px;
   font-size: 13px;
   color: var(--muted);
   flex-wrap: wrap;
@@ -1094,142 +1111,181 @@
   color: var(--ink);
 }
 
-/* ── Responsive ──────────────────────────────────────────────────────────── */
-@media (max-width: 1000px) {
-  .ia-landing .navlinks {
-    gap: 16px;
+/* ==========================================================================
+   Progressive enhancement — layout grows from the mobile base upward.
+   ========================================================================== */
+
+/* ≥560px — small tablets / large phones: side-by-side CTAs and metric row. */
+@media (min-width: 560px) {
+  .ia-landing .ctas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
   }
-  .ia-landing .navlinks > a:not(.btn) {
-    display: none;
+  .ia-landing .metric-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .ia-landing .editorial,
-  .ia-landing .walkthrough,
-  .ia-landing .faq {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .ia-landing .metric {
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
   }
-  .ia-landing .flow-body {
-    grid-template-columns: 1fr 25px 0.85fr 25px 1fr;
-    gap: 7px;
+  .ia-landing .metric:last-child {
+    border-right: 0;
   }
 }
 
-@media (max-width: 800px) {
-  .ia-landing .appbottom {
-    grid-template-columns: 1fr;
-    gap: 14px;
+/* ≥640px — pricing pairs up. */
+@media (min-width: 640px) {
+  .ia-landing .price-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 700px) {
-  .ia-landing .wrap {
-    padding: 0 22px;
+/* ≥760px — section heads and inline invitations go horizontal; the review
+   grid and hero principles fan out; the workspace analysis panels pair up. */
+@media (min-width: 760px) {
+  .ia-landing .section-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
   }
-  .ia-landing .section {
-    padding: 60px 0;
+  .ia-landing .section-head h2 {
+    margin-top: 12px;
   }
-  .ia-landing .hero {
-    padding: 48px 0;
-  }
-  .ia-landing .hero .sub {
+  .ia-landing .section-lead {
+    max-width: 420px;
     font-size: 18px;
   }
-  .ia-landing .hero-principles,
-  .ia-landing .compound-benefits {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .ia-landing .flow-body {
-    grid-template-columns: 1fr;
-    padding: 20px;
-    gap: 20px;
-  }
-  .ia-landing .flow-arrow {
-    display: none;
-  }
-  .ia-landing .section-head {
-    display: block;
-  }
-  .ia-landing .section-head .section-lead {
-    max-width: none;
-    margin-top: 14px;
+  .ia-landing .hero-principles {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
   }
   .ia-landing .review-rows article {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 28px 0;
-  }
-  .ia-landing .review-rows p {
-    grid-column: auto;
-  }
-  .ia-landing .review-rows h3 {
-    font-size: 24px;
+    grid-template-columns: 35px 1fr 1.15fr;
+    gap: 23px;
+    padding: 30px 0;
   }
   .ia-landing .review-rows article > span {
-    padding-top: 0;
+    padding-top: 6px;
   }
-  .ia-landing .compound-progression {
-    grid-template-columns: 1fr;
+  .ia-landing .review-rows h3 {
+    font-size: 23px;
   }
-  .ia-landing .compound-progression li,
-  .ia-landing .compound-progression li:first-child,
-  .ia-landing .compound-progression li:last-child {
-    padding: 24px 18px;
-    border-right: 0;
-    border-top: 1px solid var(--line);
-  }
-  .ia-landing .compound-progression li:first-child {
-    border-top: 0;
+  .ia-landing .appbottom {
+    grid-template-columns: 1.13fr 1fr;
+    gap: 22px;
   }
   .ia-landing .workflow-invitation,
   .ia-landing .compound-close {
-    align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
   }
-  .ia-landing .footer {
-    flex-direction: column;
-    align-items: flex-start;
+}
+
+/* ≥900px — the document flow becomes a five-track pipeline with arrows; the
+   compound progression opens to four tracks. */
+@media (min-width: 900px) {
+  .ia-landing .flow-body {
+    grid-template-columns: 1.2fr 45px 0.85fr 45px 1.1fr;
+    gap: 15px;
+    align-items: center;
+    padding: 29px 25px;
+  }
+  .ia-landing .flow-heading {
+    padding: 20px 25px;
+  }
+  .ia-landing .flow-arrow {
+    display: block;
+  }
+  .ia-landing .flow-result {
+    border-top: 0;
+    padding-top: 0;
+    border-left: 2px solid var(--blue);
+    padding-left: 18px;
+  }
+  .ia-landing .flow-next {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .ia-landing .compound-progression {
+    grid-template-columns: repeat(3, 1fr) 1.18fr;
+  }
+  .ia-landing .compound-progression li {
+    padding: 25px 22px 28px;
+    border-top: 0;
+    border-right: 1px solid var(--line);
+  }
+  .ia-landing .compound-progression li:first-child {
+    padding-left: 0;
+  }
+  .ia-landing .compound-progression li:last-child {
+    border-right: 0;
+    padding-left: 24px;
+  }
+}
+
+/* ≥1000px — full desktop: wider gutters, taller rhythm, the two-column
+   editorial / walkthrough / FAQ splits, the four-across pricing grid, and the
+   complete top-nav link set. */
+@media (min-width: 1000px) {
+  .ia-landing {
+    --pad-x: 40px;
+    --section-y: 100px;
+    --hero-y: 76px;
+  }
+  .ia-landing .nav {
+    height: 86px;
+  }
+  .ia-landing .navlinks {
+    gap: 25px;
+  }
+  .ia-landing .navlinks > a:not(.btn) {
+    display: inline-flex;
+  }
+  .ia-landing .hero .sub {
+    font-size: 20px;
+    line-height: 1.65;
+  }
+  .ia-landing .editorial {
+    grid-template-columns: 0.75fr 1.6fr;
+    gap: 80px;
+  }
+  .ia-landing .editorial-heading .section-lead {
+    font-size: 18px;
+  }
+  .ia-landing .walkthrough {
+    grid-template-columns: 0.75fr 1.4fr;
+    gap: 65px;
   }
   .ia-landing .faq {
-    padding: 60px 22px;
+    grid-template-columns: 0.75fr 1.6fr;
+    gap: 80px;
   }
-  .ia-landing .closing {
-    padding: 60px 22px;
+  .ia-landing .price-grid {
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 46px;
+  }
+  .ia-landing .compound-heading .section-lead,
+  .ia-landing .editorial-heading .section-lead {
+    max-width: 760px;
   }
 }
 
-@media (max-width: 600px) {
-  /* The sample-workspace top bar is decorative app chrome; its tab strip
-     overflows on narrow screens, so collapse it and keep brand + sample chip. */
-  .ia-landing .apptabs {
-    display: none;
-  }
+/* ≥700px — restore the medium section lead width cap on the hero-adjacent
+   sample header before the full desktop split. */
+@media (min-width: 700px) {
   .ia-landing .appbar {
-    gap: 10px;
-    padding: 0 14px;
+    padding: 0 20px;
+    gap: 18px;
+  }
+  .ia-landing .apptabs {
+    display: flex;
   }
   .ia-landing .appbody {
-    padding: 20px 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .ia-landing .metric-grid {
-    grid-template-columns: 1fr;
-  }
-  .ia-landing .metric {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .ia-landing .metric:last-child {
-    border-bottom: 0;
-  }
-  .ia-landing .ctas {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .ia-landing .hero h1 br {
-    display: none;
+    padding: 25px 24px;
   }
 }
 
