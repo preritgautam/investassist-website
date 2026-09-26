@@ -189,8 +189,8 @@
   line-height: 1.6;
 }
 .ia-landing h2 {
-  font-size: clamp(26px, 3vw + 15px, 48px);
-  line-height: 1.1;
+  font-size: clamp(32px, 4vw + 16px, 48px);
+  line-height: 1.08;
   font-weight: 600;
   letter-spacing: -0.045em;
   color: var(--ink);
@@ -212,7 +212,7 @@
   margin-top: 12px;
 }
 .ia-landing .section-lead {
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--muted);
   max-width: 420px;
@@ -228,11 +228,11 @@
   max-width: none;
 }
 .ia-landing .hero h1 {
-  font-size: clamp(38px, 8vw + 8px, 92px);
-  line-height: 1.045;
+  font-size: clamp(46px, 9vw, 92px);
+  line-height: 1.03;
   letter-spacing: -0.055em;
   font-weight: 750;
-  margin: 30px 0;
+  margin: 24px 0;
   max-width: 1090px;
   color: var(--ink);
   text-wrap: balance;
@@ -718,12 +718,12 @@
   border-top: 1px solid var(--line);
 }
 .ia-landing .editorial-heading h2 {
-  font-size: clamp(28px, 4vw + 14px, 36px);
-  line-height: 1.15;
+  font-size: clamp(34px, 6.5vw, 40px);
+  line-height: 1.1;
   margin-top: 12px;
 }
 .ia-landing .editorial-heading .section-lead {
-  font-size: 17px;
+  font-size: 18px;
   margin-top: 16px;
 }
 .ia-landing .review-rows article {
@@ -784,8 +784,8 @@
   max-width: 900px;
 }
 .ia-landing .compound-heading h2 {
-  font-size: clamp(28px, 4vw + 14px, 58px);
-  line-height: 1.08;
+  font-size: clamp(34px, 5vw + 16px, 58px);
+  line-height: 1.06;
   letter-spacing: -0.045em;
   margin: 20px 0 24px;
 }
@@ -1112,9 +1112,6 @@
     grid-template-columns: 1fr 25px 0.85fr 25px 1fr;
     gap: 7px;
   }
-  .ia-landing .hero h1 {
-    font-size: clamp(36px, 8vw + 6px, 80px);
-  }
 }
 
 @media (max-width: 800px) {
@@ -1134,12 +1131,8 @@
   .ia-landing .hero {
     padding: 48px 0;
   }
-  .ia-landing .hero h1 {
-    font-size: clamp(32px, 8vw + 6px, 60px);
-    letter-spacing: -0.05em;
-  }
   .ia-landing .hero .sub {
-    font-size: 17px;
+    font-size: 18px;
   }
   .ia-landing .hero-principles,
   .ia-landing .compound-benefits {
@@ -1162,15 +1155,18 @@
     margin-top: 14px;
   }
   .ia-landing .review-rows article {
-    grid-template-columns: 25px 1fr;
-    gap: 10px 15px;
-    padding: 23px 0;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 28px 0;
   }
   .ia-landing .review-rows p {
-    grid-column: 2;
+    grid-column: auto;
   }
   .ia-landing .review-rows h3 {
-    font-size: 22px;
+    font-size: 24px;
+  }
+  .ia-landing .review-rows article > span {
+    padding-top: 0;
   }
   .ia-landing .compound-progression {
     grid-template-columns: 1fr;
