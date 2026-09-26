@@ -10,7 +10,7 @@
  *
  * Usage:
  *   node scripts/seo-preflight.mjs [baseUrl]
- *   BASE_URL=https://investassist.clik.ai node scripts/seo-preflight.mjs
+ *   BASE_URL=https://investassist.ai node scripts/seo-preflight.mjs
  *
  * Exit code is non-zero if any check fails, so it can gate CI.
  */

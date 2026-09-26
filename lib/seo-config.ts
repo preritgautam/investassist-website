@@ -10,7 +10,7 @@ import type { Metadata } from "next"
 export const SITE_NAME = "InvestAssist"
 
 /** Canonical production origin used when NEXT_PUBLIC_SITE_URL is not set. */
-export const DEFAULT_SITE_URL = "https://investassist.clik.ai"
+export const DEFAULT_SITE_URL = "https://investassist.ai"
 
 export const SITE_TITLE = "InvestAssist - CRE Underwriting & Deal Analysis Software"
 
