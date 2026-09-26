@@ -1,15 +1,15 @@
 /**
  * InvestAssist Design System
  *
- * Centralised inline-style constants for the cool off-white / royal blue institutional palette.
+ * Centralised inline-style constants for the warm ivory / gold institutional palette.
  * Mirrors the CSS tokens defined in globals.css.
  *
- * Color Palette: Cool Off-White + Deep Navy + Royal Blue
- * - Page background:  #eef2f9  (cool off-white)
+ * Color Palette: Warm Ivory + Deep Espresso + Gold
+ * - Page background:  #f7f3ec  (warm ivory)
  * - Primary surface:  rgba(255,255,255,0.85)  (frosted white glass)
- * - Brand accent:     #26548f / #1d4074  (royal blue)
- * - Primary dark:     #0f1a2e  (deep navy)
- * - Body text:        #0f172a  (slate ink)
+ * - Brand accent:     #8b5e24 / #74501f  (gold)
+ * - Primary dark:     #14100a  (deep espresso)
+ * - Body text:        #251e14  (espresso ink)
  */
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -104,17 +104,31 @@ export const designSystem = {
     },
   },
 
-  // Background orb/glow overlays — cool royal blue tones only
+  // Background orb/glow overlays — warm gold tones only
   orbs: {
-    amber:  "radial-gradient(circle, rgba(53, 102, 170, 0.14) 0%, transparent 70%)",
-    gold:   "radial-gradient(circle, rgba(38, 84, 143, 0.12) 0%, transparent 70%)",
-    warm:   "radial-gradient(circle, rgba(96, 165, 250, 0.10) 0%, transparent 70%)",
-    muted:  "radial-gradient(circle, rgba(15, 23, 42, 0.06) 0%, transparent 70%)",
-    // Legacy aliases kept so existing callers don't break; these now render blue
-    slate:  "radial-gradient(circle, rgba(53, 102, 170, 0.14) 0%, transparent 70%)",
-    blue:   "radial-gradient(circle, rgba(38, 84, 143, 0.12) 0%, transparent 70%)",
-    indigo: "radial-gradient(circle, rgba(53, 102, 170, 0.10) 0%, transparent 70%)",
-    teal:   "radial-gradient(circle, rgba(96, 165, 250, 0.10) 0%, transparent 70%)",
+    amber:  "radial-gradient(circle, rgba(166, 123, 43, 0.14) 0%, transparent 70%)",
+    gold:   "radial-gradient(circle, rgba(139, 94, 36, 0.12) 0%, transparent 70%)",
+    warm:   "radial-gradient(circle, rgba(211, 167, 101, 0.10) 0%, transparent 70%)",
+    muted:  "radial-gradient(circle, rgba(37, 30, 20, 0.06) 0%, transparent 70%)",
+    // Legacy aliases kept so existing callers don't break; these now render gold
+    slate:  "radial-gradient(circle, rgba(166, 123, 43, 0.14) 0%, transparent 70%)",
+    blue:   "radial-gradient(circle, rgba(139, 94, 36, 0.12) 0%, transparent 70%)",
+    indigo: "radial-gradient(circle, rgba(166, 123, 43, 0.10) 0%, transparent 70%)",
+    teal:   "radial-gradient(circle, rgba(211, 167, 101, 0.10) 0%, transparent 70%)",
+  },
+
+  // Gradients for text and accents — warm gold/espresso brand palette only
+  gradients: {
+    // Primary brand gradient — gold (matches --brand-gradient)
+    brand: "linear-gradient(110deg, #74501f 0%, #74501f 55%, #8b5e24 100%)",
+    // Text gradient — for highlighted headings (deep gold → light gold)
+    text:  "linear-gradient(110deg, #74501f 0%, #8b5e24 55%, #a67b2b 100%)",
+    // Accent gradient — same gold range, slightly softer
+    teal:  "linear-gradient(135deg, #8b5e24 0%, #a67b2b 100%)",
+    // Subtle card tint
+    cardTint: "linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(248,250,252,0.88) 100%)",
+    // Deep espresso — for dark surfaces (matches neo-card-accent background)
+    navy:  "linear-gradient(135deg, #14100a 0%, #31281a 50%, #3f3322 100%)",
   },
 
   // Gradients for text and accents — royal blue/navy brand palette only

@@ -1,7 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { LOGO_PATH, LOGO_ALT } from "@/lib/design-system"
+import { LOGO_ALT } from "@/lib/design-system"
 
 interface LogoProps {
   /**
@@ -19,17 +18,36 @@ interface LogoProps {
  * Shared brand logo. Size and position are driven entirely by the global
  * `.site-logo` / `.site-logo__img` classes in globals.css so the logo is
  * identical on every page. Do not override size here — change globals.css.
+ *
+ * Theme-aware: both marks are rendered and swapped with CSS (`.logo-on-light` /
+ * `.logo-on-dark`) so the correct artwork is present before first paint. The
+ * black+brown mark shows on light surfaces; the white+brown mark shows under
+ * `.dark` or an `.on-ink` band. No CSS filters, no JS/hydration dependency.
  */
 export function Logo({ href = "/", className, priority = false }: LogoProps) {
+  const loading = priority ? "eager" : undefined
   const img = (
-    <Image
-      src={LOGO_PATH || "/placeholder.svg"}
-      alt={LOGO_ALT}
-      width={148}
-      height={32}
-      priority={priority}
-      className="site-logo__img"
-    />
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="site-logo__img logo-on-light"
+        src="/brand/investassist-mark-light.svg"
+        alt={LOGO_ALT}
+        width={148}
+        height={32}
+        loading={loading}
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="site-logo__img logo-on-dark"
+        src="/brand/investassist-mark-dark.svg"
+        alt=""
+        aria-hidden="true"
+        width={148}
+        height={32}
+        loading={loading}
+      />
+    </>
   )
 
   if (href === null) {

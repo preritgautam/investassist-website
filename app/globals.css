@@ -12,103 +12,105 @@
      Single source of truth: color · surfaces · elevation · radius · typography.
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Brand deep classic-blue ramp (pure blue hue, desaturated) ──────────── */
-  --brand-50:  #eef4fb;
-  --brand-100: #d9e6f4;
-  --brand-200: #bcd0ea;
-  --brand-300: #8fb0da;
-  --brand-400: #5b87c4;
-  --brand-500: #3566aa;
-  --brand-600: #26548f;  /* interactive / hover */
-  --brand-700: #1d4074;  /* primary */
-  --brand-800: #1a3560;
-  --brand-900: #162a4d;
+  /* ── Brand GOLD / BRONZE ramp (matches the InvestAssist wordmark) ───────────
+     Anchored on the logo gold #8b5e24. Pale cream tints → deep bronze. */
+  --brand-50:  #f9f5ec;
+  --brand-100: #f1e6d0;
+  --brand-200: #e5d0a6;
+  --brand-300: #d4b473;
+  --brand-400: #c09646;
+  --brand-500: #a67b2b;
+  --brand-600: #8b5e24;  /* logo gold — interactive / hover */
+  --brand-700: #74501f;  /* primary text / links (AA on light) */
+  --brand-800: #5f4119;
+  --brand-900: #4a3214;
 
-  /* ── Electric AZURE accent ramp (the "AI / alive" spark; use sparingly) ──
-     Lives mainly on dark ink surfaces, data-viz highlights & active states. */
-  --azure-300: #7cc7ff;
-  --azure-400: #4db8ff;
-  --azure-500: #22a3ff;   /* primary accent */
-  --azure-600: #0d8ae6;
-  --azure-700: #0a6fbd;
-  --azure-glow: rgba(34, 163, 255, 0.45);
-  --azure-glow-soft: rgba(34, 163, 255, 0.18);
+  /* ── Warm GOLD accent ramp (the "alive" spark; use sparingly) ──────────────
+     Named `azure-*` for legacy compatibility (only referenced inside this file)
+     but now carries the lighter gold used on dark ink surfaces & highlights. */
+  --azure-300: #e6c690;
+  --azure-400: #d3a765;   /* logo gold on dark */
+  --azure-500: #c28f42;   /* primary accent */
+  --azure-600: #a5762f;
+  --azure-700: #895f24;
+  --azure-glow: rgba(196, 143, 66, 0.42);
+  --azure-glow-soft: rgba(196, 143, 66, 0.16);
 
-  /* ── INK surface system (dark duotone chrome on the light canvas) ───────
+  /* ── INK surface system (warm espresso chrome on the light canvas) ───────
      Structural dark bands: top nav, hero, footer, spotlight KPI panels. */
-  --ink-950: #0b1220;
-  --ink-900: #0f1826;
-  --ink-800: #16202e;
-  --ink-700: #1f2c3e;
-  --ink-600: #26344a;
-  --ink-fg: #eaf0f8;         /* primary text on ink */
-  --ink-fg-muted: #9aa8bc;   /* secondary text on ink */
-  --ink-border: #26344a;
-  --ink-border-strong: #33445f;
+  --ink-950: #14100a;
+  --ink-900: #1b160f;
+  --ink-800: #251e14;
+  --ink-700: #31281a;
+  --ink-600: #3f3322;
+  --ink-fg: #f4eee3;         /* primary text on ink */
+  --ink-fg-muted: #b7aa93;   /* secondary text on ink */
+  --ink-border: #3f3322;
+  --ink-border-strong: #524229;
   --on-ink-accent: var(--azure-400);   /* accent tuned for legibility on ink */
 
-  /* Core backgrounds - Cool paper white */
-  --background: #f6f8fb;
-  --foreground: #16202e;   /* graphite ink */
+  /* Core backgrounds - Warm ivory paper */
+  --background: #faf8f3;
+  --foreground: #251f18;   /* warm espresso ink */
 
   /* Cards - Flat crisp white */
   --card: #ffffff;
-  --card-foreground: #16202e;
+  --card-foreground: #251f18;
 
   /* Popovers - Elevated white surfaces */
   --popover: #ffffff;
-  --popover-foreground: #16202e;
+  --popover-foreground: #251f18;
 
-  /* Primary - Deep classic blue */
-  --primary: #1d4074;
+  /* Primary - Logo gold */
+  --primary: #8b5e24;
   --primary-foreground: #ffffff;
 
-  /* Secondary - Cool ice */
-  --secondary: #eef1f6;
-  --secondary-foreground: #2f3b4d;
+  /* Secondary - Warm sand */
+  --secondary: #f2eee5;
+  --secondary-foreground: #3a3226;
 
-  /* Muted - Soft cool tint */
-  --muted: #eef1f6;
-  --muted-foreground: #4d5766;
+  /* Muted - Soft warm tint */
+  --muted: #f2eee5;
+  --muted-foreground: #6a6154;
   /* Faint text tier — the readable replacement for slate-400 (#94a3b8, which
      failed AA at ~2.4:1) as a TEXT color. Kept a step lighter than
      --muted-foreground so the muted→faint hierarchy survives, but now passes
      AA. Consumed via palette.inkFaint; slate-400/neutral-400 stay untouched so
      borders and icons that use them are unaffected. */
-  --text-faint: #5f6b7b;
+  --text-faint: #7d7365;
 
-  /* Accent - Soft blue wash */
-  --accent: #eef4fb;
-  --accent-foreground: #1d4074;
+  /* Accent - Soft gold wash */
+  --accent: #f6efe0;
+  --accent-foreground: #74501f;
 
   /* Destructive - Professional red */
   --destructive: #c33636;
   --destructive-foreground: #ffffff;
 
-  /* Borders - Cool hairline */
-  --border: #e2e7ef;
-  --input: #e2e7ef;
-  --ring: #26548f;
+  /* Borders - Warm hairline */
+  --border: #e7e0d3;
+  --input: #e7e0d3;
+  --ring: #a67b2b;
 
-  /* Charts - Blue-anchored institutional palette */
-  --chart-1: #26548f;
-  --chart-2: #16202e;
-  --chart-3: #5b87c4;
+  /* Charts - Gold-anchored institutional palette */
+  --chart-1: #8b5e24;
+  --chart-2: #251f18;
+  --chart-3: #c09646;
   --chart-4: #2f7d5b;
   --chart-5: #c33636;
 
   /* Radius - Restrained, crisp */
   --radius: 0.625rem;
 
-  /* Sidebar - Deep navy ink with classic-blue active states */
-  --sidebar: #16202e;
-  --sidebar-foreground: #d3dae4;
-  --sidebar-primary: #3566aa;
+  /* Sidebar - Warm espresso ink with gold active states */
+  --sidebar: #251e14;
+  --sidebar-foreground: #ded4c2;
+  --sidebar-primary: #a67b2b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1f2c3e;
-  --sidebar-accent-foreground: #e6ecf4;
-  --sidebar-border: #26344a;
-  --sidebar-ring: #3566aa;
+  --sidebar-accent: #31281a;
+  --sidebar-accent-foreground: #efe7d9;
+  --sidebar-border: #3f3322;
+  --sidebar-ring: #a67b2b;
 
   /* Status - Muted, professional indicators (semantic only) */
   --success: #2f7d5b;
@@ -121,45 +123,45 @@
   --warning-muted: #fbf3e2;
   --warning-muted-foreground: #8a5a12;
 
-  --info: #26548f;
+  --info: #8b5e24;
   --info-foreground: #ffffff;
-  --info-muted: #eef4fb;
-  --info-muted-foreground: #1d4074;
+  --info-muted: #f6efe0;
+  --info-muted-foreground: #74501f;
 
   --attention: #b7791f;
   --attention-foreground: #ffffff;
   --attention-muted: #fbf3e2;
   --attention-muted-foreground: #8a5a12;
 
-  /* Gradients - Blue-anchored (used sparingly; app is flat) */
-  --gradient-primary-from: #1d4074;
-  --gradient-primary-to: #26548f;
-  --gradient-secondary-from: #26548f;
-  --gradient-secondary-to: #1d4074;
+  /* Gradients - Gold-anchored (used sparingly; app is flat) */
+  --gradient-primary-from: #8b5e24;
+  --gradient-primary-to: #74501f;
+  --gradient-secondary-from: #a67b2b;
+  --gradient-secondary-to: #8b5e24;
   --gradient-success-from: #2f7d5b;
   --gradient-success-to: #1f5b40;
   --gradient-warning-from: #b7791f;
   --gradient-warning-to: #8a5a12;
-  --gradient-accent-from: #26548f;
-  --gradient-accent-to: #1d4074;
+  --gradient-accent-from: #a67b2b;
+  --gradient-accent-to: #74501f;
 
   /* Surfaces - Layered depth */
   --surface: #ffffff;
-  --surface-elevated: #fbfcfe;
-  --surface-muted: #eef1f6;
+  --surface-elevated: #fdfcf9;
+  --surface-muted: #f2eee5;
 
-  /* Interactive - Cool state management (flat, opaque) */
+  /* Interactive - Warm state management (flat, opaque) */
   --interactive-bg: #ffffff;
-  --interactive-fg: #16202e;
-  --interactive-border: #e2e7ef;
-  --interactive-hover-bg: #f6f8fb;
-  --interactive-hover-fg: #16202e;
+  --interactive-fg: #251f18;
+  --interactive-border: #e7e0d3;
+  --interactive-hover-bg: #faf8f3;
+  --interactive-hover-fg: #251f18;
 
-  --interactive-secondary-bg: #eef1f6;
-  --interactive-secondary-fg: #2f3b4d;
-  --interactive-secondary-border: #e2e7ef;
-  --interactive-secondary-hover-bg: #e5eaf1;
-  --interactive-secondary-hover-fg: #16202e;
+  --interactive-secondary-bg: #f2eee5;
+  --interactive-secondary-fg: #3a3226;
+  --interactive-secondary-border: #e7e0d3;
+  --interactive-secondary-hover-bg: #ebe5d8;
+  --interactive-secondary-hover-fg: #251f18;
 
   /* ── Glass tokens — RETOKENIZED to flat institutional (single source).
      The whole neo-card/glass-card family references these, so making them solid
@@ -181,10 +183,10 @@
   --elev-2: 0 2px 8px rgba(22,32,46,0.06), 0 1px 3px rgba(22,32,46,0.04), inset 0 1px 0 var(--glass-highlight);
   --elev-3: 0 4px 24px rgba(22,32,46,0.08), 0 1px 4px rgba(22,32,46,0.05), inset 0 1px 0 var(--glass-highlight);
   --elev-4: 0 14px 44px rgba(22,32,46,0.13), 0 4px 12px rgba(22,32,46,0.07), inset 0 1px 0 var(--glass-highlight);
-  --ring-brand: 0 0 0 3px rgba(38, 84, 143, 0.24);
-  /* Brand glow — classic-blue, used on hero/primary accents */
-  --glow-brand: 0 0 24px rgba(38, 84, 143, 0.30), 0 0 48px rgba(29, 64, 116, 0.14);
-  --glow-brand-soft: 0 0 20px rgba(53, 102, 170, 0.20), 0 0 40px rgba(38, 84, 143, 0.10);
+  --ring-brand: 0 0 0 3px rgba(166, 123, 43, 0.28);
+  /* Brand glow — warm gold, used on hero/primary accents */
+  --glow-brand: 0 0 24px rgba(166, 123, 43, 0.30), 0 0 48px rgba(139, 94, 36, 0.14);
+  --glow-brand-soft: 0 0 20px rgba(196, 143, 66, 0.20), 0 0 40px rgba(166, 123, 43, 0.10);
 
   /* ── Typography — single family (Geist), modern low-contrast grotesk ── */
   --font-display: var(--font-geist-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -221,7 +223,7 @@
   --neutral-700: #334155;
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
-  --neutral-950: #0f1a2e;
+  --neutral-950: #14100a;
   --neutral-white: #ffffff;
 }
 
@@ -237,8 +239,8 @@
 .dark,
 .on-ink {
   /* Inverted neutral scale (lightest to darkest) flips slate and gray app-wide */
-  --neutral-50:  #0f1826;
-  --neutral-100: #16202e;
+  --neutral-50:  #1b160f;
+  --neutral-100: #251e14;
   --neutral-200: #1f2c3e;
   --neutral-300: #26344a;
   --neutral-400: #667689;
@@ -248,7 +250,7 @@
   --neutral-800: #dbe2ec;
   --neutral-900: #eaf0f8;
   --neutral-950: #f4f7fb;
-  --neutral-white: #0f1826;   /* raw bg-white surfaces become ink in dark */
+  --neutral-white: #1b160f;   /* raw bg-white surfaces become ink in dark */
 
   /* ── Status color families inverted for dark ──────────────────────────────
      emerald/green/teal/sky/cyan/blue/amber/yellow/orange/red/rose/pink are NOT
@@ -273,21 +275,21 @@
   --rose-50: color-mix(in srgb, #f43f5e 12%, var(--background)); --rose-100: color-mix(in srgb, #f43f5e 18%, var(--background)); --rose-200: color-mix(in srgb, #f43f5e 32%, var(--background)); --rose-300: color-mix(in srgb, #f43f5e 48%, var(--background)); --rose-400: #f43f5e; --rose-500: #f43f5e; --rose-600: #fb7185; --rose-700: #fecdd3; --rose-800: color-mix(in srgb, #fecdd3 82%, #fff); --rose-900: color-mix(in srgb, #fecdd3 64%, #fff); --rose-950: color-mix(in srgb, #fecdd3 46%, #fff);
   --pink-50: color-mix(in srgb, #ec4899 12%, var(--background)); --pink-100: color-mix(in srgb, #ec4899 18%, var(--background)); --pink-200: color-mix(in srgb, #ec4899 32%, var(--background)); --pink-300: color-mix(in srgb, #ec4899 48%, var(--background)); --pink-400: #ec4899; --pink-500: #ec4899; --pink-600: #f472b6; --pink-700: #fbcfe8; --pink-800: color-mix(in srgb, #fbcfe8 82%, #fff); --pink-900: color-mix(in srgb, #fbcfe8 64%, #fff); --pink-950: color-mix(in srgb, #fbcfe8 46%, #fff);
 
-  /* Core canvas */
-  --background: #0b1220;
-  --foreground: #eaf0f8;
-  --card: #111c2c;
-  --card-foreground: #eaf0f8;
-  --popover: #111c2c;
-  --popover-foreground: #eaf0f8;
+  /* Core canvas — warm espresso */
+  --background: #14100a;
+  --foreground: #f4eee3;
+  --card: #1e1810;
+  --card-foreground: #f4eee3;
+  --popover: #1e1810;
+  --popover-foreground: #f4eee3;
 
-  /* Primary stays classic blue but a touch brighter for dark legibility */
-  --primary: #4a7fc0;
+  /* Primary — logo gold, lifted for dark legibility (AA on white text) */
+  --primary: #9a6a28;
   --primary-foreground: #ffffff;
 
   /* ── Brand ramp inverted for dark ─────────────────────────────────────────
      The :root brand ramp is a light→dark deep-blue scale (brand-50 pale …
-     brand-700 #1d4074 deep). Without a dark override it never flips, so
+     brand-700 #74501f deep). Without a dark override it never flips, so
      `text-brand-700` links (Forgot password, magic link, invitation copy) and
      `bg-brand-50`/`border-brand-200` pills render deep-blue-on-dark = invisible.
      We rebuild it for dark like the neutral/status scales: low steps (50–300)
@@ -300,47 +302,47 @@
   --brand-100: color-mix(in srgb, var(--primary) 16%, var(--background));
   --brand-200: color-mix(in srgb, var(--primary) 28%, var(--background));
   --brand-300: color-mix(in srgb, var(--primary) 44%, var(--background));
-  --brand-400: #3f70b4;
-  --brand-500: #4a7fc0;
-  --brand-600: #4f83c4;   /* solid bg-brand-600 buttons keep white text legible */
-  --brand-700: #6b9bd8;   /* primary link/text color — reads on dark */
-  --brand-800: #93bae9;   /* hover:text-brand-800 → lighter */
-  --brand-900: #c1d8f4;
+  --brand-400: #9a6a28;
+  --brand-500: #b5843a;
+  --brand-600: #c69049;   /* solid bg-brand-600 buttons keep white text legible */
+  --brand-700: #d3a765;   /* primary link/text color — light gold, reads on dark */
+  --brand-800: #e2bd82;   /* hover:text-brand-800 → lighter */
+  --brand-900: #eed7ac;
 
-  --secondary: #1f2c3e;
-  --secondary-foreground: #dbe2ec;
-  --muted: #16202e;
-  --muted-foreground: #9aa8bc;
+  --secondary: #2a2015;
+  --secondary-foreground: #e3d9c8;
+  --muted: #1e1810;
+  --muted-foreground: #b7aa93;
   /* Faint text tier for dark/on-ink — dimmer than --muted-foreground but still
-     readable (replaces the dim neutral-400 #667689 as a text color). */
-  --text-faint: #8492a6;
+     readable (replaces the dim neutral-400 as a text color). */
+  --text-faint: #9a8b72;
 
-  /* Accent → azure wash (the alive spark) */
-  --accent: #14263a;
+  /* Accent → gold wash (the alive spark) */
+  --accent: #2a2016;
   --accent-foreground: var(--azure-300);
 
   --destructive: #e06666;
   --destructive-foreground: #ffffff;
 
-  --border: #26344a;
-  --input: #26344a;
+  --border: #3a2f1f;
+  --input: #3a2f1f;
   --ring: var(--azure-500);
 
-  /* Charts — brighter on dark, azure-led */
-  --chart-1: #4db8ff;
-  --chart-2: #7cc7ff;
-  --chart-3: #5b87c4;
+  /* Charts — brighter on dark, gold-led */
+  --chart-1: #d3a765;
+  --chart-2: #e6c690;
+  --chart-3: #c09646;
   --chart-4: #46c08a;
   --chart-5: #e06666;
 
-  /* Sidebar — deepest ink */
-  --sidebar: #0b1220;
-  --sidebar-foreground: #c2ccd9;
+  /* Sidebar — deepest espresso */
+  --sidebar: #14100a;
+  --sidebar-foreground: #cdc2ad;
   --sidebar-primary: var(--azure-500);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #16202e;
-  --sidebar-accent-foreground: #eaf0f8;
-  --sidebar-border: #1f2c3e;
+  --sidebar-primary-foreground: #14100a;
+  --sidebar-accent: #1e1810;
+  --sidebar-accent-foreground: #f4eee3;
+  --sidebar-border: #2a2015;
   --sidebar-ring: var(--azure-500);
 
   /* Status muted surfaces re-tinted for dark */
@@ -350,28 +352,28 @@
   --warning: #d9a441;
   --warning-muted: #2a2010;
   --warning-muted-foreground: #e6c27a;
-  --info: #4db8ff;
-  --info-muted: #10273c;
-  --info-muted-foreground: #9dd3ff;
+  --info: #d3a765;
+  --info-muted: #2a2016;
+  --info-muted-foreground: #e2bd82;
   --attention: #d9a441;
   --attention-muted: #2a2010;
   --attention-muted-foreground: #e6c27a;
 
   /* Surfaces */
-  --surface: #111c2c;
-  --surface-elevated: #16202e;
-  --surface-muted: #1a2636;
+  --surface: #1e1810;
+  --surface-elevated: #251e14;
+  --surface-muted: #2a2015;
 
   /* Interactive */
-  --interactive-bg: #16202e;
-  --interactive-fg: #eaf0f8;
-  --interactive-border: #26344a;
-  --interactive-hover-bg: #1f2c3e;
+  --interactive-bg: #251e14;
+  --interactive-fg: #f4eee3;
+  --interactive-border: #3a2f1f;
+  --interactive-hover-bg: #31281a;
   --interactive-hover-fg: #ffffff;
-  --interactive-secondary-bg: #1f2c3e;
-  --interactive-secondary-fg: #dbe2ec;
-  --interactive-secondary-border: #26344a;
-  --interactive-secondary-hover-bg: #26344a;
+  --interactive-secondary-bg: #31281a;
+  --interactive-secondary-fg: #e3d9c8;
+  --interactive-secondary-border: #3a2f1f;
+  --interactive-secondary-hover-bg: #3f3322;
   --interactive-secondary-hover-fg: #ffffff;
 
   /* Glass — dark translucent */
@@ -388,28 +390,28 @@
   --elev-3: 0 6px 26px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-highlight);
   --elev-4: 0 16px 48px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 var(--glass-highlight);
 
-  /* Brand glow → azure on dark */
+  /* Brand glow → warm gold on dark */
   --glow-brand: 0 0 24px var(--azure-glow), 0 0 48px var(--azure-glow-soft);
-  --glow-brand-soft: 0 0 20px var(--azure-glow-soft), 0 0 40px rgba(34,163,255,0.08);
+  --glow-brand-soft: 0 0 20px var(--azure-glow-soft), 0 0 40px rgba(196,143,66,0.08);
 }
 
 /* Dark-mode overrides for glass classes that hardcode white fills (they don't
    read tokens, so they'd stay white-on-dark otherwise). */
 .dark .glass-inner,
 .on-ink .glass-inner {
-  background: rgba(120, 150, 190, 0.08);
-  border: 1px solid rgba(120, 150, 190, 0.14);
-  box-shadow: inset 0 1px 0 rgba(120, 150, 190, 0.10);
+  background: rgba(190, 165, 120, 0.08);
+  border: 1px solid rgba(190, 165, 120, 0.14);
+  box-shadow: inset 0 1px 0 rgba(190, 165, 120, 0.10);
 }
 .dark .glass-icon,
 .on-ink .glass-icon {
-  background: linear-gradient(135deg, rgba(38,52,74,0.9) 0%, rgba(28,42,62,0.8) 100%);
-  border: 1px solid rgba(120, 150, 190, 0.18);
+  background: linear-gradient(135deg, rgba(58,46,30,0.9) 0%, rgba(42,32,20,0.8) 100%);
+  border: 1px solid rgba(190, 165, 120, 0.18);
 }
 .dark .glass-btn,
 .on-ink .glass-btn {
-  background: linear-gradient(135deg, rgba(38,52,74,0.85) 0%, rgba(28,42,62,0.7) 100%);
-  border: 1px solid rgba(120, 150, 190, 0.18);
+  background: linear-gradient(135deg, rgba(58,46,30,0.85) 0%, rgba(42,32,20,0.7) 100%);
+  border: 1px solid rgba(190, 165, 120, 0.18);
 }
 /* Round icon buttons (e.g. notification bell) on ink chrome — the base class
    is a light-gray circle with a dark glyph, invisible on the gradient. */
@@ -750,7 +752,7 @@
   /* Selection — amber highlight */
   ::selection {
     background: rgba(38, 84, 143, 0.24);
-    color: #16202e;
+    color: #251e14;
   }
 }
 
@@ -842,20 +844,20 @@
 }
 
 .glass-progress-fill {
-  background: linear-gradient(90deg, var(--progress-from, #1d4074) 0%, var(--progress-to, #3566aa) 100%);
+  background: linear-gradient(90deg, var(--progress-from, #74501f) 0%, var(--progress-to, #a67b2b) 100%);
   box-shadow: 0 2px 8px rgba(38, 84, 143, 0.30);
 }
 
 /* Text gradients — ink and classic-blue */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #16202e 0%, #2f3b4d 100%);
+  background: linear-gradient(135deg, #251e14 0%, #3a3226 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #1d4074 0%, #3566aa 55%, #5b87c4 100%);
+  background: linear-gradient(135deg, #74501f 0%, #a67b2b 55%, #c09646 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1224,7 +1226,7 @@
 
 /* Auth left panel — deep navy ink with classic-blue glow orbs (modern-AI depth) */
 .auth-super-gradient {
-  background: linear-gradient(150deg, #16202e 0%, #1a2c47 55%, #16202e 100%);
+  background: linear-gradient(150deg, #251e14 0%, #31281a 55%, #251e14 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1347,7 +1349,7 @@
 
 /* Deep navy accent card */
 .neo-card-accent {
-  background: linear-gradient(135deg, #0f1a2e 0%, #1a2540 50%, #243060 100%);
+  background: linear-gradient(135deg, #14100a 0%, #31281a 50%, #3f3322 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--neo-radius-lg);
@@ -1358,7 +1360,7 @@
 
 /* Amber accent card — replaces teal */
 .neo-accent-teal {
-  background: linear-gradient(135deg, #3566aa 0%, #5b87c4 100%);
+  background: linear-gradient(135deg, #a67b2b 0%, #c09646 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: var(--neo-radius-lg);
@@ -1483,7 +1485,7 @@
 
 /* Brand chrome — flat solid classic blue (no gradient) */
 :root {
-  --brand-gradient: linear-gradient(110deg, #1d4074 0%, #26548f 55%, #3566aa 100%);
+  --brand-gradient: linear-gradient(110deg, #74501f 0%, #8b5e24 55%, #a67b2b 100%);
   --brand-gradient-soft: linear-gradient(110deg, rgba(38,84,143,0.12) 0%, rgba(53,102,170,0.10) 70%, rgba(91,135,196,0.08) 100%);
   --brand-ring: rgba(38, 84, 143, 0.40);
   --brand-foreground: #ffffff;
@@ -1509,7 +1511,7 @@
   background:
     radial-gradient(120% 180% at 15% -40%, rgba(34,163,255,0.20) 0%, transparent 55%),
     radial-gradient(90% 160% at 92% -30%, rgba(53,102,170,0.28) 0%, transparent 60%),
-    linear-gradient(100deg, #0d1a30 0%, #12294a 45%, #14203a 78%, #0d1626 100%);
+    linear-gradient(100deg, #0d1a30 0%, #12294a 45%, #14203a 78%, #1b160f 100%);
   border-bottom: 1px solid rgba(34,163,255,0.18);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
@@ -1600,7 +1602,7 @@
 
 /* Royal blue brand text gradient */
 .text-brand-gradient {
-  background: linear-gradient(110deg, #1d4074 0%, #26548f 55%, #3566aa 100%);
+  background: linear-gradient(110deg, #74501f 0%, #8b5e24 55%, #a67b2b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1621,7 +1623,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: #1d4074;
+  color: #74501f;
   background: var(--brand-gradient-soft);
   border: 1px solid rgba(38, 84, 143, 0.22);
 }
@@ -1750,7 +1752,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-/* ─── BUTTONS ───────────────────────────────────��─────────────────���──────── */
+/* ─── BUTTONS ──────────────────��────────────────��─────────────────���──────── */
 /* Base neomorphic button with 3D depth */
 .neo-btn {
   background: #ffffff;
@@ -2221,7 +2223,7 @@
    TYPOGRAPHY UTILITY CLASSES — Platform-wide semantic text scale
    SINGLE SOURCE OF TRUTH: every text element on every page uses one of these.
    No loose font-size, font-weight, or color values anywhere in component code.
-   ══════════��════════════════════════════════════════════════════════════════
+   ══════════��══════════════════════════════════════════════════════════��═════
 
    SCALE (token → px → use-case):
    .ia-text-2xs  9px   micro AI-badge labels, timestamp chips
@@ -2786,11 +2788,11 @@
 
 /* Dashboard button - Blue accent variant */
 .dashboard-btn-blue {
-  color: #26548f;
+  color: #8b5e24;
 }
 
 .dashboard-btn-blue:hover {
-  color: #1d4074;
+  color: #74501f;
 }
 
 /* Dashboard metric card - KPI display boxes */
@@ -2988,7 +2990,7 @@
 
 .dashboard-badge-blue {
   background: #d9e6f4; /* bg-blue-100 */
-  color: #26548f; /* text-blue-700 */
+  color: #8b5e24; /* text-blue-700 */
 }
 
 .dashboard-badge-amber {
@@ -3023,7 +3025,7 @@
   justify-content: center;
   font-size: 0.75rem; /* text-xs */
   font-weight: 700;
-  color: #1d4074; /* text-blue-700 */
+  color: #74501f; /* text-blue-700 */
   flex-shrink: 0;
 }
 
@@ -3050,7 +3052,7 @@
 
 .dashboard-stage-ppm {
   background: #d9e6f4;
-  color: #1d4074;
+  color: #74501f;
 }
 
 .dashboard-stage-verbal {
@@ -4376,7 +4378,7 @@
   @apply h-7 w-7 p-0;
 }
 
-/* ─── Badge/Chip Patterns ──────────────────────────────────────────���─���───���─── */
+/* ─���─ Badge/Chip Patterns ──────────────────────────────────────────���─���───���─── */
 /* Status badge - base */
 .ia-badge {
   @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-medium border;
@@ -4546,10 +4548,10 @@
 
 .ia-kpi-info {
   position: relative; border-radius: 0.5rem; background-color: #ffffff;
-  border: 1px solid #e2e8f0; border-top: 2px solid #3566aa;
+  border: 1px solid #e2e8f0; border-top: 2px solid #a67b2b;
   padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #3566aa; }
+.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #a67b2b; }
 
 .ia-kpi-teal {
   position: relative; border-radius: 0.5rem; background-color: #ffffff;
@@ -4610,7 +4612,7 @@
   border-radius: 9999px;
 }
 .ia-stat-accent-teal::before    { background-color: #14b8a6; }
-.ia-stat-accent-blue::before    { background-color: #3566aa; }
+.ia-stat-accent-blue::before    { background-color: #a67b2b; }
 .ia-stat-accent-emerald::before { background-color: #10b981; }
 .ia-stat-accent-amber::before   { background-color: #f59e0b; }
 .ia-stat-accent-violet::before  { background-color: #475569; }
@@ -5040,7 +5042,7 @@
 }
 
 .docs-resize-handle:hover .docs-resize-handle-pill {
-  background: linear-gradient(to bottom, #a5b4fc, #5b87c4);
+  background: linear-gradient(to bottom, #a5b4fc, #c09646);
   box-shadow: 0 2px 8px rgba(53, 102, 170, 0.3);
 }
 
@@ -5309,7 +5311,7 @@
 
 /* Inline accent words — classic-blue gradient clip */
 .super-gradient-text {
-  background: linear-gradient(110deg, #1d4074 0%, #26548f 45%, #3566aa 72%, #5b87c4 100%);
+  background: linear-gradient(110deg, #74501f 0%, #8b5e24 45%, #a67b2b 72%, #c09646 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -5318,7 +5320,7 @@
 
 /* Accent fill for buttons/accents — classic-blue gradient with glow */
 .super-gradient-glow {
-  background: linear-gradient(110deg, #1d4074 0%, #26548f 50%, #3566aa 100%);
+  background: linear-gradient(110deg, #74501f 0%, #8b5e24 50%, #a67b2b 100%);
   box-shadow: 0 10px 30px -8px rgba(38, 84, 143, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
 }
 
@@ -5350,7 +5352,7 @@
    SITE LOGO - Single source of truth for logo size + position on every page.
    Drives the shared <Logo> component (components/ui/logo.tsx). Change here to
    resize/reposition the brand logo everywhere at once.
-   ══════════════════��════════════════════════════════════════════════════════ */
+   ══════════════════��══════════════════════════════════════���═════════════════ */
 .site-logo {
   display: inline-flex;
   align-items: center;
@@ -5366,16 +5368,24 @@
   /* 10px transparent breathing room directly below the logo artwork. */
   box-sizing: content-box;
   padding-bottom: 10px;
-  /* Smooth the brightness lift when toggling themes. */
-  transition: filter 0.2s ease;
 }
-/* The brand mark is a single classic-blue (#155E97) that reads dim on dark
-   surfaces. On any dark scope (.dark theme or an .on-ink band) lift its
-   brightness + saturation so it stays crisp and legible against the dark
-   backdrop — one rule brightens the logo everywhere it appears. */
-.dark .site-logo__img,
-.on-ink .site-logo__img {
-  filter: brightness(1.55) saturate(1.15);
+
+/* ── Global theme-aware logo swap ────────────────────────────────────────────
+   Two real marks (black+brown for light, white+brown for dark) are both in the
+   DOM; CSS shows the right one so there's no theme-flash and no filter hack.
+   Applies to BOTH the <Logo> (.site-logo__img) and <BrandLogo> (.brand-logo)
+   components, everywhere they appear — including `.on-ink` bands (hero/footer)
+   that stay dark even while the app is in light mode. */
+.logo-on-dark {
+  display: none;
+}
+.dark .logo-on-light,
+.on-ink .logo-on-light {
+  display: none;
+}
+.dark .logo-on-dark,
+.on-ink .logo-on-dark {
+  display: block;
 }
 
 /* ── `text-white` stays white on colored surfaces in dark mode ──────────────
@@ -5537,7 +5547,7 @@
 /* Tinted metric cards → subtle ink tints (keep their hue as a wash) */
 .dark .metric-card-blue   { background: linear-gradient(135deg, #14263a 0%, #0f1c2c 100%); border: 1px solid rgba(34,163,255,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
 .dark .metric-card-green  { background: linear-gradient(135deg, #10281f 0%, #0d1f19 100%); border: 1px solid rgba(70,192,138,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
-.dark .metric-card-violet { background: linear-gradient(135deg, #16202e 0%, #111a26 100%); border: 1px solid var(--ink-border); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
+.dark .metric-card-violet { background: linear-gradient(135deg, #251e14 0%, #1e1810 100%); border: 1px solid var(--ink-border); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
 /* Glass cards → dark translucent */
 .dark .glass-card,
 .dark .glass-card-hover,
@@ -5558,6 +5568,6 @@
 .dark .neo-btn-ghost:hover,
 .dark .neo-btn-elevated:hover { background: rgba(120,150,190,0.14); }
 /* Full-page gradient background in dark */
-.dark .neo-page-gradient { background: linear-gradient(145deg, #0b1220 0%, #0d1626 60%, #0b1220 100%); }
+.dark .neo-page-gradient { background: linear-gradient(145deg, #14100a 0%, #1b160f 60%, #14100a 100%); }
 /* Progress track */
 .dark .glass-progress { background: rgba(8,14,24,0.6); border: 1px solid var(--ink-border); }

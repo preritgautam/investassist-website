@@ -14,17 +14,17 @@ interface BrandLogoProps {
  * Theme-aware InvestAssist wordmark.
  *
  * Both SVGs are rendered and swapped with CSS so the correct artwork is present
- * before first paint — no theme-flash and no JS/hydration dependency. The blue
- * mark shows on light surfaces; the white mark shows under the `.dark` class
- * (next-themes root selector). Never approximated with CSS filters.
+ * before first paint — no theme-flash and no JS/hydration dependency. The
+ * black+brown mark shows on light surfaces; the white+brown mark shows under the
+ * `.dark` class or an `.on-ink` band. Never approximated with CSS filters.
  */
 export function BrandLogo({ href = "/", className, width = 148 }: BrandLogoProps) {
   const art = (
     <span className="brand-logo" style={{ width }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="logo-on-light" src="/brand/investassist-blue.svg" alt="InvestAssist" width={width} />
+      <img className="logo-on-light" src="/brand/investassist-mark-light.svg" alt="InvestAssist" width={width} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="logo-on-dark" src="/brand/investassist-white.svg" alt="InvestAssist" width={width} />
+      <img className="logo-on-dark" src="/brand/investassist-mark-dark.svg" alt="" aria-hidden="true" width={width} />
     </span>
   )
 

@@ -10,24 +10,24 @@
 
 .ia-landing {
   /* Light palette (default — app renders light unless `.dark` is present) */
-  --ia-brand: #155e97;
+  --ia-brand: #8b5e24;
   --bg: #faf9f6;
   --surface: #ffffff;
   --surface2: #f3f2ee;
   --ink: #151612;
   --muted: #625f58;
   --line: #dfded8;
-  --blue: #173b66;
-  --button: #1d4f91;
+  --blue: #74501f;
+  --button: #8b5e24;
   --button-ink: #ffffff;
-  --button-hover: #173b66;
-  --soft: #eff4f9;
+  --button-hover: #74501f;
+  --soft: #f6efe0;
   --pale: #f5f4f0;
-  --focus: #1d4f91;
+  --focus: #a67b2b;
   --green: #176d58;
   --review-bg: #fff3da;
   --review-ink: #79550c;
-  --hero-tint: #155e9708;
+  --hero-tint: #8b5e2408;
 
   color: var(--ink);
   background: var(--bg);
@@ -37,24 +37,24 @@
 }
 
 .dark .ia-landing {
-  --ia-brand: #155e97;
-  --bg: #090f18;
-  --surface: #101b29;
-  --surface2: #152235;
-  --ink: #f1f6fc;
-  --muted: #a5b4c8;
-  --line: #28394e;
-  --blue: #7ebafa;
-  --button: #155e97;
+  --ia-brand: #d3a765;
+  --bg: #100b06;
+  --surface: #1a140d;
+  --surface2: #241c12;
+  --ink: #f4eee3;
+  --muted: #b7aa93;
+  --line: #33291b;
+  --blue: #e6c690;
+  --button: #9a6a28;
   --button-ink: #ffffff;
-  --button-hover: #1c70ad;
-  --soft: #162b43;
-  --pale: #0d1623;
-  --focus: #83c4ff;
+  --button-hover: #b5843a;
+  --soft: #2a2016;
+  --pale: #140f08;
+  --focus: #d3a765;
   --green: #68cdb4;
   --review-bg: #352a18;
   --review-ink: #efc780;
-  --hero-tint: #155e9718;
+  --hero-tint: #d3a76518;
 }
 
 .ia-landing * {
