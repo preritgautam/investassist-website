@@ -16,7 +16,7 @@ import { SAMPLE_DEAL, computeValuation, formatMillions } from "@/lib/sample-valu
 export function SampleValuation() {
   const [rate, setRate] = React.useState(6)
 
-  const { capLabel, valueLabel, equation, gap } = computeValuation(rate)
+  const { capLabel, valueLabel, gap } = computeValuation(rate)
   const askLabel = formatMillions(SAMPLE_DEAL.askingPrice)
 
   return (
@@ -53,8 +53,6 @@ export function SampleValuation() {
         <span>6.00%</span>
         <span>7.00%</span>
       </div>
-
-      <p className="valuation-equation">{equation}</p>
 
       <div className="ask-comparison">
         <span>

@@ -273,7 +273,7 @@
   color: var(--muted);
 }
 
-/* ── Hero ────────────────────────────────────────────────────────────────── */
+/* ── Hero ───────────────────────────────��────────────────────────────────── */
 .ia-landing .hero {
   padding: var(--hero-y) 0;
   border-bottom: 1px solid var(--line);
@@ -979,6 +979,9 @@
   padding-top: 28px;
   margin-top: 32px;
   border-top: 1px solid var(--line);
+}
+.ia-landing .editorial > .workflow-invitation {
+  grid-column: 1 / -1;
 }
 .ia-landing .workflow-invitation p {
   font-size: 16px;

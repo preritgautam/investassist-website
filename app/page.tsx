@@ -252,11 +252,6 @@ export default async function HomePage({
                       merged into one number.
                     </p>
                   </div>
-                  <div className="finding">
-                    <i>Next diligence step</i> — trace the {summary.noiDifferenceLabel} difference to specific rent-roll
-                    and operating-expense lines before relying on either NOI.
-                    <p>Until those lines are checked, the gap stays open rather than smoothed over.</p>
-                  </div>
 
                   <details className="calc-basis">
                     <summary>Calculation basis</summary>
@@ -352,14 +347,14 @@ export default async function HomePage({
                 committee discussion.
               </p>
             </article>
-            <div className="workflow-invitation">
-              <p>
-                <strong>Try a deal you already know.</strong> Compare the results with your existing underwriting.
-              </p>
-              <a className="btn" href={signupUrl} data-analytics="homepage-how-cta">
-                Start free <span aria-hidden="true">→</span>
-              </a>
-            </div>
+          </div>
+          <div className="workflow-invitation">
+            <p>
+              <strong>Try a deal you already know.</strong> Compare the results with your existing underwriting.
+            </p>
+            <a className="btn" href={signupUrl} data-analytics="homepage-how-cta">
+              Start free <span aria-hidden="true">→</span>
+            </a>
           </div>
         </section>
 
