@@ -47,7 +47,9 @@
 
   color: var(--ink);
   background: var(--bg);
-  font-family: var(--font-sans, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif);
+  /* Match the live inspiration site (investassist.polsia.io), which renders the
+     hero + sections in the plain system UI sans stack — no webfont — rather than Geist. */
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
@@ -319,26 +321,36 @@
 }
 
 /* Product capability chips */
-.ia-landing .hero-proof {
+  .ia-landing .hero-proof {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 22px;
-  margin-top: 34px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.ia-landing .hero-proof span {
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 40px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--ink);
+  }
+  .ia-landing .hero-proof span {
   display: inline-flex;
   align-items: center;
-}
-.ia-landing .hero-proof span::before {
+  }
+  .ia-landing .hero-proof span::before {
   content: "";
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-  margin-right: 10px;
-}
+  background: var(--ia-brand);
+  margin-right: 12px;
+  }
+  @media (max-width: 720px) {
+  .ia-landing .hero-proof {
+  justify-content: flex-start;
+  gap: 12px 20px;
+  }
+  }
 
 /* Document-to-decision flow — stacked groups with hairline separators on
    mobile; a five-track grid with arrow connectors on desktop. */
@@ -597,7 +609,7 @@
   margin-top: 8px;
 }
 
-/* ── Sample workspace ────────────────────────────────────────────────────── */
+/* ── Sample workspace ─────────────────────────────────────────��──────────── */
 .ia-landing .sample-section {
   padding-bottom: var(--section-y);
 }
