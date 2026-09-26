@@ -364,8 +364,8 @@ export default async function HomePage({
             <div className="compound-heading">
               <div className="eyebrow">Built to compound</div>
               <h2 id="compound-title">
-                Your underwriting gets <br />
-                smarter with every deal.
+                Your underwriting gets smarter <br />
+                with every deal.
               </h2>
               <p className="section-lead">
                 InvestAssist is designed to turn each analysis into reusable context for the next one, so your team
@@ -486,8 +486,8 @@ export default async function HomePage({
             <div className="closing-text">
               <div className="eyebrow">Bring the documents. Build the investment case.</div>
               <h2>
-                Bring your next deal <br />
-                into clearer focus.
+                Bring your next deal into clearer <br />
+                focus.
               </h2>
               <p>Review the financials. Test the assumptions. Decide what comes next.</p>
             </div>
