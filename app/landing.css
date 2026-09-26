@@ -240,7 +240,7 @@
   line-height: 1.6;
 }
 .ia-landing h2 {
-  font-size: clamp(30px, 7vw, 48px);
+  font-size: clamp(30px, 3.8vw, 48px);
   line-height: 1.08;
   font-weight: 600;
   letter-spacing: -0.045em;
@@ -281,8 +281,8 @@
   max-width: none;
 }
 .ia-landing .hero h1 {
-  font-size: clamp(44px, 12vw, 92px);
-  line-height: 1.03;
+  font-size: clamp(44px, 6.8vw, 92px);
+  line-height: 1.045;
   letter-spacing: -0.055em;
   font-weight: 750;
   margin: 20px 0;
@@ -1351,6 +1351,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
   }
+  .ia-landing .footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
   .ia-landing .scrutiny-card {
     padding: 30px 28px;
   }
@@ -1441,6 +1447,11 @@
   .ia-landing .hero .sub {
     font-size: 20px;
     line-height: 1.65;
+  }
+  .ia-landing .scrutiny-top {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: start;
   }
   .ia-landing .editorial {
     grid-template-columns: 0.75fr 1.6fr;
