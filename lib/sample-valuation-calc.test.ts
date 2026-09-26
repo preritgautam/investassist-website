@@ -1,6 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { computeValuation, SAMPLE_DEAL } from "./sample-valuation-calc.ts"
+import { computeValuation, computeSampleSummary, SAMPLE_DEAL } from "./sample-valuation-calc.ts"
 
 /**
  * Regression coverage for the #sample interactive valuation.
@@ -50,4 +50,20 @@ test("exact-ask boundary reports 'At asking price'", () => {
 test("gap sign flips around the asking price", () => {
   assert.match(computeValuation(5).gap, /above ask/)
   assert.match(computeValuation(7).gap, /below ask/)
+})
+
+test("fixture carries both in-place and seller-reported NOI", () => {
+  assert.equal(SAMPLE_DEAL.inPlaceNoi, 1_480_000)
+  assert.equal(SAMPLE_DEAL.sellerReportedNoi, 1_620_000)
+})
+
+test("summary derives $140K NOI difference and 5.92% cap at ask", () => {
+  const s = computeSampleSummary()
+  assert.equal(s.noiDifference, 140_000)
+  assert.equal(s.noiDifferenceLabel, "$140K")
+  assert.ok(Math.abs(s.capAtAsk - 5.92) < 0.0001)
+  assert.equal(s.capAtAskLabel, "5.92%")
+  assert.equal(s.inPlaceNoiLabel, "$1.48M")
+  assert.equal(s.sellerReportedNoiLabel, "$1.62M")
+  assert.equal(s.askingPriceLabel, "$25.00M")
 })

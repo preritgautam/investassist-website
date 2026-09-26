@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { SAMPLE_DEAL, computeValuation } from "@/lib/sample-valuation-calc"
+import { SAMPLE_DEAL, computeValuation, formatMillions } from "@/lib/sample-valuation-calc"
 
 /**
  * Interactive valuation panel for the in-page sample (#sample).
@@ -17,11 +17,12 @@ export function SampleValuation() {
   const [rate, setRate] = React.useState(6)
 
   const { capLabel, valueLabel, equation, gap } = computeValuation(rate)
+  const askLabel = formatMillions(SAMPLE_DEAL.askingPrice)
 
   return (
     <div className="analysis">
       <div className="paneltop">
-        <strong>Valuation</strong>
+        <strong>In-place valuation</strong>
         <span className="pill">Income approach</span>
       </div>
 
@@ -57,13 +58,13 @@ export function SampleValuation() {
 
       <div className="ask-comparison">
         <span>
-          Asking price <b>$25.00M</b>
+          Asking price <b>{askLabel}</b>
         </span>
         <span id="value-gap">{gap}</span>
       </div>
 
       <p className="valuation-note">
-        At a {capLabel} cap, in-place value is {valueLabel} versus the $25.00M ask.
+        At a {capLabel} cap, in-place value is {valueLabel} versus the {askLabel} ask.
       </p>
     </div>
   )

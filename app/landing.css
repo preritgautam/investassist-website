@@ -555,6 +555,58 @@
   max-width: 460px;
   margin-top: 2px;
 }
+.ia-landing .verdict-lead {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 17px;
+}
+.ia-landing .verdict-lead b {
+  font-weight: 650;
+}
+.ia-landing .finding b {
+  font-weight: 650;
+}
+.ia-landing .calc-basis {
+  margin-top: auto;
+  padding-top: 16px;
+}
+.ia-landing .calc-basis > summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  list-style: none;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.ia-landing .calc-basis > summary::-webkit-details-marker {
+  display: none;
+}
+.ia-landing .calc-basis > summary::before {
+  content: "+";
+  display: inline-block;
+  width: 14px;
+  font-weight: 600;
+}
+.ia-landing .calc-basis[open] > summary::before {
+  content: "\2212";
+}
+.ia-landing .calc-basis > div {
+  margin-top: 12px;
+}
+.ia-landing .calc-basis p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 9px;
+}
+.ia-landing .calc-basis p:last-child {
+  margin-bottom: 0;
+}
+.ia-landing .calc-basis i {
+  color: var(--blue);
+  font-style: normal;
+}
 .ia-landing .valuation-basis {
   font-size: 12px;
   line-height: 1.5;

@@ -3,6 +3,7 @@ import { BrandLogo } from "@/components/ui/brand-logo"
 import { LandingThemeToggle } from "@/components/landing/landing-theme-toggle"
 import { SampleValuation } from "@/components/landing/sample-valuation"
 import { PricingSection } from "@/components/landing/pricing-section"
+import { SAMPLE_DEAL, computeSampleSummary } from "@/lib/sample-valuation-calc"
 
 import "./landing.css"
 
@@ -27,6 +28,9 @@ export default async function HomePage({
 }) {
   const params = await searchParams
   const redirect = typeof params?.redirect === "string" ? params.redirect : undefined
+
+  // Sample findings, all derived from the isolated fixture (no duplicated math).
+  const summary = computeSampleSummary(SAMPLE_DEAL)
 
   // Base auth entry on the external product app. Pass an inbound redirect through.
   const authUrl = (() => {
@@ -202,49 +206,76 @@ export default async function HomePage({
                   <h3>Oakline Residences</h3>
                   <p>Austin, TX · 128 units · Multifamily</p>
                 </div>
-                <span className="sample">Illustrative sample</span>
               </div>
 
               <div className="metric-grid">
                 <div className="metric">
                   <label>In-place NOI</label>
-                  <strong>$1.48M</strong>
-                  <p>Annualized, reviewed basis</p>
+                  <strong>{summary.inPlaceNoiLabel}</strong>
+                  <p>Annualized, as operating</p>
                 </div>
                 <div className="metric">
-                  <label>Asking price</label>
-                  <strong>$25.00M</strong>
-                  <p>Broker guidance</p>
+                  <label>Seller-reported NOI</label>
+                  <strong>{summary.sellerReportedNoiLabel}</strong>
+                  <p>As presented in the offering</p>
                 </div>
                 <div className="metric">
                   <label>Cap at ask</label>
                   <strong>
-                    <em>5.92%</em>
+                    <em>{summary.capAtAskLabel}</em>
                   </strong>
-                  <p>In-place NOI ÷ asking price</p>
+                  <p>In-place NOI ÷ {summary.askingPriceLabel} ask</p>
                 </div>
               </div>
 
               <div className="appbottom">
                 <div className="analysis">
                   <div className="paneltop">
-                    <strong>Net operating income</strong>
-                    <span className="pill">In-place basis</span>
+                    <strong>First-pass verdict</strong>
+                    <span className="pill">First pass</span>
+                  </div>
+
+                  <p className="verdict-lead">
+                    Seller-reported NOI of <b>{summary.sellerReportedNoiLabel}</b> sits above the{" "}
+                    <b>{summary.inPlaceNoiLabel}</b> in-place figure — a <b>{summary.noiDifferenceLabel}</b> gap this
+                    sample surfaces but does not resolve.
+                  </p>
+
+                  <div className="finding">
+                    <i>Cap at the ask</i> — in-place NOI implies a {summary.capAtAskLabel} cap at the{" "}
+                    {summary.askingPriceLabel} ask.
+                    <p>
+                      The seller-reported figure would imply a tighter cap. Both framings are shown side by side, not
+                      merged into one number.
+                    </p>
                   </div>
                   <div className="finding">
-                    <i>Effective gross income</i> — reconstructed from the rent roll and T-12, source-linked line by
-                    line.
-                    <p>Contract rent, other income and vacancy are kept separate from market-rent estimates.</p>
+                    <i>Next diligence step</i> — trace the {summary.noiDifferenceLabel} difference to specific rent-roll
+                    and operating-expense lines before relying on either NOI.
+                    <p>Until those lines are checked, the gap stays open rather than smoothed over.</p>
                   </div>
-                  <div className="finding">
-                    <i>Operating expenses</i> — reconciled against the trailing statement.
-                    <p>Non-operating and one-time items are held out of the operating picture.</p>
-                  </div>
-                  <div className="finding">
-                    <i>Unresolved items stay visible</i> — anything that doesn&apos;t reconcile is flagged for review
-                    rather than smoothed over.
-                    <p>An incomplete analysis should not imply certainty.</p>
-                  </div>
+
+                  <details className="calc-basis">
+                    <summary>Calculation basis</summary>
+                    <div>
+                      <p>
+                        <i>Cap at ask</i> = in-place NOI ÷ asking price ={" "}
+                        {"$" + SAMPLE_DEAL.inPlaceNoi.toLocaleString("en-US")} ÷{" "}
+                        {"$" + SAMPLE_DEAL.askingPrice.toLocaleString("en-US")} = {summary.capAtAskLabel}.
+                      </p>
+                      <p>
+                        <i>NOI difference</i> = seller-reported − in-place ={" "}
+                        {"$" + SAMPLE_DEAL.sellerReportedNoi.toLocaleString("en-US")} −{" "}
+                        {"$" + SAMPLE_DEAL.inPlaceNoi.toLocaleString("en-US")} ={" "}
+                        {"$" + summary.noiDifference.toLocaleString("en-US")}.
+                      </p>
+                      <p>
+                        <i>In-place NOI</i> reflects contract rent, other income and vacancy as currently operating.{" "}
+                        <i>Seller-reported NOI</i> is the figure presented in the offering. This sample shows the
+                        difference between them; it does not reconcile individual line items or complete a review.
+                      </p>
+                    </div>
+                  </details>
                 </div>
 
                 <SampleValuation />
