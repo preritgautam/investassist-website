@@ -18,7 +18,7 @@ import {
 } from "./structured-data"
 
 // Snapshot and restore the env keys these helpers read, so tests are isolated.
-const KEYS = ["NEXT_PUBLIC_SITE_URL", "NEXT_PUBLIC_ALLOW_INDEXING", "VERCEL_ENV", "NEXT_PUBLIC_VERCEL_ENV"] as const
+const KEYS = ["SITE_URL", "NEXT_PUBLIC_APP_URL", "NEXT_PUBLIC_ALLOW_INDEXING", "VERCEL_ENV", "NEXT_PUBLIC_VERCEL_ENV"] as const
 let saved: Record<string, string | undefined> = {}
 
 beforeEach(() => {
@@ -40,9 +40,15 @@ test("getSiteUrl falls back to the canonical default", () => {
   assert.equal(getSiteUrl(), DEFAULT_SITE_URL)
 })
 
-test("getSiteUrl honors NEXT_PUBLIC_SITE_URL and strips trailing slashes", () => {
-  process.env.NEXT_PUBLIC_SITE_URL = "https://preview.example.com/"
-  assert.equal(getSiteUrl(), "https://preview.example.com")
+test("getSiteUrl honors SITE_URL and strips trailing slashes", () => {
+  process.env.SITE_URL = "https://investassist.ai/"
+  assert.equal(getSiteUrl(), "https://investassist.ai")
+})
+
+test("getSiteUrl ignores NEXT_PUBLIC_APP_URL (the authenticated-app origin)", () => {
+  process.env.NEXT_PUBLIC_APP_URL = "https://app.investassist.dev"
+  // No SITE_URL set: must fall back to the canonical default, never the app origin.
+  assert.equal(getSiteUrl(), DEFAULT_SITE_URL)
 })
 
 test("absoluteUrl composes paths against the origin", () => {

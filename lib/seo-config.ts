@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 
 export const SITE_NAME = "InvestAssist"
 
-/** Canonical production origin used when NEXT_PUBLIC_SITE_URL is not set. */
+/** Canonical production origin used when SITE_URL is not set. */
 export const DEFAULT_SITE_URL = "https://investassist.ai"
 
 export const SITE_TITLE = "InvestAssist - CRE Underwriting & Deal Analysis Software"
@@ -47,11 +47,18 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
 ]
 
 /**
- * Resolve the canonical site origin, without a trailing slash.
- * Prefers NEXT_PUBLIC_SITE_URL so previews and self-hosts can override.
+ * Resolve the canonical public site origin, without a trailing slash.
+ *
+ * `SITE_URL` is the single dedicated authority for every public SEO/discovery
+ * URL — canonical tags, sitemap, RSS, Open Graph absolute URLs, structured-data
+ * `url`/`@id`, the robots sitemap reference, and IndexNow. It is intentionally a
+ * SERVER-ONLY variable (no `NEXT_PUBLIC_` prefix) and is deliberately NOT bound
+ * to `NEXT_PUBLIC_APP_URL` (the authenticated-app origin) or to any Vercel
+ * preview origin. This guarantees public URLs always resolve to the canonical
+ * production site, so a preview deployment never self-canonicalizes to itself.
  */
 export function getSiteUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim()
+  const raw = process.env.SITE_URL?.trim()
   const base = raw && raw.length > 0 ? raw : DEFAULT_SITE_URL
   return base.replace(/\/+$/, "")
 }
