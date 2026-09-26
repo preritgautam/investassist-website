@@ -13,16 +13,17 @@
   --ia-brand: #155e97;
   --bg: #faf9f6;
   --surface: #ffffff;
-  --surface2: #eef3f9;
-  --ink: #14263b;
-  --muted: #52657b;
-  --line: #d5dfeb;
-  --blue: #155e97;
-  --button: #155e97;
+  --surface2: #f3f2ee;
+  --ink: #151612;
+  --muted: #625f58;
+  --line: #dfded8;
+  --blue: #173b66;
+  --button: #1d4f91;
   --button-ink: #ffffff;
-  --soft: #e8f1fb;
-  --pale: #f0f5fa;
-  --focus: #155e97;
+  --button-hover: #173b66;
+  --soft: #eff4f9;
+  --pale: #f5f4f0;
+  --focus: #1d4f91;
   --green: #176d58;
   --review-bg: #fff3da;
   --review-ink: #79550c;
@@ -46,6 +47,7 @@
   --blue: #7ebafa;
   --button: #155e97;
   --button-ink: #ffffff;
+  --button-hover: #1c70ad;
   --soft: #162b43;
   --pale: #0d1623;
   --focus: #83c4ff;
@@ -160,8 +162,8 @@
   transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 .ia-landing .btn:hover {
-  background: #1c70ad;
-  border-color: #1c70ad;
+  background: var(--button-hover);
+  border-color: var(--button-hover);
   color: #fff;
   transform: translateY(-1px);
 }
@@ -1035,7 +1037,7 @@
 
 /* ── Closing ─────────────────────────────────────────────────────────────── */
 .ia-landing .closing {
-  background: radial-gradient(ellipse at 100% 100%, var(--hero-tint), transparent 65%), var(--pale);
+  background: var(--pale);
   border-top: 1px solid var(--line);
   padding: 75px 40px;
 }
