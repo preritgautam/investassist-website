@@ -1,6 +1,7 @@
 "use client"
 
 import { usePlanCatalog } from "@/lib/hooks/use-plan-catalog"
+import { getAppUrl } from "@/lib/utils"
 
 interface PricingSectionProps {
   /** Auth entry on the external product app. Paid cards append a checkout redirect. */
@@ -109,16 +110,15 @@ export function PricingSection({ authUrl }: PricingSectionProps) {
       ]
     : []
 
-  // Sign-up destination for a card.
-  // - Trial (free): straight to the auth entry; the account is auto-provisioned
-  //   onto the trial plan with its starter credits, so there is nothing to pay.
-  // - Paid: sign up first, then carry `redirect=/pricing?plan=<id>` so the Stripe
-  //   checkout for the chosen plan opens automatically once the account exists.
+  // Send pricing CTAs through auth so a new or returning user lands back on
+  // pricing after sign-in, with the selected paid plan preserved.
   function planHref(card: PriceCard): string {
-    if (!card.planId) return authUrl
+    const redirect = card.planId
+      ? getAppUrl(`/pricing?plan=${encodeURIComponent(card.planId)}`)
+      : getAppUrl("/pricing")
     try {
       const url = new URL(authUrl)
-      url.searchParams.set("redirect", `/pricing?plan=${card.planId}`)
+      url.searchParams.set("redirect", redirect)
       return url.toString()
     } catch {
       return authUrl
