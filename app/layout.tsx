@@ -5,6 +5,17 @@ import "./globals.css"
 
 import { Geist, Inter, Geist_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { SiteStructuredData } from "@/components/seo/structured-data"
+import {
+  SITE_TITLE,
+  TITLE_TEMPLATE,
+  SITE_DESCRIPTION,
+  OG_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  getSiteUrl,
+  robotsDirective,
+} from "@/lib/seo-config"
 
 // Modern AI-fintech type system: Geist (Vercel's precise, low-contrast grotesk)
 // for ALL UI + display — clean, technical, and pairs 1:1 with Geist Mono for
@@ -17,47 +28,26 @@ const geistSans = Geist({
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://investassist.clik.ai"
+const siteUrl = getSiteUrl()
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "InvestAssist - CRE Underwriting & Deal Analysis Software",
-    template: "%s | InvestAssist",
+    default: SITE_TITLE,
+    template: TITLE_TEMPLATE,
   },
-  description:
-    "Underwrite commercial real estate deals in minutes. Upload an offering memorandum, T-12, and rent roll to get instant cap rate, NOI, valuation, comps, side-by-side comparisons, and a saved watchlist.",
-  keywords: [
-    "CRE underwriting software",
-    "commercial real estate deal analysis",
-    "multifamily underwriting",
-    "rent roll analysis",
-    "T-12 analysis",
-    "cap rate calculator",
-    "real estate comps",
-    "property comparison tool",
-  ],
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
   alternates: {
     canonical: "/",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  robots: robotsDirective(),
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "InvestAssist",
-    title: "InvestAssist - CRE Underwriting & Deal Analysis Software",
-    description:
-      "Underwrite commercial real estate deals in minutes. Upload an offering memorandum, T-12, and rent roll to get instant cap rate, NOI, valuation, comps, and a saved watchlist.",
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: OG_DESCRIPTION,
   },
 }
 
@@ -80,6 +70,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background" suppressHydrationWarning data-scroll-behavior="smooth">
+      <head>
+        <SiteStructuredData />
+      </head>
       <body
         className={`${geistSans.variable} ${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
         suppressHydrationWarning

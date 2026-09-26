@@ -17,6 +17,8 @@ import {
 } from "lucide-react"
 import { FeatureShowcase } from "@/components/landing/feature-showcase"
 import { designSystem } from "@/lib/design-system"
+import { PageStructuredData } from "@/components/seo/structured-data"
+import { getSiteUrl } from "@/lib/seo-config"
 
 const neu = {
   card: designSystem.cards.neo,
@@ -24,12 +26,15 @@ const neu = {
   btn: designSystem.buttons.secondary,
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://investassist.clik.ai"
+const siteUrl = getSiteUrl()
+
+const SAMPLE_TITLE = "Sample CRE Underwriting Analysis"
+const SAMPLE_DESCRIPTION =
+  "See a full InvestAssist underwriting analysis on a sample 148-unit multifamily deal — in-place and stabilized NOI, cap rate, valuation range, OM-extracted rent and sales comps, and a benchmarked verdict."
 
 export const metadata: Metadata = {
-  title: "Sample CRE Underwriting Analysis",
-  description:
-    "See a full InvestAssist underwriting analysis on a sample 148-unit multifamily deal — in-place and stabilized NOI, cap rate, valuation range, OM-extracted rent and sales comps, and a benchmarked verdict.",
+  title: SAMPLE_TITLE,
+  description: SAMPLE_DESCRIPTION,
   alternates: { canonical: "/sample-analysis" },
   openGraph: {
     type: "article",
@@ -75,6 +80,7 @@ const risks = [
 export default function SampleAnalysisPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-app">
+      <PageStructuredData path="/sample-analysis" title={SAMPLE_TITLE} description={SAMPLE_DESCRIPTION} />
       {/* Institutional dashboard background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0" style={{ background: designSystem.backgrounds.dashboard }} />

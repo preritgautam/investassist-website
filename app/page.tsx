@@ -4,6 +4,8 @@ import { LandingThemeToggle } from "@/components/landing/landing-theme-toggle"
 import { SampleValuation } from "@/components/landing/sample-valuation"
 import { PricingSection } from "@/components/landing/pricing-section"
 import { SAMPLE_DEAL, computeSampleSummary } from "@/lib/sample-valuation-calc"
+import { PageStructuredData } from "@/components/seo/structured-data"
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/seo-config"
 
 import "./landing.css"
 
@@ -53,6 +55,7 @@ export default async function HomePage({
 
   return (
     <div className="ia-landing">
+      <PageStructuredData path="/" title={SITE_TITLE} description={SITE_DESCRIPTION} />
       <header className="wrap">
         <nav className="nav" aria-label="Main navigation">
           <BrandLogo href="/" width={132} />
@@ -360,7 +363,7 @@ export default async function HomePage({
           </div>
         </section>
 
-        {/* ── Built to compound ────────────────��───────────────────────── */}
+        {/* ── Built to compound ────────────────���───────────────────────── */}
         <section className="compound-section" id="compound" aria-labelledby="compound-title">
           <div className="wrap">
             <div className="compound-heading">
