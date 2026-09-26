@@ -190,8 +190,27 @@
   color: var(--button-ink);
   font-weight: 650;
   font-size: 14px;
+  white-space: nowrap;
   border: 1px solid var(--button);
   transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+/* The nav CTA stays a compact single-line pill on phones — smaller padding and
+   no trailing arrow — so the logo + toggle + button never overflow the gutter
+   or wrap the label onto two lines. Full padding + arrow return on desktop. */
+.ia-landing .navlinks .btn {
+  padding: 9px 14px;
+  gap: 8px;
+}
+.ia-landing .navlinks .btn > span {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .ia-landing .navlinks .btn {
+    padding: 12px 18px;
+  }
+  .ia-landing .navlinks .btn > span {
+    display: inline;
+  }
 }
 .ia-landing .btn:hover {
   background: var(--button-hover);
@@ -331,20 +350,28 @@
   border-radius: 4px;
   box-shadow: 0 16px 40px #061a3510;
 }
+/* Mobile: stack the eyebrow above a bordered "DOCUMENT TO DECISION" chip so the
+   heading reads cleanly on a narrow card instead of squeezing onto one line. */
 .ia-landing .flow-heading {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 16px;
-  padding: 16px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 20px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
   font: 12px var(--font-mono, ui-monospace, monospace);
   letter-spacing: 2px;
 }
+.ia-landing .flow-heading span:first-child {
+  padding-top: 3px;
+}
 .ia-landing .flow-heading span:last-child {
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
   color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 7px 11px;
 }
 .ia-landing .flow-body {
   display: grid;
@@ -361,13 +388,23 @@
 }
 .ia-landing .flow-documents > div {
   border: 1px solid var(--line);
-  padding: 12px 14px;
+  padding: 13px 14px;
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 3px;
   font-size: 15px;
+}
+.ia-landing .flow-documents .doc-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 500;
+}
+.ia-landing .flow-documents .doc-name svg {
+  color: var(--ia-brand);
+  flex-shrink: 0;
 }
 .ia-landing .flow-documents small {
   font: 11px var(--font-mono, ui-monospace, monospace);
@@ -409,21 +446,151 @@
   margin-top: 2px;
 }
 
-/* Hero principles — one column on mobile, three across on desktop. */
-.ia-landing .hero-principles {
-  margin-top: 34px;
-  padding-top: 28px;
+/* ── Built for scrutiny (second section) ─────────────────────────────────── */
+/* Mobile: intro (heading + state tabs) stacked above the illustrative card,
+   with the three principles below a divider. Desktop splits intro/card into two
+   columns and fans the principles into three tracks. */
+.ia-landing .scrutiny-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+.ia-landing .scrutiny-intro h2 {
+  margin-top: 14px;
+}
+.ia-landing .scrutiny-intro .section-lead {
+  margin-top: 16px;
+  max-width: 520px;
+}
+/* Interactive state list — a muted rail on mobile, each row a tap target; the
+   active row gets a soft fill and a brand left border. */
+.ia-landing .scrutiny-states {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ia-landing .scrutiny-states button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--line);
+  padding: 15px 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 17px;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.ia-landing .scrutiny-states button:hover {
+  color: var(--ink);
+}
+.ia-landing .scrutiny-states .num {
+  font: 13px var(--font-mono, ui-monospace, monospace);
+  letter-spacing: 0.5px;
+}
+.ia-landing .scrutiny-states li.active button {
+  background: var(--soft);
+  border-left-color: var(--ia-brand);
+  color: var(--blue);
+  font-weight: 650;
+}
+.ia-landing .scrutiny-states li.active .num {
+  color: var(--blue);
+}
+/* Illustrative card */
+.ia-landing .scrutiny-card {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
+  padding: 24px 20px;
+  box-shadow: 0 18px 45px #061a3509;
+}
+.ia-landing .scrutiny-kicker {
+  display: block;
+  font: 12px var(--font-mono, ui-monospace, monospace);
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ia-landing .scrutiny-card h3 {
+  font-size: clamp(22px, 5.5vw, 28px);
+  font-weight: 650;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+  margin: 12px 0 4px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.ia-landing .scrutiny-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.ia-landing .scrutiny-row b {
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ia-landing .scrutiny-row.feat {
+  color: var(--blue);
+}
+.ia-landing .scrutiny-row.feat b {
+  color: var(--blue);
+}
+.ia-landing .scrutiny-finding {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ia-landing .scrutiny-finding .finding-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 16px;
+}
+.ia-landing .scrutiny-finding .finding-row b {
+  font-weight: 650;
+  white-space: nowrap;
+}
+.ia-landing .scrutiny-finding p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 8px;
+  max-width: 520px;
+}
+.ia-landing .scrutiny-note {
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  padding: 14px 16px;
+  border-radius: 3px;
+  margin-top: 18px;
+}
+/* Three principles beneath a full-width divider. */
+.ia-landing .scrutiny-principles {
+  margin-top: 40px;
+  padding-top: 34px;
   border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 26px;
 }
-.ia-landing .hero-principles h3 {
-  font-size: 16px;
-  font-weight: 600;
+.ia-landing .scrutiny-principles h3 {
+  font-size: 17px;
+  font-weight: 650;
   letter-spacing: -0.2px;
 }
-.ia-landing .hero-principles p {
+.ia-landing .scrutiny-principles p {
   font-size: 15px;
   line-height: 1.65;
   color: var(--muted);
@@ -951,9 +1118,17 @@
   background: var(--surface);
   padding: 30px 24px 26px;
 }
+/* The recommended plan reads as a filled, highlighted box in BOTH themes: a
+   soft brand-tinted surface (cream in light, warm dark in dark) inside a full
+   brand border. */
 .ia-landing .price.feat {
-  border-top: 2px solid var(--ia-brand);
+  background: var(--soft);
+  border: 1px solid var(--ia-brand);
+  border-top-width: 2px;
   box-shadow: 0 18px 45px #061a350f;
+}
+.ia-landing .price.feat .overage {
+  border-top-color: var(--ia-brand);
 }
 .ia-landing .price .badge {
   position: absolute;
@@ -1172,9 +1347,12 @@
     max-width: 420px;
     font-size: 18px;
   }
-  .ia-landing .hero-principles {
+  .ia-landing .scrutiny-principles {
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: 40px;
+  }
+  .ia-landing .scrutiny-card {
+    padding: 30px 28px;
   }
   .ia-landing .review-rows article {
     grid-template-columns: 35px 1fr 1.15fr;

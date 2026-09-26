@@ -1,6 +1,8 @@
+import { FileText } from "lucide-react"
 import { getAppUrl } from "@/lib/utils"
 import { BrandLogo } from "@/components/ui/brand-logo"
 import { LandingThemeToggle } from "@/components/landing/landing-theme-toggle"
+import { BuiltForScrutiny } from "@/components/landing/built-for-scrutiny"
 import { SampleValuation } from "@/components/landing/sample-valuation"
 import { PricingSection } from "@/components/landing/pricing-section"
 import { SAMPLE_DEAL, computeSampleSummary } from "@/lib/sample-valuation-calc"
@@ -123,13 +125,22 @@ export default async function HomePage({
                 <div className="flow-documents">
                   <span className="label">SOURCE DOCUMENTS</span>
                   <div>
-                    Operating statements <small>01</small>
+                    <span className="doc-name">
+                      <FileText size={16} aria-hidden="true" /> Operating statements
+                    </span>
+                    <small>01</small>
                   </div>
                   <div>
-                    Rent rolls <small>02</small>
+                    <span className="doc-name">
+                      <FileText size={16} aria-hidden="true" /> Rent rolls
+                    </span>
+                    <small>02</small>
                   </div>
                   <div>
-                    Offering memoranda <small>03</small>
+                    <span className="doc-name">
+                      <FileText size={16} aria-hidden="true" /> Offering memoranda
+                    </span>
+                    <small>03</small>
                   </div>
                 </div>
                 <div className="flow-arrow" aria-hidden="true">
@@ -157,28 +168,11 @@ export default async function HomePage({
               </div>
             </div>
 
-            <div className="hero-principles">
-              <div>
-                <h3>Separate fact from assumption</h3>
-                <p>
-                  Historical performance, annualized estimates, and market-rent scenarios serve different purposes.
-                  Keep each basis explicit.
-                </p>
-              </div>
-              <div>
-                <h3>Keep open questions visible</h3>
-                <p>
-                  Missing data and unexplained differences need investigation. An incomplete analysis should not imply
-                  certainty.
-                </p>
-              </div>
-              <div>
-                <h3>Keep the decision with your team</h3>
-                <p>Use an organized first pass to support diligence, broker questions, and investment discussions.</p>
-              </div>
-            </div>
           </div>
         </section>
+
+        {/* ── Built for scrutiny (second section) ──────────────────────── */}
+        <BuiltForScrutiny />
 
         {/* ── Sample workspace ─────────────────────────────────────────── */}
         <section className="section wrap sample-section" aria-labelledby="sample-heading">
