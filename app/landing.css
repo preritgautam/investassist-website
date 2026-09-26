@@ -362,28 +362,23 @@
   border-radius: 4px;
   box-shadow: 0 16px 40px #061a3510;
 }
-/* Mobile: stack the eyebrow above a bordered "DOCUMENT TO DECISION" chip so the
-   heading reads cleanly on a narrow card instead of squeezing onto one line. */
+/* Mobile: stack the eyebrow above the "DOCUMENT TO DECISION" label so it reads
+   cleanly on a narrow card instead of squeezing onto one line. Desktop restores
+   the single row with the label right-aligned (see ≥760px block). */
 .ia-landing .flow-heading {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 8px;
   padding: 18px 20px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
   font: 12px var(--font-mono, ui-monospace, monospace);
   letter-spacing: 2px;
 }
-.ia-landing .flow-heading span:first-child {
-  padding-top: 3px;
-}
 .ia-landing .flow-heading span:last-child {
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  padding: 7px 11px;
 }
 .ia-landing .flow-body {
   display: grid;
@@ -982,7 +977,8 @@
   align-items: flex-start;
   gap: 20px;
   padding-top: 28px;
-  margin-top: 28px;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
 }
 .ia-landing .workflow-invitation p {
   font-size: 16px;
@@ -1393,6 +1389,12 @@
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+  }
+  .ia-landing .flow-heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
 }
 
