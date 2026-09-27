@@ -21,6 +21,22 @@ const CODE_RULES = [
   { id: "tw-color", re: new RegExp(`\\b(?:${TW_PREFIXES})-(?:${TW_COLORS})(?:-\\d{2,3})?(?:\\/\\d+)?\\b`, "g"), msg: "Tailwind palette colour; use a semantic token" },
   { id: "font-family", re: /\bfontFamily\s*:|\bfont-\[/g, msg: "stray font-family; fonts come from @theme (font-sans / font-mono)" },
 ]
+// Status fills (--success, --warning, …) fail contrast as text on their pale --*-muted backgrounds.
+// Icons may use them (they carry a size-* / h-* / w-* class); text must use --*-muted-foreground.
+const STATUS = "success|warning|info|destructive|attention"
+const STATUS_TEXT_MSG = "status fill colour used as text; use text-{status}-muted-foreground (icons with size-* are allowed)"
+const TW_STATUS_TEXT = new RegExp(`\\btext-(?:${STATUS})(?:\\/\\d+)?(?![\\w-])`, "g")
+const ICON_SIZED = /(?:^|\s)(?:size|h|w)-/
+function recordStatusText(file, text) {
+  for (const m of text.matchAll(TW_STATUS_TEXT)) {
+    const start = Math.max(text.lastIndexOf('"', m.index), text.lastIndexOf("'", m.index), text.lastIndexOf("`", m.index))
+    const ends = ['"', "'", "`"].map((q) => text.indexOf(q, m.index)).filter((i) => i !== -1)
+    const classList = text.slice(start + 1, ends.length ? Math.min(...ends) : undefined)
+    if (ICON_SIZED.test(classList)) continue
+    hits.push({ file, line: lineOf(text, m.index), rule: "status-text", match: m[0], msg: STATUS_TEXT_MSG })
+  }
+}
+
 const HEX_RULE = { id: "hex-color", re: /(?<![\w&/-])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![\w-])/g, msg: "hex colour in code; read a CSS variable instead" }
 const CSS_IMPORT_RULE = { id: "css-import", re: /^\s*import\s+(?:[^'"]*from\s+)?['"][^'"]+\.css['"]/gm, msg: "CSS import outside app/layout.tsx" }
 
@@ -54,6 +70,7 @@ for (const dir of SCAN_DIRS) {
     if (!CODE_EXT.test(file) || file.endsWith(".test.ts")) continue
     const text = readFileSync(full, "utf8")
     for (const rule of CODE_RULES) record(file, text, rule)
+    recordStatusText(file, text)
     if (!HEX_ALLOWED.has(file)) record(file, text, HEX_RULE)
     if (!CSS_IMPORT_ALLOWED.has(file)) record(file, text, CSS_IMPORT_RULE)
   }
@@ -65,6 +82,11 @@ for (const m of withoutTheme.matchAll(/font-family\s*:\s*([^;]+);/g)) {
   const value = m[1].trim()
   if (/^(?:var\(--font-[\w-]+\)|inherit|initial|unset)(?:\s*!important)?$/.test(value)) continue
   hits.push({ file: "app/globals.css", line: lineOf(css, m.index), rule: "font-family", match: value, msg: "font-family outside @theme must be var(--font-*)" })
+}
+
+const cssStatusText = new RegExp(`(?<![\\w-])color\\s*:\\s*var\\(--(?:${STATUS})\\)`, "g")
+for (const m of withoutTheme.matchAll(cssStatusText)) {
+  hits.push({ file: "app/globals.css", line: lineOf(css, m.index), rule: "status-text", match: m[0], msg: "status fill colour used as text; use var(--{status}-muted-foreground)" })
 }
 
 if (hits.length) {
