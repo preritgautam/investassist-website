@@ -1,0 +1,137 @@
+import type { Metadata } from "next"
+
+/**
+ * Central SEO configuration — the single source of truth for site identity,
+ * canonical URL resolution, and preview-vs-production indexing policy.
+ * Consumed by app/layout.tsx (metadata), app/robots.ts, app/sitemap.ts, and
+ * the structured-data builders. Keep all site-level SEO constants here.
+ */
+
+export const SITE_NAME = "InvestAssist"
+
+/** Canonical production origin used when SITE_URL is not set. */
+export const DEFAULT_SITE_URL = "https://investassist.ai"
+
+export const SITE_TITLE = "InvestAssist - CRE Underwriting & Deal Analysis Software"
+
+export const TITLE_TEMPLATE = "%s | InvestAssist"
+
+export const SITE_DESCRIPTION =
+  "Underwrite commercial real estate deals in minutes. Upload an offering memorandum, T-12, and rent roll to get instant cap rate, NOI, valuation, comps, side-by-side comparisons, and a saved watchlist."
+
+/** Slightly shorter description tuned for social share cards. */
+export const OG_DESCRIPTION =
+  "Underwrite commercial real estate deals in minutes. Upload an offering memorandum, T-12, and rent roll to get instant cap rate, NOI, valuation, comps, and a saved watchlist."
+
+export const SITE_KEYWORDS = [
+  "CRE underwriting software",
+  "commercial real estate deal analysis",
+  "multifamily underwriting",
+  "rent roll analysis",
+  "T-12 analysis",
+  "cap rate calculator",
+  "real estate comps",
+  "property comparison tool",
+]
+
+export type SitemapRoute = {
+  path: string
+  changeFrequency: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never"
+  priority: number
+}
+
+/** Public, indexable routes included in sitemap.xml. */
+export const SITEMAP_ROUTES: SitemapRoute[] = [
+  { path: "/", changeFrequency: "weekly", priority: 1 },
+  { path: "/sample-analysis", changeFrequency: "monthly", priority: 0.8 },
+]
+
+/**
+ * Resolve the canonical public site origin, without a trailing slash.
+ *
+ * `SITE_URL` is the single dedicated authority for every public SEO/discovery
+ * URL — canonical tags, sitemap, RSS, Open Graph absolute URLs, structured-data
+ * `url`/`@id`, the robots sitemap reference, and IndexNow. It is intentionally a
+ * SERVER-ONLY variable (no `NEXT_PUBLIC_` prefix) and is deliberately NOT bound
+ * to `NEXT_PUBLIC_APP_URL` (the authenticated-app origin) or to any Vercel
+ * preview origin. This guarantees public URLs always resolve to the canonical
+ * production site, so a preview deployment never self-canonicalizes to itself.
+ */
+export function getSiteUrl(): string {
+  const raw = process.env.SITE_URL?.trim()
+  const base = raw && raw.length > 0 ? raw : DEFAULT_SITE_URL
+  return base.replace(/\/+$/, "")
+}
+
+/** Build an absolute URL for a path against the canonical origin. */
+export function absoluteUrl(path = "/"): string {
+  const base = getSiteUrl()
+  if (!path || path === "/") return `${base}/`
+  return `${base}${path.startsWith("/") ? path : `/${path}`}`
+}
+
+/**
+ * Preview-vs-production indexing policy.
+ * - NEXT_PUBLIC_ALLOW_INDEXING="true"/"false" is an explicit override.
+ * - Otherwise only the Vercel production environment is indexable; preview and
+ *   development deployments are kept out of search indexes.
+ */
+export function shouldIndex(): boolean {
+  const override = process.env.NEXT_PUBLIC_ALLOW_INDEXING?.trim().toLowerCase()
+  if (override === "true") return true
+  if (override === "false") return false
+  const env = (process.env.VERCEL_ENV ?? process.env.NEXT_PUBLIC_VERCEL_ENV)?.trim().toLowerCase()
+  return env === "production"
+}
+
+/**
+ * Whether OpenAI's GPTBot (used for model *training*) is allowed to crawl.
+ * Kept as a separate, opt-in policy from search/answer crawlers. Defaults to
+ * disallowed; set NEXT_PUBLIC_ALLOW_GPTBOT="true" to permit training crawls.
+ */
+export function allowGptBot(): boolean {
+  return process.env.NEXT_PUBLIC_ALLOW_GPTBOT?.trim().toLowerCase() === "true"
+}
+
+/**
+ * Robots.txt user-agent rules for an indexable deployment. Search and AI
+ * *answer/search* crawlers (including OAI-SearchBot) are allowed; the GPTBot
+ * *training* crawler is governed by its own configurable policy.
+ */
+export function crawlerRules(): { userAgent: string; allow?: string; disallow?: string }[] {
+  const rules: { userAgent: string; allow?: string; disallow?: string }[] = [
+    { userAgent: "*", allow: "/" },
+    // OpenAI's answer/search crawler — explicitly welcomed.
+    { userAgent: "OAI-SearchBot", allow: "/" },
+    // Common AI answer engines.
+    { userAgent: "PerplexityBot", allow: "/" },
+    { userAgent: "ChatGPT-User", allow: "/" },
+  ]
+  // GPTBot (training) — separate, opt-in policy.
+  rules.push({ userAgent: "GPTBot", ...(allowGptBot() ? { allow: "/" } : { disallow: "/" }) })
+  return rules
+}
+
+/** Site-verification tokens for search consoles, sourced from env vars. */
+export function verificationTokens(): { google?: string; bing?: string } {
+  return {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+    bing: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim() || undefined,
+  }
+}
+
+/** Robots directive shared by layout metadata and app/robots.ts. */
+export function robotsDirective(): Metadata["robots"] {
+  const index = shouldIndex()
+  return {
+    index,
+    follow: index,
+    googleBot: {
+      index,
+      follow: index,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  }
+}
