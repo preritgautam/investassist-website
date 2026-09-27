@@ -1,5 +1,6 @@
 import { FileText } from "lucide-react"
 import { getAppUrl } from "@/lib/utils"
+import { SALES_EMAIL } from "@/lib/brand"
 import { BrandLogo } from "@/components/ui/brand-logo"
 import { LandingThemeToggle } from "@/components/landing/landing-theme-toggle"
 import { BuiltForScrutiny } from "@/components/landing/built-for-scrutiny"
@@ -8,8 +9,6 @@ import { PricingSection } from "@/components/landing/pricing-section"
 import { SAMPLE_DEAL, computeSampleSummary } from "@/lib/sample-valuation-calc"
 import { PageStructuredData, homeSoftwareApplicationNode } from "@/components/seo/structured-data"
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/seo-config"
-
-import "./landing.css"
 
 /**
  * InvestAssist marketing landing page.
@@ -508,7 +507,7 @@ export default async function HomePage({
         <div>
           <a href="/legal/privacy">Privacy</a>
           <a href="/legal/terms">Terms</a>
-          <a href="mailto:sales@investassist.ai">Contact</a>
+          <a href={`mailto:${SALES_EMAIL}`}>Contact</a>
           <span>© 2026 InvestAssist</span>
         </div>
       </footer>

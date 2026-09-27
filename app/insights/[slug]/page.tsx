@@ -17,9 +17,6 @@ import { InsightsShell } from "@/components/insights/insights-shell"
 import { ArticleBody } from "@/components/insights/article-body"
 import { ArticleCard } from "@/components/insights/article-card"
 
-import "../../landing.css"
-import "../insights.css"
-
 type Params = { slug: string }
 
 /** Pre-render every published article at build time. */

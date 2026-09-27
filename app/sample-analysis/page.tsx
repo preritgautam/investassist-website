@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { BrandLogo } from "@/components/ui/brand-logo"
+import { BrandMark } from "@/components/ui/brand-logo"
 import { getAppUrl } from "@/lib/utils"
 import {
   ArrowRight,
@@ -16,15 +16,8 @@ import {
   ShieldCheck,
 } from "lucide-react"
 import { FeatureShowcase } from "@/components/landing/feature-showcase"
-import { designSystem } from "@/lib/design-system"
 import { PageStructuredData } from "@/components/seo/structured-data"
 import { getSiteUrl } from "@/lib/seo-config"
-
-const neu = {
-  card: designSystem.cards.neo,
-  inset: designSystem.cards.inset,
-  btn: designSystem.buttons.secondary,
-}
 
 const siteUrl = getSiteUrl()
 
@@ -53,10 +46,10 @@ const keyMetrics = [
 ]
 
 const rentComps = [
-  { property: "The Maddox", distance: "0.4 mi", rentPsf: "$1.72", avgRent: "$1,610", vintage: "2019" },
-  { property: "Parkline Flats", distance: "0.9 mi", rentPsf: "$1.66", avgRent: "$1,575", vintage: "2016" },
-  { property: "Cedar & 7th", distance: "1.3 mi", rentPsf: "$1.58", avgRent: "$1,498", vintage: "2014" },
-  { property: "Subject (in-place)", distance: "—", rentPsf: "$1.49", avgRent: "$1,548", vintage: "2012", subject: true },
+  { property: "The Maddox", distance: "0.4 mi", rentPsf: "$1.72", avgRent: "$1,610" },
+  { property: "Parkline Flats", distance: "0.9 mi", rentPsf: "$1.66", avgRent: "$1,575" },
+  { property: "Cedar & 7th", distance: "1.3 mi", rentPsf: "$1.58", avgRent: "$1,498" },
+  { property: "Subject (in-place)", distance: "—", rentPsf: "$1.49", avgRent: "$1,548", subject: true },
 ]
 
 const salesComps = [
@@ -77,224 +70,210 @@ const risks = [
   "Exit cap of 5.75% is more aggressive than today's 6.25% market; value is cap-rate sensitive.",
 ]
 
+const card = "min-w-0 rounded border border-border bg-card text-card-foreground"
+const th = "py-2 text-caption font-semibold uppercase tracking-wider text-muted-foreground"
+const sectionTitle = "text-2xl md:text-3xl font-bold text-foreground text-balance"
+
 export default function SampleAnalysisPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-app">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <PageStructuredData path="/sample-analysis" title={SAMPLE_TITLE} description={SAMPLE_DESCRIPTION} />
-      {/* Institutional dashboard background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0" style={{ background: designSystem.backgrounds.dashboard }} />
-      </div>
 
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 px-5 py-4 border-b border-white/40 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <BrandLogo width={140} />
+      <nav className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
+        <div className="page-container flex items-center justify-between py-4">
+          <BrandMark width={140} />
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-pill px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="w-4 h-4" /> Back
+            <ArrowLeft className="size-4" aria-hidden="true" /> Back
           </Link>
         </div>
       </nav>
 
-      <main className="relative z-10 px-5 py-8 md:py-12">
-        <div className="max-w-6xl mx-auto">
-          {/* Sample banner */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-white/50 border border-white/60 mb-8">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            Sample analysis · illustrative figures
+      <main className="page-container section-stack py-8 md:py-12">
+        <div className="inline-flex w-fit items-center gap-2 rounded-pill border border-border bg-muted px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+          <ShieldCheck className="size-3.5" aria-hidden="true" />
+          Sample analysis · illustrative figures
+        </div>
+
+        <section data-slot="card" className={`${card} card-pad`}>
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="mb-2 flex items-center gap-2 text-primary">
+                <Building2 className="size-5" aria-hidden="true" />
+                <span className="text-xs font-semibold uppercase tracking-wider">148-Unit Multifamily</span>
+              </div>
+              <h1 className="mb-2 text-3xl font-bold text-foreground text-balance md:text-4xl">
+                Maple Grove Apartments
+              </h1>
+              <p className="flex items-center gap-1.5 text-muted-foreground">
+                <MapPin className="size-4 shrink-0" aria-hidden="true" /> Garden-style · Sun Belt submarket · Built 2012
+              </p>
+            </div>
+            <div className="rounded border border-border bg-muted px-5 py-4 text-center">
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Verdict</p>
+              <p className="text-lg font-bold text-primary">Proceed with conditions</p>
+              <p className="mt-1 text-xs text-muted-foreground">Underwrites at the comp band, not the pitch</p>
+            </div>
           </div>
+        </section>
 
-          {/* Deal header */}
-          <section className="rounded-2xl p-6 md:p-8 mb-8" style={neu.card}>
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-              <div>
-                <div className="flex items-center gap-2 text-brand-800 mb-2">
-                  <Building2 className="w-5 h-5" />
-                  <span className="text-xs font-semibold uppercase tracking-wider">148-Unit Multifamily</span>
+        <section aria-labelledby="key-metrics">
+          <h2 id="key-metrics" className="sr-only">Key metrics</h2>
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {keyMetrics.map((m) => (
+              <div key={m.label} data-slot="card" className={`${card} card-pad`}>
+                <div className="mb-3 flex size-9 items-center justify-center rounded bg-accent">
+                  <m.icon className="size-4 text-accent-foreground" aria-hidden="true" />
                 </div>
-                <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2 text-balance">
-                  Maple Grove Apartments
-                </h1>
-                <p className="flex items-center gap-1.5 text-slate-600">
-                  <MapPin className="w-4 h-4" /> Garden-style · Sun Belt submarket · Built 2012
-                </p>
+                <p className="text-2xl font-extrabold text-foreground">{m.value}</p>
+                <p className="text-sm font-medium text-foreground">{m.label}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">{m.note}</p>
               </div>
-              <div className="rounded-xl px-5 py-4 text-center" style={neu.inset}>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Verdict</p>
-                <p className="text-lg font-bold text-brand-800">Proceed with conditions</p>
-                <p className="text-xs text-slate-600 mt-1">Underwrites at the comp band, not the pitch</p>
-              </div>
-            </div>
-          </section>
+            ))}
+          </div>
+        </section>
 
-          {/* Key metrics */}
-          <section aria-labelledby="key-metrics" className="mb-12">
-            <h2 id="key-metrics" className="sr-only">Key metrics</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {keyMetrics.map((m) => (
-                <div key={m.label} className="rounded-2xl p-5" style={neu.card}>
-                  <div className="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center mb-3">
-                    <m.icon className="w-4.5 h-4.5 text-brand-800" />
-                  </div>
-                  <p className="text-2xl font-extrabold text-slate-900">{m.value}</p>
-                  <p className="text-sm font-medium text-slate-700">{m.label}</p>
-                  <p className="text-xs text-slate-500 mt-0.5">{m.note}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+        <section aria-labelledby="financials" className="flex flex-col gap-6">
+          <h2 id="financials" className={sectionTitle}>
+            Financials &amp; Valuation
+          </h2>
+          <FeatureShowcase />
+        </section>
 
-          {/* NOI bridge + valuation scenarios */}
-          <section aria-labelledby="financials" className="mb-12">
-            <h2 id="financials" className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-balance">
-              Financials &amp; Valuation
-            </h2>
-            <FeatureShowcase />
-          </section>
-
-          {/* Comps extracted from the OM */}
-          <section aria-labelledby="comps" className="mb-12">
-            <h2 id="comps" className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-balance">
+        <section aria-labelledby="comps" className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <h2 id="comps" className={sectionTitle}>
               Comps Pulled Straight From the OM
             </h2>
-            <p className="text-slate-600 mb-6 max-w-2xl text-pretty text-base">
-              Rent and sales comparables extracted from the offering memorandum and benchmarked against
-              the subject — no separate data subscription required.
+            <p className="max-w-2xl text-base text-muted-foreground text-pretty">
+              Rent and sales comparables extracted from the offering memorandum and benchmarked against the
+              subject — no separate data subscription required.
             </p>
+          </div>
 
-            <div className="grid lg:grid-cols-2 gap-6">
-              {/* Rent comps */}
-              <div className="min-w-0 rounded-2xl p-6 md:p-7" style={neu.card}>
-                <h3 className="text-lg font-bold text-slate-900 mb-4">Rent Comparables</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead>
-                      <tr className="border-b border-slate-200">
-                        <th className="py-2 pr-2 md:pr-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Property</th>
-                        <th className="py-2 px-2 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Dist.</th>
-                        <th className="py-2 px-2 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">$/SF</th>
-                        <th className="py-2 pl-2 md:pl-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Avg Rent</th>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div data-slot="card" className={`${card} card-pad`}>
+              <h3 className="mb-4 text-lg font-bold text-foreground">Rent Comparables</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className={`${th} pr-2 md:pr-3`}>Property</th>
+                      <th className={`${th} px-2 text-right md:px-3`}>Dist.</th>
+                      <th className={`${th} px-2 text-right md:px-3`}>$/SF</th>
+                      <th className={`${th} pl-2 text-right md:pl-3`}>Avg Rent</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rentComps.map((c) => (
+                      <tr key={c.property} className={`border-b border-border last:border-0 ${c.subject ? "bg-accent" : ""}`}>
+                        <td className="py-2.5 pr-2 text-sm font-medium text-foreground md:pr-3">{c.property}</td>
+                        <td className="px-2 py-2.5 text-right text-sm text-muted-foreground md:px-3">{c.distance}</td>
+                        <td className="px-2 py-2.5 text-right text-sm text-foreground md:px-3">{c.rentPsf}</td>
+                        <td className="py-2.5 pl-2 text-right text-sm font-bold text-foreground md:pl-3">{c.avgRent}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {rentComps.map((c) => (
-                        <tr key={c.property} className={`border-b border-slate-100 last:border-0 ${c.subject ? "bg-brand-50/30" : ""}`}>
-                          <td className="py-2.5 pr-2 md:pr-3 text-sm font-medium text-slate-800">{c.property}</td>
-                          <td className="py-2.5 px-2 md:px-3 text-sm text-right text-slate-500">{c.distance}</td>
-                          <td className="py-2.5 px-2 md:px-3 text-sm text-right text-slate-700">{c.rentPsf}</td>
-                          <td className="py-2.5 pl-2 md:pl-3 text-sm text-right font-bold text-slate-900">{c.avgRent}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-xs text-slate-500 mt-3">
-                  Subject in-place rent of $1,548 sits ~6% below the comp average — supporting upside.
-                </p>
+                    ))}
+                  </tbody>
+                </table>
               </div>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Subject in-place rent of $1,548 sits ~6% below the comp average — supporting upside.
+              </p>
+            </div>
 
-              {/* Sales comps */}
-              <div className="min-w-0 rounded-2xl p-6 md:p-7" style={neu.card}>
-                <h3 className="text-lg font-bold text-slate-900 mb-4">Sales Comparables</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead>
-                      <tr className="border-b border-slate-200">
-                        <th className="py-2 pr-2 md:pr-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Property</th>
-                        <th className="py-2 px-1.5 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Price</th>
-                        <th className="py-2 px-1.5 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">$/Unit</th>
-                        <th className="py-2 px-1.5 md:px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Cap</th>
-                        <th className="py-2 pl-1.5 md:pl-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Date</th>
+            <div data-slot="card" className={`${card} card-pad`}>
+              <h3 className="mb-4 text-lg font-bold text-foreground">Sales Comparables</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className={`${th} pr-2 md:pr-3`}>Property</th>
+                      <th className={`${th} px-1.5 text-right md:px-3`}>Price</th>
+                      <th className={`${th} px-1.5 text-right md:px-3`}>$/Unit</th>
+                      <th className={`${th} px-1.5 text-right md:px-3`}>Cap</th>
+                      <th className={`${th} pl-1.5 text-right md:pl-3`}>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {salesComps.map((c) => (
+                      <tr key={c.property} className="border-b border-border last:border-0">
+                        <td className="py-2.5 pr-2 text-sm font-medium text-foreground md:pr-3">{c.property}</td>
+                        <td className="px-1.5 py-2.5 text-right text-sm text-foreground md:px-3">{c.price}</td>
+                        <td className="px-1.5 py-2.5 text-right text-sm text-foreground md:px-3">{c.perUnit}</td>
+                        <td className="px-1.5 py-2.5 text-right text-sm font-bold text-foreground md:px-3">{c.capRate}</td>
+                        <td className="py-2.5 pl-1.5 text-right text-sm text-muted-foreground md:pl-3">{c.date}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {salesComps.map((c) => (
-                        <tr key={c.property} className="border-b border-slate-100 last:border-0">
-                          <td className="py-2.5 pr-2 md:pr-3 text-sm font-medium text-slate-800">{c.property}</td>
-                          <td className="py-2.5 px-1.5 md:px-3 text-sm text-right text-slate-700">{c.price}</td>
-                          <td className="py-2.5 px-1.5 md:px-3 text-sm text-right text-slate-700">{c.perUnit}</td>
-                          <td className="py-2.5 px-1.5 md:px-3 text-sm text-right font-bold text-slate-900">{c.capRate}</td>
-                          <td className="py-2.5 pl-1.5 md:pl-3 text-sm text-right text-slate-500">{c.date}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-xs text-slate-500 mt-3">
-                  Going-in cap of 5.71% prices inside the 5.7%–6.1% submarket band.
-                </p>
+                    ))}
+                  </tbody>
+                </table>
               </div>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Going-in cap of 5.71% prices inside the 5.7%–6.1% submarket band.
+              </p>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Verdict: strengths + risks */}
-          <section aria-labelledby="verdict" className="mb-12">
-            <h2 id="verdict" className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-balance">
-              The Benchmarked Verdict
-            </h2>
-            <div className="grid lg:grid-cols-2 gap-6">
-              <div className="rounded-2xl p-6 md:p-7" style={neu.card}>
-                <div className="flex items-center gap-2 mb-4">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                  <h3 className="text-lg font-bold text-slate-900">What checks out</h3>
-                </div>
-                <ul className="flex flex-col gap-3">
-                  {strengths.map((s) => (
-                    <li key={s} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{s}</span>
-                    </li>
-                  ))}
-                </ul>
+        <section aria-labelledby="verdict" className="flex flex-col gap-6">
+          <h2 id="verdict" className={sectionTitle}>
+            The Benchmarked Verdict
+          </h2>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div data-slot="card" className={`${card} card-pad`}>
+              <div className="mb-4 flex items-center gap-2">
+                <CheckCircle2 className="size-5 text-success" aria-hidden="true" />
+                <h3 className="text-lg font-bold text-foreground">What checks out</h3>
               </div>
-              <div className="rounded-2xl p-6 md:p-7" style={neu.card}>
-                <div className="flex items-center gap-2 mb-4">
-                  <AlertTriangle className="w-5 h-5 text-amber-600" />
-                  <h3 className="text-lg font-bold text-slate-900">What to question</h3>
-                </div>
-                <ul className="flex flex-col gap-3">
-                  {risks.map((r) => (
-                    <li key={r} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
-                      <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                      <span>{r}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="flex flex-col gap-3">
+                {strengths.map((s) => (
+                  <li key={s} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </section>
+            <div data-slot="card" className={`${card} card-pad`}>
+              <div className="mb-4 flex items-center gap-2">
+                <AlertTriangle className="size-5 text-warning" aria-hidden="true" />
+                <h3 className="text-lg font-bold text-foreground">What to question</h3>
+              </div>
+              <ul className="flex flex-col gap-3">
+                {risks.map((r) => (
+                  <li key={r} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                    <AlertTriangle className="mt-0.5 size-4 shrink-0 text-warning" aria-hidden="true" />
+                    <span>{r}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
-          {/* CTA */}
-          <section className="rounded-2xl p-8 md:p-12 text-center" style={neu.card}>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-balance">
-              Run This on Your Own Deal
-            </h2>
-            <p className="text-slate-600 mb-7 max-w-xl mx-auto text-pretty">
-              Upload a T-12, rent roll, and offering memorandum and get this exact analysis on your next deal —
-              benchmarked, auditable, and ready in minutes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={getAppUrl("/auth")}
-                data-analytics="sample-analysis-cta"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
-                style={{ ...designSystem.buttons.primary }}
-              >
-                Underwrite Your First Deal <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/#pricing"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-slate-700 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                style={neu.btn}
-              >
-                See Pricing
-              </Link>
-            </div>
-          </section>
-        </div>
+        <section data-slot="card" className={`${card} card-pad text-center md:p-12`}>
+          <h2 className={`${sectionTitle} mb-3`}>Run This on Your Own Deal</h2>
+          <p className="mx-auto mb-7 max-w-xl text-muted-foreground text-pretty">
+            Upload a T-12, rent roll, and offering memorandum and get this exact analysis on your next deal —
+            benchmarked, auditable, and ready in minutes.
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href={getAppUrl("/auth")}
+              data-analytics="sample-analysis-cta"
+              className="inline-flex items-center justify-center gap-2 rounded-pill bg-primary px-8 py-4 text-base font-bold text-primary-foreground transition-colors hover:bg-action-hover"
+            >
+              Underwrite Your First Deal <ArrowRight className="size-5" aria-hidden="true" />
+            </Link>
+            <Link
+              href="/#pricing"
+              className="inline-flex items-center justify-center gap-2 rounded-pill border border-border bg-card px-8 py-4 text-base font-bold text-foreground transition-colors hover:bg-muted"
+            >
+              See Pricing
+            </Link>
+          </div>
+        </section>
       </main>
     </div>
   )

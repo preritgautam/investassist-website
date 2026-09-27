@@ -7,8 +7,6 @@ import { ArticleCard } from "@/components/insights/article-card"
 import { PageStructuredData } from "@/components/seo/structured-data"
 import { breadcrumbSchema } from "@/lib/structured-data"
 
-import "../landing.css"
-import "./insights.css"
 
 const TITLE = "Insights — CRE underwriting, T-12 analysis & NOI reconciliation"
 const DESCRIPTION =

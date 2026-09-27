@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
 /* InvestAssist Financial SaaS Theme - v3 - New Towne Data Update - Cache Bust 2026-03-22T12:30:00Z */
 @custom-variant dark (&:is(.dark *));
 
@@ -12,156 +17,162 @@
      Single source of truth: color · surfaces · elevation · radius · typography.
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Brand GOLD / BRONZE ramp (matches the InvestAssist wordmark) ───────────
-     Anchored on the logo gold #8b5e24. Pale cream tints → deep bronze. */
-  --brand-50:  #f9f5ec;
-  --brand-100: #f1e6d0;
-  --brand-200: #e5d0a6;
-  --brand-300: #d4b473;
-  --brand-400: #c09646;
-  --brand-500: #a67b2b;
-  --brand-600: #8b5e24;  /* logo gold — interactive / hover */
-  --brand-700: #74501f;  /* primary text / links (AA on light) */
-  --brand-800: #5f4119;
-  --brand-900: #4a3214;
+  /* ── Brand deep classic-blue ramp (pure blue hue, desaturated) ──────────── */
+  --brand-50:  #eff4f9;   /* selection wash */
+  --brand-100: #dbe7f2;
+  --brand-200: #bcd2e6;
+  --brand-300: #8fb2d5;
+  --brand-400: #4f83bd;
+  --brand-500: #2f66a5;
+  --brand-600: #155e97;  /* brand / logo identity */
+  --brand-700: #1d4f91;  /* primary action */
+  --brand-800: #173b66;  /* action hover */
+  --brand-900: #14304f;
 
-  /* ── Warm GOLD accent ramp (the "alive" spark; use sparingly) ──────────────
-     Named `azure-*` for legacy compatibility (only referenced inside this file)
-     but now carries the lighter gold used on dark ink surfaces & highlights. */
-  --azure-300: #e6c690;
-  --azure-400: #d3a765;   /* logo gold on dark */
-  --azure-500: #c28f42;   /* primary accent */
-  --azure-600: #a5762f;
-  --azure-700: #895f24;
-  --azure-glow: rgba(196, 143, 66, 0.42);
-  --azure-glow-soft: rgba(196, 143, 66, 0.16);
+  /* ── Electric AZURE accent ramp (the "AI / alive" spark; use sparingly) ──
+     Lives mainly on dark ink surfaces, data-viz highlights & active states. */
+  --azure-300: #7cc7ff;
+  --azure-400: #4db8ff;
+  --azure-500: #22a3ff;   /* primary accent */
+  --azure-600: #0d8ae6;
+  --azure-700: #0a6fbd;
+  --azure-glow: rgba(192, 150, 70, 0.45);
+  --azure-glow-soft: rgba(192, 150, 70, 0.18);
 
-  /* ── INK surface system (warm espresso chrome on the light canvas) ───────
+  /* ── INK surface system (dark duotone chrome on the light canvas) ───────
      Structural dark bands: top nav, hero, footer, spotlight KPI panels. */
-  --ink-950: #14100a;
-  --ink-900: #1b160f;
-  --ink-800: #251e14;
-  --ink-700: #31281a;
-  --ink-600: #3f3322;
-  --ink-fg: #f4eee3;         /* primary text on ink */
-  --ink-fg-muted: #b7aa93;   /* secondary text on ink */
-  --ink-border: #3f3322;
-  --ink-border-strong: #524229;
+  --ink-950: #0b1220;
+  --ink-900: #0f1826;
+  --ink-800: #16202e;
+  --ink-700: #1f2c3e;
+  --ink-600: #26344a;
+  --ink-fg: #eaf0f8;         /* primary text on ink */
+  --ink-fg-muted: #9aa8bc;   /* secondary text on ink */
+  --ink-border: #26344a;
+  --ink-border-strong: #33445f;
   --on-ink-accent: var(--azure-400);   /* accent tuned for legibility on ink */
 
-  /* Core backgrounds - Warm ivory paper */
-  --background: #faf8f3;
-  --foreground: #251f18;   /* warm espresso ink */
+  /* ── Named brand/action roles (handoff warm-palette identity) ──────────────
+     Semantic roles the landing page + auth share; brand-* ramp aliases below. */
+  --brand: #155e97;          /* brand / logo identity blue */
+  --action: #1d4f91;         /* primary interactive action */
+  --action-hover: #173b66;   /* darker action hover */
+  --selection: #eff4f9;      /* soft selection / accent wash */
+  --focus: #1d4f91;          /* focus ring */
+
+  /* Core backgrounds - Warm paper */
+  --background: #faf9f6;
+  --foreground: #151612;   /* warm near-black ink */
 
   /* Cards - Flat crisp white */
   --card: #ffffff;
-  --card-foreground: #251f18;
+  --card-foreground: #151612;
 
   /* Popovers - Elevated white surfaces */
   --popover: #ffffff;
-  --popover-foreground: #251f18;
+  --popover-foreground: #151612;
 
-  /* Primary - Logo gold */
-  --primary: #8b5e24;
+  /* Primary - Action blue */
+  --primary: #1d4f91;
   --primary-foreground: #ffffff;
 
-  /* Secondary - Warm sand */
-  --secondary: #f2eee5;
-  --secondary-foreground: #3a3226;
+  /* Secondary - Warm subtle surface */
+  --secondary: #f3f2ee;
+  --secondary-foreground: #2b2a24;
 
-  /* Muted - Soft warm tint */
-  --muted: #f2eee5;
-  --muted-foreground: #6a6154;
+  /* Muted - Warm section tint */
+  --muted: #f5f4f0;
+  --muted-foreground: #625f58;
   /* Faint text tier — the readable replacement for slate-400 (#94a3b8, which
      failed AA at ~2.4:1) as a TEXT color. Kept a step lighter than
      --muted-foreground so the muted→faint hierarchy survives, but now passes
      AA. Consumed via palette.inkFaint; slate-400/neutral-400 stay untouched so
      borders and icons that use them are unaffected. */
-  --text-faint: #7d7365;
+  --text-faint: #7a766c;
 
-  /* Accent - Soft gold wash */
-  --accent: #f6efe0;
-  --accent-foreground: #74501f;
+  /* Accent - Soft blue selection wash */
+  --accent: #eff4f9;
+  --accent-foreground: #173b66;
 
   /* Destructive - Professional red */
   --destructive: #c33636;
   --destructive-foreground: #ffffff;
 
   /* Borders - Warm hairline */
-  --border: #e7e0d3;
-  --input: #e7e0d3;
-  --ring: #a67b2b;
+  --border: #dfded8;
+  --input: #dfded8;
+  --ring: #1d4f91;
 
-  /* Charts - Gold-anchored institutional palette */
-  --chart-1: #8b5e24;
-  --chart-2: #251f18;
-  --chart-3: #c09646;
+  /* Charts - Blue-anchored institutional palette */
+  --chart-1: #26548f;
+  --chart-2: #16202e;
+  --chart-3: #5b87c4;
   --chart-4: #2f7d5b;
   --chart-5: #c33636;
 
   /* Radius - Restrained, crisp */
   --radius: 0.625rem;
 
-  /* Sidebar - Warm espresso ink with gold active states */
-  --sidebar: #251e14;
-  --sidebar-foreground: #ded4c2;
-  --sidebar-primary: #a67b2b;
+  /* Sidebar - Deep navy ink with classic-blue active states */
+  --sidebar: #16202e;
+  --sidebar-foreground: #d3dae4;
+  --sidebar-primary: #3566aa;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #31281a;
-  --sidebar-accent-foreground: #efe7d9;
-  --sidebar-border: #3f3322;
-  --sidebar-ring: #a67b2b;
+  --sidebar-accent: #1f2c3e;
+  --sidebar-accent-foreground: #e6ecf4;
+  --sidebar-border: #26344a;
+  --sidebar-ring: #3566aa;
 
   /* Status - Muted, professional indicators (semantic only) */
-  --success: #2f7d5b;
+  --success: #176d58;
   --success-foreground: #ffffff;
-  --success-muted: #eaf4ee;
-  --success-muted-foreground: #1f5b40;
+  --success-muted: #e7f2ec;
+  --success-muted-foreground: #145140;
 
   --warning: #b7791f;
   --warning-foreground: #ffffff;
-  --warning-muted: #fbf3e2;
-  --warning-muted-foreground: #8a5a12;
+  --warning-muted: #fff3da;
+  --warning-muted-foreground: #79550c;
 
-  --info: #8b5e24;
+  --info: #155e97;
   --info-foreground: #ffffff;
-  --info-muted: #f6efe0;
-  --info-muted-foreground: #74501f;
+  --info-muted: #eff4f9;
+  --info-muted-foreground: #173b66;
 
   --attention: #b7791f;
   --attention-foreground: #ffffff;
-  --attention-muted: #fbf3e2;
-  --attention-muted-foreground: #8a5a12;
+  --attention-muted: #fff3da;
+  --attention-muted-foreground: #79550c;
 
-  /* Gradients - Gold-anchored (used sparingly; app is flat) */
-  --gradient-primary-from: #8b5e24;
-  --gradient-primary-to: #74501f;
-  --gradient-secondary-from: #a67b2b;
-  --gradient-secondary-to: #8b5e24;
-  --gradient-success-from: #2f7d5b;
-  --gradient-success-to: #1f5b40;
+  /* Gradients - Blue-anchored (used sparingly; app is flat) */
+  --gradient-primary-from: #1d4f91;
+  --gradient-primary-to: #155e97;
+  --gradient-secondary-from: #155e97;
+  --gradient-secondary-to: #1d4f91;
+  --gradient-success-from: #176d58;
+  --gradient-success-to: #145140;
   --gradient-warning-from: #b7791f;
-  --gradient-warning-to: #8a5a12;
-  --gradient-accent-from: #a67b2b;
-  --gradient-accent-to: #74501f;
+  --gradient-warning-to: #79550c;
+  --gradient-accent-from: #155e97;
+  --gradient-accent-to: #173b66;
 
-  /* Surfaces - Layered depth */
+  /* Surfaces - Layered depth (warm) */
   --surface: #ffffff;
-  --surface-elevated: #fdfcf9;
-  --surface-muted: #f2eee5;
+  --surface-elevated: #fcfbf8;
+  --surface-muted: #f3f2ee;
 
   /* Interactive - Warm state management (flat, opaque) */
   --interactive-bg: #ffffff;
-  --interactive-fg: #251f18;
-  --interactive-border: #e7e0d3;
-  --interactive-hover-bg: #faf8f3;
-  --interactive-hover-fg: #251f18;
+  --interactive-fg: #151612;
+  --interactive-border: #dfded8;
+  --interactive-hover-bg: #faf9f6;
+  --interactive-hover-fg: #151612;
 
-  --interactive-secondary-bg: #f2eee5;
-  --interactive-secondary-fg: #3a3226;
-  --interactive-secondary-border: #e7e0d3;
-  --interactive-secondary-hover-bg: #ebe5d8;
-  --interactive-secondary-hover-fg: #251f18;
+  --interactive-secondary-bg: #f3f2ee;
+  --interactive-secondary-fg: #2b2a24;
+  --interactive-secondary-border: #dfded8;
+  --interactive-secondary-hover-bg: #ecebe4;
+  --interactive-secondary-hover-fg: #151612;
 
   /* ── Glass tokens — RETOKENIZED to flat institutional (single source).
      The whole neo-card/glass-card family references these, so making them solid
@@ -183,14 +194,14 @@
   --elev-2: 0 2px 8px rgba(22,32,46,0.06), 0 1px 3px rgba(22,32,46,0.04), inset 0 1px 0 var(--glass-highlight);
   --elev-3: 0 4px 24px rgba(22,32,46,0.08), 0 1px 4px rgba(22,32,46,0.05), inset 0 1px 0 var(--glass-highlight);
   --elev-4: 0 14px 44px rgba(22,32,46,0.13), 0 4px 12px rgba(22,32,46,0.07), inset 0 1px 0 var(--glass-highlight);
-  --ring-brand: 0 0 0 3px rgba(166, 123, 43, 0.28);
-  /* Brand glow — warm gold, used on hero/primary accents */
-  --glow-brand: 0 0 24px rgba(166, 123, 43, 0.30), 0 0 48px rgba(139, 94, 36, 0.14);
-  --glow-brand-soft: 0 0 20px rgba(196, 143, 66, 0.20), 0 0 40px rgba(166, 123, 43, 0.10);
+  --ring-brand: 0 0 0 3px rgba(139, 94, 36, 0.24);
+  /* Brand glow — classic-blue, used on hero/primary accents */
+  --glow-brand: 0 0 24px rgba(139, 94, 36, 0.30), 0 0 48px rgba(116, 80, 31, 0.14);
+  --glow-brand-soft: 0 0 20px rgba(166, 123, 43, 0.20), 0 0 40px rgba(139, 94, 36, 0.10);
 
-  /* ── Typography — single family (Geist), modern low-contrast grotesk ── */
-  --font-display: var(--font-geist-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-geist-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* ── Typography — native system stack (matches landing continuity) ── */
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --text-caption-size: 0.6875rem;   /* 11px */
   --text-caption-weight: 500;
@@ -223,8 +234,408 @@
   --neutral-700: #334155;
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
-  --neutral-950: #14100a;
+  --neutral-950: #0f1a2e;
   --neutral-white: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AUTH EXPERIENCE — SCOPED GOLD TRIAL (non-global)
+   Mirrors the live marketing site (preritgautam/investassist-website): warm
+   ivory canvas + espresso ink + logo-gold brand. Re-declares the token set on
+   the auth subtree ONLY. CSS custom properties inherit, so every descendant
+   that reads --background, palette.* → var(--…), neo-card glass tokens, and
+   brand-* utilities recolors to gold — while :root (rest of the product)
+   stays on the current warm-blue theme. Remove/promote after the trial.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Brand gold/bronze ramp */
+  --brand-50:  #f9f5ec;
+  --brand-100: #f1e6d0;
+  --brand-200: #e5d0a6;
+  --brand-300: #d4b473;
+  --brand-400: #c09646;
+  --brand-500: #a67b2b;
+  --brand-600: #8b5e24;   /* logo gold — brand identity / hover */
+  --brand-700: #74501f;   /* primary text / links (AA on light) */
+  --brand-800: #5f4119;
+  --brand-900: #4a3214;
+
+  /* Named brand/action roles */
+  --brand: #8b5e24;
+  --action: #8b5e24;
+  --action-hover: #74501f;
+  --selection: #f9f5ec;
+  --focus: #a67b2b;
+
+  /* Core canvas — warm ivory + espresso */
+  --background: #faf8f3;
+  --foreground: #251f18;
+  --card: #ffffff;
+  --card-foreground: #251f18;
+  --popover: #ffffff;
+  --popover-foreground: #251f18;
+
+  /* Primary — logo gold */
+  --primary: #8b5e24;
+  --primary-foreground: #ffffff;
+
+  /* Secondary / muted — warm sand */
+  --secondary: #f2eee5;
+  --secondary-foreground: #3a3226;
+  --muted: #f2eee5;
+  --muted-foreground: #6a6154;
+  --text-faint: #7d7365;
+
+  /* Accent — soft gold wash */
+  --accent: #f6efe0;
+  --accent-foreground: #74501f;
+
+  /* Borders / ring — warm hairline */
+  --border: #e7e0d3;
+  --input: #e7e0d3;
+  --ring: #a67b2b;
+
+  /* Surfaces */
+  --surface: #ffffff;
+  --surface-elevated: #fdfcf9;
+  --surface-muted: #f2eee5;
+
+  /* Interactive states — warm set */
+  --interactive-bg: #ffffff;
+  --interactive-fg: #251f18;
+  --interactive-border: #e7e0d3;
+  --interactive-hover-bg: #faf8f3;
+  --interactive-hover-fg: #251f18;
+  --interactive-secondary-bg: #f2eee5;
+  --interactive-secondary-fg: #3a3226;
+  --interactive-secondary-border: #e7e0d3;
+  --interactive-secondary-hover-bg: #ebe5d8;
+  --interactive-secondary-hover-fg: #251f18;
+
+  /* Info status → gold (the auth surface's only status hue) */
+  --info: #8b5e24;
+  --info-foreground: #ffffff;
+  --info-muted: #f6efe0;
+  --info-muted-foreground: #74501f;
+
+  /* Brand focus ring + glow → warm gold */
+  --ring-brand: 0 0 0 3px rgba(166, 123, 43, 0.24);
+  --glow-brand: 0 0 24px rgba(166, 123, 43, 0.30), 0 0 48px rgba(139, 94, 36, 0.14);
+  --glow-brand-soft: 0 0 20px rgba(166, 123, 43, 0.20), 0 0 40px rgba(139, 94, 36, 0.10);
+
+  /* Gradients → gold/bronze (primary CTA, accents) */
+  --gradient-primary-from: #8b5e24;
+  --gradient-primary-to: #74501f;
+  --gradient-secondary-from: #a67b2b;
+  --gradient-secondary-to: #8b5e24;
+  --gradient-accent-from: #a67b2b;
+  --gradient-accent-to: #74501f;
+
+  /* Azure accent → gold. The neo-btn-primary gradient + active-state glows are
+     built from --azure-*; remapping them here turns the auth CTA and focus
+     glows gold/bronze instead of electric blue. */
+  --azure-300: #d4b473;
+  --azure-400: #a67b2b;
+  --azure-500: #8b5e24;
+  --azure-600: #74501f;
+  --azure-700: #5f4119;
+  --azure-glow: rgba(139, 94, 36, 0.42);
+  --azure-glow-soft: rgba(139, 94, 36, 0.16);
+
+  /* Near-rectangular radii — the neo-card/tab/input family reads its corner
+     rounding from these tokens, so flattening them here makes every auth
+     surface (form card, deal card, inner bands) crisp with just a hair of
+     softening, without touching the rest of the product. */
+  --neo-radius-lg: 3px;
+  --neo-radius-md: 3px;
+  --neo-radius-sm: 2px;
+  --radius: 3px;
+  --radius-control: 2px;
+  /* Shape roles — the ONE place to decide what "round" means.
+     --shape-pill:  text-bearing chips/pill buttons (rounded-pill). Currently
+                    the standard control corner; set to 9999px to bring pills back.
+     --shape-round: true circles — avatars, status dots, count badges,
+                    progress bars (rounded-round). */
+  --shape-pill: var(--radius-control);
+  --shape-round: 9999px;
+
+  /* Layout rhythm — the ONLY source for page gutters, card padding and
+     vertical spacing. Mobile-first values; stepped up at sm/lg below.
+     Use via utilities: page-container, prose-container, gutter-x, card-pad,
+     section-stack, content-stack. Never hand-pick px-4/px-6 for a page edge. */
+  --gutter: 1.25rem;
+  --card-pad: 1.25rem;
+  --section-gap: 2rem;
+  --hero-gap: 2.5rem;
+  --stack-gap: 1rem;
+  --content-max: 80rem;
+  --prose-max: 48rem;
+  --header-h: 3.5rem;
+  /* Warm neutral scale — drives every slate-* / gray-* utility (was cool slate). */
+  --neutral-50:  #faf8f3;
+  --neutral-100: #f2eee5;
+  --neutral-200: #e7e0d3;
+  --neutral-300: #d6ccbb;
+  --neutral-400: #a89c89;
+  --neutral-500: #7d7365;
+  --neutral-600: #6a6154;
+  --neutral-700: #4a4136;
+  --neutral-800: #3a3226;
+  --neutral-900: #251f18;
+  --neutral-950: #17120c;
+  --neutral-white: #ffffff;
+
+  /* Espresso INK scale — structural dark bands (.on-ink), mode-independent. */
+  --ink-950: #120e09;
+  --ink-900: #17120c;
+  --ink-800: #211a12;
+  --ink-700: #2a2118;
+  --ink-600: #3a3025;
+  --ink-fg: #f3ecdf;
+  --ink-fg-muted: #b8ab97;
+  --ink-border: #3a3025;
+  --ink-border-strong: #4a3e30;
+  --on-ink-accent: #c09646;
+
+  /* Charts — gold-led; green/red stay semantic */
+  --chart-1: #8b5e24;
+  --chart-2: #251f18;
+  --chart-3: #c09646;
+  --chart-4: #2f7d5b;
+  --chart-5: #c33636;
+
+  /* Sidebar — espresso band with gold active states */
+  --sidebar: #211a12;
+  --sidebar-foreground: #e3d9c8;
+  --sidebar-primary: #c09646;
+  --sidebar-primary-foreground: #17120c;
+  --sidebar-accent: #2a2118;
+  --sidebar-accent-foreground: #f3ecdf;
+  --sidebar-border: #3a3025;
+  --sidebar-ring: #c09646;
+
+  /* Semantic chrome tokens — components read these, never raw colors */
+  --overlay: rgba(23, 18, 12, 0.5);
+  --tooltip: #251f18;
+  --tooltip-foreground: #f3ecdf;
+  --navbar: #ffffff;
+  --navbar-foreground: #251f18;
+  --navbar-border: #e7e0d3;
+
+  /* Card top accent line (every card) */
+  --card-accent: var(--brand-600);
+  --card-accent-width: 2.5px;
+}
+
+/* Autofill neutralization — Chrome/Safari paint saved emails/passwords with a
+   pale blue/lavender tint that overrides the field background and breaks the
+   warm gold surface the moment a returning user lands. We repaint the field
+   with a solid warm inset and keep the ink text color; the 9999s transition is
+   the standard trick to defeat the UA's own animated autofill background. On
+   focus we layer the same gold ring the JS focus state uses, so autofilled and
+   hand-typed inputs read identically. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--foreground);
+  caret-color: var(--foreground);
+  border-color: var(--border);
+  -webkit-box-shadow: 0 0 0 1000px var(--surface-muted) inset;
+  box-shadow: 0 0 0 1000px var(--surface-muted) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+input:-webkit-autofill:focus {
+  border-color: var(--brand-400);
+  -webkit-box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
+  box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AUTH EXPERIENCE — WARM-DARK VARIANT (ties the whole page to the theme toggle)
+   The base .auth-experience scope only declares LIGHT gold tokens, so toggling
+   the global theme to .dark left the auth subtree on its light --foreground
+   while the hardcoded `.dark .neo-card` rule painted the form card ink-navy →
+   dark text on a dark card (invisible), and the token-driven left panel never
+   flipped at all. This block gives the ENTIRE auth page a cohesive espresso
+   dark theme by re-declaring the full warm token set (canvas, surfaces, ink,
+   gold brand ramp, glass, azure→gold remap) in dark values on the SAME element.
+   Every descendant that reads --background, --foreground, palette tokens, or the
+   neo-card glass tokens recolors together. `.dark .auth-experience` (0-2-0)
+   outranks the base
+   `.auth-experience` (0-1-0); the neo-card surface overrides below (0-3-0)
+   outrank the global `.dark .neo-card` (0-2-0). Scoped to auth ONLY — the rest
+   of the product keeps its blue-black dark theme. Radii inherit from the base
+   scope unchanged (near-rectangular corners preserved).
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root.dark,
+html .on-ink {
+  /* Gold ramp rebuilt for dark: low steps = dark gold tints (pill/badge fills +
+     borders), mids = solid gold buttons, 700–900 = light gold so gold-colored
+     TEXT (links, TARGET chip) stays legible on the espresso canvas. */
+  --brand-50:  color-mix(in srgb, #c09646 10%, var(--background));
+  --brand-100: color-mix(in srgb, #c09646 16%, var(--background));
+  --brand-200: color-mix(in srgb, #c09646 28%, var(--background));
+  --brand-300: color-mix(in srgb, #c09646 44%, var(--background));
+  --brand-400: #c09646;
+  --brand-500: #a67b2b;
+  --brand-600: #c09646;
+  --brand-700: #e0be7a;   /* links / primary text — reads on dark */
+  --brand-800: #ecd199;
+  --brand-900: #f3e3c0;
+
+  --brand: #c09646;
+  --action: #c09646;
+  --action-hover: #d4b473;
+  --selection: #2e2416;
+  --focus: #d4b473;
+
+  /* Core canvas — deep espresso + warm off-white ink */
+  --background: #17120c;
+  --foreground: #f3ecdf;
+  --card: #211a12;
+  --card-foreground: #f3ecdf;
+  --popover: #211a12;
+  --popover-foreground: #f3ecdf;
+
+  --primary: #c09646;
+  --primary-foreground: #17120c;
+
+  --secondary: #2a2118;
+  --secondary-foreground: #e3d9c8;
+  --muted: #241d15;
+  --muted-foreground: #b8ab97;
+  --text-faint: #8f8474;
+
+  --accent: #2e2416;
+  --accent-foreground: #e0be7a;
+
+  --border: #3a3025;
+  --input: #3a3025;
+  --ring: #c09646;
+
+  --surface: #211a12;
+  --surface-elevated: #2a2118;
+  --surface-muted: #2a2118;
+
+  --interactive-bg: #241d15;
+  --interactive-fg: #f3ecdf;
+  --interactive-border: #3a3025;
+  --interactive-hover-bg: #2e2418;
+  --interactive-hover-fg: #ffffff;
+  --interactive-secondary-bg: #2a2118;
+  --interactive-secondary-fg: #e3d9c8;
+  --interactive-secondary-border: #3a3025;
+  --interactive-secondary-hover-bg: #352a1c;
+  --interactive-secondary-hover-fg: #ffffff;
+
+  --info: #c09646;
+  --info-foreground: #17120c;
+  --info-muted: #2e2416;
+  --info-muted-foreground: #e0be7a;
+
+  --ring-brand: 0 0 0 3px rgba(192, 150, 70, 0.30);
+  --glow-brand: 0 0 24px rgba(192, 150, 70, 0.30), 0 0 48px rgba(139, 94, 36, 0.16);
+  --glow-brand-soft: 0 0 20px rgba(192, 150, 70, 0.20), 0 0 40px rgba(139, 94, 36, 0.10);
+
+  --gradient-primary-from: #c09646;
+  --gradient-primary-to: #a67b2b;
+  --gradient-secondary-from: #d4b473;
+  --gradient-secondary-to: #c09646;
+  --gradient-accent-from: #d4b473;
+  --gradient-accent-to: #a67b2b;
+
+  /* azure-* drive the neo-btn-primary gradient + focus glows → keep them gold */
+  --azure-300: #d4b473;
+  --azure-400: #c09646;
+  --azure-500: #a67b2b;
+  --azure-600: #8b5e24;
+  --azure-700: #74501f;
+  --azure-glow: rgba(192, 150, 70, 0.42);
+  --azure-glow-soft: rgba(192, 150, 70, 0.16);
+
+  /* Flat institutional glass → warm dark card + hairline */
+  --glass-bg: var(--card);
+  --glass-bg-strong: var(--card);
+  --glass-border: var(--border);
+  --glass-border-hairline: var(--border);
+  --glass-highlight: transparent;
+
+  --neutral-50:  #1c160f;
+  --neutral-100: #211a12;
+  --neutral-200: #2a2118;
+  --neutral-300: #3a3025;
+  --neutral-400: #6f6556;
+  --neutral-500: #8f8474;
+  --neutral-600: #b8ab97;
+  --neutral-700: #d0c4b0;
+  --neutral-800: #e3d9c8;
+  --neutral-900: #f3ecdf;
+  --neutral-950: #faf5ec;
+  --neutral-white: #211a12;   /* raw bg-white surfaces become espresso card */
+
+  --chart-1: #c09646;
+  --chart-2: #e0be7a;
+  --chart-3: #8f8474;
+  --chart-4: #46c08a;
+  --chart-5: #e06666;
+
+  --sidebar: #120e09;
+  --sidebar-foreground: #d0c4b0;
+  --sidebar-primary: #c09646;
+  --sidebar-primary-foreground: #17120c;
+  --sidebar-accent: #211a12;
+  --sidebar-accent-foreground: #f3ecdf;
+  --sidebar-border: #2a2118;
+  --sidebar-ring: #c09646;
+
+  --overlay: rgba(0, 0, 0, 0.6);
+  --tooltip: #f3ecdf;
+  --tooltip-foreground: #17120c;
+  --navbar: #17120c;
+  --navbar-foreground: #f3ecdf;
+  --navbar-border: #3a3025;
+}
+
+/* Card surfaces inside auth dark: override the global `.dark .neo-card` (which
+   hardcodes a blue-black gradient) with warm espresso surfaces so the form card
+   follows the gold theme instead of turning navy. 0-3-0 > 0-2-0. */
+:root.dark .neo-card,
+:root.dark .neo-card-sm,
+:root.dark .neo-card-secondary,
+:root.dark .neo-section-card,
+:root.dark .neo-card-stats,
+html .on-ink .neo-card,
+html .on-ink .neo-card-sm,
+html .on-ink .neo-card-secondary,
+html .on-ink .neo-section-card,
+html .on-ink .neo-card-stats {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.42), 0 1px 4px rgba(0, 0, 0, 0.32);
+  color: var(--foreground);
+}
+/* Card top accent line — marks where every card starts. Driven by the
+   --card-accent token (espresso-brown on light, gold on dark via --brand-600).
+   The dark/on-ink selectors add .neo-card to outrank the border shorthand above. */
+:root [data-slot="card"],
+:root.dark [data-slot="card"].neo-card,
+html .on-ink [data-slot="card"].neo-card {
+  border-top: var(--card-accent-width) solid var(--card-accent);
+}
+
+:root.dark .neo-card-inner,
+html .on-ink .neo-card-inner {
+  background: color-mix(in srgb, #c09646 6%, var(--surface));
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: var(--foreground);
+}
+:root.dark .neo-card-inset,
+html .on-ink .neo-card-inset {
+  background: color-mix(in srgb, #000 28%, var(--surface));
+  border: 1px solid var(--border);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  color: var(--foreground);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -239,8 +650,8 @@
 .dark,
 .on-ink {
   /* Inverted neutral scale (lightest to darkest) flips slate and gray app-wide */
-  --neutral-50:  #1b160f;
-  --neutral-100: #251e14;
+  --neutral-50:  #0f1826;
+  --neutral-100: #16202e;
   --neutral-200: #1f2c3e;
   --neutral-300: #26344a;
   --neutral-400: #667689;
@@ -250,7 +661,7 @@
   --neutral-800: #dbe2ec;
   --neutral-900: #eaf0f8;
   --neutral-950: #f4f7fb;
-  --neutral-white: #1b160f;   /* raw bg-white surfaces become ink in dark */
+  --neutral-white: #0f1826;   /* raw bg-white surfaces become ink in dark */
 
   /* ── Status color families inverted for dark ──────────────────────────────
      emerald/green/teal/sky/cyan/blue/amber/yellow/orange/red/rose/pink are NOT
@@ -275,21 +686,28 @@
   --rose-50: color-mix(in srgb, #f43f5e 12%, var(--background)); --rose-100: color-mix(in srgb, #f43f5e 18%, var(--background)); --rose-200: color-mix(in srgb, #f43f5e 32%, var(--background)); --rose-300: color-mix(in srgb, #f43f5e 48%, var(--background)); --rose-400: #f43f5e; --rose-500: #f43f5e; --rose-600: #fb7185; --rose-700: #fecdd3; --rose-800: color-mix(in srgb, #fecdd3 82%, #fff); --rose-900: color-mix(in srgb, #fecdd3 64%, #fff); --rose-950: color-mix(in srgb, #fecdd3 46%, #fff);
   --pink-50: color-mix(in srgb, #ec4899 12%, var(--background)); --pink-100: color-mix(in srgb, #ec4899 18%, var(--background)); --pink-200: color-mix(in srgb, #ec4899 32%, var(--background)); --pink-300: color-mix(in srgb, #ec4899 48%, var(--background)); --pink-400: #ec4899; --pink-500: #ec4899; --pink-600: #f472b6; --pink-700: #fbcfe8; --pink-800: color-mix(in srgb, #fbcfe8 82%, #fff); --pink-900: color-mix(in srgb, #fbcfe8 64%, #fff); --pink-950: color-mix(in srgb, #fbcfe8 46%, #fff);
 
-  /* Core canvas — warm espresso */
-  --background: #14100a;
-  --foreground: #f4eee3;
-  --card: #1e1810;
-  --card-foreground: #f4eee3;
-  --popover: #1e1810;
-  --popover-foreground: #f4eee3;
+  /* Named brand/action roles (dark) */
+  --brand: #155e97;
+  --action: #155e97;
+  --action-hover: #1c70ad;
+  --selection: #162b43;
+  --focus: #83c4ff;
 
-  /* Primary — logo gold, lifted for dark legibility (AA on white text) */
-  --primary: #9a6a28;
+  /* Core canvas — blue-black */
+  --background: #090f18;
+  --foreground: #f1f6fc;
+  --card: #101b29;
+  --card-foreground: #f1f6fc;
+  --popover: #101b29;
+  --popover-foreground: #f1f6fc;
+
+  /* Primary - action blue (dark) */
+  --primary: #155e97;
   --primary-foreground: #ffffff;
 
   /* ── Brand ramp inverted for dark ─────────────────────────────────────────
      The :root brand ramp is a light→dark deep-blue scale (brand-50 pale …
-     brand-700 #74501f deep). Without a dark override it never flips, so
+     brand-700 #1d4074 deep). Without a dark override it never flips, so
      `text-brand-700` links (Forgot password, magic link, invitation copy) and
      `bg-brand-50`/`border-brand-200` pills render deep-blue-on-dark = invisible.
      We rebuild it for dark like the neutral/status scales: low steps (50–300)
@@ -302,78 +720,78 @@
   --brand-100: color-mix(in srgb, var(--primary) 16%, var(--background));
   --brand-200: color-mix(in srgb, var(--primary) 28%, var(--background));
   --brand-300: color-mix(in srgb, var(--primary) 44%, var(--background));
-  --brand-400: #9a6a28;
-  --brand-500: #b5843a;
-  --brand-600: #c69049;   /* solid bg-brand-600 buttons keep white text legible */
-  --brand-700: #d3a765;   /* primary link/text color — light gold, reads on dark */
-  --brand-800: #e2bd82;   /* hover:text-brand-800 → lighter */
-  --brand-900: #eed7ac;
+  --brand-400: #1c70ad;
+  --brand-500: #155e97;
+  --brand-600: #1c70ad;   /* solid bg-brand-600 buttons keep white text legible */
+  --brand-700: #7ebafa;   /* primary link/text color — reads on dark */
+  --brand-800: #9ecdfb;   /* hover:text-brand-800 → lighter */
+  --brand-900: #c6e0fc;
 
-  --secondary: #2a2015;
-  --secondary-foreground: #e3d9c8;
-  --muted: #1e1810;
-  --muted-foreground: #b7aa93;
+  --secondary: #152235;
+  --secondary-foreground: #dbe6f2;
+  --muted: #0d1623;
+  --muted-foreground: #a5b4c8;
   /* Faint text tier for dark/on-ink — dimmer than --muted-foreground but still
-     readable (replaces the dim neutral-400 as a text color). */
-  --text-faint: #9a8b72;
+     readable (replaces the dim neutral-400 #667689 as a text color). */
+  --text-faint: #8493a8;
 
-  /* Accent → gold wash (the alive spark) */
-  --accent: #2a2016;
-  --accent-foreground: var(--azure-300);
+  /* Accent → blue selection wash */
+  --accent: #162b43;
+  --accent-foreground: #7ebafa;
 
   --destructive: #e06666;
   --destructive-foreground: #ffffff;
 
-  --border: #3a2f1f;
-  --input: #3a2f1f;
-  --ring: var(--azure-500);
+  --border: #28394e;
+  --input: #28394e;
+  --ring: #83c4ff;
 
-  /* Charts — brighter on dark, gold-led */
-  --chart-1: #d3a765;
-  --chart-2: #e6c690;
-  --chart-3: #c09646;
+  /* Charts — brighter on dark, azure-led */
+  --chart-1: #4db8ff;
+  --chart-2: #7cc7ff;
+  --chart-3: #5b87c4;
   --chart-4: #46c08a;
   --chart-5: #e06666;
 
-  /* Sidebar — deepest espresso */
-  --sidebar: #14100a;
-  --sidebar-foreground: #cdc2ad;
+  /* Sidebar — deepest ink */
+  --sidebar: #0b1220;
+  --sidebar-foreground: #c2ccd9;
   --sidebar-primary: var(--azure-500);
-  --sidebar-primary-foreground: #14100a;
-  --sidebar-accent: #1e1810;
-  --sidebar-accent-foreground: #f4eee3;
-  --sidebar-border: #2a2015;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #16202e;
+  --sidebar-accent-foreground: #eaf0f8;
+  --sidebar-border: #1f2c3e;
   --sidebar-ring: var(--azure-500);
 
   /* Status muted surfaces re-tinted for dark */
-  --success: #46c08a;
-  --success-muted: #12281f;
-  --success-muted-foreground: #7fd9b0;
+  --success: #68cdb4;
+  --success-muted: #14281f;
+  --success-muted-foreground: #8fdcc4;
   --warning: #d9a441;
-  --warning-muted: #2a2010;
-  --warning-muted-foreground: #e6c27a;
-  --info: #d3a765;
-  --info-muted: #2a2016;
-  --info-muted-foreground: #e2bd82;
+  --warning-muted: #352a18;
+  --warning-muted-foreground: #efc780;
+  --info: #1c70ad;
+  --info-muted: #162b43;
+  --info-muted-foreground: #7ebafa;
   --attention: #d9a441;
-  --attention-muted: #2a2010;
-  --attention-muted-foreground: #e6c27a;
+  --attention-muted: #352a18;
+  --attention-muted-foreground: #efc780;
 
   /* Surfaces */
-  --surface: #1e1810;
-  --surface-elevated: #251e14;
-  --surface-muted: #2a2015;
+  --surface: #101b29;
+  --surface-elevated: #152235;
+  --surface-muted: #152235;
 
   /* Interactive */
-  --interactive-bg: #251e14;
-  --interactive-fg: #f4eee3;
-  --interactive-border: #3a2f1f;
-  --interactive-hover-bg: #31281a;
+  --interactive-bg: #16202e;
+  --interactive-fg: #eaf0f8;
+  --interactive-border: #26344a;
+  --interactive-hover-bg: #1f2c3e;
   --interactive-hover-fg: #ffffff;
-  --interactive-secondary-bg: #31281a;
-  --interactive-secondary-fg: #e3d9c8;
-  --interactive-secondary-border: #3a2f1f;
-  --interactive-secondary-hover-bg: #3f3322;
+  --interactive-secondary-bg: #1f2c3e;
+  --interactive-secondary-fg: #dbe2ec;
+  --interactive-secondary-border: #26344a;
+  --interactive-secondary-hover-bg: #26344a;
   --interactive-secondary-hover-fg: #ffffff;
 
   /* Glass — dark translucent */
@@ -390,28 +808,28 @@
   --elev-3: 0 6px 26px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-highlight);
   --elev-4: 0 16px 48px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 var(--glass-highlight);
 
-  /* Brand glow → warm gold on dark */
+  /* Brand glow → azure on dark */
   --glow-brand: 0 0 24px var(--azure-glow), 0 0 48px var(--azure-glow-soft);
-  --glow-brand-soft: 0 0 20px var(--azure-glow-soft), 0 0 40px rgba(196,143,66,0.08);
+  --glow-brand-soft: 0 0 20px var(--azure-glow-soft), 0 0 40px rgba(192,150,70,0.08);
 }
 
 /* Dark-mode overrides for glass classes that hardcode white fills (they don't
    read tokens, so they'd stay white-on-dark otherwise). */
 .dark .glass-inner,
 .on-ink .glass-inner {
-  background: rgba(190, 165, 120, 0.08);
-  border: 1px solid rgba(190, 165, 120, 0.14);
-  box-shadow: inset 0 1px 0 rgba(190, 165, 120, 0.10);
+  background: rgba(200, 180, 150, 0.08);
+  border: 1px solid rgba(200, 180, 150, 0.14);
+  box-shadow: inset 0 1px 0 rgba(200, 180, 150, 0.10);
 }
 .dark .glass-icon,
 .on-ink .glass-icon {
-  background: linear-gradient(135deg, rgba(58,46,30,0.9) 0%, rgba(42,32,20,0.8) 100%);
-  border: 1px solid rgba(190, 165, 120, 0.18);
+  background: linear-gradient(135deg, rgba(58,48,37,0.9) 0%, rgba(42,33,24,0.8) 100%);
+  border: 1px solid rgba(200, 180, 150, 0.18);
 }
 .dark .glass-btn,
 .on-ink .glass-btn {
-  background: linear-gradient(135deg, rgba(58,46,30,0.85) 0%, rgba(42,32,20,0.7) 100%);
-  border: 1px solid rgba(190, 165, 120, 0.18);
+  background: linear-gradient(135deg, rgba(58,48,37,0.85) 0%, rgba(42,33,24,0.7) 100%);
+  border: 1px solid rgba(200, 180, 150, 0.18);
 }
 /* Round icon buttons (e.g. notification bell) on ink chrome — the base class
    is a light-gray circle with a dark glyph, invisible on the gradient. */
@@ -443,11 +861,20 @@
 .glow-azure { box-shadow: 0 0 24px var(--azure-glow), 0 0 48px var(--azure-glow-soft); }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans, 'Geist'), var(--font-inter, 'Inter'), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-geist-sans, 'Geist'), var(--font-inter, 'Inter'), ui-sans-serif, system-ui, sans-serif;
-  /* legacy font-serif spots now resolve to the single family */
-  --font-serif: var(--font-geist-sans, 'Geist'), var(--font-inter, 'Inter'), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono, 'Geist Mono'), ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* legacy font-serif spots now resolve to the single system family */
+  --font-serif: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  /* Central type scale — every product font size resolves here. */
+  --text-micro: 8px;
+  --text-3xs: 9px;
+  --text-2xs: 10px;
+  --text-caption: 11px;
+  --text-tag: 12px;
+  --text-meta: 13px;
+  --text-copy-sm: 14px;
+  --text-copy: 15px;
 
   /* Brand indigo ramp as Tailwind utilities (bg-brand-600, text-brand-700, …) */
   --color-brand-50: var(--brand-50);
@@ -480,6 +907,12 @@
   --color-ink-border-strong: var(--ink-border-strong);
 
   --color-background: var(--background);
+  --color-overlay: var(--overlay);
+  --color-tooltip: var(--tooltip);
+  --color-tooltip-foreground: var(--tooltip-foreground);
+  --color-navbar: var(--navbar);
+  --color-navbar-foreground: var(--navbar-foreground);
+  --color-navbar-border: var(--navbar-border);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -510,10 +943,18 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  /* Near-rectangular scale: every rounded-* utility resolves to 2-3px so
+     buttons, tabs, chips, inputs, menus and cards share one corner. Only
+     rounded-full (avatars, count badges, status dots) stays circular. */
+  --radius-xs: var(--radius-control);
+  --radius-sm: var(--radius-control);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
+  --radius-pill: var(--shape-pill);
+  --radius-round: var(--shape-round);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -608,7 +1049,7 @@
   --color-slate-900: var(--neutral-900);
   --color-slate-950: var(--neutral-950);
 
-  /* ── Status color families → invertible vars ���────────────────────────────
+  /* ── Status color families → invertible vars ���────────��───────────────────
      Each maps to `var(--fam-step, <exact Tailwind default>)`. In LIGHT mode the
      fam-* vars are undefined so the fallback (unchanged Tailwind color) is used;
      in DARK/.on-ink the `.dark` block above defines fam-* with inverted values,
@@ -686,12 +1127,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(38, 84, 143, 0.22);
+    background: rgba(139, 94, 36, 0.22);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(38, 84, 143, 0.40);
+    background: rgba(139, 94, 36, 0.40);
   }
 
   /* Ticker animation */
@@ -751,8 +1192,8 @@
 
   /* Selection — amber highlight */
   ::selection {
-    background: rgba(38, 84, 143, 0.24);
-    color: #251e14;
+    background: rgba(139, 94, 36, 0.24);
+    color: #16202e;
   }
 }
 
@@ -790,7 +1231,7 @@
   background: linear-gradient(135deg, rgba(22,32,46,0.96) 0%, rgba(31,44,62,0.92) 100%);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  border: 1px solid rgba(53, 102, 170, 0.24);
+  border: 1px solid rgba(166, 123, 43, 0.24);
   box-shadow: var(--elev-4);
 }
 
@@ -801,7 +1242,7 @@
   background: linear-gradient(135deg, rgba(238,244,251,0.92) 0%, rgba(217,230,244,0.82) 100%);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid rgba(38, 84, 143, 0.24);
+  border: 1px solid rgba(139, 94, 36, 0.24);
   box-shadow: var(--elev-2);
 }
 
@@ -844,20 +1285,20 @@
 }
 
 .glass-progress-fill {
-  background: linear-gradient(90deg, var(--progress-from, #74501f) 0%, var(--progress-to, #a67b2b) 100%);
-  box-shadow: 0 2px 8px rgba(38, 84, 143, 0.30);
+  background: linear-gradient(90deg, var(--progress-from, #1d4074) 0%, var(--progress-to, #3566aa) 100%);
+  box-shadow: 0 2px 8px rgba(139, 94, 36, 0.30);
 }
 
 /* Text gradients — ink and classic-blue */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #251e14 0%, #3a3226 100%);
+  background: linear-gradient(135deg, #16202e 0%, #2f3b4d 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #74501f 0%, #a67b2b 55%, #c09646 100%);
+  background: linear-gradient(135deg, #1d4074 0%, #3566aa 55%, #5b87c4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -916,7 +1357,7 @@
 /* Premium Divider */
 .glass-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(38, 84, 143, 0.18) 20%, rgba(203, 213, 225, 0.6) 50%, rgba(38, 84, 143, 0.18) 80%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(139, 94, 36, 0.18) 20%, rgba(203, 213, 225, 0.6) 50%, rgba(139, 94, 36, 0.18) 80%, transparent 100%);
 }
 
 /* Interactive row inside a glass card/list. No hard rules between rows —
@@ -928,8 +1369,8 @@
   transition: background-color 160ms ease, box-shadow 160ms ease;
 }
 .glass-row:hover {
-  background: rgba(38, 84, 143, 0.09);
-  box-shadow: inset 0 0 0 1px rgba(38, 84, 143, 0.14);
+  background: rgba(139, 94, 36, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(139, 94, 36, 0.14);
 }
 
 /* Alternating (zebra) striping for glass-row lists. Opt-in via `glass-row-striped`
@@ -945,8 +1386,8 @@
   background: color-mix(in srgb, #ffffff 4%, transparent);
 }
 .glass-row-striped > .glass-row:hover {
-  background: rgba(38, 84, 143, 0.09);
-  box-shadow: inset 0 0 0 1px rgba(38, 84, 143, 0.14);
+  background: rgba(139, 94, 36, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(139, 94, 36, 0.14);
 }
 .dark .glass-row-striped > .glass-row:hover,
 .on-ink .glass-row-striped > .glass-row:hover {
@@ -965,7 +1406,7 @@
    3D depth, borderless design, consistent shadows across platform
    ═════════════════════════════════════════�����═════════════════════════════════ */
 
-/* ─── CSS CUSTOM PROPERTIES (Design Tokens) ─────────────────��──��─���──────── */
+/* ─── CSS CUSTOM PROPERTIES (Design Tokens) ─────────────────��─�����─���──────── */
 /* ═════════════════════════════════════���═════════════════��══════════��════════════
    NEOMORPHISM DESIGN SYSTEM - InvestAssist Platform
    
@@ -1003,38 +1444,38 @@
       - Icon container: `neo-icon-btn`
       - Inset elements: `neo-inset`
    
-   ════════════════════════════════════════════════════�����══════════════════════════ */
+   ════════════════════════════════════════════════════�����══��═══════════════════════ */
 
 :root {
   /* Neo Shadows - Warm depth on parchment (boosted for visibility) */
-  --neo-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.12), 0 1px 2px rgba(15, 23, 42, 0.07);
-  --neo-shadow-md: 0 4px 16px rgba(15, 23, 42, 0.13), 0 2px 4px rgba(15, 23, 42, 0.08);
-  --neo-shadow-lg: 0 8px 28px rgba(15, 23, 42, 0.14), 0 2px 6px rgba(15, 23, 42, 0.08);
-  --neo-shadow-xl: 0 12px 40px rgba(15, 23, 42, 0.18), 0 4px 10px rgba(15, 23, 42, 0.10);
-  --neo-shadow-hover: 0 20px 56px rgba(15, 23, 42, 0.22), 0 6px 14px rgba(15, 23, 42, 0.12);
-  --neo-shadow-active: 0 2px 8px rgba(15, 23, 42, 0.12);
+  --neo-shadow-sm: 0 2px 8px rgba(37, 31, 24, 0.12), 0 1px 2px rgba(37, 31, 24, 0.07);
+  --neo-shadow-md: 0 4px 16px rgba(37, 31, 24, 0.13), 0 2px 4px rgba(37, 31, 24, 0.08);
+  --neo-shadow-lg: 0 8px 28px rgba(37, 31, 24, 0.14), 0 2px 6px rgba(37, 31, 24, 0.08);
+  --neo-shadow-xl: 0 12px 40px rgba(37, 31, 24, 0.18), 0 4px 10px rgba(37, 31, 24, 0.10);
+  --neo-shadow-hover: 0 20px 56px rgba(37, 31, 24, 0.22), 0 6px 14px rgba(37, 31, 24, 0.12);
+  --neo-shadow-active: 0 2px 8px rgba(37, 31, 24, 0.12);
   
   /* Neo Button Shadows */
-  --neo-btn-shadow: 0 4px 12px rgba(15, 23, 42, 0.09);
-  --neo-btn-shadow-hover: 0 6px 20px rgba(15, 23, 42, 0.13);
-  --neo-btn-shadow-primary: 0 4px 16px rgba(15, 26, 46, 0.22);
-  --neo-btn-shadow-primary-hover: 0 6px 24px rgba(15, 26, 46, 0.30);
+  --neo-btn-shadow: 0 4px 12px rgba(37, 31, 24, 0.09);
+  --neo-btn-shadow-hover: 0 6px 20px rgba(37, 31, 24, 0.13);
+  --neo-btn-shadow-primary: 0 4px 16px rgba(37, 31, 24, 0.22);
+  --neo-btn-shadow-primary-hover: 0 6px 24px rgba(37, 31, 24, 0.30);
   
   /* Neo Inner Card Shadows (colored tints) */
-  --neo-shadow-indigo: 0 4px 16px rgba(38, 84, 143, 0.14);
+  --neo-shadow-indigo: 0 4px 16px rgba(139, 94, 36, 0.14);
   --neo-shadow-emerald: 0 4px 16px rgba(16, 185, 129, 0.13);
-  --neo-shadow-amber: 0 4px 16px rgba(38, 84, 143, 0.18);
+  --neo-shadow-amber: 0 4px 16px rgba(139, 94, 36, 0.18);
   --neo-shadow-red: 0 4px 16px rgba(220, 38, 38, 0.14);
-  --neo-shadow-blue: 0 4px 16px rgba(15, 23, 42, 0.10);
-  --neo-shadow-teal: 0 4px 16px rgba(38, 84, 143, 0.14);
+  --neo-shadow-blue: 0 4px 16px rgba(37, 31, 24, 0.10);
+  --neo-shadow-teal: 0 4px 16px rgba(139, 94, 36, 0.14);
   
   /* Neo Border Radius */
-  --neo-radius-xs: 8px;
-  --neo-radius-sm: 12px;
-  --neo-radius-md: 16px;
-  --neo-radius-lg: 20px;
-  --neo-radius-xl: 24px;
-  --neo-radius-full: 9999px;
+  --neo-radius-xs: 2px;
+  --neo-radius-sm: 2px;
+  --neo-radius-md: 3px;
+  --neo-radius-lg: 3px;
+  --neo-radius-xl: 3px;
+  --neo-radius-full: var(--shape-round);
   
   /* Neo Transitions */
   --neo-transition: all 0.2s ease;
@@ -1127,7 +1568,7 @@
   --neo-table-header-color: #0f1729;
   --neo-table-header-tracking: 0.05em;
   --neo-table-header-bg: linear-gradient(135deg, rgba(255,255,255,0.86) 0%, rgba(248,250,252,0.82) 50%, rgba(241,245,251,0.78) 100%);
-  --neo-table-header-shadow: 0 2px 8px rgba(15,23,42,0.06);
+  --neo-table-header-shadow: 0 2px 8px rgba(37,31,24,0.06);
   
   --neo-table-section-font-size: 11px;
   --neo-table-section-font-weight: 700;
@@ -1143,7 +1584,7 @@
   --neo-table-value-font-weight: 600;
   --neo-table-value-color: #0f1729;
   
-  /* ─── TOOLTIP TOKENS ────────────────────────────────────────────────────── */
+  /* ─── TOOLTIP TOKENS ────────────────────────────���───────────────────────── */
   --neo-tooltip-bg: #1e293b; /* slate-800 */
   --neo-tooltip-text: #ffffff;
   --neo-tooltip-border: rgba(71, 85, 105, 0.5); /* slate-600/50 */
@@ -1158,7 +1599,7 @@
   background: var(--neo-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 -1px 0 rgba(203, 213, 225, 0.60), 0 1px 4px rgba(15, 23, 42, 0.04);
+  box-shadow: inset 0 -1px 0 rgba(203, 213, 225, 0.60), 0 1px 4px rgba(37, 31, 24, 0.04);
 }
 
 /* ─── TABLE HEADER ROW ──────────────���─���──────────────────────────────────── */
@@ -1180,7 +1621,7 @@
 /* Section divider rows (e.g., REVENUE, EXPENSES) */
 .neo-table-section {
   background: var(--neo-table-section-bg);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 6px rgba(15,23,42,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 6px rgba(37,31,24,0.04);
 }
 
 .neo-table-section td {
@@ -1217,7 +1658,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ─── BACKGROUND ─────���───────���───────────────────────��������─��─����─���─��─��─────────── */
+/* ─── BACKGROUND ─────���───────���───────────────────────��������─��─����─���─��─���─────────── */
 .neo-gradient-bg {
   background: var(--neo-gradient);
   min-height: 100vh;
@@ -1226,7 +1667,7 @@
 
 /* Auth left panel — deep navy ink with classic-blue glow orbs (modern-AI depth) */
 .auth-super-gradient {
-  background: linear-gradient(150deg, #251e14 0%, #31281a 55%, #251e14 100%);
+  background: linear-gradient(150deg, #16202e 0%, #1a2c47 55%, #16202e 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1238,8 +1679,8 @@
   left: -80px;
   width: 420px;
   height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(53,102,170,0.42) 0%, transparent 65%);
+  border-radius: var(--shape-round);
+  background: radial-gradient(circle, rgba(166,123,43,0.42) 0%, transparent 65%);
   filter: blur(20px);
   pointer-events: none;
 }
@@ -1251,8 +1692,8 @@
   right: -60px;
   width: 360px;
   height: 360px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(38,84,143,0.34) 0%, transparent 65%);
+  border-radius: var(--shape-round);
+  background: radial-gradient(circle, rgba(139,94,36,0.34) 0%, transparent 65%);
   filter: blur(20px);
   pointer-events: none;
 }
@@ -1289,7 +1730,7 @@
   border: 1px solid var(--glass-border);
 }
 
-/* ─── NEO-CARD-ELEVATED: Primary elevated frosted card ─────────────────── */
+/* ─── NEO-CARD-ELEVATED: Primary elevated frosted card ──��──────────────── */
 .neo-card-elevated {
   background: var(--glass-bg-strong);
   backdrop-filter: blur(24px) saturate(160%);
@@ -1315,6 +1756,105 @@
   border: 1px solid var(--border);
 }
 
+/* ─── GLASS-CONTROL: global standard for pickers / dropdown triggers ──────
+   Applied to every Select/Dropdown trigger so they read as raised, tactile
+   glass controls (subtle gradient + inset highlight + soft lift) rather than
+   flat rectangles. Reusable by any custom trigger — add `glass-control`. */
+.glass-control {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96) 0%, rgba(246, 248, 252, 0.88) 100%);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 2px rgba(37, 31, 24, 0.04),
+    0 2px 6px rgba(100, 100, 140, 0.08);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.glass-control:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--primary) 24%, var(--glass-border));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 4px 12px rgba(100, 100, 140, 0.14);
+}
+.glass-control:active:not(:disabled),
+.glass-control[data-state="open"] {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 4px rgba(37, 31, 24, 0.08),
+    0 1px 2px rgba(100, 100, 140, 0.06);
+}
+
+/* ─── GLASS-PANEL: global standard for dropdown / popover surfaces ─────────
+   The floating menu that a glass-control opens. Frosted, elevated, hairline. */
+.glass-panel {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--elev-4), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+/* ─── GLASS-ACTION: global standard for inline actionable links ───────────
+   The single source of truth for every "actionable" affordance that isn't a
+   full Button — card links like "View financials", "Edit", "Add", "View
+   details". Turns a bare colored-text link into a compact, tactile glass pill
+   so users unmistakably read it as clickable. Add the `glass-action` class to
+   any such control; it supplies its own padding, radius, border, lift-on-hover
+   and press-on-active. Change the treatment HERE and it trickles everywhere. */
+.glass-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.92) 0%, rgba(246, 248, 252, 0.82) 100%);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 2px rgba(37, 31, 24, 0.05),
+    0 1px 3px rgba(100, 100, 140, 0.08);
+  backdrop-filter: blur(6px) saturate(140%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+.glass-action:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--primary) 26%, var(--glass-border));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 3px 10px rgba(100, 100, 140, 0.16);
+}
+.glass-action:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px rgba(37, 31, 24, 0.08);
+}
+  .glass-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  }
+  /* Opt-in accent variant of .glass-action — a resting primary tint (border +
+     faint wash + accent text) so primary card actions read as pressable at a
+     glance. Use WITH .glass-action (e.g. class="glass-action glass-action-accent")
+     and only on genuinely actionable controls, never on status labels. */
+  .glass-action-accent {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 15%, white) 0%, color-mix(in srgb, var(--primary) 9%, white) 100%);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  color: color-mix(in srgb, var(--primary) 84%, black);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--primary) 22%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  }
+  .glass-action-accent:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--primary) 58%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 22%, white) 0%, color-mix(in srgb, var(--primary) 14%, white) 100%);
+  box-shadow: 0 3px 9px color-mix(in srgb, var(--primary) 28%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: translateY(-0.5px);
+  }
+  .glass-action-accent:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+
 /* ─── NEO-CARD-STATS: KPI / summary metric cards ───────────────────────── */
 .neo-card-stats-elevated {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(248, 250, 252, 0.80) 40%, rgba(241, 245, 251, 0.75) 100%);
@@ -1322,14 +1862,14 @@
   -webkit-backdrop-filter: blur(20px) saturate(150%);
   border-radius: var(--neo-radius-lg);
   box-shadow: 
-    0 4px 16px rgba(15, 23, 42, 0.07),
-    0 2px 6px rgba(15, 23, 42, 0.04),
+    0 4px 16px rgba(37, 31, 24, 0.07),
+    0 2px 6px rgba(37, 31, 24, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.90);
   border: 1px solid rgba(255, 255, 255, 0.65);
   transition: var(--neo-transition);
 }
 
-/* ─── NEO-PAGE-GRADIENT: Full page background ───────────────────────────── */
+/* ─── NEO-PAGE-GRADIENT: Full page background ────────────────��──────────── */
 .neo-page-gradient {
   background: linear-gradient(145deg, #eef1f8 0%, #e8ecf6 30%, #e2e8f3 60%, #d7deec 100%);
   min-height: 100%;
@@ -1349,18 +1889,18 @@
 
 /* Deep navy accent card */
 .neo-card-accent {
-  background: linear-gradient(135deg, #14100a 0%, #31281a 50%, #3f3322 100%);
+  background: linear-gradient(135deg, #0f1a2e 0%, #1a2540 50%, #243060 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--neo-radius-lg);
-  box-shadow: 0 8px 32px rgba(15, 26, 46, 0.28), 0 2px 8px rgba(15, 26, 46, 0.16);
-  border: 1px solid rgba(53, 102, 170, 0.18);
+  box-shadow: 0 8px 32px rgba(37, 31, 24, 0.28), 0 2px 8px rgba(37, 31, 24, 0.16);
+  border: 1px solid rgba(166, 123, 43, 0.18);
   color: #eef1f8;
 }
 
 /* Amber accent card — replaces teal */
 .neo-accent-teal {
-  background: linear-gradient(135deg, #a67b2b 0%, #c09646 100%);
+  background: linear-gradient(135deg, #3566aa 0%, #5b87c4 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: var(--neo-radius-lg);
@@ -1388,7 +1928,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-amber);
-  border: 1px solid rgba(38, 84, 143, 0.18);
+  border: 1px solid rgba(139, 94, 36, 0.18);
 }
 
 .neo-inner-card-emerald {
@@ -1404,7 +1944,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-amber);
-  border: 1px solid rgba(38, 84, 143, 0.22);
+  border: 1px solid rgba(139, 94, 36, 0.22);
 }
 
 .neo-inner-card-red {
@@ -1428,7 +1968,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--neo-shadow-amber);
-  border: 1px solid rgba(38, 84, 143, 0.18);
+  border: 1px solid rgba(139, 94, 36, 0.18);
 }
 
 /* ─── INSET ELEMENTS ─────────────────────────────────────────────────────── */
@@ -1437,22 +1977,16 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--neo-radius-md);
-  box-shadow: inset 2px 2px 6px rgba(15, 23, 42, 0.08), inset -2px -2px 6px rgba(255, 255, 255, 0.70);
+  box-shadow: inset 2px 2px 6px rgba(37, 31, 24, 0.08), inset -2px -2px 6px rgba(255, 255, 255, 0.70);
   border: 1px solid rgba(203, 213, 225, 0.50);
 }
 
-/* ─── TAB STYLES ────────────────────────────────────��─────����──────────────── */
+/* ─── TAB STYLES ──────────��─────────────────────────��─────����──────────────── */
 /* Neo tab container - warm glass inset */
 .neo-tabs {
-  background: linear-gradient(135deg, rgba(238, 242, 249, 0.68) 0%, rgba(226, 232, 240, 0.62) 100%);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-radius: var(--neo-radius-lg);
-  box-shadow: 
-    inset 2px 2px 6px rgba(15, 23, 42, 0.06),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.70),
-    0 1px 2px rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(203, 213, 225, 0.50);
+  background: var(--surface-muted);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
 }
 
 /* Active tab - frosted white glass elevated */
@@ -1481,76 +2015,68 @@
    One source of truth for the in-product top bar + sub-tab navigation.
    Mirrors the InvestAssist brand gradient (indigo → violet → magenta → rose)
    used on the marketing site so chrome feels unified across the whole product.
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════════════════════���══════════════════════════════ */
 
 /* Brand chrome — flat solid classic blue (no gradient) */
 :root {
   --brand-gradient: linear-gradient(110deg, #74501f 0%, #8b5e24 55%, #a67b2b 100%);
-  --brand-gradient-soft: linear-gradient(110deg, rgba(38,84,143,0.12) 0%, rgba(53,102,170,0.10) 70%, rgba(91,135,196,0.08) 100%);
-  --brand-ring: rgba(38, 84, 143, 0.40);
+  --brand-gradient-soft: linear-gradient(110deg, rgba(139,94,36,0.12) 0%, rgba(166,123,43,0.10) 70%, rgba(192,150,70,0.08) 100%);
+  --brand-ring: rgba(139, 94, 36, 0.40);
   --brand-foreground: #ffffff;
 }
 
-  /* Notification dropdown must fully occlude sticky deal content beneath it. */
+  /* Notification dropdown must fully occlude sticky deal content beneath it.
+     Uses the theme card token (opaque in both light & dark) so it occludes
+     without a hardcoded white that breaks dark mode. */
   .notification-panel {
-    background: #ffffff !important;
+    background: var(--card) !important;
     opacity: 1 !important;
     isolation: isolate;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
-  /* ── Top navigation bar ───────────────────────────────────────────��───────── */
-  /* Deep-blue SUPER-GRADIENT chrome band framing the light workspace (duotone).
-     Not flat black — a living navy→classic-blue gradient with an azure glow so
-     the nav reads modern and premium. `.on-ink` re-scopes descendant tokens. */
+  /* ── Top navigation bar ──────────��─────────────────────────────���──��───────── */
+  /* Driven entirely by the central --navbar* tokens (light #fff / dark espresso).
+     The ink-* aliases are re-pointed here so header children that use
+     text-ink-fg / hover:bg-ink-700 follow the navbar theme instead of the dark ink band. */
   .app-navbar {
   position: sticky;
   top: 0;
   z-index: 10000;
-  background:
-    radial-gradient(120% 180% at 15% -40%, rgba(34,163,255,0.20) 0%, transparent 55%),
-    radial-gradient(90% 160% at 92% -30%, rgba(53,102,170,0.28) 0%, transparent 60%),
-    linear-gradient(100deg, #0d1a30 0%, #12294a 45%, #14203a 78%, #1b160f 100%);
-  border-bottom: 1px solid rgba(34,163,255,0.18);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 10px 30px rgba(9, 18, 34, 0.5);
+  --ink-fg: var(--navbar-foreground);
+  --ink-fg-muted: var(--muted-foreground);
+  --ink-700: var(--muted);
+  --ink-border: var(--navbar-border);
+  color: var(--navbar-foreground);
+  background: var(--navbar);
+  border-bottom: 1px solid var(--navbar-border);
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--foreground) 6%, transparent);
 }
 
-/* Pill nav links (top bar) — ink-aware */
 .app-nav-link {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.9rem;
-  border-radius: 11px;
-  font-size: 0.875rem;
+  border-radius: var(--radius-control);
+  font-size: var(--text-copy-sm);
   font-weight: 600;
-  color: var(--ink-fg-muted);
+  color: var(--muted-foreground);
   white-space: nowrap;
-  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .app-nav-link:hover {
-  color: var(--ink-fg);
-  background: rgba(120, 150, 190, 0.10);
+  color: var(--navbar-foreground);
+  background: var(--muted);
 }
 
-  /* Active pill — electric azure, the alive accent on the dark bar */
-  .app-nav-link-active {
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--azure-600) 0%, var(--azure-500) 100%);
-  box-shadow:
-    0 6px 16px -5px var(--azure-glow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-  .app-nav-link-active:hover {
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--azure-600) 0%, var(--azure-500) 100%);
-  transform: translateY(-1px);
+.app-nav-link-active,
+.app-nav-link-active:hover {
+  color: var(--primary-foreground);
+  background: var(--primary);
 }
 
 /* ── Segmented sub-tab control (Overview / Financials / Units ��) ────────── */
@@ -1558,15 +2084,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.3rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(238, 242, 249, 0.72) 0%, rgba(226, 232, 240, 0.66) 100%);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(203, 213, 225, 0.55);
-  box-shadow:
-    inset 2px 2px 6px rgba(15, 23, 42, 0.05),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.70);
+  padding: 0.25rem;
+  border-radius: var(--radius);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
 }
 
 .app-segment-item {
@@ -1574,17 +2095,44 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.5rem 0.85rem;
-  border-radius: 10px;
-  font-size: 0.8125rem;
+  border-radius: var(--radius-control);
+  font-size: var(--text-meta);
   font-weight: 600;
-  color: #55627a;
+  color: var(--muted-foreground);
   white-space: nowrap;
-  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .app-segment-item:hover {
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.70);
+  color: var(--foreground);
+  background: var(--card);
+}
+
+/* Shared filter chip — same radius/type/colors as every other control. */
+.app-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-control);
+  font-size: var(--text-copy-sm);
+  font-weight: 600;
+  color: var(--foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.app-chip:hover {
+  border-color: var(--brand-600);
+  color: var(--brand-700);
+}
+
+.app-chip-active,
+.app-chip-active:hover {
+  color: var(--brand-foreground);
+  background: var(--brand-gradient);
+  border-color: transparent;
 }
 
   .app-segment-item-active {
@@ -1619,13 +2167,13 @@
   display: inline-flex;
   align-items: center;
   padding: 0.2rem 0.7rem;
-  border-radius: 999px;
+  border-radius: var(--shape-round);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: #74501f;
+  color: #1d4074;
   background: var(--brand-gradient-soft);
-  border: 1px solid rgba(38, 84, 143, 0.22);
+  border: 1px solid rgba(139, 94, 36, 0.22);
 }
 
 /* Icon + text fact in the header metadata row */
@@ -1650,7 +2198,7 @@
 .app-meta-sep {
   height: 4px;
   width: 4px;
-  border-radius: 999px;
+  border-radius: var(--shape-round);
   background: #cbd5e1;
   flex-shrink: 0;
 }
@@ -1682,7 +2230,7 @@
   border: 1px solid rgba(203, 213, 225, 0.55);
   border-radius: var(--neo-radius-md);
   box-shadow: 
-    0 2px 8px rgba(15, 23, 42, 0.06),
+    0 2px 8px rgba(37, 31, 24, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.75);
   transition: var(--neo-transition);
 }
@@ -1690,10 +2238,10 @@
 .neo-input-elevated:focus {
   outline: none;
   box-shadow: 
-    0 4px 12px rgba(15, 23, 42, 0.08),
-    0 0 0 2px rgba(38, 84, 143, 0.22),
+    0 4px 12px rgba(37, 31, 24, 0.08),
+    0 0 0 2px rgba(139, 94, 36, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  border-color: rgba(38, 84, 143, 0.35);
+  border-color: rgba(139, 94, 36, 0.35);
 }
 
 /* Elevated button — frosted glass */
@@ -1704,8 +2252,8 @@
   border: 1px solid rgba(203, 213, 225, 0.55);
   border-radius: var(--neo-radius-md);
   box-shadow: 
-    0 2px 8px rgba(15, 23, 42, 0.07),
-    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 2px 8px rgba(37, 31, 24, 0.07),
+    0 1px 2px rgba(37, 31, 24, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.80);
   transition: var(--neo-transition);
 }
@@ -1713,8 +2261,8 @@
 .neo-btn-elevated:hover {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.92) 100%);
   box-shadow: 
-    0 6px 18px rgba(15, 23, 42, 0.10),
-    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 6px 18px rgba(37, 31, 24, 0.10),
+    0 2px 4px rgba(37, 31, 24, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
   transform: translateY(-1px);
 }
@@ -1748,11 +2296,11 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(203, 213, 225, 0.50);
   box-shadow: 
-    0 2px 6px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(37, 31, 24, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-/* ─── BUTTONS ──────────────────��────────────────��─────────────────���──────── */
+/* ─── BUTTONS ───────────────────────────────────��─────────────────����──────── */
 /* Base neomorphic button with 3D depth */
 .neo-btn {
   background: #ffffff;
@@ -1899,7 +2447,7 @@
   box-shadow: var(--neo-shadow-md), 0 0 0 2px rgba(13, 148, 136, 0.2);
 }
 
-/* ─── TYPOGRAPHY ────────────────────��────────────────────────────────────── */
+/* ──��� TYPOGRAPHY ────────────────────��────────────────────────────────────── */
 
 /* ══════════════════════════════════════════════════════════════���═���═══���═══���══
    CANONICAL STAT-TILE TYPOGRAPHY — single source of truth for every metric
@@ -1942,13 +2490,13 @@
   color: color-mix(in srgb, var(--muted-foreground) 88%, transparent);
 }
 
-/* ────────────��─────────────────────────────────────────────────────────────
+/* ────����������������������────��─────────────────────────────────────────────────────────────
    Unified data table — one refreshed, legible table treatment used across
    Units / Financials / Comps / Deal Info / Assumptions. Add class="ua-table"
    to a <table>. Descendant selectors intentionally out-specify bare
    text-slate-* utilities on <th>/<td> so legibility is consistent, while
    explicit colors on inner <span>/<div> (semantic green/amber) still win.
-   ────────────────────────────────────────────────────────────────────────── */
+   ────────���───────────────────────────────────────────────────────────────── */
 .ua-table {
   width: 100%;
   border-collapse: separate;
@@ -1970,6 +2518,9 @@
   white-space: nowrap;
   padding: 0.6rem 1rem;
   border-bottom: 1px solid var(--border);
+  /* Header labels must sit centered in the row. td sets middle below; th defaults
+     to `baseline`, which rode the labels to the top of a tall header. */
+  vertical-align: middle;
 }
 
 .ua-table thead th:first-child {
@@ -1984,7 +2535,9 @@
   font-size: 0.8125rem;                /* 13px */
   line-height: 1.35;
   color: var(--card-foreground);
-  border-bottom: 1px solid var(--border);
+  /* Darker than plain --border so adjacent rows visibly separate (the faint
+     default let dense money rows blur together). */
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 16%, var(--border));
   vertical-align: middle;
 }
 
@@ -2006,6 +2559,31 @@
   border-bottom: none;
 }
 
+/* Vertical inter-column grid lines intentionally REMOVED — the statement tables
+   keep horizontal row rules only. The frozen first column still shows its single
+   right-edge scroll shadow (see `.ua-sticky-col`), which is a scroll affordance,
+   not a grid line. */
+
+/* Money columns share the SAME roomy side padding as the label columns so the
+   statement breathes like the rent-roll table (px-3 = 0.75rem), rather than the
+   old cramped 0.4rem grid. Vertical padding comes from the .ua-stmt cell rule. */
+.ua-table.ua-stmt thead th.ua-num,
+.ua-table.ua-stmt tbody td.ua-num {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* Pin every month column to one fixed width in BOTH the Source and Underwriter
+   views so the two tables render an identical, compact column rhythm (the
+   Underwriter months were sizing to content while Source carried a min-width
+   floor, so the two looked inconsistent). The extracted-total last column keeps
+   its own width rule below. */
+.ua-table.ua-stmt thead th.ua-num:not(:last-child),
+.ua-table.ua-stmt tbody td.ua-num:not(:last-child) {
+  width: 100px;
+  min-width: 100px;
+}
+
 /* Right-align + tabular numerics on numeric columns (add class="ua-num") */
 .ua-table th.ua-num,
 .ua-table td.ua-num {
@@ -2014,12 +2592,14 @@
   white-space: nowrap;
 }
 
-/* Emphasized total / summary rows */
+/* Emphasized total / summary rows. Borders are the uniform 1px grid line (same
+   as every other row) — the bold weight + fill carry the emphasis, not a heavier
+   rule. */
 .ua-table tbody tr.ua-total td {
   font-weight: 700;
   color: var(--foreground);
   background: color-mix(in srgb, var(--foreground) 5%, transparent);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 16%, var(--border));
 }
 
 /* Selected / active row — wins over zebra + hover */
@@ -2031,6 +2611,56 @@
   box-shadow: inset 3px 0 0 0 #0f8a5f;
 }
 
+/* ── Basis-column band + uncategorized-row + category separation (REVERSIBLE) ──
+   Applies to BOTH operating-statement tables (Source + Underwriter — each carries
+   `.ua-stmt`). The `.ua-table.ua-stmt` prefix keeps specificity above the zebra /
+   sticky-column rules above so these highlights win. Colors are derived from the
+   brand token (the same accent the "Basis" badge already uses) via color-mix so
+   the band reads correctly in BOTH light and dark modes — a hard-coded light-blue
+   would invert badly on the dark theme. Delete this whole block to revert. */
+
+/* Basis column — the month/period driving the underwriting calc. Marked with a
+   TRANSLUCENT tint ONLY (no box-shadow edges): the shared grid `border-right`
+   already bounds the column on both sides, and dropping the vertical inset edges
+   means the band can never sever a horizontal row rule at an intersection. The
+   tint is intentionally see-through so zebra/hover and the (now-opaque) row
+   separators read straight through it. */
+.ua-table.ua-stmt tbody td.ua-col-basis {
+  background: color-mix(in srgb, var(--brand-500) 8%, transparent);
+}
+/* Header basis cell must be OPAQUE (mix into the header's own --surface-muted,
+   NOT transparent) — a translucent sticky header let scrolling totals bleed
+   through and overlap the labels. */
+.ua-table.ua-stmt thead th.ua-col-basis-head {
+  background: color-mix(in srgb, var(--brand-500) 16%, var(--surface-muted));
+  color: var(--brand-700);
+  font-weight: 600;
+}
+
+/* Uncategorized / needs-review rows — faint neutral wash + a slate left marker on
+   the sticky identity cell (keeping the sticky column's own right-edge shadow). */
+.ua-table.ua-stmt tbody tr.ua-row-flag td {
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+}
+.ua-table.ua-stmt tbody tr.ua-row-flag td.ua-sticky-col {
+  box-shadow:
+    1px 0 0 0 var(--border),
+    inset 2px 0 0 0 color-mix(in srgb, var(--foreground) 40%, transparent);
+}
+/* At the column ∩ row intersection the blue basis band wins (tint only). */
+.ua-table.ua-stmt tbody tr.ua-row-flag td.ua-col-basis {
+  background: color-mix(in srgb, var(--brand-500) 8%, transparent);
+}
+
+/* Category separation — the next category opens with a stronger tint + top rule
+   + extra top padding so Total Income can't blur into the Operating Expenses that
+   follow. Row separators are a uniform 1px grid line everywhere (no heavy 2px
+   rule) per the flat-grid design. */
+.ua-table.ua-stmt tbody tr.ua-section-row td {
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 20%, var(--card));
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  }
+
 /* ── Variants for dense / structured tables (operating statement, rent roll) ── */
 
 /* Compact density for wide multi-column tables */
@@ -2040,7 +2670,17 @@
   font-size: 0.75rem;                  /* 12px */
 }
 
-/* Frozen first column — stays put during horizontal scroll.
+/* Operating-statement tables (Source + Underwriter, both .ua-stmt) use the SAME
+   roomy cell padding as the rent-roll table — py-2 px-3 (0.5rem / 0.75rem) — so
+   their columns read with identical breathing room instead of the tighter
+   .ua-compact density. Declared after .ua-compact (equal specificity) so it wins;
+   font-size stays 12px to match the rent roll. */
+.ua-table.ua-stmt thead th,
+.ua-table.ua-stmt tbody td {
+  padding: 0.5rem 0.75rem;
+}
+
+/* Frozen first column ��� stays put during horizontal scroll.
    Solid bg so scrolling content doesn't bleed through. */
 .ua-table th.ua-sticky-col,
 .ua-table td.ua-sticky-col {
@@ -2063,12 +2703,157 @@
 .ua-table tbody tr:hover td.ua-sticky-col {
   background: color-mix(in srgb, var(--primary) 10%, var(--card));
 }
-.ua-table tbody tr.ua-total td.ua-sticky-col,
+/* Frozen first column must read as the SAME color as the rest of its row. Row
+   value cells use a translucent tint over the card; the sticky cell has to be
+   opaque (so scrolled content can't bleed through), so it mixes the IDENTICAL
+   tint into an opaque --card base — an exact visual match per row type. (The
+   basis column is deliberately excluded; it keeps its own blue band.) */
+.ua-table tbody tr.ua-total td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 5%, var(--card));
+}
 .ua-table tbody tr.ua-grand-total td.ua-sticky-col {
-  background: color-mix(in srgb, var(--foreground) 6%, var(--card));
+  background: color-mix(in srgb, var(--primary) 12%, var(--card));
 }
 .ua-table tbody tr.ua-section-row td.ua-sticky-col {
-  background: var(--surface-muted);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--card));
+}
+
+/* ── Operating-statement worksheet (React <table>, NOT .ua-table) ─────────────
+   The three frozen columns (line-item, classification, extracted total) MUST be
+   fully opaque so horizontally-scrolled month cells can never ghost through
+   them. Each <tr> publishes its solid stripe as --row-bg (computed in TS from
+   opaque theme tokens); every cell paints that variable. This is deliberately
+   NOT a Tailwind arbitrary `bg-[color-mix(...)]` class — those nested-var/comma
+   values don't reliably compile, leaving the sticky cells transparent (the
+   bleed-through bug). A CSS variable + real declaration always renders and is
+   guaranteed opaque. Hover mixes a brand wash INTO that opaque base, so the
+   highlight stays opaque under the frozen columns. */
+.osx-cell {
+  background: var(--row-bg, var(--card));
+}
+.osx-row-hover:hover .osx-cell {
+  background: color-mix(in srgb, var(--brand-500) 7%, var(--row-bg, var(--card)));
+}
+/* Column / total highlight — opaque so it's safe on the sticky Total column. */
+.osx-cell.osx-cell-hi {
+  background: color-mix(in srgb, var(--brand-500) 12%, var(--card));
+}
+/* Transient flash when a Precision Review finding focuses a statement row. */
+.os-row-flash .osx-cell {
+  animation: osRowFlash 1.6s ease-out;
+}
+@keyframes osRowFlash {
+  0%,
+  40% {
+    background: color-mix(in srgb, var(--warning-muted-foreground) 28%, var(--row-bg, var(--card)));
+  }
+  100% {
+    background: var(--row-bg, var(--card));
+  }
+}
+/* Opaque header surface for the sticky header cells. */
+.osx-head {
+  background: color-mix(in srgb, var(--muted) 60%, var(--card));
+}
+/* Crisp 1px hairline freeze separators — a single rule, no blur. Right edge of
+   the last left-frozen column; left edge of the right-frozen Total. Matches the
+   .ua-table freeze-boundary treatment (1px 0 0 0 var(--border)). */
+.osx-freeze-r {
+  box-shadow: 1px 0 0 0 var(--border);
+}
+.osx-freeze-l {
+  box-shadow: -1px 0 0 0 var(--border);
+}
+
+/* ── Operating-statement column sizing (Underwriter + Source) ────────────────
+   Pin the two "chrome" columns — the line-item identity column and the extracted
+   total — so a wide month-by-month statement stays visually balanced instead of
+   letting the flexible identity column absorb ALL leftover width (which pushed
+   the month columns off-screen). Rare long labels scroll inside the fixed cell
+   rather than widening the whole column. Add `ua-stmt` to any statement table;
+   add `ua-uw` to the Underwriter view whose identity column has no inline width
+   (the Source table sets its own resizable inline width, so it opts out here). */
+
+/* Hug content instead of filling the container. The base `.ua-table` is
+   `width:100%`, which stretched a statement to fill its card and spread the
+   month columns far apart (each column absorbed an even share of the slack).
+   `max-content` sizes every column to its actual numbers + padding, so the grid
+   reads tight; the wrapper's `overflow-x:auto` scrolls when the months exceed
+   the card, and the inline `min-width` still sets a sane floor. */
+.ua-table.ua-stmt {
+  width: max-content;
+}
+
+/* Extracted-total = the last numeric column. Fixed + compact; its header may
+   wrap to two lines so the column stays narrow while the numbers (nowrap) fit. */
+.ua-table.ua-stmt thead th.ua-num:last-child,
+.ua-table.ua-stmt tbody td.ua-num:last-child {
+  width: 118px;
+  min-width: 118px;
+  max-width: 118px;
+}
+  .ua-table.ua-stmt thead th.ua-num:last-child {
+  /* Keep the header on ONE line so it matches the single-line month headers —
+     a two-word label wrapped to two rows and looked unbalanced. The label is
+     kept short ("Total") so it fits the fixed width without wrapping. */
+  white-space: nowrap;
+  }
+
+/* Underwriter identity column: pin to match the Source default (240px) so the
+   width doesn't jump when toggling views. Rare long labels TRUNCATE with an
+   ellipsis (full text on hover via the cell's title) rather than scrolling
+   in-cell — the old per-row horizontal scrollbar made long-name rows look
+   inconsistent with the rest of the column. */
+.ua-table.ua-uw thead th.ua-sticky-col,
+.ua-table.ua-uw tbody td.ua-sticky-col {
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* NOI reconciliation caption — a subtle full-width note under the NOI row, shown
+   only when the bottom-up (shown-lines) NOI diverges from the XTRCT-anchored
+   figure. Warning-tinted but quiet; the numbers stay in the row above. */
+.ua-table tbody tr.ua-noi-reconcile td,
+.ua-table tr.ua-noi-reconcile td {
+  background: var(--warning-muted, color-mix(in srgb, #b45309 12%, transparent));
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 0;
+  white-space: normal;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+/* Pin the note to the visible left edge so it stays readable no matter how far
+   the wide statement is scrolled horizontally, and cap its width so it wraps
+   within view instead of running off the right of the colSpan cell. */
+.ua-noi-reconcile-inner {
+  position: sticky;
+  left: 0;
+  display: block;
+  /* Conservative cap so the note always wraps INSIDE the visible scroll area
+     (which is narrower than the viewport due to the card gutters) rather than
+     overflowing the right edge before it wraps. Wrapping to 2-3 lines is fine. */
+  max-width: min(720px, calc(100vw - 6rem));
+  padding: 8px 16px;
+}
+.ua-table tr.ua-noi-reconcile strong {
+  font-weight: 650;
+  white-space: nowrap;
+}
+.ua-noi-reconcile-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--shape-round);
+  margin-right: 8px;
+  vertical-align: middle;
+  background: color-mix(in srgb, #b45309 75%, transparent);
 }
 
 /* ── Canonical InvestAssist typography utilities ───────────────────────────────
@@ -2188,14 +2973,65 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* Grand total — the strongest emphasis (final NOI, totals) */
+/* Grand total — the strongest emphasis (final NOI, totals). Borders are the same
+   uniform 1px grid line as every other row (no heavy 2px rule); the bold weight +
+   fill carry the emphasis instead. */
 .ua-table tbody tr.ua-grand-total td {
   font-weight: 800;
   color: var(--foreground);
   background: color-mix(in srgb, var(--primary) 12%, transparent);
-  border-top: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
-  border-bottom: none;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 16%, var(--border));
 }
+
+/* Sub-classification label row within a section (e.g. "Gross Potential Rent"
+   under INCOME). It participates in the flat grid like every other row — the
+   shared positional zebra colors it and the base 1px bottom border separates it
+   from its line items, so a group header and its first item always land on
+   opposite stripes. Only the label typography marks it as a header. */
+.ua-table tbody tr.ua-subgroup td:first-child {
+  font-size: 0.6875rem;                /* 11px */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--foreground);
+}
+
+/* Secondary subtotal — lighter than ua-total, for nested sub-group sums
+   ("Subtotal — Bad Debt"). Muted, hairline top rule, no heavy fill. */
+.ua-table tbody tr.ua-subtotal td {
+  font-size: 0.75rem;                  /* 12px — a subtotal is important, so it is
+                                          no smaller than the line items it sums */
+  font-weight: 600;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, var(--border));
+  /* Keeps the uniform 1px bottom grid line (base td) so a subtotal is always
+     separated from whatever follows it. */
+}
+.ua-table tbody tr.ua-subtotal td:first-child {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.ua-table tbody tr.ua-subtotal td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 4%, var(--card));
+}
+
+/* Underwriter line items recede beneath their (now dark) group header: normal
+   weight and a softened label so the hierarchy reads header → item, not the
+   reverse. Numbers stay full-strength for legibility. */
+.ua-table.ua-uw tbody tr.ua-line td {
+  font-weight: 400;
+}
+.ua-table.ua-uw tbody tr.ua-line td.ua-sticky-col {
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+}
+
+/* Underwriter zebra — every row participates in the shared positional stripe
+   (`.ua-table tbody tr:nth-child(even)`), group headers, subtotals and totals
+   included, so consecutive rows always alternate (a group header and its first
+   line item land on opposite stripes). Rows with their own emphasis fill
+   (section heads, totals) keep it; everything else follows the stripe. Hover is
+   the shared rule. No positional stripe is disabled here anymore. */
 
 /* No-zebra modifier — for QA/audit tables that carry their own semantic
    cell/row backgrounds (e.g. rent-roll charge marking). Keeps the themed
@@ -2204,7 +3040,71 @@
   background: transparent;
 }
 .ua-table.ua-no-zebra tbody tr:hover td {
-  background: rgba(38, 84, 143, 0.05);
+  background: rgba(139, 94, 36, 0.05);
+}
+
+/* ═══ Flat uniform grid for the operating-statement tables (Source + UW) ═══════
+   Both the Source and Underwriter renders carry `.ua-stmt`. The goal is the
+   clean rent-roll look: ONE positional zebra across the ENTIRE table, every row
+   the same rhythm, and the frozen first column striped identically so it never
+   detaches as a white block. Semantic rows (section / sub-group / subtotal /
+   total / grand-total) keep their emphasis through TYPOGRAPHY only (weight +
+   uppercase, declared above) — their background fills and heavy separators are
+   neutralized here. Backgrounds are OPAQUE (mixed into --card) so the value
+   cells and the sticky column always match exactly, with no translucency drift.
+
+   This block is intentionally LAST in the cascade and scoped to `.ua-stmt` so it
+   owns row/column backgrounds for these two tables only (unit-mix, NOI panel and
+   the rent-roll QA table are plain `.ua-table` / `.ua-no-zebra` and are
+   untouched). The basis band and interactive states are re-declared at the end
+   so they still win over the stripe. */
+
+/* Base (odd) — opaque card for BOTH the value cells and the frozen first column */
+.ua-table.ua-stmt tbody tr td,
+.ua-table.ua-stmt tbody tr td.ua-sticky-col {
+  background: var(--card);
+}
+/* Even stripe — same tint on value cells and the frozen column */
+.ua-table.ua-stmt tbody tr:nth-child(even) td,
+.ua-table.ua-stmt tbody tr:nth-child(even) td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 4%, var(--card));
+}
+/* Collapse the heavier per-type top separators to the uniform 1px grid line
+   (the base td border-bottom already draws it). */
+.ua-table.ua-stmt tbody tr.ua-total td,
+.ua-table.ua-stmt tbody tr.ua-subtotal td,
+.ua-table.ua-stmt tbody tr.ua-grand-total td,
+.ua-table.ua-stmt tbody tr.ua-section-row td {
+  border-top: 0;
+}
+/* Section-header band — ONE opaque color across the ENTIRE row, sticky first
+   column included. Earlier rules gave the frozen column an opaque mix and the
+   rest a translucent mix (and one used --primary, another --foreground), so the
+   two halves of the row never matched. This single authority (last in cascade,
+   sticky selector at higher specificity) makes every cell resolve identically. */
+.ua-table.ua-stmt tbody tr.ua-section-row td,
+.ua-table.ua-stmt tbody tr.ua-section-row td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--card));
+}
+/* Basis column — a translucent band that always overlays the stripe */
+.ua-table.ua-stmt tbody tr td.ua-col-basis {
+  background: color-mix(in srgb, var(--brand-500) 10%, var(--card));
+}
+/* Needs-review flag wash (the left marker box-shadow is kept by the rule above) */
+.ua-table.ua-stmt tbody tr.ua-row-flag td,
+.ua-table.ua-stmt tbody tr.ua-row-flag td.ua-sticky-col {
+  background: color-mix(in srgb, var(--foreground) 7%, var(--card));
+}
+/* Selected / active row */
+.ua-table.ua-stmt tbody tr.ua-active td,
+.ua-table.ua-stmt tbody tr.ua-active td.ua-sticky-col,
+.ua-table.ua-stmt tbody tr.ua-active:hover td {
+  background: rgba(16, 122, 87, 0.12);
+}
+/* Hover — declared LAST so it wins over the stripe, basis and flag */
+.ua-table.ua-stmt tbody tr:hover td,
+.ua-table.ua-stmt tbody tr:hover td.ua-sticky-col {
+  background: color-mix(in srgb, var(--primary) 10%, var(--card));
 }
 
 .neo-title {
@@ -2223,7 +3123,7 @@
    TYPOGRAPHY UTILITY CLASSES — Platform-wide semantic text scale
    SINGLE SOURCE OF TRUTH: every text element on every page uses one of these.
    No loose font-size, font-weight, or color values anywhere in component code.
-   ══════════��══════════════════════════════════════════════════════════��═════
+   ══════════��════════════════════════════��═══════════════════════════════════
 
    SCALE (token → px → use-case):
    .ia-text-2xs  9px   micro AI-badge labels, timestamp chips
@@ -2236,7 +3136,7 @@
    .ia-text-2xl 18px   sub-page titles
    .ia-text-3xl 20px   section headings
    .ia-text-4xl 24px   page titles, hero KPI values
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════���════════════════════════ */
 
 /* ── NUMERIC SCALE ───────────────────────────────────────────────────────── */
 .ia-text-2xs  { font-size: var(--ia-text-2xs);  }   /* 9px  */
@@ -2504,7 +3404,7 @@
 .ia-weight-semibold { font-weight: var(--ia-font-semibold); }
 .ia-weight-bold     { font-weight: var(--ia-font-bold);     }
 
-/* ── NUMERIC TABULAR MODIFIER ────────────────────────────────────────────── */
+/* ── NUMERIC TABULAR MODIFIER ──────────────────���─────────────────────────── */
 .ia-tabular         { font-variant-numeric: tabular-nums; }
 
 /* ── MONO TABULAR FIGURES for ALL metrics/KPIs (modern fintech signature) ────
@@ -2523,10 +3423,10 @@
   font-feature-settings: "tnum" 1, "cv01" 1;
 }
 
-/* ── UPPERCASE LABEL MODIFIER ──────────────────────────────────��─────────── */
+/* ── UPPERCASE LABEL MODIFIER ─────────��────────────────────────��─────────── */
 .ia-uppercase       { text-transform: uppercase; letter-spacing: var(--ia-tracking-wide); }
 
-/* ─── CHART CONTAINER ────────────────────────────────────────────────────── */
+/* ─── CHART CONTAINER ──────────���──────��──────────────────────────────────── */
 .neo-chart-container {
   background: rgba(248, 250, 252, 0.6);
   border-radius: var(--neo-radius-sm);
@@ -2554,7 +3454,7 @@
   box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-/* ─── DIVIDERS (Subtle) ───────────────────�������─��─��─────────�����������────────���───────── */
+/* ─── DIVIDERS (Subtle) ────────────────��──��������─��─��─────────�����������────────���───────── */
 .neo-divider {
   border: none;
   height: 1px;
@@ -2567,7 +3467,7 @@
   background: rgba(148, 163, 184, 0.25);
 }
 
-/* ══��════════════════════════════════════════════════════════════════════��═════
+/* ══��════════════════════════���═════════��════════════════════════════════�����═════
    TOP DRAWER (Dashboard Hero Section) DESIGN TOKENS
    Applied to: Syndicator, Investor, Buyer-Acquirer, Broker-Seller dashboards
    ════════════════════════════��═══════════════════════��════════════════════════ */
@@ -2591,8 +3491,8 @@
   right: 25%;
   width: 16rem;
   height: 16rem;
-  background: radial-gradient(circle, rgba(53,102,170,0.16) 0%, transparent 65%);
-  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(166,123,43,0.16) 0%, transparent 65%);
+  border-radius: var(--shape-round);
   filter: blur(48px);
   transform: translateY(-50%);
   pointer-events: none;
@@ -2605,8 +3505,8 @@
   right: 0;
   width: 12rem;
   height: 12rem;
-  background: radial-gradient(circle, rgba(38,84,143,0.12) 0%, transparent 65%);
-  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(139,94,36,0.12) 0%, transparent 65%);
+  border-radius: var(--shape-round);
   filter: blur(48px);
   transform: translateY(33%) translateX(25%);
   pointer-events: none;
@@ -2633,8 +3533,8 @@
   left: 25%;
   width: 18rem;
   height: 18rem;
-  background: rgba(53, 102, 170, 0.08);
-  border-radius: 9999px;
+  background: rgba(166, 123, 43, 0.08);
+  border-radius: var(--shape-round);
   filter: blur(48px);
   pointer-events: none;
 }
@@ -2652,8 +3552,8 @@
   right: 25%;
   width: 18rem;
   height: 18rem;
-  background: rgba(53, 102, 170, 0.08);
-  border-radius: 9999px;
+  background: rgba(166, 123, 43, 0.08);
+  border-radius: var(--shape-round);
   filter: blur(48px);
   pointer-events: none;
 }
@@ -2762,10 +3662,10 @@
   box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
 }
 
-/* ═════════════════════════════════════════════════��══════��════════════════════
+/* ═══════════════��═════��═══════════════════════════��══════��════════════════════
    DASHBOARD CARD DESIGN TOKENS
    Applied to: All role dashboard cards (Syndicator, Investor, Buyer, Broker)
-   ════════════════════���════════���══════════════════════════════════════════════��� */
+   ════════════════════���════════���═════════════════════════════════════════════����� */
 
 /* Dashboard button - Standard action button with 3D depth, no border */
 .dashboard-btn {
@@ -2788,11 +3688,11 @@
 
 /* Dashboard button - Blue accent variant */
 .dashboard-btn-blue {
-  color: #8b5e24;
+  color: #26548f;
 }
 
 .dashboard-btn-blue:hover {
-  color: #74501f;
+  color: #1d4074;
 }
 
 /* Dashboard metric card - KPI display boxes */
@@ -2892,7 +3792,7 @@
 
 .dashboard-scenario-row-base {
   background: color-mix(in srgb, var(--info) 12%, var(--card));
-  box-shadow: 0 4px 16px rgba(53, 102, 170, 0.15);
+  box-shadow: 0 4px 16px rgba(166, 123, 43, 0.15);
 }
 
 .dashboard-scenario-row-upside {
@@ -2972,7 +3872,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0.625rem; /* px-2.5 py-1 */
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
   font-size: 0.75rem; /* text-xs */
   font-weight: 600;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
@@ -2990,7 +3890,7 @@
 
 .dashboard-badge-blue {
   background: #d9e6f4; /* bg-blue-100 */
-  color: #8b5e24; /* text-blue-700 */
+  color: #26548f; /* text-blue-700 */
 }
 
 .dashboard-badge-amber {
@@ -3018,14 +3918,14 @@
 .dashboard-avatar {
   height: 1.75rem; /* h-7 */
   width: 1.75rem; /* w-7 */
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
   background: #334155; /* slate-700 */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem; /* text-xs */
   font-weight: 700;
-  color: #74501f; /* text-blue-700 */
+  color: #1d4074; /* text-blue-700 */
   flex-shrink: 0;
 }
 
@@ -3034,7 +3934,7 @@
   font-size: 0.75rem; /* text-xs */
   font-weight: 600;
   padding: 0.125rem 0.5rem; /* px-2 py-0.5 */
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
   white-space: nowrap;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
@@ -3052,7 +3952,7 @@
 
 .dashboard-stage-ppm {
   background: #d9e6f4;
-  color: #74501f;
+  color: #1d4074;
 }
 
 .dashboard-stage-verbal {
@@ -3065,22 +3965,22 @@
   color: #475569;
 }
 
-/* ─── PAGE BACKGROUNDS ───────────────────────────────────────────�����──────── */
+/* ─── PAGE BACKGROUNDS ─────────────────────────���─────────────────�����──────── */
 .neo-page-bg {
   background: var(--neo-gradient);
   min-height: 100vh;
 }
 
-/* ─── CONTENT CONTAINER ──────────────────────────────────────────────────── */
+/* ─── CONTENT CONTAINER ───────────────────────────────────────────────────��� */
 .neo-content-area {
   background: transparent;
 }
 
-/* ═══════════════������════════════════��══════════════════════════════════���═════════
+/* ══════════��════������════════════════��══════════════════════════════════���═════════
    PLATFORM-WIDE NEO CARD DESIGN TOKENS
    Applied to: Documents, Property, Model, Insights, Deal Room
    All tabs, sub-tabs, content pages across all user roles
-   ═══════════════════════════════════════════════════════════��═��══════════���════ */
+   ═════════��══════════════════════════════════���══════════════��═��══════════���══��═ */
 
 /* Primary content card — warm frosted-glass over parchment.
    Explicitly sets font-family so every card surface inherits Inter regardless
@@ -3090,7 +3990,7 @@
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
   border-radius: var(--neo-radius-lg);
-  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08), 0 1px 4px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 24px rgba(37, 31, 24, 0.08), 0 1px 4px rgba(37, 31, 24, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.65);
   font-family: var(--font-sans);
   color: var(--foreground);
@@ -3098,7 +3998,7 @@
 }
 
 .neo-card:hover {
-  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.11), 0 2px 8px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(37, 31, 24, 0.11), 0 2px 8px rgba(37, 31, 24, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 /* Secondary card variant - lighter gradient */
@@ -3120,8 +4020,8 @@
   background: rgba(255, 255, 255, 0.96);
   border-radius: var(--neo-radius-sm);
   box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.06),
-    0 8px 18px -8px rgba(15, 23, 42, 0.14),
+    0 1px 2px rgba(37, 31, 24, 0.06),
+    0 8px 18px -8px rgba(37, 31, 24, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(203, 213, 225, 0.55);
   font-family: var(--font-sans);
@@ -3132,13 +4032,13 @@
 /* Optional interactive lift for clickable inner cards */
 .neo-card-inner-hover:hover {
   box-shadow:
-    0 2px 4px rgba(15, 23, 42, 0.06),
-    0 12px 24px -8px rgba(15, 23, 42, 0.20),
+    0 2px 4px rgba(37, 31, 24, 0.06),
+    0 12px 24px -8px rgba(37, 31, 24, 0.20),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
   transform: translateY(-1px);
 }
 
-/* ══════════════════════���═════���════════════════════���═══════════════��════════
+/* ══════════════════════���═════���════��═══���═══════════���═══════════════��════════
    METRIC CARDS - Neomorphic 3D depth with consistent sizing
    Cache bust: 2026-03-22-v3
    ══════════════════════════════════════════════════════════════════════════ */
@@ -3148,21 +4048,21 @@
   background: linear-gradient(135deg, #eef4fb 0%, #eef2ff 50%, #f5f3ff 100%);
   border-radius: 14px;
   box-shadow: 
-    0 8px 24px -4px rgba(53, 102, 170,0.15),
-    0 4px 8px -2px rgba(53, 102, 170,0.08),
+    0 8px 24px -4px rgba(166, 123, 43,0.15),
+    0 4px 8px -2px rgba(166, 123, 43,0.08),
     inset 0 1px 0 rgba(255,255,255,0.95),
-    inset 0 -1px 0 rgba(53, 102, 170,0.06);
-  border: 1px solid rgba(53, 102, 170,0.1);
+    inset 0 -1px 0 rgba(166, 123, 43,0.06);
+  border: 1px solid rgba(166, 123, 43,0.1);
 }
 
 .metric-card-blue {
   background: linear-gradient(135deg, #eef4fb 0%, #d9e6f4 100%);
   border-radius: 14px;
   box-shadow: 
-    0 8px 24px -4px rgba(53, 102, 170,0.18),
-    0 4px 8px -2px rgba(53, 102, 170,0.1),
+    0 8px 24px -4px rgba(166, 123, 43,0.18),
+    0 4px 8px -2px rgba(166, 123, 43,0.1),
     inset 0 1px 0 rgba(255,255,255,0.95);
-  border: 1px solid rgba(53, 102, 170,0.12);
+  border: 1px solid rgba(166, 123, 43,0.12);
 }
 
 .metric-card-green {
@@ -3179,10 +4079,10 @@
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 14px;
   box-shadow: 
-    0 8px 24px -4px rgba(15,23,42,0.10),
-    0 4px 8px -2px rgba(15,23,42,0.05),
+    0 8px 24px -4px rgba(37,31,24,0.10),
+    0 4px 8px -2px rgba(37,31,24,0.05),
     inset 0 1px 0 rgba(255,255,255,0.95);
-  border: 1px solid rgba(15,23,42,0.07);
+  border: 1px solid rgba(37,31,24,0.07);
 }
 
 .metric-card-warning {
@@ -3261,7 +4161,7 @@
   box-shadow: 0 2px 8px rgba(100, 100, 140, 0.06);
 }
 
-/* ─── LIST CONTAINERS ───────────────────────────��────────────────────────── */
+/* ─── LIST CONTAINERS ───────���───────────────────��────────────────────────── */
 .neo-list-container {
   background: rgba(255, 255, 255, 0.95);
   border-radius: var(--neo-radius-lg);
@@ -3269,7 +4169,7 @@
   border: none;
 }
 
-/* ─── DATA TABLE STYLING ���───���────────────────────────────────────────────── */
+/* ─── DATA TABLE STYLING ���───����────────────────────────────────────────────── */
 .neo-table-container {
   background: #ffffff;
   border-radius: var(--neo-radius-lg);
@@ -3290,7 +4190,7 @@
 .neo-status-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: var(--shape-round);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -3320,7 +4220,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ─── FORM INPUTS (shadow instead of border) ───────────────��─────────────── */
+/* ─── FORM INPUTS (shadow instead of border) ──────────────�����─────────────── */
 .neo-input {
   background: #ffffff;
   border-radius: var(--neo-radius-xs);
@@ -3349,14 +4249,14 @@
 
 .neo-icon-container-indigo {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 4px 12px rgba(37, 31, 24, 0.25);
   color: white;
 }
 
-/* ═════════════════════════════════════════════════════════════════════════════
+/* ═════════════════════════════���═══════════════════════════════��═══════════════
    RESPONSIVE SHELL UTILITIES
    Global breakpoint-consistent patterns for the app shell
-   ══════════��═══════════════════��═══��══════════════════════════════════��═════ */
+   ══════════��═══════════════════��═══��══════════════════════════════��═══��═════ */
 
 /* Page content container - consistent padding across breakpoints */
 .page-container {
@@ -3507,7 +4407,7 @@
 /* ═�����══��══════════════════════════════════════════════════════════════════════
    RESPONSIVE CARD & GRID UTILITIES
    Standardized patterns for cards, grids, and content sections
-   ═══════════════════����════════════════════════════════════════════��══════════ */
+   ═══════════════════����════════════════════════════════════════��═══��══════════ */
 
 /* Standard card padding - responsive */
 .card-padding {
@@ -3524,10 +4424,10 @@
   @apply space-y-3 sm:space-y-4;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════���══════════════════════════════════
    FINANCIAL SAAS DESIGN SYSTEM - KPI Cards
    Modern, sleek metric display with consistent spacing
-   ═══════════════════════════��═════════════════════════���════════��════════════ */
+   ══════���════════════════════��═════════════════════════���════════��════════════ */
 
 /* KPI Card - responsive metrics display */
 .kpi-card {
@@ -3728,7 +4628,7 @@
 /* ════════════════════════════════════════════��══════════════��═══════════════
    RESPONSIVE DENSE COMPONENTS
    Tables, forms, drawers, modals - high-density responsive patterns
-   ═══════════════════════════════════════════════════════════���══════════════��� */
+   ══════════════════════════════════════════════════��════════���══════════════��� */
 
 /* Responsive table container - horizontal scroll with sticky columns */
 .table-responsive {
@@ -3992,17 +4892,17 @@
   }
 }
 
-/* ═══════════════════════════════════════════���═���════���════════════════════���═══
+/* ═══════════��═══════════════════════════════���═���════���════════════════════���═══
    INVESTASSIST DESIGN SYSTEM - TYPOGRAPHY & COMPONENT STANDARDS
-   ──────────────────────���───────���─────────────────────────────────���────────────
+   ──────────────────────���───────���─────────────────────────────────���──────���─────
    Source of truth: Syndicator Dashboard design patterns
    Applied consistently across: Syndicator, Investor, Buyer, Broker dashboards
    All tabs, pages, modals, and components platform-wide
-   ════════════════════════════════════��══════════════════════════════════════ */
+   ═════════��══════════════════════════��══════════════════════════════════════ */
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════════���══════
    TYPOGRAPHY SCALE - PLATFORM STANDARD
-   ═══════��════════════════════��════════════════════════════════��═════════════ */
+   ═��═════��════════════════════��════════════════════════════════��═════════════ */
 
 /* Page Titles - Main page headings */
 .text-page-title {
@@ -4101,10 +5001,10 @@
   @apply font-mono text-sm tabular-nums;
 }
 
-/* ═════���═══���═══���═══���═══════════���══════════════════════��════��═════════════════
+/* ═════���═══���═══���═══���═══════════���═════════════════��════��════��═════════════════
    BUTTON SIZING - PLATFORM STANDARD
    Standard: h-8 (32px) with text-sm for most buttons
-   ═══════════════════════════════════════════════════════��══��════��������═������═══════ */
+   ════════════════════════════════════════��══════════════��══��════��������═������═══════ */
 
 /* Card Action Buttons - Inside card headers (h-7 or h-8, text-xs/text-sm) */
 .btn-card-action {
@@ -4134,9 +5034,9 @@
   @apply h-9 w-9 p-0;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ════���══════════════════════════════════════════════════════════�����═══════════
    BADGE SIZING - PLATFORM STANDARD
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════════════════════════════════════════════════���══ */
 
 /* Micro Badges - AI indicators, tiny status (9-10px) */
 .badge-micro {
@@ -4158,7 +5058,7 @@
   @apply px-2.5 py-0.5 text-[10px] sm:text-xs font-semibold rounded-full;
 }
 
-/* ══════��════════════════════════════════════════════════════════════════════
+/* ══════��═══��═══════════════════════════════════════════���════════════════════
    AVATAR SIZING - PLATFORM STANDARD
    ═════��════════════════════════════════════════��════════════════════════════ */
 
@@ -4180,7 +5080,7 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ICON SIZING - PLATFORM STANDARD
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════════════���═══ */
 
 /* Icons in Buttons - Match button size */
 .icon-in-btn-sm {
@@ -4251,10 +5151,10 @@
   @apply gap-2 sm:gap-3;
 }
 
-/* ═════════��══════════════���══════════════════════════════════════════════════
+/* ═════════��══════════════���═���════════════════════════════════════════════════
    COLOR SEMANTICS - PLATFORM STANDARD
    Consistent status colors across all components
-   ══════════════════════════════════════════���════════════════════════════════ */
+   ══════���═══════════════════════════════════���════════════════════════════════ */
 
 /* Success - Green/Teal for positive states, gains, completed */
 .color-success {
@@ -4313,7 +5213,7 @@
   @apply bg-slate-50;
 }
 
-/* ���── Card Patterns ────────────────────────────────────────────────────────── */
+/* ���── Card Patterns ────����───────────────────────────────────────────────────── */
 /* Standard section card - Neomorphic white card style */
 .ia-card {
   @apply rounded-2xl p-4 sm:p-5 transition-all;
@@ -4363,7 +5263,7 @@
   @apply flex items-center justify-between py-2 border-b border-slate-100/80 last:border-none;
 }
 
-/* ���── Button Patterns ────────��────����───��──────────────────────��────────────���─ */
+/* ���── Button Patterns ────────��────����───��────────────��─────────��────────────���─ */
 /* Small action button in card headers */
 .ia-btn-card-action {
   @apply h-7 text-xs px-2.5;
@@ -4378,7 +5278,7 @@
   @apply h-7 w-7 p-0;
 }
 
-/* ─���─ Badge/Chip Patterns ──────────────────────────────────────────���─���───���─── */
+/* ─── Badge/Chip Patterns ─────────���──────────────────���─────────────���─���───���─── */
 /* Status badge - base */
 .ia-badge {
   @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-medium border;
@@ -4394,7 +5294,7 @@
   @apply inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[9px] font-medium bg-teal-50 text-teal-600 border border-teal-200/50;
 }
 
-/* ─── Layout Helpers ──────────────��────────────────��───────────────────────── */
+/* ─── Layout Helpers ──────────────��───��────────────��───────────────────────── */
 /* Page content wrapper */
 .ia-page {
   @apply min-h-screen p-2 sm:p-3 lg:p-4;
@@ -4423,7 +5323,7 @@
   @apply grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4;
 }
 
-/* ─── Color Semantics ────────��─────────────────────────────────────────────── */
+/* ─── Color Semantics ────────��─��───────────────────────────────────────────── */
 /* Success states */
 .ia-success {
   @apply bg-emerald-50 border-emerald-200/60 text-emerald-700;
@@ -4548,10 +5448,10 @@
 
 .ia-kpi-info {
   position: relative; border-radius: 0.5rem; background-color: #ffffff;
-  border: 1px solid #e2e8f0; border-top: 2px solid #a67b2b;
+  border: 1px solid #e2e8f0; border-top: 2px solid #3566aa;
   padding: 0.875rem; transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #a67b2b; }
+.ia-kpi-info:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; border-top-color: #3566aa; }
 
 .ia-kpi-teal {
   position: relative; border-radius: 0.5rem; background-color: #ffffff;
@@ -4567,7 +5467,7 @@
 }
 .ia-kpi-neutral:hover { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); border-color: #cbd5e1; }
 
-/* ─── Simple Stat Cards ─────────────────────────────────���───────────������───���─── */
+/* ─── Simple Stat Cards ───────────────────────────────���─���───────────������───���─── */
 .ia-stat-simple {
   border-radius: 0.5rem;
   background-color: #ffffff;
@@ -4609,10 +5509,10 @@
   position: absolute;
   top: 0; left: 0.75rem; right: 0.75rem;
   height: 2px;
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
 }
 .ia-stat-accent-teal::before    { background-color: #14b8a6; }
-.ia-stat-accent-blue::before    { background-color: #a67b2b; }
+.ia-stat-accent-blue::before    { background-color: #3566aa; }
 .ia-stat-accent-emerald::before { background-color: #10b981; }
 .ia-stat-accent-amber::before   { background-color: #f59e0b; }
 .ia-stat-accent-violet::before  { background-color: #475569; }
@@ -4646,7 +5546,7 @@
   margin-top: 0.25rem;
 }
 
-/* ─── Kanban/Pipeline Patterns ─────────────────────────────────────────────── */
+/* ─── Kanban/Pipeline Patterns ────────────────────────��────────────────────── */
 /* Stage column header */
 .ia-stage-header {
   @apply px-2.5 py-2 rounded-t-md border transition-all;
@@ -4662,7 +5562,7 @@
   @apply rounded-lg bg-white border p-2.5 shadow-sm cursor-grab active:cursor-grabbing transition-all hover:shadow-md;
 }
 
-/* ─── Table Patterns ───────────────────────────────────────────────��───────── */
+/* ─── Table Patterns ──────────────────────────────────────────────�����───────── */
 /* Table header cell */
 .ia-th {
   @apply text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wide px-3 py-2 text-left;
@@ -4678,7 +5578,7 @@
   @apply hover:bg-slate-50/50 transition-colors;
 }
 
-/* ─── Neo Financial Table Row System ──────────────────────────������──────────────
+/* ─── Neo Financial Table Row System ───────────���──────────────������──────────────
    Semi-transparent row backgrounds so the neo-gradient-bg from DashboardLayout
    bleeds through. Opaque sticky cells use backdrop-blur for readability.
    ─────────────────────────────────────────────────────────────────────────── */
@@ -4765,7 +5665,7 @@
    Unified styles for vertical strips, panels, and document layouts
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ─── VERTICAL STRIP BASE ───────────���────────────────────��──────��───────────── */
+/* ─── VERTICAL STRIP BASE ───────────���────────────────────��──────���───────────── */
 /* Collapsed drawer indicators - consistent across all document types */
 .docs-vertical-strip {
   width: 52px;
@@ -4790,13 +5690,13 @@
   padding: 0.625rem;
   border-radius: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px var(--strip-shadow-color, rgba(53, 102, 170,0.5)), 
+  box-shadow: 0 4px 14px var(--strip-shadow-color, rgba(166, 123, 43,0.5)), 
               inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .docs-vertical-strip:hover .docs-strip-icon {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px var(--strip-shadow-color, rgba(53, 102, 170,0.65)), 
+  box-shadow: 0 6px 20px var(--strip-shadow-color, rgba(166, 123, 43,0.65)), 
               inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
@@ -4818,7 +5718,7 @@
   transition: all 0.2s ease;
 }
 
-/* ─── DOCUMENT STRIP (Teal) ─────────────────────────────────────────────────── */
+/* ─── DOCUMENT STRIP (Teal) ────��────��──────────────────────────────────��────── */
 .docs-strip-document {
   background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
   border-right: 1px solid rgba(13, 148, 136, 0.15);
@@ -4852,7 +5752,7 @@
   background: rgba(13, 148, 136, 0.2);
 }
 
-/* ─── T-12 STRIP (Emerald) ──────────��───���───────────────���──────────────────���── */
+/* ─── T-12 STRIP (Emerald) ──────────────���───────────────���──────────────────���── */
 .docs-strip-t12 {
   background: linear-gradient(to bottom, #ecfdf5, #ffffff, #f8fafc);
   border-right: 1px solid rgba(16, 185, 129, 0.15);
@@ -4882,7 +5782,7 @@
   color: #10b981;
 }
 
-/* ─── RENT ROLL STRIP (Teal) ───────────────────────────────────────��────────── */
+/* ─── RENT ROLL STRIP (Teal) ───────────���───────────────────────────��────────── */
 .docs-strip-rentroll {
   background: linear-gradient(to bottom, #f0fdfa, #ffffff, #f8fafc);
   border-right: 1px solid rgba(13, 148, 136, 0.15);
@@ -4912,7 +5812,7 @@
   color: #0d9488;
 }
 
-/* ─── OM STRIP (Amber) ──────────────────────────────────────────────────────── */
+/* ─── OM STRIP (Amber) ────────────────────────────────────────��────────��────── */
 .docs-strip-om {
   background: linear-gradient(to bottom, #fffbeb, #ffffff, #f8fafc);
   border-right: 1px solid rgba(245, 158, 11, 0.15);
@@ -4972,7 +5872,7 @@
   color: #0d9488;
 }
 
-/* ─── TRI-PANEL LAYOUT ──────────────────────────────────────────────────────── */
+/* ─── TRI-PANEL LAYOUT ──────────────────────────────────────────────���───────── */
 /* Main container for Document | Data | Analysis layout */
 .docs-tri-panel {
   display: flex;
@@ -4999,7 +5899,7 @@
   max-width: 52px;
 }
 
-/* ���── PANEL HEADER ─��─────────────────────────────────────────────���─���────────── */
+/* ���── PANEL HEADER ─��──────────���──────────────────────────────────���─���────────── */
 .docs-panel-header {
   position: sticky;
   top: 0;
@@ -5030,20 +5930,20 @@
 }
 
 .docs-resize-handle:hover {
-  background: rgba(53, 102, 170, 0.05);
+  background: rgba(166, 123, 43, 0.05);
 }
 
 .docs-resize-handle-pill {
   width: 4px;
   height: 48px;
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
   background: linear-gradient(to bottom, #e2e8f0, #cbd5e1);
   transition: all 0.2s ease;
 }
 
 .docs-resize-handle:hover .docs-resize-handle-pill {
-  background: linear-gradient(to bottom, #a5b4fc, #c09646);
-  box-shadow: 0 2px 8px rgba(53, 102, 170, 0.3);
+  background: linear-gradient(to bottom, #a5b4fc, #5b87c4);
+  box-shadow: 0 2px 8px rgba(166, 123, 43, 0.3);
 }
 
 /* ─── TOOLBAR BUTTONS ─────────────────────────���─────────────────────────────── */
@@ -5087,13 +5987,13 @@
 .docs-toolbar-btn-indigo {
   background: linear-gradient(to bottom, #1e293b, #0f172a);
   color: white;
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 12px rgba(37, 31, 24, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* ─── ANALYSIS PANEL CARDS ──────────────────────────────────────────────────── */
 /* Hero KPI Card - Dark gradient primary card */
 .docs-hero-kpi {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.90) 100%);
+  background: linear-gradient(135deg, rgba(37, 31, 24, 0.95) 0%, rgba(30, 41, 59, 0.90) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -5163,14 +6063,14 @@
 .docs-progress-bar {
   height: 0.625rem;
   background: rgba(241, 245, 249, 0.8);
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
   overflow: hidden;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .docs-progress-fill {
   height: 100%;
-  border-radius: 9999px;
+  border-radius: var(--shape-round);
   transition: width 0.7s ease-out;
 }
 
@@ -5189,7 +6089,7 @@
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
 }
 
-/* ─── ICON CONTAINERS ───────────────────────────────────────────────────────── */
+/* ─── ICON CONTAINERS ───────────────────────────────��───────────────────────── */
 .docs-icon-gradient {
   padding: 0.375rem;
   border-radius: 0.5rem;
@@ -5197,7 +6097,7 @@
 
 .docs-icon-gradient-indigo {
   background: linear-gradient(135deg, #1e293b, #0f172a);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 2px 8px rgba(37, 31, 24, 0.25);
 }
 
 .docs-icon-gradient-emerald {
@@ -5215,7 +6115,7 @@
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
 }
 
-/* ─── KPI VALUE TYPOGRAPHY ─────────────────────────────────��────────────────── */
+/* ─── KPI VALUE TYPOGRAPHY ───────────────���─────────────────��────────────────── */
 .docs-kpi-value-hero {
   font-size: 2rem;
   font-weight: 700;
@@ -5271,7 +6171,7 @@
 
 .docs-alert-info {
   background: linear-gradient(to right, #eef4fb, #eef2ff);
-  border: 1px solid rgba(53, 102, 170, 0.2);
+  border: 1px solid rgba(166, 123, 43, 0.2);
 }
 
 /* Respect users who prefer reduced motion */
@@ -5289,14 +6189,14 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    COLORFUL GRADIENT MARKETING UTILITIES (light theme)
    Purple → violet → magenta → rose pink.
-   ══════����════════════════════════════════════════════════════════════════════ */
+   ══════������═════���══════════════════════════════════════════════════════════════ */
 
 /* ─── HERO: cool paper with soft classic-blue radial glows (modern-AI depth) ── */
 .hero-gradient {
   background-color: var(--background);
   background-image:
-    radial-gradient(ellipse 60% 55% at 18% 30%, rgba(38, 84, 143, 0.12) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 60% at 85% 72%, rgba(53, 102, 170, 0.10) 0%, transparent 62%);
+    radial-gradient(ellipse 60% 55% at 18% 30%, rgba(139, 94, 36, 0.12) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 60% at 85% 72%, rgba(166, 123, 43, 0.10) 0%, transparent 62%);
 }
 
 /* Fine dot-grid texture — ultra-subtle cool ink, adds restrained paper depth */
@@ -5311,7 +6211,7 @@
 
 /* Inline accent words — classic-blue gradient clip */
 .super-gradient-text {
-  background: linear-gradient(110deg, #74501f 0%, #8b5e24 45%, #a67b2b 72%, #c09646 100%);
+  background: linear-gradient(110deg, #1d4074 0%, #26548f 45%, #3566aa 72%, #5b87c4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -5320,14 +6220,14 @@
 
 /* Accent fill for buttons/accents — classic-blue gradient with glow */
 .super-gradient-glow {
-  background: linear-gradient(110deg, #74501f 0%, #8b5e24 50%, #a67b2b 100%);
-  box-shadow: 0 10px 30px -8px rgba(38, 84, 143, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  background: linear-gradient(110deg, #1d4074 0%, #26548f 50%, #3566aa 100%);
+  box-shadow: 0 10px 30px -8px rgba(139, 94, 36, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
 }
 
 /* Page background — cool paper with a faint blue wash */
 .super-gradient-bg {
   background:
-    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(38, 84, 143, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(139, 94, 36, 0.08) 0%, transparent 60%),
     var(--background);
 }
 
@@ -5335,8 +6235,8 @@
 .auth-gradient {
   background-color: var(--background);
   background-image:
-    radial-gradient(55% 70% at 18% 28%, rgba(38, 84, 143, 0.20) 0%, transparent 60%),
-    radial-gradient(50% 65% at 82% 78%, rgba(53, 102, 170, 0.16) 0%, transparent 60%);
+    radial-gradient(55% 70% at 18% 28%, rgba(139, 94, 36, 0.20) 0%, transparent 60%),
+    radial-gradient(50% 65% at 82% 78%, rgba(166, 123, 43, 0.16) 0%, transparent 60%);
 }
 
 /* Hide scrollbar while keeping horizontal scroll (used by sticky tab strips) */
@@ -5348,22 +6248,36 @@
   display: none;
 }
 
-/* ── Global theme-aware logo swap ────────────────────────────────────────────
-   Two real marks (black+brown for light, white+brown for dark) are both in the
-   DOM; CSS shows the right one so there's no theme-flash and no filter hack.
-   Drives the single <BrandLogo> component (components/ui/brand-logo.tsx)
-   everywhere it appears — including `.on-ink` bands (hero/footer) that stay
-   dark even while the app is in light mode. */
-.logo-on-dark {
-  display: none;
+/* ═══════════════════════════════════════════��═══════════════════════════════
+   SITE LOGO - Single source of truth for logo size + position on every page.
+   Drives the shared <Logo> component (components/ui/logo.tsx). Change here to
+   resize/reposition the brand logo everywhere at once.
+   ══════════════════��════════════════════════════════════════════════════════ */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
-.dark .logo-on-light,
-.on-ink .logo-on-light {
-  display: none;
-}
-.dark .logo-on-dark,
-.on-ink .logo-on-dark {
+.site-logo__img {
   display: block;
+  /* Artwork scaled down 10% globally (32→28.8, 148→133.2); proportions unchanged. */
+  height: 28.8px;
+  width: 133.2px;
+  object-fit: contain;
+  object-position: left top;
+  /* 10px transparent breathing room directly below the logo artwork. */
+  box-sizing: content-box;
+  padding-bottom: 10px;
+  /* Smooth the brightness lift when toggling themes. */
+  transition: filter 0.2s ease;
+}
+/* The brand mark is a single classic-blue (#155E97) that reads dim on dark
+   surfaces. On any dark scope (.dark theme or an .on-ink band) lift its
+   brightness + saturation so it stays crisp and legible against the dark
+   backdrop — one rule brightens the logo everywhere it appears. */
+.dark .site-logo__img,
+.on-ink .site-logo__img {
+  filter: brightness(1.55) saturate(1.15);
 }
 
 /* ── `text-white` stays white on colored surfaces in dark mode ──────────────
@@ -5401,7 +6315,7 @@
    When the browser print dialog opens, hide the entire app and render ONLY the
    report document (.deal-report-print-root). The report is authored on white
    with print-safe colors so it reproduces cleanly in PDF.
-   ══��════════════════════════════════════════════════════════════════════════ */
+   ══��════════════════════════════════════════��═══════════════════════════════ */
 @media print {
   /* Bulletproof pattern: hide everything by PAINT (visibility, not display, so
      we don't fight Radix's portal nesting), then re-reveal only the report
@@ -5487,45 +6401,96 @@
    background so cards become ink in dark mode (they don't read tokens, so
    without this they stay white with invisible light text). `.dark .x` (0-2-0)
    outranks the base `.x` (0-1-0) regardless of source order.
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ═══════════════════��═══════════════════════════════════════════════════════ */
 .dark .neo-card,
 .dark .neo-card-sm,
 .dark .neo-card-secondary,
 .dark .neo-section-card,
 .dark .neo-card-stats,
 .dark .metric-card-default {
-  background: linear-gradient(135deg, #131f30 0%, #0f1a29 100%);
+  background: linear-gradient(135deg, #241c14 0%, #1f1810 100%);
   border: 1px solid var(--ink-border);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.38), 0 1px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(120,150,190,0.06);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.38), 0 1px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(200,180,150,0.06);
   color: var(--foreground);
 }
 .dark .neo-card:hover,
 .dark .neo-card-hover:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(120,150,190,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(200,180,150,0.08);
   border-color: color-mix(in srgb, var(--azure-500) 30%, var(--ink-border));
 }
 .dark .neo-card-elevated,
 .dark .neo-card-stats-elevated {
-  background: linear-gradient(135deg, #182535 0%, #111d2c 100%);
+  background: linear-gradient(135deg, #2a2118 0%, #221b13 100%);
   border: 1px solid var(--ink-border-strong);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(120,150,190,0.08);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(200,180,150,0.08);
   color: var(--foreground);
 }
 .dark .neo-card-inner {
-  background: rgba(120,150,190,0.07);
+  background: rgba(200,180,150,0.07);
   border: 1px solid var(--ink-border);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 rgba(120,150,190,0.06);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 rgba(200,180,150,0.06);
   color: var(--foreground);
 }
 .dark .neo-card-inset {
-  background: rgba(8,14,24,0.55);
+  background: rgba(18,14,9,0.55);
   border: 1px solid var(--ink-border);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
 }
+/* Glass controls (pickers / dropdown triggers) → dark ink, subtle top light */
+.dark .glass-control {
+  background: linear-gradient(to bottom, rgba(30,44,62,0.92) 0%, rgba(20,32,47,0.92) 100%);
+  border: 1px solid var(--ink-border);
+  box-shadow: inset 0 1px 0 rgba(200,180,150,0.08), 0 1px 2px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.3);
+  color: var(--foreground);
+}
+.dark .glass-control:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--azure-500) 30%, var(--ink-border));
+  box-shadow: inset 0 1px 0 rgba(200,180,150,0.1), 0 4px 12px rgba(0,0,0,0.45);
+}
+.dark .glass-control:active:not(:disabled),
+.dark .glass-control[data-state="open"] {
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.45);
+}
+/* Glass panels (dropdown / popover surfaces) → dark translucent, elevated */
+.dark .glass-panel {
+  background: linear-gradient(135deg, rgba(24,37,53,0.96) 0%, rgba(17,29,44,0.96) 100%);
+  border: 1px solid var(--ink-border-strong);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(200,180,150,0.08);
+  color: var(--foreground);
+}
+/* Glass action pills (inline card links) → dark ink, subtle top light */
+.dark .glass-action {
+  background: linear-gradient(to bottom, rgba(30,44,62,0.9) 0%, rgba(20,32,47,0.9) 100%);
+  border: 1px solid var(--ink-border);
+  box-shadow: inset 0 1px 0 rgba(200,180,150,0.08), 0 1px 2px rgba(0,0,0,0.3);
+}
+.dark .glass-action:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--azure-500) 32%, var(--ink-border));
+  box-shadow: inset 0 1px 0 rgba(200,180,150,0.1), 0 3px 10px rgba(0,0,0,0.4);
+}
+  .dark .glass-action:active:not(:disabled) {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.45);
+  }
+  .dark .glass-action-accent {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--azure-500) 28%, rgba(24,36,52,0.92)) 0%, color-mix(in srgb, var(--azure-500) 17%, rgba(16,26,40,0.92)) 100%);
+  border-color: color-mix(in srgb, var(--azure-500) 50%, transparent);
+  color: color-mix(in srgb, var(--azure-300) 92%, white);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .dark .glass-action-accent:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--azure-500) 72%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--azure-500) 38%, rgba(24,36,52,0.95)) 0%, color-mix(in srgb, var(--azure-500) 24%, rgba(16,26,40,0.95)) 100%);
+  box-shadow: 0 3px 11px color-mix(in srgb, var(--azure-500) 32%, transparent), inset 0 1px 0 rgba(255,255,255,0.1);
+  transform: translateY(-0.5px);
+  }
+  .dark .glass-action-accent:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+  }
 /* Tinted metric cards → subtle ink tints (keep their hue as a wash) */
-.dark .metric-card-blue   { background: linear-gradient(135deg, #14263a 0%, #0f1c2c 100%); border: 1px solid rgba(34,163,255,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
+.dark .metric-card-blue   { background: linear-gradient(135deg, #241c14 0%, #1d170f 100%); border: 1px solid rgba(192,150,70,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
 .dark .metric-card-green  { background: linear-gradient(135deg, #10281f 0%, #0d1f19 100%); border: 1px solid rgba(70,192,138,0.22); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
-.dark .metric-card-violet { background: linear-gradient(135deg, #251e14 0%, #1e1810 100%); border: 1px solid var(--ink-border); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
+.dark .metric-card-violet { background: linear-gradient(135deg, #16202e 0%, #111a26 100%); border: 1px solid var(--ink-border); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.4); }
 /* Glass cards → dark translucent */
 .dark .glass-card,
 .dark .glass-card-hover,
@@ -5535,17 +6500,1891 @@
   color: var(--foreground);
 }
 /* Neomorphic tab track + inactive tabs read on ink */
-.dark .neo-tabs { background: rgba(8,14,24,0.5); border: 1px solid var(--ink-border); }
+.dark .neo-tabs { background: rgba(18,14,9,0.5); border: 1px solid var(--ink-border); }
 .dark .neo-tab-inactive { color: var(--ink-fg-muted); }
-.dark .neo-tab-inactive:hover { color: var(--ink-fg); background: rgba(120,150,190,0.08); }
+.dark .neo-tab-inactive:hover { color: var(--ink-fg); background: rgba(200,180,150,0.08); }
 /* Secondary/ghost buttons on ink */
 .dark .neo-btn,
 .dark .neo-btn-ghost,
-.dark .neo-btn-elevated { background: rgba(120,150,190,0.08); border: 1px solid var(--ink-border); color: var(--foreground); }
+.dark .neo-btn-elevated { background: rgba(200,180,150,0.08); border: 1px solid var(--ink-border); color: var(--foreground); }
 .dark .neo-btn:hover,
 .dark .neo-btn-ghost:hover,
-.dark .neo-btn-elevated:hover { background: rgba(120,150,190,0.14); }
+.dark .neo-btn-elevated:hover { background: rgba(200,180,150,0.14); }
 /* Full-page gradient background in dark */
-.dark .neo-page-gradient { background: linear-gradient(145deg, #14100a 0%, #1b160f 60%, #14100a 100%); }
+.dark .neo-page-gradient { background: linear-gradient(145deg, #0b1220 0%, #0d1626 60%, #0b1220 100%); }
 /* Progress track */
-.dark .glass-progress { background: rgba(8,14,24,0.6); border: 1px solid var(--ink-border); }
+.dark .glass-progress { background: rgba(18,14,9,0.6); border: 1px solid var(--ink-border); }
+
+/* ── Layout rhythm (central gutter / padding / spacing) ─────────────────────
+   Mobile-first token values live in :root; these step them up per breakpoint.
+   Every page edge, card body and section stack reads these, so gutters stay
+   identical across auth, legal, help, account, dashboard and workspaces. */
+@media (min-width: 640px) {
+  :root { --gutter: 1.5rem; --card-pad: 1.5rem; --section-gap: 2.5rem; }
+}
+@media (min-width: 1024px) {
+  :root { --gutter: 2rem; --section-gap: 3rem; --stack-gap: 1.25rem; --hero-gap: 4.5rem; }
+}
+
+@utility page-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility prose-container {
+  width: 100%;
+  max-width: var(--prose-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility gutter-x {
+  padding-inline: var(--gutter);
+}
+@utility card-pad {
+  padding: var(--card-pad);
+}
+@utility section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+@utility content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap);
+}
+
+/* ── Marketing surfaces (landing + insights) ───────────────────────────────
+   Read product tokens only; no private palette. */
+@layer components {
+  /* ==========================================================================
+     InvestAssist landing presentation — scoped under `.ia-landing`.
+
+     MOBILE-FIRST. Base rules describe the single-column phone layout that
+     matches the reference; `@media (min-width: …)` blocks progressively add the
+     multi-column tablet/desktop composition. Nothing is desktop-first.
+
+     Page frame reads the product layout tokens: --gutter, --content-max,
+     --section-gap, --hero-gap. Colour comes from the product :root / .dark
+     palettes, so light and dark follow next-themes with no private palette.
+     ========================================================================== */
+
+  .ia-landing {
+    color: var(--foreground);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+
+  .ia-landing * {
+    box-sizing: border-box;
+  }
+  .ia-landing h1,
+  .ia-landing h2,
+  .ia-landing h3,
+  .ia-landing p {
+    margin: 0;
+  }
+  .ia-landing a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .ia-landing button {
+    cursor: pointer;
+    font: inherit;
+  }
+  .ia-landing :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 4px;
+    border-radius: var(--radius-control);
+  }
+
+  /* The single page gutter. Every full-width band and inner block reads --pad-x
+     so the left/right edge lines up identically across the whole page. */
+  .ia-landing .wrap {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ── Brand logo swap ─────────────────────────────────────────────────────────
+     Unscoped on purpose: <BrandMark> renders on routes outside `.ia-landing`
+     (e.g. /sample-analysis), and `.on-ink` bands stay dark in light mode. */
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .brand-logo img {
+    height: auto;
+    display: block;
+  }
+  .brand-logo .logo-on-dark {
+    display: none;
+  }
+  .dark .brand-logo .logo-on-light,
+  .on-ink .brand-logo .logo-on-light {
+    display: none;
+  }
+  .dark .brand-logo .logo-on-dark,
+  .on-ink .brand-logo .logo-on-dark {
+    display: block;
+  }
+
+  /* ── Navigation ──────────────────────────────────────────────────────────── */
+  .ia-landing .nav {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .navlinks {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: var(--text-copy-sm);
+    color: var(--muted-foreground);
+  }
+  /* On phones only the theme toggle, Log in, and the primary CTA show; the
+     remaining text links appear once there is room for them. */
+  .ia-landing .navlinks > a:not(.btn) {
+    display: none;
+  }
+  /* Log in stays visible at every width as a compact, quiet text link so it
+     sits balanced beside the filled Start free button without crowding. */
+  .ia-landing .navlinks > a.login-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--foreground);
+    white-space: nowrap;
+  }
+  .ia-landing .navlinks > a:hover {
+    color: var(--foreground);
+  }
+  .ia-landing .theme-toggle {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    min-height: 44px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+    border-radius: var(--radius);
+  }
+  .ia-landing .theme-toggle:hover {
+    color: var(--foreground);
+  }
+  .ia-landing .theme-toggle > span:first-child {
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+  /* On the narrowest phones the logo + toggle label + CTA don't fit the gutter,
+     pushing the nav past the screen edge. Drop the toggle to its icon (the
+     button keeps its aria-label) so the row stays inside `--pad-x`. */
+  @media (max-width: 419px) {
+    .ia-landing .theme-toggle > span:last-child {
+      display: none;
+    }
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────────────── */
+  .ia-landing .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 15px 22px;
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-weight: 650;
+    font-size: var(--text-copy-sm);
+    white-space: nowrap;
+    border: 1px solid var(--primary);
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  /* The nav CTA stays a compact single-line pill on phones — smaller padding and
+     no trailing arrow — so the logo + toggle + button never overflow the gutter
+     or wrap the label onto two lines. Full padding + arrow return on desktop. */
+  .ia-landing .navlinks .btn {
+    padding: 9px 14px;
+    gap: 8px;
+  }
+  .ia-landing .navlinks .btn > span {
+    display: none;
+  }
+  @media (min-width: 1000px) {
+    .ia-landing .navlinks .btn {
+      padding: 12px 18px;
+    }
+    .ia-landing .navlinks .btn > span {
+      display: inline;
+    }
+  }
+  .ia-landing .btn:hover {
+    background: var(--action-hover);
+    border-color: var(--action-hover);
+    color: var(--primary-foreground);
+    transform: translateY(-1px);
+  }
+  .ia-landing .btn.light {
+    background: transparent;
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+  .ia-landing .btn.light:hover {
+    background: var(--accent);
+    border-color: var(--accent-foreground);
+    color: var(--foreground);
+    transform: translateY(-1px);
+  }
+
+  /* ── Eyebrow / section heads ─────────────────────────────────────────────── */
+  .ia-landing .eyebrow {
+    @apply font-mono; font-size: var(--text-tag);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent-foreground);
+    line-height: 1.6;
+    }
+    .ia-landing .hero-top .eyebrow {
+    font-size: var(--text-copy);
+    letter-spacing: 2.2px;
+    }
+    .ia-landing h2 {
+    font-size: clamp(1.875rem, 3.8vw, 3rem);
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    color: var(--foreground);
+  }
+  .ia-landing h2 span {
+    color: var(--accent-foreground);
+  }
+  /* Vertical rhythm only. Uses padding-block so that when `.section` is combined
+     with `.wrap` on the same element, it never resets the horizontal `--pad-x`
+     gutter that `.wrap` sets (a shorthand `padding: … 0` here would, since
+     `.section` is later in source order). */
+  .ia-landing .section {
+    padding-block: var(--section-gap);
+  }
+  .ia-landing .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .ia-landing .section-head h2 {
+    margin-top: 8px;
+  }
+  .ia-landing .section-lead {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+
+  /* ── Hero ─�����─────────────────────────────����────────────────────────────────── */
+  .ia-landing .hero {
+    padding: var(--hero-gap) 0;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(ellipse at 92% 8%, color-mix(in oklab, var(--primary) 3%, transparent), transparent 58%), var(--background);
+  }
+  .ia-landing .hero-top {
+    max-width: none;
+  }
+  .ia-landing .hero h1 {
+    font-size: clamp(2.75rem, 6.8vw, 5.75rem);
+    line-height: 1.045;
+    letter-spacing: -0.055em;
+    font-weight: 750;
+    margin: 20px 0;
+    max-width: 1090px;
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  .ia-landing .hero h1 span {
+    color: var(--foreground);
+  }
+  .ia-landing .hero .sub {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    max-width: 775px;
+  }
+  /* Stacked, full-width CTAs on phones (the clean reference default); side by
+     side once there is horizontal room. */
+  .ia-landing .ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin: 28px 0 16px;
+  }
+  .ia-landing .micro {
+    font-size: var(--text-copy-sm);
+    color: var(--muted-foreground);
+    line-height: 1.8;
+  }
+  .ia-landing .micro b {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  /* Product capability chips */
+    .ia-landing .hero-proof {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px 22px;
+    margin-top: 40px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-copy-sm);
+    color: var(--foreground);
+    }
+    .ia-landing .hero-proof span {
+    display: inline-flex;
+    align-items: center;
+    }
+    .ia-landing .hero-proof span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--primary);
+    margin-right: 12px;
+    }
+    @media (max-width: 720px) {
+    .ia-landing .hero-proof {
+    justify-content: flex-start;
+    gap: 12px 20px;
+    }
+    }
+
+  /* Document-to-decision flow — stacked groups with hairline separators on
+     mobile; a five-track grid with arrow connectors on desktop. */
+  .ia-landing .document-flow {
+    margin-top: 30px;
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--primary);
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 16px 40px color-mix(in oklab, var(--foreground) 6%, transparent);
+  }
+  /* Mobile: stack the eyebrow above the "DOCUMENT TO DECISION" label so it reads
+     cleanly on a narrow card instead of squeezing onto one line. Desktop restores
+     the single row with the label right-aligned (see ≥760px block). */
+  .ia-landing .flow-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted-foreground);
+    @apply font-mono; font-size: var(--text-tag);
+    letter-spacing: 2px;
+  }
+  .ia-landing .flow-heading span:last-child {
+    letter-spacing: 0.8px;
+    color: var(--foreground);
+  }
+  .ia-landing .flow-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+  .ia-landing .label {
+    @apply font-mono; font-size: var(--text-tag);
+    letter-spacing: 1.7px;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .ia-landing .flow-documents > div {
+    border: 1px solid var(--border);
+    background: var(--muted);
+    padding: 13px 14px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--radius);
+    font-size: var(--text-copy);
+  }
+  .ia-landing .flow-documents .doc-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 500;
+  }
+  .ia-landing .flow-documents .doc-name svg {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .ia-landing .flow-documents small {
+    @apply font-mono; font-size: var(--text-caption);
+    color: var(--muted-foreground);
+  }
+  /* Arrow connectors are desktop-only chrome. */
+  .ia-landing .flow-arrow {
+    display: none;
+    text-align: center;
+    color: var(--accent-foreground);
+    font-size: 1.375rem;
+  }
+  /* Stacked: separate each stage with a top rule. */
+  .ia-landing .flow-result,
+  .ia-landing .flow-next {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+  .ia-landing .flow-result strong {
+    font-size: 1.875rem;
+    font-weight: 650;
+    letter-spacing: -1px;
+  }
+  .ia-landing .flow-result p {
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+    margin-top: 4px;
+  }
+  .ia-landing .flow-next > div {
+    margin-top: 10px;
+    border: 1px solid var(--border);
+    background: var(--muted);
+    border-radius: var(--radius);
+    padding: 13px 15px;
+  }
+  .ia-landing .flow-next > div:first-of-type {
+    margin-top: 0;
+  }
+  .ia-landing .flow-next b {
+    font-size: var(--text-copy);
+    font-weight: 600;
+  }
+  .ia-landing .flow-next p {
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+    margin-top: 2px;
+  }
+
+  /* ── Built for scrutiny (second section) ─────────────────────────────────── */
+  /* Mobile: intro (heading + state tabs) stacked above the illustrative card,
+     with the three principles below a divider. Desktop splits intro/card into two
+     columns and fans the principles into three tracks. */
+  .ia-landing .scrutiny-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .ia-landing .scrutiny-intro h2 {
+    margin-top: 14px;
+  }
+  .ia-landing .scrutiny-intro .section-lead {
+    margin-top: 16px;
+    max-width: 520px;
+  }
+  /* Interactive state list — a muted rail on mobile, each row a tap target; the
+     active row gets a soft fill and a brand left border. */
+  .ia-landing .scrutiny-states {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .ia-landing .scrutiny-states button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-left: 2px solid var(--border);
+    padding: 15px 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    color: var(--muted-foreground);
+    font-size: 1.0625rem;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+  }
+  .ia-landing .scrutiny-states button:hover {
+    color: var(--foreground);
+  }
+  .ia-landing .scrutiny-states .num {
+    @apply font-mono; font-size: var(--text-meta);
+    letter-spacing: 0.5px;
+  }
+  .ia-landing .scrutiny-states li.active button {
+    background: var(--accent);
+    border-left-color: var(--primary);
+    color: var(--accent-foreground);
+    font-weight: 650;
+  }
+  .ia-landing .scrutiny-states li.active .num {
+    color: var(--accent-foreground);
+  }
+  /* Illustrative card */
+  .ia-landing .scrutiny-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    padding: 24px 20px;
+    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+  }
+  .ia-landing .scrutiny-kicker {
+    display: block;
+    @apply font-mono; font-size: var(--text-tag);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .scrutiny-card h3 {
+    font-size: clamp(1.375rem, 5.5vw, 1.75rem);
+    font-weight: 650;
+    letter-spacing: -0.6px;
+    line-height: 1.15;
+    margin: 12px 0 4px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .scrutiny-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+  }
+  .ia-landing .scrutiny-row b {
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .ia-landing .scrutiny-row.feat {
+    color: var(--accent-foreground);
+  }
+  .ia-landing .scrutiny-row.feat b {
+    color: var(--accent-foreground);
+  }
+  .ia-landing .scrutiny-finding {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .scrutiny-finding .finding-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    font-size: 1rem;
+  }
+  .ia-landing .scrutiny-finding .finding-row b {
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .ia-landing .scrutiny-finding p {
+    font-size: var(--text-copy-sm);
+    line-height: 1.55;
+    color: var(--muted-foreground);
+    margin-top: 8px;
+    max-width: 520px;
+  }
+  .ia-landing .scrutiny-note {
+    background: var(--accent);
+    color: var(--muted-foreground);
+    font-size: var(--text-meta);
+    line-height: 1.55;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    margin-top: 18px;
+  }
+  /* Three principles beneath a full-width divider. */
+  .ia-landing .scrutiny-principles {
+    margin-top: 40px;
+    padding-top: 34px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .ia-landing .scrutiny-principles h3 {
+    font-size: 1.0625rem;
+    font-weight: 650;
+    letter-spacing: -0.2px;
+  }
+  .ia-landing .scrutiny-principles p {
+    font-size: var(--text-copy);
+    line-height: 1.65;
+    color: var(--muted-foreground);
+    margin-top: 8px;
+  }
+
+  /* ── Sample workspace ─────────────────────────────────────────��──────────── */
+  .ia-landing .sample-section {
+    padding-bottom: var(--section-gap);
+  }
+  .ia-landing .workspace {
+    margin-top: 28px;
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--primary);
+    border-radius: var(--radius);
+    background: var(--card);
+    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+    overflow: hidden;
+  }
+  .ia-landing .appbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    height: 52px;
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted-foreground);
+    font-size: var(--text-tag);
+  }
+  .ia-landing .appbrand {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 4px;
+    color: var(--foreground);
+  }
+  /* The decorative tab strip is desktop-only; it overflows a phone. */
+  .ia-landing .apptabs {
+    display: none;
+    gap: 20px;
+    font-size: var(--text-meta);
+  }
+  .ia-landing .apptabs .active {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+  .ia-landing .apptabs b {
+    color: var(--accent-foreground);
+    font-weight: 600;
+  }
+  .ia-landing .appbar small {
+    margin-left: auto;
+    font-size: var(--text-caption);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3px 8px;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .appbody {
+    background: var(--background);
+    padding: 20px 16px;
+  }
+  .ia-landing .dealhead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .ia-landing .dealhead h3 {
+    font-size: 1.1875rem;
+    font-weight: 650;
+    letter-spacing: -0.5px;
+  }
+  .ia-landing .dealhead p {
+    font-size: var(--text-tag);
+    color: var(--muted-foreground);
+    margin-top: 4px;
+  }
+  .ia-landing .sample {
+    font-size: var(--text-caption);
+    color: var(--muted-foreground);
+    @apply font-mono;
+  }
+  /* Metrics stack on mobile (row separators), three across on wider screens. */
+  .ia-landing .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--card);
+  }
+  .ia-landing .metric {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .metric:last-child {
+    border-bottom: 0;
+  }
+  .ia-landing .metric label {
+    font-size: var(--text-tag);
+    letter-spacing: 0.6px;
+    color: var(--muted-foreground);
+    display: block;
+  }
+  .ia-landing .metric strong {
+    display: block;
+    font-size: 1.875rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin: 8px 0 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .ia-landing .metric em {
+    color: var(--accent-foreground);
+    font-style: normal;
+  }
+  .ia-landing .metric p {
+    font-size: var(--text-tag);
+    color: var(--muted-foreground);
+    line-height: 1.5;
+  }
+  .ia-landing .appbottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: stretch;
+  }
+  .ia-landing .analysis {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .ia-landing .paneltop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 17px;
+    font-size: var(--text-copy-sm);
+  }
+  .ia-landing .paneltop strong {
+    font-weight: 600;
+  }
+  .ia-landing .pill {
+    background: var(--warning-muted);
+    color: var(--warning);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+  }
+  .ia-landing .finding {
+    font-size: var(--text-copy-sm);
+    line-height: 1.45;
+  }
+  .ia-landing .finding + .finding {
+    margin-top: 18px;
+  }
+  .ia-landing .finding i {
+    color: var(--accent-foreground);
+    font-style: normal;
+  }
+  .ia-landing .finding p {
+    font-size: var(--text-tag);
+    line-height: 1.5;
+    color: var(--muted-foreground);
+    max-width: 460px;
+    margin-top: 10px;
+  }
+  .ia-landing .verdict-lead {
+    font-size: var(--text-copy-sm);
+    line-height: 1.5;
+    margin: 0 0 17px;
+  }
+  .ia-landing .verdict-lead b {
+    font-weight: 650;
+  }
+  .ia-landing .finding b {
+    font-weight: 650;
+  }
+  .ia-landing .calc-basis {
+    margin-top: auto;
+    padding-top: 16px;
+  }
+  .ia-landing .calc-basis > summary {
+    cursor: pointer;
+    font-size: var(--text-meta);
+    font-weight: 600;
+    color: var(--accent-foreground);
+    list-style: none;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .calc-basis > summary::-webkit-details-marker {
+    display: none;
+  }
+  .ia-landing .calc-basis > summary::before {
+    content: "+";
+    display: inline-block;
+    width: 14px;
+    font-weight: 600;
+  }
+  .ia-landing .calc-basis[open] > summary::before {
+    content: "\2212";
+  }
+  .ia-landing .calc-basis > div {
+    margin-top: 12px;
+  }
+  .ia-landing .calc-basis p {
+    font-size: var(--text-tag);
+    line-height: 1.55;
+    color: var(--muted-foreground);
+    margin: 0 0 9px;
+  }
+  .ia-landing .calc-basis p:last-child {
+    margin-bottom: 0;
+  }
+  .ia-landing .calc-basis i {
+    color: var(--accent-foreground);
+    font-style: normal;
+  }
+  .ia-landing .valuation-basis {
+    font-size: var(--text-tag);
+    line-height: 1.5;
+    color: var(--muted-foreground);
+    margin: 0 0 8px;
+  }
+  .ia-landing .valuation-basis b {
+    color: var(--accent-foreground);
+    font-weight: 600;
+  }
+  .ia-landing .value {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .ia-landing .value strong {
+    font-size: 2rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
+  }
+  .ia-landing .value small {
+    font-size: var(--text-tag);
+    color: var(--muted-foreground);
+  }
+  .ia-landing .analysis input[type="range"] {
+    width: 100%;
+    margin: 13px 0 5px;
+    accent-color: var(--accent-foreground);
+  }
+  .ia-landing .scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-caption);
+    color: var(--muted-foreground);
+  }
+  .ia-landing .valuation-equation {
+    @apply font-mono; font-size: var(--text-tag); line-height: 1.6;
+    color: var(--muted-foreground);
+    margin-top: 12px;
+  }
+  .ia-landing .ask-comparison {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: var(--text-tag);
+    line-height: 1.6;
+    color: var(--foreground);
+    padding: 12px 0 0;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .ask-comparison b {
+    margin-left: 5px;
+    font-weight: 600;
+  }
+  .ia-landing #value-gap {
+    color: var(--accent-foreground);
+    font-weight: 600;
+  }
+  .ia-landing .valuation-note {
+    font-size: var(--text-tag);
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    margin-top: 14px;
+  }
+  .ia-landing .sample-open {
+    margin-top: 18px;
+    font-size: var(--text-meta);
+    color: var(--accent-foreground);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ia-landing .sample-open:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Walkthrough video ───────────────────────────────────────────────────── */
+  .ia-landing .walkthrough {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .ia-landing .walkthrough h2 {
+    margin-top: 8px;
+  }
+  .ia-landing .walkthrough figure {
+    margin: 0;
+  }
+  .ia-landing .walkthrough video {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--ink-950);
+    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+  }
+
+  /* ── Editorial "how it works" ────────────────────────────────────────────── */
+  .ia-landing .editorial {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .editorial-heading h2 {
+    font-size: clamp(1.875rem, 7vw, 2.5rem);
+    line-height: 1.1;
+    margin-top: 8px;
+  }
+  .ia-landing .editorial-heading .section-lead {
+    font-size: 1.0625rem;
+    margin-top: 14px;
+  }
+  /* Each review step stacks index → title → body on mobile; three tracks on
+     desktop. */
+  .ia-landing .review-rows article {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .review-rows article:last-of-type {
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .review-rows article > span {
+    @apply font-mono; font-size: var(--text-meta);
+    color: var(--accent-foreground);
+  }
+  .ia-landing .review-rows h3 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.6px;
+    font-weight: 600;
+  }
+  .ia-landing .review-rows p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .workflow-invitation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 28px;
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .editorial > .workflow-invitation {
+    grid-column: 1 / -1;
+  }
+  .ia-landing .workflow-invitation p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .workflow-invitation strong {
+    color: var(--foreground);
+    display: block;
+    font-weight: 600;
+  }
+  .ia-landing .workflow-invitation .btn {
+    flex-shrink: 0;
+  }
+
+  /* ── Compound section ────────────────────────────────────────────────────── */
+  .ia-landing .compound-section {
+    padding: var(--section-gap) 0;
+    background: var(--muted);
+    border-block: 1px solid var(--border);
+  }
+  .ia-landing .compound-heading {
+    max-width: 900px;
+  }
+  .ia-landing .compound-heading h2 {
+    font-size: clamp(1.875rem, 6vw + 0.5rem, 3.625rem);
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+    margin: 16px 0 20px;
+  }
+  .ia-landing .compound-heading .section-lead {
+    max-width: 760px;
+    font-size: 1.0625rem;
+  }
+  .ia-landing .compound-direction {
+    font-size: var(--text-meta);
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    max-width: 820px;
+    margin-top: 24px;
+  }
+  /* Progression stacks on mobile with hairline separators; four tracks on
+     desktop. */
+  .ia-landing .compound-progression {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-block: 1px solid var(--border);
+  }
+  .ia-landing .compound-progression li {
+    min-width: 0;
+    padding: 24px 18px;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .compound-progression li:first-child {
+    border-top: 0;
+  }
+  .ia-landing .compound-progression li:last-child {
+    background: var(--accent);
+  }
+  .ia-landing .progress-stage {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 12px;
+    min-height: 28px;
+    @apply font-mono; font-size: var(--text-tag); font-weight: 600; line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--accent-foreground);
+  }
+  .ia-landing .progress-stage > span:last-child:not(:first-child) {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .ia-landing .compound-progression h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    margin: 8px 0 18px;
+    line-height: 1.35;
+  }
+  .ia-landing .context-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ia-landing .context-stack span {
+    font-size: var(--text-meta);
+    line-height: 1.5;
+    color: var(--muted-foreground);
+    padding-left: 11px;
+    border-left: 2px solid var(--border);
+  }
+  .ia-landing .progress-destination .context-stack span {
+    border-color: var(--accent-foreground);
+  }
+  .ia-landing .compound-close {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .compound-close p {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .compound-close strong {
+    font-weight: 500;
+    color: var(--foreground);
+  }
+  .ia-landing .compound-close .btn {
+    flex-shrink: 0;
+  }
+
+  /* ── Pricing ─────────────────────────────────────────────────────────────── */
+  .ia-landing .pricing .section-lead {
+    max-width: 640px;
+    margin-top: 14px;
+  }
+  .ia-landing .pricing h2 {
+    margin-top: 8px;
+  }
+  /* One card per row on mobile → two → four. */
+  .ia-landing .price-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 34px;
+    align-items: stretch;
+  }
+  .ia-landing .price {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    padding: 30px 24px 26px;
+  }
+  /* The recommended plan reads as a filled, highlighted box in BOTH themes: a
+     soft brand-tinted surface (cream in light, warm dark in dark) inside a full
+     brand border. */
+  .ia-landing .price.feat {
+    background: var(--accent);
+    border: 1px solid var(--primary);
+    border-top-width: 2px;
+    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 6%, transparent);
+  }
+  .ia-landing .price.feat .overage {
+    border-top-color: var(--primary);
+  }
+  .ia-landing .price .badge {
+    position: absolute;
+    top: -11px;
+    left: 24px;
+    @apply font-mono; font-size: var(--text-2xs); font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+  }
+  .ia-landing .price h3 {
+    font-size: 1.125rem;
+    font-weight: 650;
+    letter-spacing: -0.3px;
+    color: var(--foreground);
+  }
+  .ia-landing .price .for {
+    font-size: var(--text-copy-sm);
+    line-height: 1.5;
+    color: var(--muted-foreground);
+    margin-top: 6px;
+    min-height: 42px;
+  }
+  .ia-landing .price .support {
+    min-height: 60px;
+  }
+  .ia-landing .price strong {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--foreground);
+    margin: 16px 0 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .ia-landing .price strong small {
+    font-size: var(--text-copy-sm);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .price .credits {
+    font-size: var(--text-copy-sm);
+    font-weight: 600;
+    color: var(--accent-foreground);
+  }
+  .ia-landing .price .support {
+    font-size: var(--text-meta);
+    line-height: 1.55;
+    color: var(--muted-foreground);
+    margin-top: 12px;
+  }
+  .ia-landing .price .overage {
+    font-size: var(--text-tag);
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 18px;
+  }
+  .ia-landing .price .cta {
+    width: 100%;
+  }
+  .ia-landing .pricing-note {
+    font-size: var(--text-meta);
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  /* ── FAQ ─────────────────────────────────────────────────────────────────── */
+  .ia-landing .faq {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: var(--section-gap) var(--gutter);
+  }
+  .ia-landing .faq h2 {
+    margin-top: 8px;
+  }
+  .ia-landing .faq details {
+    border-top: 1px solid var(--border);
+    padding: 22px 0;
+  }
+  .ia-landing .faq details:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .faq summary {
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .ia-landing .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .ia-landing .faq summary::after {
+    content: "+";
+    color: var(--accent-foreground);
+    font-weight: 400;
+    font-size: 1.375rem;
+  }
+  .ia-landing .faq details[open] summary::after {
+    content: "���";
+  }
+  .ia-landing .faq details p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+    margin-top: 14px;
+    max-width: 720px;
+  }
+
+  /* ── Closing ─────────────────────────────────────────────────────────────── */
+  /* A full-width band like `.hero` / `.compound-section`: the horizontal gutter
+     comes from the inner `.wrap`, so the band itself pads vertically only.
+     (Previously it added `--pad-x` here as well, double-insetting its content.) */
+  .ia-landing .closing {
+    background: var(--muted);
+    border-top: 1px solid var(--border);
+    padding: var(--section-gap) 0;
+  }
+  .ia-landing .closing-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .ia-landing .closing h2 {
+    margin: 16px 0 16px;
+  }
+  .ia-landing .closing p {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    max-width: 640px;
+  }
+  .ia-landing .closing-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* ── Footer ─────���────────────────────────────────────────────────────────── */
+  .ia-landing .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px var(--gutter);
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .footer > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+    flex-wrap: wrap;
+  }
+  .ia-landing .footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 6px 0;
+  }
+  .ia-landing .footer a:hover {
+    color: var(--foreground);
+  }
+
+  /* ==========================================================================
+     Progressive enhancement — layout grows from the mobile base upward.
+     ========================================================================== */
+
+  /* ≥560px — small tablets / large phones: side-by-side CTAs and metric row. */
+  @media (min-width: 560px) {
+    .ia-landing .ctas {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .ia-landing .metric-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .ia-landing .metric {
+      border-right: 1px solid var(--border);
+      border-bottom: 0;
+    }
+    .ia-landing .metric:last-child {
+      border-right: 0;
+    }
+  }
+
+  /* ≥640px — pricing pairs up. */
+  @media (min-width: 640px) {
+    .ia-landing .price-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ≥760px — section heads and inline invitations go horizontal; the review
+     grid and hero principles fan out; the workspace analysis panels pair up. */
+  @media (min-width: 760px) {
+    .ia-landing .section-head {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+    }
+    .ia-landing .section-head h2 {
+      margin-top: 12px;
+    }
+    .ia-landing .section-lead {
+      max-width: 420px;
+      font-size: 1.125rem;
+    }
+    .ia-landing .scrutiny-principles {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .ia-landing .footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .ia-landing .scrutiny-card {
+      padding: 30px 28px;
+    }
+    .ia-landing .review-rows article {
+      grid-template-columns: 35px 1fr 1.15fr;
+      gap: 23px;
+      padding: 30px 0;
+    }
+    .ia-landing .review-rows article > span {
+      padding-top: 6px;
+    }
+    .ia-landing .review-rows h3 {
+      font-size: 1.4375rem;
+    }
+    .ia-landing .appbottom {
+      grid-template-columns: 1.13fr 1fr;
+      gap: 22px;
+    }
+    .ia-landing .workflow-invitation,
+    .ia-landing .compound-close {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .ia-landing .closing-inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    .ia-landing .closing-action {
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+    .ia-landing .flow-heading {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  }
+
+  /* ≥900px — the document flow becomes a five-track pipeline with arrows; the
+     compound progression opens to four tracks. */
+  @media (min-width: 900px) {
+    .ia-landing .flow-body {
+      grid-template-columns: 1.2fr 45px 0.85fr 45px 1.1fr;
+      gap: 15px;
+      align-items: center;
+      padding: 29px 25px;
+    }
+    .ia-landing .flow-heading {
+      padding: 20px 25px;
+    }
+    .ia-landing .flow-arrow {
+      display: block;
+    }
+    .ia-landing .flow-result {
+      border-top: 0;
+      padding-top: 0;
+      border-left: 2px solid var(--accent-foreground);
+      padding-left: 18px;
+    }
+    .ia-landing .flow-next {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .ia-landing .compound-progression {
+      grid-template-columns: repeat(3, 1fr) 1.18fr;
+    }
+    .ia-landing .compound-progression li {
+      padding: 25px 22px 28px;
+      border-top: 0;
+      border-right: 1px solid var(--border);
+    }
+    .ia-landing .compound-progression li:first-child {
+      padding-left: 0;
+    }
+    .ia-landing .compound-progression li:last-child {
+      border-right: 0;
+      padding-left: 24px;
+    }
+  }
+
+  /* ≥1000px — full desktop: wider gutters, taller rhythm, the two-column
+     editorial / walkthrough / FAQ splits, the four-across pricing grid, and the
+     complete top-nav link set. */
+  @media (min-width: 1000px) {
+    .ia-landing .nav {
+      height: 86px;
+    }
+    .ia-landing .navlinks {
+      gap: 25px;
+    }
+    .ia-landing .navlinks > a:not(.btn) {
+      display: inline-flex;
+    }
+    .ia-landing .hero .sub {
+      font-size: 1.25rem;
+      line-height: 1.65;
+    }
+    .ia-landing .scrutiny-top {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .ia-landing .editorial {
+      grid-template-columns: 0.75fr 1.6fr;
+      column-gap: 80px;
+      row-gap: 0;
+    }
+    .ia-landing .review-rows article:last-of-type {
+      border-bottom: 0;
+    }
+    .ia-landing .editorial > .workflow-invitation {
+      margin-top: 0;
+      padding-top: 30px;
+    }
+    .ia-landing .editorial-heading .section-lead {
+      font-size: 1.125rem;
+    }
+    .ia-landing .walkthrough {
+      grid-template-columns: 0.75fr 1.4fr;
+      gap: 65px;
+    }
+    .ia-landing .faq {
+      grid-template-columns: 0.75fr 1.6fr;
+      gap: 80px;
+    }
+    .ia-landing .price-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 46px;
+    }
+    .ia-landing .compound-heading .section-lead,
+    .ia-landing .editorial-heading .section-lead {
+      max-width: 760px;
+    }
+  }
+
+  /* ≥700px — restore the medium section lead width cap on the hero-adjacent
+     sample header before the full desktop split. */
+  @media (min-width: 700px) {
+    .ia-landing .appbar {
+      padding: 0 20px;
+      gap: 18px;
+    }
+    .ia-landing .apptabs {
+      display: flex;
+    }
+    .ia-landing .appbody {
+      padding: 25px 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ia-landing,
+    .ia-landing * {
+      scroll-behavior: auto;
+    }
+    .ia-landing .btn:hover {
+      transform: none;
+    }
+  }
+
+  /* Insights — scoped under .ia-landing so it inherits the approved landing
+     token system (colors, fonts, dark theme) and the shared .wrap / .btn / nav /
+     footer chrome. Only insights-specific layout lives here. */
+
+  .ia-landing .insights-hero {
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ia-landing .insights-hero .eyebrow {
+    margin-bottom: 18px;
+  }
+  .ia-landing .insights-hero h1 {
+    font-size: clamp(2.125rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--foreground);
+    max-width: 16ch;
+  }
+  .ia-landing .insights-hero p {
+    margin-top: 18px;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    max-width: 60ch;
+  }
+
+  /* Index grid of article cards */
+  .ia-landing .insights-grid {
+    padding: 56px 0 96px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .ia-landing .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .ia-landing .article-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .ia-landing .article-card .topic {
+    @apply font-mono;
+    font-size: var(--text-tag);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-foreground);
+  }
+  .ia-landing .article-card h2 {
+    font-size: 1.375rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    margin: 0;
+  }
+  .ia-landing .article-card p {
+    font-size: var(--text-copy);
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    margin: 0;
+  }
+  .ia-landing .article-card .meta {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+  }
+  .ia-landing .article-card .meta .dot {
+    opacity: 0.5;
+  }
+  .ia-landing .article-card a.card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .ia-landing .article-card {
+    position: relative;
+  }
+  .ia-landing .article-card a.card-link {
+    color: var(--foreground);
+    text-decoration: none;
+  }
+  .ia-landing .article-card a.card-link:hover {
+    color: var(--primary);
+  }
+
+  /* Article template */
+  .ia-landing .article {
+    padding: 40px 0 20px;
+  }
+  .ia-landing .breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+    padding: 28px 0 0;
+  }
+  .ia-landing .breadcrumbs a {
+    color: var(--muted-foreground);
+    text-decoration: none;
+  }
+  .ia-landing .breadcrumbs a:hover {
+    color: var(--primary);
+  }
+  .ia-landing .breadcrumbs .sep {
+    opacity: 0.5;
+  }
+  .ia-landing .article-header {
+    max-width: 760px;
+    padding: 28px 0 8px;
+  }
+  .ia-landing .article-header .topic {
+    @apply font-mono;
+    font-size: var(--text-tag);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-foreground);
+  }
+  .ia-landing .article-header h1 {
+    margin-top: 14px;
+    font-size: clamp(1.875rem, 4.4vw, 2.875rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+  .ia-landing .article-header .lead {
+    margin-top: 18px;
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .article-byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    margin-top: 22px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-copy-sm);
+    color: var(--muted-foreground);
+  }
+  .ia-landing .article-byline .who {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+  .ia-landing .article-byline .dot {
+    opacity: 0.5;
+  }
+
+  /* Article body prose */
+  .ia-landing .prose {
+    max-width: 720px;
+    padding: 34px 0 8px;
+  }
+  .ia-landing .prose > * + * {
+    margin-top: 22px;
+  }
+  .ia-landing .prose h2 {
+    font-size: 1.625rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    margin-top: 44px;
+  }
+  .ia-landing .prose h3 {
+    font-size: 1.1875rem;
+    line-height: 1.3;
+    color: var(--foreground);
+    margin-top: 32px;
+  }
+  .ia-landing .prose p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--foreground);
+  }
+  .ia-landing .prose ul,
+  .ia-landing .prose ol {
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ia-landing .prose li {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--foreground);
+  }
+  .ia-landing .prose ul li {
+    list-style: disc;
+  }
+  .ia-landing .prose ol li {
+    list-style: decimal;
+  }
+  .ia-landing .prose .callout {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    background: var(--muted);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+  }
+  .ia-landing .prose .callout strong {
+    display: block;
+    color: var(--foreground);
+    margin-bottom: 6px;
+    font-size: var(--text-copy);
+  }
+  .ia-landing .prose .callout p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .prose figure {
+    margin: 8px 0;
+  }
+  .ia-landing .prose figure img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .ia-landing .prose figure figcaption {
+    margin-top: 10px;
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+    text-align: center;
+  }
+
+  /* YouTube embed */
+  .ia-landing .video-embed {
+    margin: 8px 0;
+  }
+  .ia-landing .video-embed .frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--ink-950);
+  }
+  .ia-landing .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .ia-landing .video-embed figcaption {
+    margin-top: 10px;
+    font-size: var(--text-meta);
+    color: var(--muted-foreground);
+  }
+
+  /* End-of-article CTA */
+  .ia-landing .article-cta {
+    max-width: 720px;
+    margin: 40px 0;
+    padding: 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--muted);
+    text-align: center;
+  }
+  .ia-landing .article-cta h2 {
+    font-size: 1.5rem;
+    color: var(--foreground);
+    margin: 0 0 8px;
+  }
+  .ia-landing .article-cta p {
+    color: var(--muted-foreground);
+    margin: 0 0 20px;
+    font-size: 1rem;
+  }
+
+  /* Related articles */
+  .ia-landing .related {
+    padding: 20px 0 90px;
+    border-top: 1px solid var(--border);
+  }
+  .ia-landing .related h2 {
+    font-size: var(--text-copy);
+    @apply font-mono;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    margin-bottom: 24px;
+  }
+  .ia-landing .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .ia-landing .insights-grid {
+      grid-template-columns: 1fr;
+      padding: 40px 0 72px;
+    }
+    .ia-landing .article-cta {
+      padding: 26px 20px;
+    }
+  }
+}

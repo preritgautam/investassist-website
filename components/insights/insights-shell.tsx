@@ -1,6 +1,7 @@
 import type React from "react"
 
 import { getAppUrl } from "@/lib/utils"
+import { SALES_EMAIL } from "@/lib/brand"
 import { BrandLogo } from "@/components/ui/brand-logo"
 import { LandingThemeToggle } from "@/components/landing/landing-theme-toggle"
 
@@ -37,7 +38,7 @@ export function InsightsShell({ children }: { children: React.ReactNode }) {
           <a href="/insights">Insights</a>
           <a href="/legal/privacy">Privacy</a>
           <a href="/legal/terms">Terms</a>
-          <a href="mailto:sales@investassist.ai">Contact</a>
+          <a href={`mailto:${SALES_EMAIL}`}>Contact</a>
           <span>© 2026 InvestAssist</span>
         </div>
       </footer>

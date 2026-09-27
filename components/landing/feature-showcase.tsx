@@ -24,66 +24,77 @@ const scenarios = [
   { cap: "7.25%", value: "$22.3M", delta: "-14%" },
 ]
 
+const card = "min-w-0 rounded border border-border bg-card text-card-foreground card-pad"
+const panel = "rounded border border-border bg-muted p-4"
+const label = "text-2xs font-semibold uppercase tracking-wider text-muted-foreground"
+
+function CardHeader({ icon: Icon, title }: { icon: typeof Calculator; title: string }) {
+  return (
+    <div className="mb-2 flex items-center gap-3">
+      <div className="flex size-10 items-center justify-center rounded bg-accent">
+        <Icon className="size-5 text-accent-foreground" aria-hidden="true" />
+      </div>
+      <h3 className="text-xl font-bold text-foreground">{title}</h3>
+    </div>
+  )
+}
+
 export function FeatureShowcase() {
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
-      {/* Underwriting summary card */}
+    <div className="grid gap-6 lg:grid-cols-2">
       <motion.article
+        data-slot="card"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="min-w-0 rounded-2xl p-6 md:p-8 neo-card"
+        className={card}
       >
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
-            <Calculator className="w-5 h-5 text-brand-700" />
-          </div>
-          <h3 className="text-xl font-bold text-slate-900">Underwriting Summary</h3>
-        </div>
-        <p className="text-sm text-slate-500 mb-5 leading-relaxed">
-          Go from raw documents to a clean NOI bridge and unit mix — separating the in-place
-          deal from the stabilized business plan, with every line auditable to its source.
+        <CardHeader icon={Calculator} title="Underwriting Summary" />
+        <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
+          Go from raw documents to a clean NOI bridge and unit mix — separating the in-place deal from the
+          stabilized business plan, with every line auditable to its source.
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-4" aria-hidden="true">
-          {/* NOI bridge */}
-          <div className="rounded-xl border border-slate-100 bg-white/70 p-4">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-3">NOI Bridge</p>
-            <div className="space-y-2">
+        <div className="grid gap-4 sm:grid-cols-2" aria-hidden="true">
+          <div className={panel}>
+            <p className={`${label} mb-3`}>NOI Bridge</p>
+            <div className="flex flex-col gap-2">
               {noiBridge.map((l) => (
                 <div
                   key={l.label}
-                  className={`flex items-center justify-between gap-2 ${l.strong ? "pt-2 border-t border-slate-100" : ""}`}
+                  className={`flex items-center justify-between gap-2 ${l.strong ? "border-t border-border pt-2" : ""}`}
                 >
-                  <span className={`text-[11px] ${l.strong ? "font-semibold text-slate-800" : "text-slate-500"}`}>
+                  <span className={`text-caption ${l.strong ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
                     {l.label}
                   </span>
-                  <span className={`text-[11px] font-bold whitespace-nowrap ${l.strong ? "text-brand-700" : "text-slate-700"}`}>
+                  <span
+                    className={`whitespace-nowrap text-caption font-bold ${l.strong ? "text-primary" : "text-foreground"}`}
+                  >
                     {l.value}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-          {/* Unit mix */}
-          <div className="rounded-xl border border-slate-100 bg-white/70 p-4">
-            <div className="flex items-center gap-1.5 mb-3">
-              <Layers className="w-3.5 h-3.5 text-slate-500" />
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Unit Mix</p>
+
+          <div className={panel}>
+            <div className="mb-3 flex items-center gap-1.5">
+              <Layers className="size-3.5 text-muted-foreground" aria-hidden="true" />
+              <p className={label}>Unit Mix</p>
             </div>
             <table className="w-full">
               <tbody>
                 {unitMix.map((u) => (
-                  <tr key={u.type} className="border-b border-slate-50 last:border-0">
-                    <td className="py-1.5 text-[11px] font-medium text-slate-700">{u.type}</td>
-                    <td className="py-1.5 text-[11px] text-right text-slate-500">{u.units}</td>
-                    <td className="py-1.5 text-[11px] text-right font-bold text-slate-900">{u.rent}</td>
+                  <tr key={u.type} className="border-b border-border last:border-0">
+                    <td className="py-1.5 text-caption font-medium text-foreground">{u.type}</td>
+                    <td className="py-1.5 text-right text-caption text-muted-foreground">{u.units}</td>
+                    <td className="py-1.5 text-right text-caption font-bold text-foreground">{u.rent}</td>
                   </tr>
                 ))}
-                <tr className="border-t border-slate-200">
-                  <td className="py-1.5 text-[11px] font-semibold text-slate-800">148 units</td>
+                <tr className="border-t border-border">
+                  <td className="py-1.5 text-caption font-semibold text-foreground">148 units</td>
                   <td className="py-1.5" />
-                  <td className="py-1.5 text-[11px] text-right font-bold text-brand-700">$1,548</td>
+                  <td className="py-1.5 text-right text-caption font-bold text-primary">$1,548</td>
                 </tr>
               </tbody>
             </table>
@@ -91,51 +102,46 @@ export function FeatureShowcase() {
         </div>
       </motion.article>
 
-      {/* Valuation scenarios card */}
       <motion.article
+        data-slot="card"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="min-w-0 rounded-2xl p-6 md:p-8 neo-card"
+        className={card}
       >
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
-            <TrendingUp className="w-5 h-5 text-brand-700" />
-          </div>
-          <h3 className="text-xl font-bold text-slate-900">Valuation Scenarios</h3>
-        </div>
-        <p className="text-sm text-slate-500 mb-5 leading-relaxed">
-          Pressure-test value across a range of exit cap rates instead of betting on a single
-          number — so you underwrite to a defensible range and know your downside before you bid.
+        <CardHeader icon={TrendingUp} title="Valuation Scenarios" />
+        <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
+          Pressure-test value across a range of exit cap rates instead of betting on a single number — so you
+          underwrite to a defensible range and know your downside before you bid.
         </p>
 
-        <div className="rounded-xl overflow-hidden border border-slate-100" aria-hidden="true">
+        <div className="overflow-hidden rounded border border-border" aria-hidden="true">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50/80">
-                <th className="py-2 px-4 text-[10px] font-semibold uppercase tracking-wider text-slate-500">Exit Cap Rate</th>
-                <th className="py-2 px-4 text-[10px] font-semibold uppercase tracking-wider text-slate-500 text-right">Value</th>
-                <th className="py-2 px-4 text-[10px] font-semibold uppercase tracking-wider text-slate-500 text-right">Δ vs Base</th>
+              <tr className="bg-muted">
+                <th className={`${label} px-4 py-2`}>Exit Cap Rate</th>
+                <th className={`${label} px-4 py-2 text-right`}>Value</th>
+                <th className={`${label} px-4 py-2 text-right`}>Δ vs Base</th>
               </tr>
             </thead>
             <tbody>
               {scenarios.map((s) => (
-                <tr key={s.cap} className={`border-t border-slate-100 ${s.base ? "bg-brand-50/50" : ""}`}>
-                  <td className="py-2.5 px-4 text-xs font-medium text-slate-700">
+                <tr key={s.cap} className={`border-t border-border ${s.base ? "bg-accent" : ""}`}>
+                  <td className="px-4 py-2.5 text-xs font-medium text-foreground">
                     {s.cap}
-                    {s.base && <span className="ml-1.5 text-[9px] font-semibold text-brand-700 uppercase">Base</span>}
+                    {s.base && <span className="ml-1.5 text-3xs font-semibold uppercase text-primary">Base</span>}
                   </td>
-                  <td className="py-2.5 px-4 text-xs text-right font-bold text-slate-900">{s.value}</td>
-                  <td className={`py-2.5 px-4 text-xs text-right font-semibold ${s.base ? "text-slate-500" : "text-slate-500"}`}>
-                    {s.delta}
-                  </td>
+                  <td className="px-4 py-2.5 text-right text-xs font-bold text-foreground">{s.value}</td>
+                  <td className="px-4 py-2.5 text-right text-xs font-semibold text-muted-foreground">{s.delta}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="text-[11px] text-slate-500 mt-3">Applied to stabilized NOI of $1.62M (direct capitalization).</p>
+        <p className="mt-3 text-caption text-muted-foreground">
+          Applied to stabilized NOI of $1.62M (direct capitalization).
+        </p>
       </motion.article>
     </div>
   )
