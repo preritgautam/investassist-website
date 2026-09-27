@@ -491,10 +491,11 @@ input:-webkit-autofill:focus {
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-system-stack: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-system-stack);
+  --font-display: var(--font-system-stack);
   /* legacy font-serif spots now resolve to the single system family */
-  --font-serif: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: var(--font-system-stack);
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   /* Central type scale — every product font size resolves here. */
   --text-micro: 8px;
@@ -1084,6 +1085,9 @@ input:-webkit-autofill:focus {
      Unscoped on purpose: <BrandMark> renders on routes outside `.ia-landing`
      (e.g. /sample-analysis), and `.on-ink` bands stay dark in light mode. */
   .brand-logo {
+    /* The building "I" rises above the lettering; lift the art so the wordmark
+       (not the tallest glyph) centres on the nav labels. Same value as the product. */
+    --logo-optical-offset: -19%;
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
@@ -1092,6 +1096,7 @@ input:-webkit-autofill:focus {
   .brand-logo img {
     height: auto;
     display: block;
+    translate: 0 var(--logo-optical-offset);
   }
   .brand-logo .logo-on-dark {
     display: none;

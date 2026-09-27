@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next"
 
 import "./globals.css"
 
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { THEME_COLOR } from "@/lib/brand"
 import { SiteStructuredData } from "@/components/seo/structured-data"
@@ -21,11 +21,6 @@ import {
 
 const verification = verificationTokens()
 
-const geistSans = Geist({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-geist-sans",
-})
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 const siteUrl = getSiteUrl()
@@ -42,6 +37,14 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   robots: robotsDirective(),
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-light-32x32.png", sizes: "32x32", media: "(prefers-color-scheme: light)" },
+      { url: "/icon-dark-32x32.png", sizes: "32x32", media: "(prefers-color-scheme: dark)" },
+    ],
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -82,7 +85,7 @@ export default function RootLayout({
         <SiteStructuredData />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${geistMono.variable} font-sans antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
