@@ -222,7 +222,7 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════����═══
+/* ═══════════════════════════════════════════════════════════════════════�����═══
    INVESTASSIST GOLD THEME — DARK
    Re-declares the token set in dark values. `.on-ink` shares this context so
    it can be dropped onto a section to create a dark band in either mode.
@@ -850,7 +850,7 @@ input:-webkit-autofill:focus {
   
   /* Neo Transitions */
   
-  /* ═════════════════════════════════════������════════════════════════�����══════════
+  /* ════════════════════════════════════��������════════════════════════�����══════════
      TYPOGRAPHY SCALE - InvestAssist Platform Standard
      Consistent across Syndicator, Investor, Buyer, Broker dashboards
      ═══════════════════════════════════════════════════════════════════════════ */
@@ -1368,10 +1368,9 @@ input:-webkit-autofill:focus {
     border-bottom: 1px solid var(--border);
     color: var(--muted-foreground);
     @apply font-mono; font-size: var(--text-tag);
-    letter-spacing: 2px;
+    letter-spacing: 1.7px;
   }
   .ia-landing .flow-heading span:last-child {
-    letter-spacing: 0.8px;
     color: var(--foreground);
   }
   .ia-landing .flow-body {
