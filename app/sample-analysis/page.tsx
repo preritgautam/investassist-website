@@ -125,7 +125,7 @@ export default function SampleAnalysisPage() {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {keyMetrics.map((m) => (
               <div key={m.label} data-slot="card" className={`${card} card-pad`}>
-                <div className="mb-3 flex size-9 items-center justify-center rounded bg-accent">
+                <div className="mb-3 flex size-9 items-center justify-center rounded bg-surface-muted">
                   <m.icon className="size-4 text-accent-foreground" aria-hidden="true" />
                 </div>
                 <p className="text-2xl font-extrabold text-foreground">{m.value}</p>
@@ -169,7 +169,7 @@ export default function SampleAnalysisPage() {
                   </thead>
                   <tbody>
                     {rentComps.map((c) => (
-                      <tr key={c.property} className={`border-b border-border last:border-0 ${c.subject ? "bg-accent" : ""}`}>
+                      <tr key={c.property} className={`border-b border-border last:border-0 ${c.subject ? "bg-highlight" : ""}`}>
                         <td className="py-2.5 pr-2 text-sm font-medium text-foreground md:pr-3">{c.property}</td>
                         <td className="px-2 py-2.5 text-right text-sm text-muted-foreground md:px-3">{c.distance}</td>
                         <td className="px-2 py-2.5 text-right text-sm text-foreground md:px-3">{c.rentPsf}</td>

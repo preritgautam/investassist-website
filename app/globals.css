@@ -62,6 +62,8 @@ button,
   --surface: #ffffff;
   --surface-elevated: #ffffff;
   --surface-muted: #f4f3ef;
+  --highlight: #fbf3de;
+  --highlight-border: #e7d5a2;
 
   --interactive-bg: #ffffff;
   --interactive-fg: #18212b;
@@ -262,6 +264,8 @@ input:-webkit-autofill:focus {
   --surface: #1c2025;
   --surface-elevated: #282e35;
   --surface-muted: #22272d;
+  --highlight: #2e2818;
+  --highlight-border: #5c4a22;
 
   --interactive-bg: #1c2025;
   --interactive-fg: #f4f6f8;
@@ -625,6 +629,8 @@ input:-webkit-autofill:focus {
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-surface-muted: var(--surface-muted);
+  --color-highlight: var(--highlight);
+  --color-highlight-border: var(--highlight-border);
   --color-interactive-bg: var(--interactive-bg);
   --color-interactive-fg: var(--interactive-fg);
   --color-interactive-border: var(--interactive-border);
@@ -987,7 +993,7 @@ input:-webkit-autofill:focus {
   }
 }
 
-/* ── Layout rhythm (central gutter / padding / spacing) ─────────────────────
+/* ─�� Layout rhythm (central gutter / padding / spacing) ─────────────────────
    Mobile-first token values live in :root; these step them up per breakpoint.
    Every page edge, card body and section stack reads these, so gutters stay
    identical across auth, legal, help, account, dashboard and workspaces. */
@@ -1520,7 +1526,7 @@ input:-webkit-autofill:focus {
     letter-spacing: 0.5px;
   }
   .ia-landing .scrutiny-states li.active button {
-    background: var(--accent);
+    background: var(--highlight);
     border-left-color: var(--brand-text);
     color: var(--foreground);
     font-weight: 650;
@@ -1595,7 +1601,7 @@ input:-webkit-autofill:focus {
     max-width: 520px;
   }
   .ia-landing .scrutiny-note {
-    background: var(--accent);
+    background: var(--surface-muted);
     color: var(--muted-foreground);
     font-size: var(--text-meta);
     line-height: 1.55;
@@ -2059,7 +2065,7 @@ input:-webkit-autofill:focus {
     border-top: 0;
   }
   .ia-landing .compound-progression li:last-child {
-    background: var(--accent);
+    background: var(--highlight);
   }
   .ia-landing .progress-stage {
     display: flex;

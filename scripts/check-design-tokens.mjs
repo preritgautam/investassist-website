@@ -35,6 +35,18 @@ function recordStatusText(file, text) {
   }
 }
 
+// --accent is the neutral HOVER surface only. Selected/subject states use --highlight,
+// callouts and icon tiles use --surface-muted. Shared primitives in components/ui may use it
+// for their own hover/highlighted states.
+const ACCENT_MSG = "--accent is hover-only; selected/subject → highlight, callout/icon tile → surface-muted"
+const TW_BARE_ACCENT = /(?<![\w:\/-])bg-accent(?:\/\d+)?(?![\w-])/g
+function recordAccent(file, text) {
+  if (file.startsWith("components/ui/")) return
+  for (const m of text.matchAll(TW_BARE_ACCENT)) {
+    hits.push({ file, line: lineOf(text, m.index), rule: "accent-non-hover", match: m[0], msg: ACCENT_MSG })
+  }
+}
+
 const HEX_RULE = { id: "hex-color", re: /(?<![\w&/-])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![\w-])/g, msg: "hex colour in code; read a CSS variable instead" }
 const CSS_IMPORT_RULE = { id: "css-import", re: /^\s*import\s+(?:[^'"]*from\s+)?['"][^'"]+\.css['"]/gm, msg: "CSS import outside app/layout.tsx" }
 
@@ -69,6 +81,7 @@ for (const dir of SCAN_DIRS) {
     const text = readFileSync(full, "utf8")
     for (const rule of CODE_RULES) record(file, text, rule)
     recordStatusText(file, text)
+    recordAccent(file, text)
     if (!HEX_ALLOWED.has(file)) record(file, text, HEX_RULE)
     if (!CSS_IMPORT_ALLOWED.has(file)) record(file, text, CSS_IMPORT_RULE)
   }
@@ -85,6 +98,15 @@ for (const m of withoutTheme.matchAll(/font-family\s*:\s*([^;]+);/g)) {
 const cssStatusText = new RegExp(`(?<![\\w-])color\\s*:\\s*var\\(--(?:${STATUS})\\)`, "g")
 for (const m of withoutTheme.matchAll(cssStatusText)) {
   hits.push({ file: "app/globals.css", line: lineOf(css, m.index), rule: "status-text", match: m[0], msg: "status fill colour used as text; use var(--{status}-muted-foreground)" })
+}
+
+// Real property declarations (not token definitions) using var(--accent) must sit in a :hover/:focus rule.
+for (const m of withoutTheme.matchAll(/(?<![\w-])([a-z][a-z-]*)\s*:\s*[^;{}]*var\(--accent\)/g)) {
+  const open = withoutTheme.lastIndexOf("{", m.index)
+  const start = Math.max(withoutTheme.lastIndexOf("}", open), withoutTheme.lastIndexOf("{", open - 1), withoutTheme.lastIndexOf(";", open)) + 1
+  const selector = withoutTheme.slice(start, open).trim()
+  if (/:(?:hover|focus|focus-visible|focus-within)\b/.test(selector)) continue
+  hits.push({ file: "app/globals.css", line: lineOf(css, m.index), rule: "accent-non-hover", match: `${selector} { ${m[1]}: …var(--accent) }`, msg: ACCENT_MSG })
 }
 
 if (hits.length) {

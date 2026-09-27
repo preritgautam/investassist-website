@@ -28,7 +28,7 @@ const label = "text-2xs font-semibold uppercase tracking-wider text-muted-foregr
 function CardHeader({ icon: Icon, title }: { icon: typeof Calculator; title: string }) {
   return (
     <div className="mb-2 flex items-center gap-3">
-      <div className="flex size-10 items-center justify-center rounded bg-accent">
+      <div className="flex size-10 items-center justify-center rounded bg-surface-muted">
         <Icon className="size-5 text-accent-foreground" aria-hidden="true" />
       </div>
       <h3 className="text-xl font-bold text-foreground">{title}</h3>
@@ -111,7 +111,7 @@ export function FeatureShowcase() {
             </thead>
             <tbody>
               {scenarios.map((s) => (
-                <tr key={s.cap} className={`border-t border-border ${s.base ? "bg-accent" : ""}`}>
+                <tr key={s.cap} className={`border-t border-border ${s.base ? "bg-highlight" : ""}`}>
                   <td className="px-4 py-2.5 text-xs font-medium text-foreground">
                     {s.cap}
                     {s.base && <span className="ml-1.5 text-3xs font-semibold uppercase text-brand-text">Base</span>}
