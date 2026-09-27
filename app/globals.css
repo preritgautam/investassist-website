@@ -14,100 +14,87 @@ button,
    tokens; change a value here and it propagates site-wide.
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
-  /* Brand gold/bronze ramp */
-  --brand-50:  #f9f5ec;
-  --brand-100: #f1e6d0;
-  --brand-200: #e5d0a6;
-  --brand-300: #d4b473;
-  --brand-400: #c09646;
-  --brand-500: #a67b2b;
-  --brand-600: #8b5e24;   /* logo gold — brand identity / hover */
-  --brand-700: #74501f;   /* primary text / links (AA on light) */
-  --brand-800: #5f4119;
-  --brand-900: #4a3214;
+  /* Porcelain + Bronze. Gold is an accent (primary action, selection, limited
+     brand emphasis); headings and figures stay neutral. */
+  --brand-50:  #fbf7ee;
+  --brand-100: #f5ebd3;
+  --brand-200: #eeddb3;
+  --brand-300: #e7ce93;   /* primary button */
+  --brand-400: #dcc082;   /* primary button hover */
+  --brand-500: #b08a45;
+  --brand-600: #896323;   /* logo bronze / brand text (5.4:1 on white) */
+  --brand-700: #896323;
+  --brand-800: #6f501c;
+  --brand-900: #553d15;
+  --brand-text: #896323;
 
-  /* Named brand/action roles */
-  --action-hover: #74501f;
+  --action-hover: #dcc082;
 
-  /* Core canvas — warm ivory + espresso */
-  --background: #faf8f3;
-  --foreground: #251f18;
+  --background: #f5f7fa;
+  --foreground: #17212e;
   --card: #ffffff;
-  --card-foreground: #251f18;
+  --card-foreground: #17212e;
   --popover: #ffffff;
-  --popover-foreground: #251f18;
+  --popover-foreground: #17212e;
 
-  /* Primary — logo gold */
-  --primary: #8b5e24;
-  --primary-foreground: #ffffff;
+  --primary: #e7ce93;
+  --primary-foreground: #17212e;
 
-  /* Secondary / muted — warm sand */
-  --secondary: #f2eee5;
-  --secondary-foreground: #3a3226;
-  --muted: #f2eee5;
-  --muted-foreground: #6a6154;
-  --text-faint: #7d7365;
+  --secondary: #f8fafc;
+  --secondary-foreground: #17212e;
+  --muted: #f8fafc;
+  --muted-foreground: #596575;
+  --text-faint: #697586;
 
-  /* Accent — soft gold wash */
-  --accent: #f6efe0;
-  --accent-foreground: #74501f;
+  /* Selected state — neutral lift; gold is carried by the edge/indicator */
+  --accent: #eef1f5;
+  --accent-foreground: #17212e;
 
-  /* Borders / ring — warm hairline */
-  --border: #e7e0d3;
-  --input: #e7e0d3;
-  --ring: #a67b2b;
+  /* --border = decorative divider; --input / --control-border = visible boundary */
+  --border: #dce2e9;
+  --input: #8793a2;
+  --control-border: #8793a2;
+  --ring: #896323;
 
-  /* Surfaces */
   --surface: #ffffff;
-  --surface-elevated: #fdfcf9;
-  --surface-muted: #f2eee5;
+  --surface-elevated: #ffffff;
+  --surface-muted: #f8fafc;
 
-  /* Interactive states — warm set */
   --interactive-bg: #ffffff;
-  --interactive-fg: #251f18;
-  --interactive-border: #e7e0d3;
-  --interactive-hover-bg: #faf8f3;
-  --interactive-hover-fg: #251f18;
-  --interactive-secondary-bg: #f2eee5;
-  --interactive-secondary-fg: #3a3226;
-  --interactive-secondary-border: #e7e0d3;
-  --interactive-secondary-hover-bg: #ebe5d8;
-  --interactive-secondary-hover-fg: #251f18;
+  --interactive-fg: #17212e;
+  --interactive-border: #8793a2;
+  --interactive-hover-bg: #f8fafc;
+  --interactive-hover-fg: #17212e;
+  --interactive-secondary-bg: #ffffff;
+  --interactive-secondary-fg: #17212e;
+  --interactive-secondary-border: #8793a2;
+  --interactive-secondary-hover-bg: #eef1f5;
+  --interactive-secondary-hover-fg: #17212e;
 
-  /* Info status → gold (the auth surface's only status hue) */
-  --info: #8b5e24;
+  --info: #896323;
   --info-foreground: #ffffff;
-  --info-muted: #f6efe0;
-  --info-muted-foreground: #74501f;
+  --info-muted: #fbf7ee;
+  --info-muted-foreground: #6f501c;
 
-  /* Brand focus ring + glow → warm gold */
+  /* Flat by design — from/to are equal so legacy gradient consumers render solid */
+  --gradient-primary-from: #e7ce93;
+  --gradient-primary-to: #e7ce93;
+  --gradient-secondary-from: #f8fafc;
+  --gradient-secondary-to: #f8fafc;
+  --gradient-accent-from: #896323;
+  --gradient-accent-to: #896323;
 
-  /* Gradients → gold/bronze (primary CTA, accents) */
-  --gradient-primary-from: #8b5e24;
-  --gradient-primary-to: #74501f;
-  --gradient-secondary-from: #a67b2b;
-  --gradient-secondary-to: #8b5e24;
-  --gradient-accent-from: #a67b2b;
-  --gradient-accent-to: #74501f;
+  --azure-300: #eeddb3;
+  --azure-400: #e7ce93;
+  --azure-500: #dcc082;
+  --azure-600: #896323;
+  --azure-700: #6f501c;
 
-  /* Azure accent → gold. The neo-btn-primary gradient + active-state glows are
-     built from --azure-*; remapping them here turns the auth CTA and focus
-     glows gold/bronze instead of electric blue. */
-  --azure-300: #d4b473;
-  --azure-400: #a67b2b;
-  --azure-500: #8b5e24;
-  --azure-600: #74501f;
-  --azure-700: #5f4119;
-
-  /* Near-rectangular radii — the neo-card/tab/input family reads its corner
-     rounding from these tokens, so flattening them here makes every auth
-     surface (form card, deal card, inner bands) crisp with just a hair of
-     softening, without touching the rest of the product. */
-  --radius: 3px;
-  --radius-control: 2px;
+  /* ~8px controls, ~10px cards */
+  --radius: 10px;
+  --radius-control: 8px;
   /* Shape roles — the ONE place to decide what "round" means.
-     --shape-pill:  text-bearing chips/pill buttons (rounded-pill). Currently
-                    the standard control corner; set to 9999px to bring pills back.
+     --shape-pill:  text-bearing chips/pill buttons (rounded-pill).
      --shape-round: true circles — avatars, status dots, count badges,
                     progress bars (rounded-round). */
   --shape-pill: var(--radius-control);
@@ -124,59 +111,55 @@ button,
   --stack-gap: 1rem;
   --content-max: 80rem;
   --prose-max: 48rem;
-  /* Warm neutral scale — drives every slate-* / gray-* utility (was cool slate). */
-  --neutral-50:  #faf8f3;
-  --neutral-100: #f2eee5;
-  --neutral-200: #e7e0d3;
-  --neutral-300: #d6ccbb;
-  --neutral-400: #a89c89;
-  --neutral-500: #7d7365;
-  --neutral-600: #6a6154;
-  --neutral-700: #4a4136;
-  --neutral-800: #3a3226;
-  --neutral-900: #251f18;
-  --neutral-950: #17120c;
+  /* Cool neutral scale — drives every slate-* / gray-* utility. */
+  --neutral-50:  #f8fafc;
+  --neutral-100: #f1f4f8;
+  --neutral-200: #dce2e9;
+  --neutral-300: #c3cbd5;
+  --neutral-400: #8793a2;
+  --neutral-500: #697586;
+  --neutral-600: #596575;
+  --neutral-700: #3f4a58;
+  --neutral-800: #2a3441;
+  --neutral-900: #17212e;
+  --neutral-950: #0e151f;
   --neutral-white: #ffffff;
 
-  /* Espresso INK scale — structural dark bands (.on-ink), mode-independent. */
-  --ink-950: #120e09;
-  --ink-900: #17120c;
-  --ink-800: #211a12;
-  --ink-700: #2a2118;
-  --ink-600: #3a3025;
-  --ink-fg: #f3ecdf;
-  --ink-fg-muted: #b8ab97;
-  --ink-border: #3a3025;
-  --ink-border-strong: #4a3e30;
+  /* Graphite INK scale — structural dark bands (.on-ink), mode-independent. */
+  --ink-950: #0b0d0f;
+  --ink-900: #111315;
+  --ink-800: #1c2025;
+  --ink-700: #22272d;
+  --ink-600: #343b43;
+  --ink-fg: #f4f6f8;
+  --ink-fg-muted: #b2bac5;
+  --ink-border: #343b43;
+  --ink-border-strong: #4a525c;
 
-  /* Charts — gold-led; green/red stay semantic */
-  --chart-1: #8b5e24;
-  --chart-2: #251f18;
-  --chart-3: #c09646;
+  --chart-1: #896323;
+  --chart-2: #17212e;
+  --chart-3: #8793a2;
   --chart-4: #2f7d5b;
   --chart-5: #c33636;
 
-  /* Sidebar — espresso band with gold active states */
-  --sidebar: #211a12;
-  --sidebar-foreground: #e3d9c8;
-  --sidebar-primary: #c09646;
-  --sidebar-primary-foreground: #17120c;
-  --sidebar-accent: #2a2118;
-  --sidebar-accent-foreground: #f3ecdf;
-  --sidebar-border: #3a3025;
-  --sidebar-ring: #c09646;
+  --sidebar: #1c2025;
+  --sidebar-foreground: #b2bac5;
+  --sidebar-primary: #d6b66b;
+  --sidebar-primary-foreground: #171c22;
+  --sidebar-accent: #22272d;
+  --sidebar-accent-foreground: #f4f6f8;
+  --sidebar-border: #343b43;
+  --sidebar-ring: #e7ce93;
 
-  /* Semantic chrome tokens — components read these, never raw colors */
-  --overlay: rgba(23, 18, 12, 0.5);
-  --tooltip: #251f18;
-  --tooltip-foreground: #f3ecdf;
+  --overlay: rgba(23, 33, 46, 0.5);
+  --tooltip: #17212e;
+  --tooltip-foreground: #f4f6f8;
   --navbar: #ffffff;
-  --navbar-foreground: #251f18;
-  --navbar-border: #e7e0d3;
+  --navbar-foreground: #17212e;
+  --navbar-border: #dce2e9;
 
-  /* Card top accent line (every card) */
   --card-accent: var(--brand-600);
-  --card-accent-width: 2.5px;
+  --card-accent-width: 2px;
 
   /* Status, elevation, glass & type-scale tokens */
   --destructive: #c33636;
@@ -217,9 +200,9 @@ input:-webkit-autofill:active {
   transition: background-color 9999s ease-in-out 0s;
 }
 input:-webkit-autofill:focus {
-  border-color: var(--brand-400);
-  -webkit-box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
-  box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
+  border-color: var(--ring);
+  -webkit-box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent);
+  box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════������═══
@@ -228,115 +211,112 @@ input:-webkit-autofill:focus {
    it can be dropped onto a section to create a dark band in either mode.
    ═══════════════════════════════════════════════════════════════════════════ */
 :root.dark {
-  /* Gold ramp rebuilt for dark: low steps = dark gold tints (pill/badge fills +
-     borders), mids = solid gold buttons, 700–900 = light gold so gold-colored
-     TEXT (links, TARGET chip) stays legible on the espresso canvas. */
-  --brand-50:  color-mix(in srgb, #c09646 10%, var(--background));
-  --brand-100: color-mix(in srgb, #c09646 16%, var(--background));
-  --brand-200: color-mix(in srgb, #c09646 28%, var(--background));
-  --brand-300: color-mix(in srgb, #c09646 44%, var(--background));
-  --brand-400: #c09646;
-  --brand-500: #a67b2b;
-  --brand-600: #c09646;
-  --brand-700: #e0be7a;   /* links / primary text — reads on dark */
-  --brand-800: #ecd199;
-  --brand-900: #f3e3c0;
-  --action-hover: #d4b473;
+  /* Graphite + Gold. Low brand steps are gold tints over graphite (chip fills);
+     600–700 are the gold used for brand text on dark. */
+  --brand-50:  color-mix(in srgb, #d6b66b 8%, var(--background));
+  --brand-100: color-mix(in srgb, #d6b66b 14%, var(--background));
+  --brand-200: color-mix(in srgb, #d6b66b 26%, var(--background));
+  --brand-300: color-mix(in srgb, #d6b66b 42%, var(--background));
+  --brand-400: #e2c780;
+  --brand-500: #d6b66b;
+  --brand-600: #d6b66b;
+  --brand-700: #d6b66b;
+  --brand-800: #e2c780;
+  --brand-900: #e7ce93;
+  --brand-text: #d6b66b;
+  --action-hover: #e2c780;
 
-  /* Core canvas — deep espresso + warm off-white ink */
-  --background: #17120c;
-  --foreground: #f3ecdf;
-  --card: #211a12;
-  --card-foreground: #f3ecdf;
-  --popover: #211a12;
-  --popover-foreground: #f3ecdf;
+  --background: #111315;
+  --foreground: #f4f6f8;
+  --card: #1c2025;
+  --card-foreground: #f4f6f8;
+  --popover: #282e35;
+  --popover-foreground: #f4f6f8;
 
-  --primary: #c09646;
-  --primary-foreground: #17120c;
+  --primary: #d6b66b;
+  --primary-foreground: #171c22;
 
-  --secondary: #2a2118;
-  --secondary-foreground: #e3d9c8;
-  --muted: #241d15;
-  --muted-foreground: #b8ab97;
-  --text-faint: #8f8474;
+  --secondary: #22272d;
+  --secondary-foreground: #f4f6f8;
+  --muted: #22272d;
+  --muted-foreground: #b2bac5;
+  --text-faint: #8e98a4;
 
-  --accent: #2e2416;
-  --accent-foreground: #e0be7a;
+  --accent: #282e35;
+  --accent-foreground: #f4f6f8;
 
-  --border: #3a3025;
-  --input: #3a3025;
-  --ring: #c09646;
+  --border: #343b43;
+  --input: #758190;
+  --control-border: #758190;
+  --ring: #e7ce93;
 
-  --surface: #211a12;
-  --surface-elevated: #2a2118;
-  --surface-muted: #2a2118;
+  --surface: #1c2025;
+  --surface-elevated: #282e35;
+  --surface-muted: #22272d;
 
-  --interactive-bg: #241d15;
-  --interactive-fg: #f3ecdf;
-  --interactive-border: #3a3025;
-  --interactive-hover-bg: #2e2418;
-  --interactive-hover-fg: #ffffff;
-  --interactive-secondary-bg: #2a2118;
-  --interactive-secondary-fg: #e3d9c8;
-  --interactive-secondary-border: #3a3025;
-  --interactive-secondary-hover-bg: #352a1c;
-  --interactive-secondary-hover-fg: #ffffff;
+  --interactive-bg: #1c2025;
+  --interactive-fg: #f4f6f8;
+  --interactive-border: #758190;
+  --interactive-hover-bg: #22272d;
+  --interactive-hover-fg: #f4f6f8;
+  --interactive-secondary-bg: #1c2025;
+  --interactive-secondary-fg: #f4f6f8;
+  --interactive-secondary-border: #758190;
+  --interactive-secondary-hover-bg: #282e35;
+  --interactive-secondary-hover-fg: #f4f6f8;
 
-  --info: #c09646;
-  --info-foreground: #17120c;
-  --info-muted: #2e2416;
-  --info-muted-foreground: #e0be7a;
+  --info: #d6b66b;
+  --info-foreground: #171c22;
+  --info-muted: color-mix(in srgb, #d6b66b 12%, var(--card));
+  --info-muted-foreground: #e2c780;
 
-  --gradient-primary-from: #c09646;
-  --gradient-primary-to: #a67b2b;
-  --gradient-secondary-from: #d4b473;
-  --gradient-secondary-to: #c09646;
-  --gradient-accent-from: #d4b473;
-  --gradient-accent-to: #a67b2b;
+  --gradient-primary-from: #d6b66b;
+  --gradient-primary-to: #d6b66b;
+  --gradient-secondary-from: #22272d;
+  --gradient-secondary-to: #22272d;
+  --gradient-accent-from: #d6b66b;
+  --gradient-accent-to: #d6b66b;
 
-  /* azure-* drive the neo-btn-primary gradient + focus glows → keep them gold */
-  --azure-300: #d4b473;
-  --azure-400: #c09646;
-  --azure-500: #a67b2b;
-  --azure-600: #8b5e24;
-  --azure-700: #74501f;
+  --azure-300: #e7ce93;
+  --azure-400: #e2c780;
+  --azure-500: #d6b66b;
+  --azure-600: #d6b66b;
+  --azure-700: #b08a45;
 
-  /* Flat institutional glass → warm dark card + hairline */
+  --neutral-50:  #16191c;
+  --neutral-100: #1c2025;
+  --neutral-200: #22272d;
+  --neutral-300: #343b43;
+  --neutral-400: #5b6570;
+  --neutral-500: #8e98a4;
+  --neutral-600: #b2bac5;
+  --neutral-700: #cdd3db;
+  --neutral-800: #e1e5ea;
+  --neutral-900: #f4f6f8;
+  --neutral-950: #fafbfc;
+  --neutral-white: #1c2025;   /* raw bg-white surfaces become graphite card */
 
-  --neutral-50:  #1c160f;
-  --neutral-100: #211a12;
-  --neutral-200: #2a2118;
-  --neutral-300: #3a3025;
-  --neutral-400: #6f6556;
-  --neutral-500: #8f8474;
-  --neutral-600: #b8ab97;
-  --neutral-700: #d0c4b0;
-  --neutral-800: #e3d9c8;
-  --neutral-900: #f3ecdf;
-  --neutral-950: #faf5ec;
-  --neutral-white: #211a12;   /* raw bg-white surfaces become espresso card */
-
-  --chart-1: #c09646;
-  --chart-2: #e0be7a;
-  --chart-3: #8f8474;
+  --chart-1: #d6b66b;
+  --chart-2: #f4f6f8;
+  --chart-3: #758190;
   --chart-4: #46c08a;
   --chart-5: #e06666;
 
-  --sidebar: #120e09;
-  --sidebar-foreground: #d0c4b0;
-  --sidebar-primary: #c09646;
-  --sidebar-primary-foreground: #17120c;
-  --sidebar-accent: #211a12;
-  --sidebar-accent-foreground: #f3ecdf;
-  --sidebar-border: #2a2118;
-  --sidebar-ring: #c09646;
+  --sidebar: #0b0d0f;
+  --sidebar-foreground: #b2bac5;
+  --sidebar-primary: #d6b66b;
+  --sidebar-primary-foreground: #171c22;
+  --sidebar-accent: #1c2025;
+  --sidebar-accent-foreground: #f4f6f8;
+  --sidebar-border: #22272d;
+  --sidebar-ring: #e7ce93;
 
   --overlay: rgba(0, 0, 0, 0.6);
-  --tooltip: #f3ecdf;
-  --tooltip-foreground: #17120c;
-  --navbar: #17120c;
-  --navbar-foreground: #f3ecdf;
-  --navbar-border: #3a3025;
+  --tooltip: #f4f6f8;
+  --tooltip-foreground: #171c22;
+  --navbar: #111315;
+  --navbar-foreground: #f4f6f8;
+  --navbar-border: #343b43;
 
   /* Status, elevation, glass & type-scale tokens */
   --emerald-50: color-mix(in srgb, #10b981 12%, var(--background));
@@ -518,6 +498,8 @@ input:-webkit-autofill:focus {
   --color-brand-700: var(--brand-700);
   --color-brand-800: var(--brand-800);
   --color-brand-900: var(--brand-900);
+  --color-brand-text: var(--brand-text);
+  --color-control-border: var(--control-border);
 
   /* Electric azure accent utilities (bg-azure-500, text-azure-400, …) */
   --color-azure-300: var(--azure-300);
@@ -758,12 +740,12 @@ input:-webkit-autofill:focus {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(139, 94, 36, 0.22);
-    border-radius: 3px;
+    background: color-mix(in srgb, var(--foreground) 18%, transparent);
+    border-radius: var(--radius-control);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(139, 94, 36, 0.40);
+    background: color-mix(in srgb, var(--foreground) 32%, transparent);
   }
 
   /* Ticker animation */
@@ -782,10 +764,9 @@ input:-webkit-autofill:focus {
     outline-offset: 2px;
   }
 
-  /* Selection — amber highlight */
   ::selection {
-    background: rgba(139, 94, 36, 0.24);
-    color: #16202e;
+    background: color-mix(in srgb, var(--primary) 55%, transparent);
+    color: var(--foreground);
   }
 }
 
@@ -1177,7 +1158,7 @@ input:-webkit-autofill:focus {
     justify-content: center;
     gap: 14px;
     padding: 15px 22px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-control);
     background: var(--primary);
     color: var(--primary-foreground);
     font-weight: 650;
@@ -1211,13 +1192,19 @@ input:-webkit-autofill:focus {
     transform: translateY(-1px);
   }
   .ia-landing .btn.light {
-    background: transparent;
+    background: var(--interactive-secondary-bg);
     color: var(--foreground);
-    border-color: var(--border);
+    border-color: var(--control-border);
+  }
+  .ia-landing .btn:disabled,
+  .ia-landing .btn[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
   }
   .ia-landing .btn.light:hover {
     background: var(--accent);
-    border-color: var(--accent-foreground);
+    border-color: var(--foreground);
     color: var(--foreground);
     transform: translateY(-1px);
   }
@@ -1228,7 +1215,7 @@ input:-webkit-autofill:focus {
     letter-spacing: 1.8px;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     line-height: 1.6;
     }
     .ia-landing .hero-top .eyebrow {
@@ -1243,7 +1230,7 @@ input:-webkit-autofill:focus {
     color: var(--foreground);
   }
   .ia-landing h2 span {
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   /* Vertical rhythm only. Uses padding-block so that when `.section` is combined
      with `.wrap` on the same element, it never resets the horizontal `--pad-x`
@@ -1271,7 +1258,7 @@ input:-webkit-autofill:focus {
   .ia-landing .hero {
     padding: var(--hero-gap) 0;
     border-bottom: 1px solid var(--border);
-    background: radial-gradient(ellipse at 92% 8%, color-mix(in oklab, var(--primary) 3%, transparent), transparent 58%), var(--background);
+    background: var(--background);
   }
   .ia-landing .hero-top {
     max-width: none;
@@ -1351,7 +1338,7 @@ input:-webkit-autofill:focus {
   .ia-landing .document-flow {
     margin-top: 30px;
     border: 1px solid var(--border);
-    border-top: 2px solid var(--primary);
+    border-top: 2px solid var(--card-accent);
     background: var(--card);
     border-radius: var(--radius);
     box-shadow: 0 16px 40px color-mix(in oklab, var(--foreground) 6%, transparent);
@@ -1405,7 +1392,7 @@ input:-webkit-autofill:focus {
     font-weight: 500;
   }
   .ia-landing .flow-documents .doc-name svg {
-    color: var(--primary);
+    color: var(--brand-text);
     flex-shrink: 0;
   }
   .ia-landing .flow-documents small {
@@ -1416,7 +1403,7 @@ input:-webkit-autofill:focus {
   .ia-landing .flow-arrow {
     display: none;
     text-align: center;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     font-size: 1.375rem;
   }
   /* Stacked: separate each stage with a top rule. */
@@ -1504,12 +1491,12 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .scrutiny-states li.active button {
     background: var(--accent);
-    border-left-color: var(--primary);
-    color: var(--accent-foreground);
+    border-left-color: var(--brand-text);
+    color: var(--foreground);
     font-weight: 650;
   }
   .ia-landing .scrutiny-states li.active .num {
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   /* Illustrative card */
   .ia-landing .scrutiny-card {
@@ -1550,10 +1537,10 @@ input:-webkit-autofill:focus {
     white-space: nowrap;
   }
   .ia-landing .scrutiny-row.feat {
-    color: var(--accent-foreground);
+    color: var(--foreground);
   }
   .ia-landing .scrutiny-row.feat b {
-    color: var(--accent-foreground);
+    color: var(--foreground);
   }
   .ia-landing .scrutiny-finding {
     padding: 16px 0;
@@ -1614,7 +1601,7 @@ input:-webkit-autofill:focus {
   .ia-landing .workspace {
     margin-top: 28px;
     border: 1px solid var(--border);
-    border-top: 2px solid var(--primary);
+    border-top: 2px solid var(--card-accent);
     border-radius: var(--radius);
     background: var(--card);
     box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
@@ -1648,7 +1635,7 @@ input:-webkit-autofill:focus {
     font-weight: 600;
   }
   .ia-landing .apptabs b {
-    color: var(--accent-foreground);
+    color: var(--foreground);
     font-weight: 600;
   }
   .ia-landing .appbar small {
@@ -1717,7 +1704,7 @@ input:-webkit-autofill:focus {
     font-variant-numeric: tabular-nums;
   }
   .ia-landing .metric em {
-    color: var(--accent-foreground);
+    color: var(--foreground);
     font-style: normal;
   }
   .ia-landing .metric p {
@@ -1753,11 +1740,11 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .pill {
     background: var(--warning-muted);
-    color: var(--warning);
+    color: var(--warning-muted-foreground);
     font-size: var(--text-caption);
     font-weight: 600;
     padding: 4px 9px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-control);
     white-space: nowrap;
   }
   .ia-landing .finding {
@@ -1768,7 +1755,7 @@ input:-webkit-autofill:focus {
     margin-top: 18px;
   }
   .ia-landing .finding i {
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     font-style: normal;
   }
   .ia-landing .finding p {
@@ -1797,7 +1784,7 @@ input:-webkit-autofill:focus {
     cursor: pointer;
     font-size: var(--text-meta);
     font-weight: 600;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     list-style: none;
     padding-top: 14px;
     border-top: 1px solid var(--border);
@@ -1827,7 +1814,7 @@ input:-webkit-autofill:focus {
     margin-bottom: 0;
   }
   .ia-landing .calc-basis i {
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     font-style: normal;
   }
   .ia-landing .valuation-basis {
@@ -1837,7 +1824,7 @@ input:-webkit-autofill:focus {
     margin: 0 0 8px;
   }
   .ia-landing .valuation-basis b {
-    color: var(--accent-foreground);
+    color: var(--foreground);
     font-weight: 600;
   }
   .ia-landing .value {
@@ -1858,7 +1845,7 @@ input:-webkit-autofill:focus {
   .ia-landing .analysis input[type="range"] {
     width: 100%;
     margin: 13px 0 5px;
-    accent-color: var(--accent-foreground);
+    accent-color: var(--brand-text);
   }
   .ia-landing .scale {
     display: flex;
@@ -1883,7 +1870,7 @@ input:-webkit-autofill:focus {
     font-weight: 600;
   }
   .ia-landing #value-gap {
-    color: var(--accent-foreground);
+    color: var(--foreground);
     font-weight: 600;
   }
   .ia-landing .valuation-note {
@@ -1895,7 +1882,7 @@ input:-webkit-autofill:focus {
   .ia-landing .sample-open {
     margin-top: 18px;
     font-size: var(--text-meta);
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -1957,7 +1944,7 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .review-rows article > span {
     @apply font-mono; font-size: var(--text-meta);
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   .ia-landing .review-rows h3 {
     font-size: 1.5rem;
@@ -2052,7 +2039,7 @@ input:-webkit-autofill:focus {
     @apply font-mono; font-size: var(--text-tag); font-weight: 600; line-height: 1.5;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   .ia-landing .progress-stage > span:last-child:not(:first-child) {
     font-size: 1.25rem;
@@ -2079,7 +2066,7 @@ input:-webkit-autofill:focus {
     border-left: 2px solid var(--border);
   }
   .ia-landing .progress-destination .context-stack span {
-    border-color: var(--accent-foreground);
+    border-color: var(--brand-text);
   }
   .ia-landing .compound-close {
     display: flex;
@@ -2132,13 +2119,14 @@ input:-webkit-autofill:focus {
      soft brand-tinted surface (cream in light, warm dark in dark) inside a full
      brand border. */
   .ia-landing .price.feat {
-    background: var(--accent);
-    border: 1px solid var(--primary);
+    background: var(--card);
+    border: 1px solid var(--control-border);
+    border-top: 2px solid var(--card-accent);
     border-top-width: 2px;
     box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 6%, transparent);
   }
   .ia-landing .price.feat .overage {
-    border-top-color: var(--primary);
+    border-top-color: var(--border);
   }
   .ia-landing .price .badge {
     position: absolute;
@@ -2187,7 +2175,7 @@ input:-webkit-autofill:focus {
   .ia-landing .price .credits {
     font-size: var(--text-copy-sm);
     font-weight: 600;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   .ia-landing .price .support {
     font-size: var(--text-meta);
@@ -2248,7 +2236,7 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .faq summary::after {
     content: "+";
-    color: var(--accent-foreground);
+    color: var(--brand-text);
     font-weight: 400;
     font-size: 1.375rem;
   }
@@ -2450,7 +2438,7 @@ input:-webkit-autofill:focus {
     .ia-landing .flow-result {
       border-top: 0;
       padding-top: 0;
-  border-left: 2px solid var(--accent-foreground);
+  border-left: 2px solid var(--card-accent);
   padding-left: 18px;
   justify-self: center;
   width: max-content;
@@ -2602,7 +2590,7 @@ input:-webkit-autofill:focus {
     transition: border-color 0.18s ease, transform 0.18s ease;
   }
   .ia-landing .article-card:hover {
-    border-color: var(--primary);
+    border-color: var(--control-border);
     transform: translateY(-2px);
   }
   .ia-landing .article-card .topic {
@@ -2610,7 +2598,7 @@ input:-webkit-autofill:focus {
     font-size: var(--text-tag);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   .ia-landing .article-card h2 {
     font-size: 1.375rem;
@@ -2649,7 +2637,7 @@ input:-webkit-autofill:focus {
     text-decoration: none;
   }
   .ia-landing .article-card a.card-link:hover {
-    color: var(--primary);
+    color: var(--brand-text);
   }
 
   /* Article template */
@@ -2670,7 +2658,7 @@ input:-webkit-autofill:focus {
     text-decoration: none;
   }
   .ia-landing .breadcrumbs a:hover {
-    color: var(--primary);
+    color: var(--brand-text);
   }
   .ia-landing .breadcrumbs .sep {
     opacity: 0.5;
@@ -2684,7 +2672,7 @@ input:-webkit-autofill:focus {
     font-size: var(--text-tag);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent-foreground);
+    color: var(--brand-text);
   }
   .ia-landing .article-header h1 {
     margin-top: 14px;
@@ -2765,7 +2753,7 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .prose .callout {
     border: 1px solid var(--border);
-    border-left: 3px solid var(--primary);
+    border-left: 3px solid var(--brand-text);
     background: var(--muted);
     border-radius: var(--radius);
     padding: 20px 22px;

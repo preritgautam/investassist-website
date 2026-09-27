@@ -59,7 +59,7 @@ export function FeatureShowcase() {
                     {l.label}
                   </span>
                   <span
-                    className={`whitespace-nowrap text-caption font-bold ${l.strong ? "text-primary" : "text-foreground"}`}
+                    className={`whitespace-nowrap text-caption font-bold ${l.strong ? "text-foreground tabular-nums" : "text-foreground tabular-nums"}`}
                   >
                     {l.value}
                   </span>
@@ -85,7 +85,7 @@ export function FeatureShowcase() {
                 <tr className="border-t border-border">
                   <td className="py-1.5 text-caption font-semibold text-foreground">148 units</td>
                   <td className="py-1.5" />
-                  <td className="py-1.5 text-right text-caption font-bold text-primary">$1,548</td>
+                  <td className="py-1.5 text-right text-caption font-bold tabular-nums text-foreground">$1,548</td>
                 </tr>
               </tbody>
             </table>
@@ -114,7 +114,7 @@ export function FeatureShowcase() {
                 <tr key={s.cap} className={`border-t border-border ${s.base ? "bg-accent" : ""}`}>
                   <td className="px-4 py-2.5 text-xs font-medium text-foreground">
                     {s.cap}
-                    {s.base && <span className="ml-1.5 text-3xs font-semibold uppercase text-primary">Base</span>}
+                    {s.base && <span className="ml-1.5 text-3xs font-semibold uppercase text-brand-text">Base</span>}
                   </td>
                   <td className="px-4 py-2.5 text-right text-xs font-bold text-foreground">{s.value}</td>
                   <td className="px-4 py-2.5 text-right text-xs font-semibold text-muted-foreground">{s.delta}</td>

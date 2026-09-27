@@ -88,7 +88,7 @@ export default function RootLayout({
         className={`${geistMono.variable} font-sans antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>

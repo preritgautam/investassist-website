@@ -100,7 +100,7 @@ export default function SampleAnalysisPage() {
         <section data-slot="card" className={`${card} card-pad`}>
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             <div>
-              <div className="mb-2 flex items-center gap-2 text-primary">
+              <div className="mb-2 flex items-center gap-2 text-brand-text">
                 <Building2 className="size-5" aria-hidden="true" />
                 <span className="text-xs font-semibold uppercase tracking-wider">148-Unit Multifamily</span>
               </div>
@@ -113,7 +113,7 @@ export default function SampleAnalysisPage() {
             </div>
             <div className="rounded border border-border bg-muted px-5 py-4 text-center">
               <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Verdict</p>
-              <p className="text-lg font-bold text-primary">Proceed with conditions</p>
+              <p className="text-lg font-bold text-foreground">Proceed with conditions</p>
               <p className="mt-1 text-xs text-muted-foreground">Underwrites at the comp band, not the pitch</p>
             </div>
           </div>
