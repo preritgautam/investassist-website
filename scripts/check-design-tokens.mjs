@@ -22,17 +22,15 @@ const CODE_RULES = [
   { id: "font-family", re: /\bfontFamily\s*:|\bfont-\[/g, msg: "stray font-family; fonts come from @theme (font-sans / font-mono)" },
 ]
 // Status fills (--success, --warning, …) fail contrast as text on their pale --*-muted backgrounds.
-// Icons may use them (they carry a size-* / h-* / w-* class); text must use --*-muted-foreground.
+// Status icons go through components/ui/status-icon.tsx (the only file allowed text-{status});
+// text must use --*-muted-foreground.
 const STATUS = "success|warning|info|destructive|attention"
-const STATUS_TEXT_MSG = "status fill colour used as text; use text-{status}-muted-foreground (icons with size-* are allowed)"
+const STATUS_ICON_FILE = "components/ui/status-icon.tsx"
+const STATUS_TEXT_MSG = "status fill colour as a class; text uses text-{status}-muted-foreground, icons use <StatusIcon tone=…>"
 const TW_STATUS_TEXT = new RegExp(`\\btext-(?:${STATUS})(?:\\/\\d+)?(?![\\w-])`, "g")
-const ICON_SIZED = /(?:^|\s)(?:size|h|w)-/
 function recordStatusText(file, text) {
+  if (file === STATUS_ICON_FILE) return
   for (const m of text.matchAll(TW_STATUS_TEXT)) {
-    const start = Math.max(text.lastIndexOf('"', m.index), text.lastIndexOf("'", m.index), text.lastIndexOf("`", m.index))
-    const ends = ['"', "'", "`"].map((q) => text.indexOf(q, m.index)).filter((i) => i !== -1)
-    const classList = text.slice(start + 1, ends.length ? Math.min(...ends) : undefined)
-    if (ICON_SIZED.test(classList)) continue
     hits.push({ file, line: lineOf(text, m.index), rule: "status-text", match: m[0], msg: STATUS_TEXT_MSG })
   }
 }

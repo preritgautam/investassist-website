@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { BrandMark } from "@/components/ui/brand-logo"
+import { StatusIcon } from "@/components/ui/status-icon"
 import { getAppUrl } from "@/lib/utils"
 import {
   ArrowRight,
@@ -223,13 +224,13 @@ export default function SampleAnalysisPage() {
           <div className="grid gap-6 lg:grid-cols-2">
             <div data-slot="card" className={`${card} card-pad`}>
               <div className="mb-4 flex items-center gap-2">
-                <CheckCircle2 className="size-5 text-success" aria-hidden="true" />
+                <StatusIcon icon={CheckCircle2} tone="success" size="md" />
                 <h3 className="text-lg font-bold text-foreground">What checks out</h3>
               </div>
               <ul className="flex flex-col gap-3">
                 {strengths.map((s) => (
                   <li key={s} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
+                    <StatusIcon icon={CheckCircle2} tone="success" className="mt-0.5" />
                     <span>{s}</span>
                   </li>
                 ))}
@@ -237,13 +238,13 @@ export default function SampleAnalysisPage() {
             </div>
             <div data-slot="card" className={`${card} card-pad`}>
               <div className="mb-4 flex items-center gap-2">
-                <AlertTriangle className="size-5 text-warning" aria-hidden="true" />
+                <StatusIcon icon={AlertTriangle} tone="warning" size="md" />
                 <h3 className="text-lg font-bold text-foreground">What to question</h3>
               </div>
               <ul className="flex flex-col gap-3">
                 {risks.map((r) => (
                   <li key={r} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                    <AlertTriangle className="mt-0.5 size-4 shrink-0 text-warning" aria-hidden="true" />
+                    <StatusIcon icon={AlertTriangle} tone="warning" className="mt-0.5" />
                     <span>{r}</span>
                   </li>
                 ))}
