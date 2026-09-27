@@ -14,81 +14,90 @@ button,
    tokens; change a value here and it propagates site-wide.
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
-  /* Porcelain + Bronze. Gold is an accent (primary action, selection, limited
-     brand emphasis); headings and figures stay neutral. */
-  --brand-50:  #fbf7ee;
-  --brand-100: #f5ebd3;
-  --brand-200: #eeddb3;
-  --brand-300: #e7ce93;   /* primary button */
-  --brand-400: #dcc082;   /* primary button hover */
-  --brand-500: #b08a45;
-  --brand-600: #896323;   /* logo bronze / brand text (5.4:1 on white) */
-  --brand-700: #896323;
-  --brand-800: #6f501c;
-  --brand-900: #553d15;
-  --brand-text: #896323;
+  /* Warm White + Champagne Gold. Warmth comes from gold accents only; surfaces
+     are white/near-white and text stays neutral. */
+  --brand-50:  #fbf3de;   /* soft gold highlight */
+  --brand-100: #fbf3de;
+  --brand-200: #e7d5a2;   /* gold highlight border */
+  --brand-300: #d6b66b;   /* primary gold fill */
+  --brand-400: #c9a554;   /* primary gold hover */
+  --brand-500: #bc9745;   /* primary gold pressed */
+  --brand-600: #795812;   /* small gold text / links (6.6:1 on white) */
+  --brand-700: #795812;
+  --brand-800: #62460d;   /* gold link hover */
+  --brand-900: #62460d;
+  --brand-text: #795812;
+  --brand-text-hover: #62460d;
 
-  --action-hover: #dcc082;
+  --action-hover: #c9a554;
+  --action-pressed: #bc9745;
 
-  --background: #f5f7fa;
-  --foreground: #17212e;
+  --background: #faf9f6;
+  --foreground: #18212b;
   --card: #ffffff;
-  --card-foreground: #17212e;
+  --card-foreground: #18212b;
   --popover: #ffffff;
-  --popover-foreground: #17212e;
+  --popover-foreground: #18212b;
 
-  --primary: #e7ce93;
-  --primary-foreground: #17212e;
+  --primary: #d6b66b;
+  --primary-foreground: #18212b;
 
-  --secondary: #f8fafc;
-  --secondary-foreground: #17212e;
-  --muted: #f8fafc;
-  --muted-foreground: #596575;
-  --text-faint: #697586;
+  --secondary: #f4f3ef;
+  --secondary-foreground: #18212b;
+  --muted: #f4f3ef;
+  --muted-foreground: #4b5563;   /* body / secondary text */
+  --text-faint: #646e83;         /* muted supporting text — spec #667085 nudged to clear 4.5:1 on #f4f3ef */
 
-  /* Selected state — neutral lift; gold is carried by the edge/indicator */
-  --accent: #eef1f5;
-  --accent-foreground: #17212e;
+  /* Selected / hover state — neutral lift; gold is carried by the edge/indicator */
+  --accent: #f0f2f4;
+  --accent-foreground: #18212b;
 
-  /* --border = decorative divider; --input / --control-border = visible boundary */
-  --border: #dce2e9;
-  --input: #8793a2;
-  --control-border: #8793a2;
-  --ring: #896323;
+  /* --border = subtle divider; --card-border = card edge; --input / --control-border = visible boundary */
+  --border: #e5e7eb;
+  --card-border: #d9dee5;
+  --input: #858f9c;
+  --control-border: #858f9c;
+  --ring: #8a651c;
 
   --surface: #ffffff;
   --surface-elevated: #ffffff;
-  --surface-muted: #f8fafc;
+  --surface-muted: #f4f3ef;
 
   --interactive-bg: #ffffff;
-  --interactive-fg: #17212e;
-  --interactive-border: #8793a2;
-  --interactive-hover-bg: #f8fafc;
-  --interactive-hover-fg: #17212e;
+  --interactive-fg: #18212b;
+  --interactive-border: #858f9c;
+  --interactive-hover-bg: #f0f2f4;
+  --interactive-hover-fg: #18212b;
+  --interactive-pressed-bg: #e6e9ed;
   --interactive-secondary-bg: #ffffff;
-  --interactive-secondary-fg: #17212e;
-  --interactive-secondary-border: #8793a2;
-  --interactive-secondary-hover-bg: #eef1f5;
-  --interactive-secondary-hover-fg: #17212e;
+  --interactive-secondary-fg: #18212b;
+  --interactive-secondary-border: #858f9c;
+  --interactive-secondary-hover-bg: #f0f2f4;
+  --interactive-secondary-hover-fg: #18212b;
 
-  --info: #896323;
+  --info: #245b8a;
   --info-foreground: #ffffff;
-  --info-muted: #fbf7ee;
-  --info-muted-foreground: #6f501c;
+  --info-muted: #edf4fc;
+  --info-muted-foreground: #245b8a;
+
+  /* Neutral elevation — no brown tint. Prefer borders + spacing. */
+  --shadow-card: 0 4px 16px rgb(24 33 43 / 0.06);
+  --shadow-card-emphasis: 0 4px 16px rgb(24 33 43 / 0.06);
+  --shadow-panel: 0 4px 16px rgb(24 33 43 / 0.06);
 
   /* Flat by design — from/to are equal so legacy gradient consumers render solid */
-  --gradient-primary-from: #e7ce93;
-  --gradient-primary-to: #e7ce93;
-  --gradient-secondary-from: #f8fafc;
-  --gradient-secondary-to: #f8fafc;
-  --gradient-accent-from: #896323;
-  --gradient-accent-to: #896323;
+  --gradient-primary-from: #d6b66b;
+  --gradient-primary-to: #d6b66b;
+  --gradient-secondary-from: #f4f3ef;
+  --gradient-secondary-to: #f4f3ef;
+  --gradient-accent-from: #795812;
+  --gradient-accent-to: #795812;
 
-  --azure-300: #eeddb3;
-  --azure-400: #e7ce93;
-  --azure-500: #dcc082;
-  --azure-600: #896323;
-  --azure-700: #6f501c;
+  --azure-300: #e7d5a2;
+  --azure-400: #d6b66b;
+  --azure-500: #c9a554;
+  --azure-600: #795812;
+  --azure-700: #62460d;
 
   /* ~8px controls, ~10px cards */
   --radius: 10px;
@@ -112,16 +121,16 @@ button,
   --content-max: 80rem;
   --prose-max: 48rem;
   /* Cool neutral scale — drives every slate-* / gray-* utility. */
-  --neutral-50:  #f8fafc;
-  --neutral-100: #f1f4f8;
-  --neutral-200: #dce2e9;
-  --neutral-300: #c3cbd5;
-  --neutral-400: #8793a2;
-  --neutral-500: #697586;
-  --neutral-600: #596575;
+  --neutral-50:  #f4f3ef;
+  --neutral-100: #f0f2f4;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d9dee5;
+  --neutral-400: #929aa5;   /* decorative / disabled text */
+  --neutral-500: #646e83;
+  --neutral-600: #4b5563;
   --neutral-700: #3f4a58;
   --neutral-800: #2a3441;
-  --neutral-900: #17212e;
+  --neutral-900: #18212b;
   --neutral-950: #0e151f;
   --neutral-white: #ffffff;
 
@@ -136,11 +145,11 @@ button,
   --ink-border: #343b43;
   --ink-border-strong: #4a525c;
 
-  --chart-1: #896323;
-  --chart-2: #17212e;
-  --chart-3: #8793a2;
-  --chart-4: #2f7d5b;
-  --chart-5: #c33636;
+  --chart-1: #795812;
+  --chart-2: #18212b;
+  --chart-3: #858f9c;
+  --chart-4: #176b4a;
+  --chart-5: #b42318;
 
   --sidebar: #1c2025;
   --sidebar-foreground: #b2bac5;
@@ -151,35 +160,35 @@ button,
   --sidebar-border: #343b43;
   --sidebar-ring: #e7ce93;
 
-  --overlay: rgba(23, 33, 46, 0.5);
-  --tooltip: #17212e;
+  --overlay: rgb(17 19 21 / 0.4);
+  --tooltip: #18212b;
   --tooltip-foreground: #f4f6f8;
   --navbar: #ffffff;
-  --navbar-foreground: #17212e;
-  --navbar-border: #dce2e9;
+  --navbar-foreground: #18212b;
+  --navbar-border: #e5e7eb;
 
   --card-accent: var(--brand-600);
   --card-accent-width: 2px;
 
   /* Status, elevation, glass & type-scale tokens */
-  --destructive: #c33636;
+  --destructive: #b42318;
   --destructive-foreground: #ffffff;
-  --success: #176d58;
+  --success: #176b4a;
   --success-foreground: #ffffff;
-  --success-muted: #e7f2ec;
-  --success-muted-foreground: #145140;
-  --warning: #b7791f;
+  --success-muted: #eaf6ef;
+  --success-muted-foreground: #176b4a;
+  --warning: #855800;
   --warning-foreground: #ffffff;
-  --warning-muted: #fff3da;
-  --warning-muted-foreground: #79550c;
-  --attention: #b7791f;
+  --warning-muted: #fff4da;
+  --warning-muted-foreground: #855800;
+  --attention: #855800;
   --attention-foreground: #ffffff;
-  --attention-muted: #fff3da;
-  --attention-muted-foreground: #79550c;
-  --gradient-success-from: #176d58;
-  --gradient-success-to: #145140;
-  --gradient-warning-from: #b7791f;
-  --gradient-warning-to: #79550c;
+  --attention-muted: #fff4da;
+  --attention-muted-foreground: #855800;
+  --gradient-success-from: #176b4a;
+  --gradient-success-to: #176b4a;
+  --gradient-warning-from: #855800;
+  --gradient-warning-to: #855800;
 }
 
 /* Autofill neutralization — Chrome/Safari paint saved emails/passwords with a
@@ -317,6 +326,15 @@ input:-webkit-autofill:focus {
   --navbar: #111315;
   --navbar-foreground: #f4f6f8;
   --navbar-border: #343b43;
+
+  /* Roles added with the light retune — values reproduce the approved dark look exactly. */
+  --brand-text-hover: #d6b66b;
+  --action-pressed: #e2c780;
+  --card-border: #343b43;
+  --interactive-pressed-bg: #282e35;
+  --shadow-card: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+  --shadow-card-emphasis: 0 18px 45px color-mix(in oklab, var(--foreground) 6%, transparent);
+  --shadow-panel: 0 16px 40px color-mix(in oklab, var(--foreground) 6%, transparent);
 
   /* Status, elevation, glass & type-scale tokens */
   --emerald-50: color-mix(in srgb, #10b981 12%, var(--background));
@@ -1191,22 +1209,34 @@ input:-webkit-autofill:focus {
     color: var(--primary-foreground);
     transform: translateY(-1px);
   }
+  .ia-landing .btn:active {
+    background: var(--action-pressed);
+    border-color: var(--action-pressed);
+    transform: none;
+  }
   .ia-landing .btn.light {
     background: var(--interactive-secondary-bg);
     color: var(--foreground);
     border-color: var(--control-border);
-  }
-  .ia-landing .btn:disabled,
-  .ia-landing .btn[aria-disabled="true"] {
-    opacity: 0.55;
-    cursor: not-allowed;
-    transform: none;
   }
   .ia-landing .btn.light:hover {
     background: var(--accent);
     border-color: var(--foreground);
     color: var(--foreground);
     transform: translateY(-1px);
+  }
+  .ia-landing .btn.light:active {
+    background: var(--interactive-pressed-bg);
+    transform: none;
+  }
+  /* Disabled is neutral in both themes so it never reads as a live gold CTA. */
+  .ia-landing .btn:disabled,
+  .ia-landing .btn[aria-disabled="true"] {
+    background: var(--muted);
+    border-color: var(--border);
+    color: var(--text-faint);
+    cursor: not-allowed;
+    transform: none;
   }
 
   /* ── Eyebrow / section heads ─────────────────────────────────────────────── */
@@ -1337,11 +1367,11 @@ input:-webkit-autofill:focus {
      mobile; a five-track grid with arrow connectors on desktop. */
   .ia-landing .document-flow {
     margin-top: 30px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
     border-top: 2px solid var(--card-accent);
     background: var(--card);
     border-radius: var(--radius);
-    box-shadow: 0 16px 40px color-mix(in oklab, var(--foreground) 6%, transparent);
+    box-shadow: var(--shadow-panel);
   }
   /* Mobile: stack the eyebrow above the "DOCUMENT TO DECISION" label so it reads
      cleanly on a narrow card instead of squeezing onto one line. Desktop restores
@@ -1500,11 +1530,11 @@ input:-webkit-autofill:focus {
   }
   /* Illustrative card */
   .ia-landing .scrutiny-card {
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
     border-radius: var(--radius);
     background: var(--card);
     padding: 24px 20px;
-    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+    box-shadow: var(--shadow-card);
   }
   .ia-landing .scrutiny-kicker {
     display: block;
@@ -1600,11 +1630,11 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .workspace {
     margin-top: 28px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
     border-top: 2px solid var(--card-accent);
     border-radius: var(--radius);
     background: var(--card);
-    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
   }
   .ia-landing .appbar {
@@ -1889,6 +1919,7 @@ input:-webkit-autofill:focus {
     gap: 6px;
   }
   .ia-landing .sample-open:hover {
+    color: var(--brand-text-hover);
     text-decoration: underline;
   }
 
@@ -1911,10 +1942,10 @@ input:-webkit-autofill:focus {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--ink-950);
-    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
+    box-shadow: var(--shadow-card);
   }
 
-  /* ── Editorial "how it works" ───────────���────────────────────────────────── */
+  /* ── Editorial "how it works" ───────────���─────────────────────────────��──── */
   .ia-landing .editorial {
     display: grid;
     grid-template-columns: 1fr;
@@ -2110,7 +2141,7 @@ input:-webkit-autofill:focus {
     position: relative;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
     border-radius: var(--radius);
     background: var(--card);
     padding: 30px 24px 26px;
@@ -2123,7 +2154,7 @@ input:-webkit-autofill:focus {
     border: 1px solid var(--control-border);
     border-top: 2px solid var(--card-accent);
     border-top-width: 2px;
-    box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 6%, transparent);
+    box-shadow: var(--shadow-card-emphasis);
   }
   .ia-landing .price.feat .overage {
     border-top-color: var(--border);
@@ -2204,7 +2235,7 @@ input:-webkit-autofill:focus {
     margin-top: 30px;
   }
 
-  /* ── FAQ ─────────────────────────────────────────────────────────────────── */
+  /* ── FAQ ──────────────���──────────────────────────────────────────────────── */
   .ia-landing .faq {
     display: grid;
     grid-template-columns: 1fr;
@@ -2584,7 +2615,7 @@ input:-webkit-autofill:focus {
     flex-direction: column;
     gap: 14px;
     padding: 28px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
     border-radius: var(--radius);
     background: var(--card);
     transition: border-color 0.18s ease, transform 0.18s ease;
