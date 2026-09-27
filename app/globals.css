@@ -29,8 +29,17 @@ button,
   --brand-text: #795812;
   --brand-text-hover: #62460d;
 
+  --action: #d6b66b;
   --action-hover: #c9a554;
   --action-pressed: #bc9745;
+
+  /* Control tokens — matched to the product app. */
+  --switch-off: #cfc8ba;
+  --row-stripe: #f8f6f1;
+  --row-hover: #f1ede3;
+  --shadow-color: #18212b;
+  --elev-control: 0 1px 2px color-mix(in srgb, var(--shadow-color) 14%, transparent),
+    0 2px 6px -1px color-mix(in srgb, var(--shadow-color) 14%, transparent);
 
   --background: #faf9f6;
   --foreground: #18212b;
@@ -101,9 +110,10 @@ button,
   --azure-600: #795812;
   --azure-700: #62460d;
 
-  /* ~8px controls, ~10px cards */
-  --radius: 10px;
-  --radius-control: 8px;
+  /* 3px cards + buttons, 2px small chips + badges. Only avatars and toggle
+     knobs are fully round (--shape-round). */
+  --radius: 3px;
+  --radius-control: 2px;
   /* Shape roles — the ONE place to decide what "round" means.
      --shape-pill:  text-bearing chips/pill buttons (rounded-pill).
      --shape-round: true circles — avatars, status dots, count badges,
@@ -235,7 +245,13 @@ input:-webkit-autofill:focus {
   --brand-800: #e2c780;
   --brand-900: #e7ce93;
   --brand-text: #d6b66b;
+  --action: #d6b66b;
   --action-hover: #e2c780;
+
+  --switch-off: #4a5059;
+  --row-stripe: color-mix(in srgb, var(--foreground) 4.5%, transparent);
+  --row-hover: color-mix(in srgb, var(--foreground) 9%, transparent);
+  --shadow-color: #000000;
 
   --background: #111315;
   --foreground: #f4f6f8;
@@ -522,6 +538,12 @@ input:-webkit-autofill:focus {
   --color-brand-900: var(--brand-900);
   --color-brand-text: var(--brand-text);
   --color-control-border: var(--control-border);
+  --color-action: var(--action);
+  --color-switch-off: var(--switch-off);
+  --color-row-stripe: var(--row-stripe);
+  --color-row-hover: var(--row-hover);
+  --shadow-xs: var(--elev-control);
+  --shadow-sm: var(--elev-control);
 
   /* Electric azure accent utilities (bg-azure-500, text-azure-400, …) */
   --color-azure-300: var(--azure-300);
@@ -993,7 +1015,7 @@ input:-webkit-autofill:focus {
   }
 }
 
-/* ─�� Layout rhythm (central gutter / padding / spacing) ────────────────────���
+/* ─�� Layout rhythm (central gutter / padding / spacing) ────────────────────����
    Mobile-first token values live in :root; these step them up per breakpoint.
    Every page edge, card body and section stack reads these, so gutters stay
    identical across auth, legal, help, account, dashboard and workspaces. */
@@ -1182,13 +1204,14 @@ input:-webkit-autofill:focus {
     justify-content: center;
     gap: 14px;
     padding: 15px 22px;
-    border-radius: var(--radius-control);
+    border-radius: var(--radius);
     background: var(--primary);
     color: var(--primary-foreground);
     font-weight: 650;
     font-size: var(--text-copy-sm);
     white-space: nowrap;
     border: 1px solid var(--primary);
+    box-shadow: var(--elev-control);
     transition: background 0.2s, transform 0.2s, border-color 0.2s;
   }
   /* The nav CTA stays a compact single-line pill on phones — smaller padding and
@@ -1241,6 +1264,7 @@ input:-webkit-autofill:focus {
     background: var(--muted);
     border-color: var(--border);
     color: var(--text-faint);
+    box-shadow: none;
     cursor: not-allowed;
     transform: none;
   }
@@ -1526,8 +1550,9 @@ input:-webkit-autofill:focus {
     letter-spacing: 0.5px;
   }
   .ia-landing .scrutiny-states li.active button {
-    background: var(--highlight);
-    border-left-color: var(--brand-text);
+    background: var(--card);
+    box-shadow: inset 0 0 0 1px var(--action);
+    border-left-color: var(--action);
     color: var(--foreground);
     font-weight: 650;
   }
@@ -1781,6 +1806,7 @@ input:-webkit-autofill:focus {
     font-weight: 600;
     padding: 4px 9px;
     border-radius: var(--radius-control);
+    box-shadow: var(--elev-control);
     white-space: nowrap;
   }
   .ia-landing .finding {
@@ -2065,7 +2091,8 @@ input:-webkit-autofill:focus {
     border-top: 0;
   }
   .ia-landing .compound-progression li:last-child {
-    background: var(--highlight);
+    background: var(--card);
+    box-shadow: inset 0 0 0 1px var(--action);
   }
   .ia-landing .progress-stage {
     display: flex;
@@ -2175,7 +2202,8 @@ input:-webkit-autofill:focus {
     background: var(--primary);
     color: var(--primary-foreground);
     padding: 5px 10px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-control);
+    box-shadow: var(--elev-control);
     white-space: nowrap;
   }
   .ia-landing .price h3 {
@@ -2916,4 +2944,20 @@ input:-webkit-autofill:focus {
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: none; }
+}
+
+/* Zebra rows — the ONE place every table and table-like list gets alternating
+   rows. In @layer base so a selected-row utility (bg-card + ring) still wins.
+   Opt out with `.no-zebra` on the table or list. */
+@layer base {
+  :where(table:not(.no-zebra)) > tbody > tr:nth-child(even),
+  :where(.list-striped:not(.no-zebra)) > :nth-child(even),
+  :where(.scrutiny-ledger:not(.no-zebra)) > :nth-child(even) {
+    background-color: var(--row-stripe);
+  }
+  :where(table:not(.no-zebra)) > tbody > tr:hover,
+  :where(.list-striped:not(.no-zebra)) > :hover,
+  :where(.scrutiny-ledger:not(.no-zebra)) > :hover {
+    background-color: var(--row-hover);
+  }
 }

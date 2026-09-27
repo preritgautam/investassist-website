@@ -49,11 +49,11 @@ export function FeatureShowcase() {
         <div className="grid gap-4 sm:grid-cols-2" aria-hidden="true">
           <div className={panel}>
             <p className={`${label} mb-3`}>NOI Bridge</p>
-            <div className="flex flex-col gap-2">
+            <div className="list-striped flex flex-col">
               {noiBridge.map((l) => (
                 <div
                   key={l.label}
-                  className={`flex items-center justify-between gap-2 ${l.strong ? "border-t border-border pt-2" : ""}`}
+                  className={`flex items-center justify-between gap-2 px-2 py-1 ${l.strong ? "border-t border-border" : ""}`}
                 >
                   <span className={`text-caption ${l.strong ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
                     {l.label}
@@ -111,7 +111,7 @@ export function FeatureShowcase() {
             </thead>
             <tbody>
               {scenarios.map((s) => (
-                <tr key={s.cap} className={`border-t border-border ${s.base ? "bg-highlight" : ""}`}>
+                <tr key={s.cap} className={`border-t border-border ${s.base ? "bg-card ring-1 ring-inset ring-action" : ""}`}>
                   <td className="px-4 py-2.5 text-xs font-medium text-foreground">
                     {s.cap}
                     {s.base && <span className="ml-1.5 text-3xs font-semibold uppercase text-brand-text">Base</span>}

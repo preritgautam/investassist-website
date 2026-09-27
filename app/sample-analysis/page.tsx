@@ -85,7 +85,7 @@ export default function SampleAnalysisPage() {
           <BrandMark width={140} />
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 rounded-pill px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="size-4" aria-hidden="true" /> Back
           </Link>
@@ -93,7 +93,7 @@ export default function SampleAnalysisPage() {
       </nav>
 
       <main className="page-container section-stack py-8 md:py-12">
-        <div className="inline-flex w-fit items-center gap-2 rounded-pill border border-border bg-muted px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+        <div className="inline-flex w-fit items-center gap-2 rounded-control border border-border bg-muted shadow-xs px-4 py-1.5 text-xs font-semibold text-muted-foreground">
           <ShieldCheck className="size-3.5" aria-hidden="true" />
           Sample analysis · illustrative figures
         </div>
@@ -169,7 +169,7 @@ export default function SampleAnalysisPage() {
                   </thead>
                   <tbody>
                     {rentComps.map((c) => (
-                      <tr key={c.property} className={`border-b border-border last:border-0 ${c.subject ? "bg-highlight" : ""}`}>
+                      <tr key={c.property} className={`border-b border-border last:border-0 ${c.subject ? "bg-card ring-1 ring-inset ring-action" : ""}`}>
                         <td className="py-2.5 pr-2 text-sm font-medium text-foreground md:pr-3">{c.property}</td>
                         <td className="px-2 py-2.5 text-right text-sm text-muted-foreground md:px-3">{c.distance}</td>
                         <td className="px-2 py-2.5 text-right text-sm text-foreground md:px-3">{c.rentPsf}</td>
@@ -263,13 +263,13 @@ export default function SampleAnalysisPage() {
             <Link
               href={getAppUrl("/auth")}
               data-analytics="sample-analysis-cta"
-              className="inline-flex items-center justify-center gap-2 rounded-pill bg-primary px-8 py-4 text-base font-bold text-primary-foreground transition-colors hover:bg-action-hover"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary shadow-xs px-8 py-4 text-base font-bold text-primary-foreground transition-colors hover:bg-action-hover"
             >
               Underwrite Your First Deal <ArrowRight className="size-5" aria-hidden="true" />
             </Link>
             <Link
               href="/#pricing"
-              className="inline-flex items-center justify-center gap-2 rounded-pill border border-border bg-card px-8 py-4 text-base font-bold text-foreground transition-colors hover:bg-muted"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card shadow-xs px-8 py-4 text-base font-bold text-foreground transition-colors hover:bg-muted"
             >
               See Pricing
             </Link>
