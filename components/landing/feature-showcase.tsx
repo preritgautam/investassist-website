@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Calculator, TrendingUp, Layers } from "lucide-react"
 
 const noiBridge = [
@@ -42,13 +39,7 @@ function CardHeader({ icon: Icon, title }: { icon: typeof Calculator; title: str
 export function FeatureShowcase() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <motion.article
-        data-slot="card"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className={card}
-      >
+      <article data-slot="card" className={`${card} reveal-in-view`}>
         <CardHeader icon={Calculator} title="Underwriting Summary" />
         <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
           Go from raw documents to a clean NOI bridge and unit mix — separating the in-place deal from the
@@ -100,16 +91,9 @@ export function FeatureShowcase() {
             </table>
           </div>
         </div>
-      </motion.article>
+      </article>
 
-      <motion.article
-        data-slot="card"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-        className={card}
-      >
+      <article data-slot="card" className={`${card} reveal-in-view reveal-delay`}>
         <CardHeader icon={TrendingUp} title="Valuation Scenarios" />
         <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
           Pressure-test value across a range of exit cap rates instead of betting on a single number — so you
@@ -142,7 +126,7 @@ export function FeatureShowcase() {
         <p className="mt-3 text-caption text-muted-foreground">
           Applied to stabilized NOI of $1.62M (direct capitalization).
         </p>
-      </motion.article>
+      </article>
     </div>
   )
 }
