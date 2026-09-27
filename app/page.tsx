@@ -72,8 +72,10 @@ export default async function HomePage({
             <a href="#sample">Sample analysis</a>
             <a href="#pricing">Pricing</a>
             <a href="/insights">Insights</a>
-            <a href={loginUrl}>Log in</a>
-            <a className="btn" href={signupUrl} data-analytics="homepage-nav-cta">
+              <a className="login-link" href={loginUrl}>
+                Log in
+              </a>
+              <a className="btn" href={signupUrl} data-analytics="homepage-nav-cta">
               Start free <span aria-hidden="true">↗</span>
             </a>
           </div>

@@ -143,10 +143,19 @@
   font-size: 14px;
   color: var(--muted);
 }
-/* On phones only the theme toggle and the primary CTA show; the text links
-   appear once there is room for them. */
+/* On phones only the theme toggle, Log in, and the primary CTA show; the
+   remaining text links appear once there is room for them. */
 .ia-landing .navlinks > a:not(.btn) {
   display: none;
+}
+/* Log in stays visible at every width as a compact, quiet text link so it
+   sits balanced beside the filled Start free button without crowding. */
+.ia-landing .navlinks > a.login-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
 }
 .ia-landing .navlinks > a:hover {
   color: var(--ink);
@@ -277,7 +286,7 @@
   color: var(--muted);
 }
 
-/* ── Hero ─���─────────────────────────────����────────────────────────────────── */
+/* ── Hero ─�����─────────────────────────────����────────────────────────────────── */
 .ia-landing .hero {
   padding: var(--hero-y) 0;
   border-bottom: 1px solid var(--line);
