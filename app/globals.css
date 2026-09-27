@@ -222,7 +222,7 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════��═══
    INVESTASSIST GOLD THEME — DARK
    Re-declares the token set in dark values. `.on-ink` shares this context so
    it can be dropped onto a section to create a dark band in either mode.
@@ -850,7 +850,7 @@ input:-webkit-autofill:focus {
   
   /* Neo Transitions */
   
-  /* ════════════════════════════════════════════════════════════════�����══════════
+  /* ═══════════════════════════════════════��════════════════════════�����══════════
      TYPOGRAPHY SCALE - InvestAssist Platform Standard
      Consistent across Syndicator, Investor, Buyer, Broker dashboards
      ═══════════════════════════════════════════════════════════════════════════ */
@@ -1385,13 +1385,13 @@ input:-webkit-autofill:focus {
     letter-spacing: 1.7px;
     color: var(--muted-foreground);
     display: block;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   .ia-landing .flow-documents > div {
     border: 1px solid var(--border);
     background: var(--muted);
-    padding: 13px 14px;
-    margin-top: 8px;
+    padding: 9px 14px;
+    margin-top: 7px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1440,7 +1440,7 @@ input:-webkit-autofill:focus {
     border: 1px solid var(--border);
     background: var(--muted);
     border-radius: var(--radius);
-    padding: 13px 15px;
+    padding: 10px 15px;
   }
   .ia-landing .flow-next > div:first-of-type {
     margin-top: 0;
@@ -1904,7 +1904,7 @@ input:-webkit-autofill:focus {
     text-decoration: underline;
   }
 
-  /* ── Walkthrough video ───────────────────────────────────────────────────── */
+  /* ── Walkthrough video ���──────────────────────────────────────────────────── */
   .ia-landing .walkthrough {
     display: grid;
     grid-template-columns: 1fr;
@@ -1926,7 +1926,7 @@ input:-webkit-autofill:focus {
     box-shadow: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
   }
 
-  /* ── Editorial "how it works" ────────────────────────────────────────────── */
+  /* ── Editorial "how it works" ───────────���────────────────────────────────── */
   .ia-landing .editorial {
     display: grid;
     grid-template-columns: 1fr;
@@ -2425,10 +2425,10 @@ input:-webkit-autofill:focus {
       grid-template-columns: 1.2fr 45px 0.85fr 45px 1.1fr;
       gap: 15px;
       align-items: center;
-      padding: 29px 25px;
+      padding: 20px 25px 24px;
     }
     .ia-landing .flow-heading {
-      padding: 20px 25px;
+      padding: 15px 25px;
     }
     .ia-landing .flow-arrow {
       display: block;
