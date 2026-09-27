@@ -222,7 +222,7 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════��═══
+/* ═══════════════════════════════════════════════════════════════════════���═══
    INVESTASSIST GOLD THEME — DARK
    Re-declares the token set in dark values. `.on-ink` shares this context so
    it can be dropped onto a section to create a dark band in either mode.
@@ -850,7 +850,7 @@ input:-webkit-autofill:focus {
   
   /* Neo Transitions */
   
-  /* ═══════════════════════════════════════��════════════════════════�����══════════
+  /* ══════════════════════════════════════����════════════════════════�����══════════
      TYPOGRAPHY SCALE - InvestAssist Platform Standard
      Consistent across Syndicator, Investor, Buyer, Broker dashboards
      ═══════════════════════════════════════════════════════════════════════════ */
@@ -1390,13 +1390,14 @@ input:-webkit-autofill:focus {
   .ia-landing .flow-documents > div {
     border: 1px solid var(--border);
     background: var(--muted);
-    padding: 9px 14px;
-    margin-top: 7px;
+    padding: 5px 14px;
+    margin-top: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: var(--radius);
     font-size: var(--text-copy);
+    line-height: 1.3;
   }
   .ia-landing .flow-documents .doc-name {
     display: inline-flex;
@@ -1440,7 +1441,8 @@ input:-webkit-autofill:focus {
     border: 1px solid var(--border);
     background: var(--muted);
     border-radius: var(--radius);
-    padding: 10px 15px;
+    padding: 7px 15px;
+    line-height: 1.35;
   }
   .ia-landing .flow-next > div:first-of-type {
     margin-top: 0;
@@ -2425,10 +2427,11 @@ input:-webkit-autofill:focus {
       grid-template-columns: 1.2fr 45px 0.85fr 45px 1.1fr;
       gap: 15px;
       align-items: center;
-      padding: 20px 25px 24px;
+      padding: 18px 25px 20px;
     }
     .ia-landing .flow-heading {
-      padding: 15px 25px;
+      padding: 10px 25px;
+      line-height: 1.4;
     }
     .ia-landing .flow-arrow {
       display: block;
