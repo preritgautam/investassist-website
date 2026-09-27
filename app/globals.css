@@ -222,7 +222,7 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px rgba(166, 123, 43, 0.20);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════���═══
+/* ═══════════════════════════════════════════════════════════════════════����═══
    INVESTASSIST GOLD THEME — DARK
    Re-declares the token set in dark values. `.on-ink` shares this context so
    it can be dropped onto a section to create a dark band in either mode.
@@ -850,7 +850,7 @@ input:-webkit-autofill:focus {
   
   /* Neo Transitions */
   
-  /* ══════════════════════════════════════����════════════════════════�����══════════
+  /* ═════════════════════════════════════������════════════════════════�����══════════
      TYPOGRAPHY SCALE - InvestAssist Platform Standard
      Consistent across Syndicator, Investor, Buyer, Broker dashboards
      ═══════════════════════════════════════════════════════════════════════════ */
@@ -2426,15 +2426,27 @@ input:-webkit-autofill:focus {
     .ia-landing .flow-body {
       grid-template-columns: 1.2fr 45px 0.85fr 45px 1.1fr;
       gap: 15px;
-      align-items: center;
+      align-items: start;
       padding: 18px 25px 20px;
+      /* Vertical centre of the 02 row, measured from the top of a column
+         (label + first row + gaps + half of the second row). */
+      --flow-anchor: 83px;
     }
     .ia-landing .flow-heading {
       padding: 10px 25px;
       line-height: 1.4;
     }
+    /* Arrows and the NOI block centre on the 02 row. Relative `top` keeps them
+       out of the row-height calculation so the columns stay top-aligned. */
+    .ia-landing .flow-arrow,
+    .ia-landing .flow-result {
+      position: relative;
+      top: var(--flow-anchor);
+      transform: translateY(-50%);
+    }
     .ia-landing .flow-arrow {
       display: block;
+      line-height: 1;
     }
     .ia-landing .flow-result {
       border-top: 0;
