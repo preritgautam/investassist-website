@@ -252,6 +252,8 @@ input:-webkit-autofill:focus {
   --row-stripe: color-mix(in srgb, var(--foreground) 4.5%, transparent);
   --row-hover: color-mix(in srgb, var(--foreground) 9%, transparent);
   --shadow-color: #000000;
+  --elev-control: 0 1px 2px color-mix(in srgb, var(--shadow-color) 38%, transparent),
+    0 2px 6px -1px color-mix(in srgb, var(--shadow-color) 38%, transparent);
 
   --background: #111315;
   --foreground: #f4f6f8;
@@ -1503,7 +1505,7 @@ input:-webkit-autofill:focus {
     margin-top: 2px;
   }
 
-  /* ── Built for scrutiny (second section) ─────────────────────────────────── */
+  /* ── Built for scrutiny (second section) ──────────────────��──────────────── */
   /* Mobile: intro (heading + state tabs) stacked above the illustrative card,
      with the three principles below a divider. Desktop splits intro/card into two
      columns and fans the principles into three tracks. */
