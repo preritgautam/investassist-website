@@ -48,6 +48,7 @@ function recordAccent(file, text) {
 }
 
 const HEX_RULE = { id: "hex-color", re: /(?<![\w&/-])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![\w-])/g, msg: "hex colour in code; read a CSS variable instead" }
+const LOGO_PATH_RULE = { id: "logo-path", re: /["'`]\/brand\/[^"'`]+["'`]/g, msg: "logo asset path outside lib/brand.ts; import BRAND_LOGO / BRAND_BUILDING_MARK / BRAND_LOGO_RASTER" }
 const CSS_IMPORT_RULE = { id: "css-import", re: /^\s*import\s+(?:[^'"]*from\s+)?['"][^'"]+\.css['"]/gm, msg: "CSS import outside app/layout.tsx" }
 
 function walk(dir, out = []) {
@@ -83,6 +84,7 @@ for (const dir of SCAN_DIRS) {
     recordStatusText(file, text)
     recordAccent(file, text)
     if (!HEX_ALLOWED.has(file)) record(file, text, HEX_RULE)
+    if (!HEX_ALLOWED.has(file)) record(file, text, LOGO_PATH_RULE)
     if (!CSS_IMPORT_ALLOWED.has(file)) record(file, text, CSS_IMPORT_RULE)
   }
 }

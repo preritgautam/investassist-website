@@ -1,5 +1,6 @@
 import { SITE_NAME, SITE_DESCRIPTION, getSiteUrl, absoluteUrl } from "./seo-config"
 import type { Article, ArticleVideo } from "./insights/types"
+import { BRAND_LOGO_RASTER } from "./brand"
 
 /**
  * Schema.org JSON-LD builders. Organization and WebSite are site-wide and
@@ -26,7 +27,7 @@ export function organizationSchema(): JsonLdNode {
     url: `${url}/`,
     logo: {
       "@type": "ImageObject",
-      url: absoluteUrl("/brand/investassist-blue.svg"),
+      url: absoluteUrl(BRAND_LOGO_RASTER),
     },
     description: SITE_DESCRIPTION,
   }

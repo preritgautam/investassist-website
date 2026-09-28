@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { BRAND_MARK, BRAND_NAME } from "@/lib/brand"
+import { BRAND_LOGO, BRAND_NAME } from "@/lib/brand"
 
 interface BrandMarkProps {
   /** Link destination. Pass `null` to render without a surrounding link. */
@@ -18,9 +18,9 @@ export function BrandMark({ href = "/", className, width = 148 }: BrandMarkProps
   const art = (
     <span className="brand-logo">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="logo-on-light" src={BRAND_MARK.light} alt={BRAND_NAME} width={width} />
+      <img className="logo-on-light" src={BRAND_LOGO.light} alt={BRAND_NAME} width={width} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="logo-on-dark" src={BRAND_MARK.dark} alt="" aria-hidden="true" width={width} />
+      <img className="logo-on-dark" src={BRAND_LOGO.dark} alt="" aria-hidden="true" width={width} />
     </span>
   )
 

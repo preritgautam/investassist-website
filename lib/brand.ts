@@ -3,9 +3,25 @@ export const BRAND_NAME = "InvestAssist"
 export const SUPPORT_EMAIL = "support@investassist.ai"
 export const SALES_EMAIL = "sales@investassist.ai"
 
-export const BRAND_MARK = {
+// InvestAssist Logo Kit (Graphite + Gold / Warm White + Gold). This is the only file that may
+// name a /brand/ asset path; the suffix is the BACKGROUND the artwork is drawn for.
+// Never recolour with CSS filters and never stretch.
+export const BRAND_LOGO = {
+  light: "/brand/investassist-logo-light.svg",
+  dark: "/brand/investassist-logo-dark.svg",
+} as const
+
+export const BRAND_BUILDING_MARK = {
   light: "/brand/investassist-mark-light.svg",
   dark: "/brand/investassist-mark-dark.svg",
+} as const
+
+// Raster full logo for consumers that can't render SVG (JSON-LD, email).
+export const BRAND_LOGO_RASTER = "/brand/investassist-logo-light.png"
+
+export const BRAND_APP_ICON = {
+  192: "/brand/investassist-icon-dark-192.png",
+  512: "/brand/investassist-icon-dark-512.png",
 } as const
 
 // The browser chrome colour can't read CSS variables, so it mirrors --background
