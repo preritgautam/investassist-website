@@ -26,20 +26,52 @@ button,
   --brand-700: #795812;
   --brand-800: #62460d;   /* gold link hover */
   --brand-900: #62460d;
-  --brand-text: #795812;
-  --brand-text-hover: #62460d;
+  /* Brand + action roles — mirror of the product app's token set. */
+  --brand: #795812;
+  --gold-text: #795812;          /* gold text, icons, links */
+  --gold-text-hover: #62460d;
+  --brand-text: var(--gold-text);
+  --brand-text-hover: var(--gold-text-hover);
 
-  --action: #d6b66b;
+  --action: #d6b66b;             /* solid gold fills */
   --action-hover: #c9a554;
   --action-pressed: #bc9745;
+  --action-foreground: #18212b;
+  --focus: #8a651c;
+  --selection: #fbf3de;
 
-  /* Control tokens — matched to the product app. */
+  /* Controls, rows, tables, progress, chips — matched to the product app. */
   --switch-off: #cfc8ba;
   --row-stripe: #f8f6f1;
   --row-hover: #f1ede3;
+  --table-stripe: var(--row-stripe);
+  --table-row-hover: var(--row-hover);
+  --table-gridline: #e5e7eb;
+  --track: #e6e1d6;
+  --progress-fill: #9a7428;
+  --chip: var(--primary);
+  --chip-foreground: var(--primary-foreground);
+  --chip-border: color-mix(in srgb, var(--brand-700) 30%, transparent);
+  --chip-neutral: var(--muted);
+  --chip-neutral-foreground: var(--foreground);
+  --chip-neutral-border: var(--border);
+  --chip-neutral-icon: var(--gold-text);
+  --chip-warning-foreground: #855800;
+  --chip-warning-border: color-mix(in srgb, var(--chip-warning-foreground) 45%, transparent);
+
+  /* Elevation — one shadow colour, five steps. */
   --shadow-color: #18212b;
   --elev-control: 0 1px 2px color-mix(in srgb, var(--shadow-color) 14%, transparent),
     0 2px 6px -1px color-mix(in srgb, var(--shadow-color) 14%, transparent);
+  --elev-1: 0 1px 2px color-mix(in srgb, var(--shadow-color) 12%, transparent),
+    0 1px 3px color-mix(in srgb, var(--shadow-color) 6%, transparent);
+  --elev-2: 0 1px 2px color-mix(in srgb, var(--shadow-color) 10%, transparent),
+    0 4px 12px -2px color-mix(in srgb, var(--shadow-color) 12%, transparent);
+  --elev-3: 0 1px 3px color-mix(in srgb, var(--shadow-color) 10%, transparent),
+    0 8px 24px -8px color-mix(in srgb, var(--shadow-color) 18%, transparent);
+  --elev-4: 0 12px 36px color-mix(in srgb, var(--shadow-color) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--shadow-color) 8%, transparent);
+  --elev-card: var(--elev-3);
 
   --background: #faf9f6;
   --foreground: #18212b;
@@ -55,18 +87,20 @@ button,
   --secondary-foreground: #18212b;
   --muted: #f4f3ef;
   --muted-foreground: #4b5563;   /* body / secondary text */
-  --text-faint: #646e83;         /* muted supporting text — spec #667085 nudged to clear 4.5:1 on #f4f3ef */
+  --text-faint: #667085;         /* muted supporting text */
+  --text-disabled: #929aa5;
 
   /* Selected / hover state — neutral lift; gold is carried by the edge/indicator */
   --accent: #f0f2f4;
   --accent-foreground: #18212b;
 
   /* --border = subtle divider; --card-border = card edge; --input / --control-border = visible boundary */
-  --border: #c4bcab;
-  --card-border: #d9dee5;
+  --border: #d9dee5;
+  --divider: #e5e7eb;
+  --card-border: var(--border);
   --input: #858f9c;
-  --control-border: #858f9c;
-  --ring: #8a651c;
+  --control-border: var(--input);
+  --ring: var(--focus);
 
   --surface: #ffffff;
   --surface-elevated: #ffffff;
@@ -91,10 +125,10 @@ button,
   --info-muted: #edf4fc;
   --info-muted-foreground: #245b8a;
 
-  /* Neutral elevation — no brown tint. Prefer borders + spacing. */
-  --shadow-card: 0 4px 16px rgb(24 33 43 / 0.06);
-  --shadow-card-emphasis: 0 4px 16px rgb(24 33 43 / 0.06);
-  --shadow-panel: 0 4px 16px rgb(24 33 43 / 0.06);
+  /* Legacy shadow names — aliases of the elevation scale (same in both themes). */
+  --shadow-card: var(--elev-card);
+  --shadow-card-emphasis: var(--elev-card);
+  --shadow-panel: var(--elev-card);
 
   /* Flat by design — from/to are equal so legacy gradient consumers render solid */
   --gradient-primary-from: #d6b66b;
@@ -157,8 +191,8 @@ button,
   --ink-border: #343b43;
   --ink-border-strong: #4a525c;
 
-  --chart-1: #795812;
-  --chart-2: #18212b;
+  --chart-1: #a67c2d;
+  --chart-2: #334155;
   --chart-3: #858f9c;
   --chart-4: #176b4a;
   --chart-5: #b42318;
@@ -172,15 +206,15 @@ button,
   --sidebar-border: #343b43;
   --sidebar-ring: #e7ce93;
 
-  --overlay: rgb(17 19 21 / 0.4);
+  --overlay: color-mix(in srgb, #111315 40%, transparent);
   --tooltip: #18212b;
-  --tooltip-foreground: #f4f6f8;
+  --tooltip-foreground: #ffffff;
   --navbar: #ffffff;
   --navbar-foreground: #18212b;
   --navbar-border: #e5e7eb;
 
-  --card-accent: var(--brand-600);
-  --card-accent-width: 2px;
+  --card-accent: #c9a554;
+  --card-accent-width: 2.5px;
 
   /* Status, elevation, glass & type-scale tokens */
   --destructive: #b42318;
@@ -244,16 +278,35 @@ input:-webkit-autofill:focus {
   --brand-700: #d6b66b;
   --brand-800: #e2c780;
   --brand-900: #e7ce93;
-  --brand-text: #d6b66b;
+  --brand: #d6b66b;
+  --gold-text: #d6b66b;
+  --gold-text-hover: #e2c780;
   --action: #d6b66b;
   --action-hover: #e2c780;
+  --action-pressed: #e2c780;
+  --action-foreground: #171c22;
+  --focus: #e7ce93;
+  --selection: color-mix(in srgb, #d6b66b 12%, #1c2025);
 
   --switch-off: #4a5059;
   --row-stripe: color-mix(in srgb, var(--foreground) 4.5%, transparent);
   --row-hover: color-mix(in srgb, var(--foreground) 9%, transparent);
+  --table-gridline: color-mix(in srgb, var(--foreground) 16%, var(--border));
+  --track: color-mix(in srgb, var(--foreground) 12%, transparent);
+  --progress-fill: #d6b66b;
+  --chip-warning-foreground: #f5c27e;
+
   --shadow-color: #000000;
-  --elev-control: 0 1px 2px color-mix(in srgb, var(--shadow-color) 38%, transparent),
-    0 2px 6px -1px color-mix(in srgb, var(--shadow-color) 38%, transparent);
+  --elev-control: 0 1px 2px color-mix(in srgb, var(--shadow-color) 14%, transparent),
+    0 2px 6px -1px color-mix(in srgb, var(--shadow-color) 14%, transparent);
+  --elev-1: 0 1px 2px color-mix(in srgb, var(--shadow-color) 40%, transparent),
+    0 1px 3px color-mix(in srgb, var(--shadow-color) 30%, transparent);
+  --elev-2: 0 2px 10px color-mix(in srgb, var(--shadow-color) 42%, transparent),
+    0 1px 3px color-mix(in srgb, var(--shadow-color) 30%, transparent);
+  --elev-3: 0 6px 26px color-mix(in srgb, var(--shadow-color) 50%, transparent),
+    0 1px 4px color-mix(in srgb, var(--shadow-color) 35%, transparent);
+  --elev-4: 0 16px 48px color-mix(in srgb, var(--shadow-color) 60%, transparent),
+    0 4px 12px color-mix(in srgb, var(--shadow-color) 40%, transparent);
 
   --background: #111315;
   --foreground: #f4f6f8;
@@ -269,15 +322,15 @@ input:-webkit-autofill:focus {
   --secondary-foreground: #f4f6f8;
   --muted: #22272d;
   --muted-foreground: #b2bac5;
-  --text-faint: #8e98a4;
+  --text-faint: #8a95a3;
+  --text-disabled: #8a95a3;
 
   --accent: #282e35;
   --accent-foreground: #f4f6f8;
 
   --border: #343b43;
+  --divider: #343b43;
   --input: #758190;
-  --control-border: #758190;
-  --ring: #e7ce93;
 
   --surface: #1c2025;
   --surface-elevated: #282e35;
@@ -296,10 +349,10 @@ input:-webkit-autofill:focus {
   --interactive-secondary-hover-bg: #282e35;
   --interactive-secondary-hover-fg: #f4f6f8;
 
-  --info: #d6b66b;
+  --info: #72a9e6;
   --info-foreground: #171c22;
-  --info-muted: color-mix(in srgb, #d6b66b 12%, var(--card));
-  --info-muted-foreground: #e2c780;
+  --info-muted: #15202d;
+  --info-muted-foreground: #a9cbf0;
 
   --gradient-primary-from: #d6b66b;
   --gradient-primary-to: #d6b66b;
@@ -342,21 +395,15 @@ input:-webkit-autofill:focus {
   --sidebar-border: #22272d;
   --sidebar-ring: #e7ce93;
 
-  --overlay: rgba(0, 0, 0, 0.6);
+  --overlay: color-mix(in srgb, var(--shadow-color) 60%, transparent);
   --tooltip: #f4f6f8;
   --tooltip-foreground: #171c22;
-  --navbar: #111315;
+  --navbar: #1c2025;
   --navbar-foreground: #f4f6f8;
   --navbar-border: #343b43;
 
-  /* Roles added with the light retune — values reproduce the approved dark look exactly. */
-  --brand-text-hover: #d6b66b;
-  --action-pressed: #e2c780;
-  --card-border: #343b43;
+  --card-accent: var(--brand-600);
   --interactive-pressed-bg: #282e35;
-  --shadow-card: 0 18px 45px color-mix(in oklab, var(--foreground) 4%, transparent);
-  --shadow-card-emphasis: 0 18px 45px color-mix(in oklab, var(--foreground) 6%, transparent);
-  --shadow-panel: 0 16px 40px color-mix(in oklab, var(--foreground) 6%, transparent);
 
   /* Status, elevation, glass & type-scale tokens */
   --emerald-50: color-mix(in srgb, #10b981 12%, var(--background));
@@ -491,17 +538,20 @@ input:-webkit-autofill:focus {
   --pink-800: color-mix(in srgb, #fbcfe8 82%, #fff);
   --pink-900: color-mix(in srgb, #fbcfe8 64%, #fff);
   --pink-950: color-mix(in srgb, #fbcfe8 46%, #fff);
-  --destructive: #e06666;
-  --destructive-foreground: #ffffff;
-  --success: #68cdb4;
-  --success-muted: #14281f;
-  --success-muted-foreground: #8fdcc4;
-  --warning: #d9a441;
-  --warning-muted: #352a18;
-  --warning-muted-foreground: #efc780;
-  --attention: #d9a441;
-  --attention-muted: #352a18;
-  --attention-muted-foreground: #efc780;
+  --destructive: #f07167;
+  --destructive-foreground: #171c22;
+  --success: #5cc99a;
+  --success-foreground: #171c22;
+  --success-muted: #13261e;
+  --success-muted-foreground: #8fdcb8;
+  --warning: #f2a444;
+  --warning-foreground: #171c22;
+  --warning-muted: #2c2214;
+  --warning-muted-foreground: #f5c27e;
+  --attention: #f2a444;
+  --attention-foreground: #171c22;
+  --attention-muted: #2c2214;
+  --attention-muted-foreground: #f5c27e;
 }
 /* Card top accent line — marks where every card starts. Driven by the
    --card-accent token (espresso-brown on light, gold on dark via --brand-600).
@@ -546,6 +596,25 @@ input:-webkit-autofill:focus {
   --color-row-hover: var(--row-hover);
   --shadow-xs: var(--elev-control);
   --shadow-sm: var(--elev-control);
+  --shadow-md: var(--elev-2);
+  --shadow-lg: var(--elev-3);
+  --shadow-xl: var(--elev-4);
+  --shadow-2xl: var(--elev-4);
+  --color-brand: var(--brand);
+  --color-gold: var(--gold-text);
+  --color-gold-hover: var(--gold-text-hover);
+  --color-action-hover: var(--action-hover);
+  --color-action-pressed: var(--action-pressed);
+  --color-action-foreground: var(--action-foreground);
+  --color-focus: var(--focus);
+  --color-selection: var(--selection);
+  --color-divider: var(--divider);
+  --color-text-disabled: var(--text-disabled);
+  --color-track: var(--track);
+  --color-progress-fill: var(--progress-fill);
+  --color-chip: var(--chip);
+  --color-chip-foreground: var(--chip-foreground);
+  --color-chip-border: var(--chip-border);
 
   /* Electric azure accent utilities (bg-azure-500, text-azure-400, …) */
   --color-azure-300: var(--azure-300);
@@ -813,7 +882,7 @@ input:-webkit-autofill:focus {
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--primary) 55%, transparent);
+    background: var(--selection);
     color: var(--foreground);
   }
 }
@@ -2961,5 +3030,49 @@ input:-webkit-autofill:focus {
   :where(.list-striped:not(.no-zebra)) > :hover,
   :where(.scrutiny-ledger:not(.no-zebra)) > :hover {
     background-color: var(--row-hover);
+  }
+}
+
+/* Shared progress + status chip classes — identical to the product app. */
+@layer components {
+  .progress-track {
+    height: 6px;
+    overflow: hidden;
+    border-radius: var(--radius-control);
+    background-color: var(--track);
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: var(--radius-control);
+    background-color: var(--progress-fill);
+  }
+  .progress-fill[data-complete="true"] {
+    background-color: var(--success);
+  }
+  .chip-doc,
+  .chip-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 2px 8px;
+    border: 1px solid;
+    border-radius: var(--radius-control);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    box-shadow: var(--elev-control);
+  }
+  .chip-doc {
+    background-color: var(--chip-neutral);
+    color: var(--chip-neutral-foreground);
+    border-color: var(--chip-neutral-border);
+  }
+  .chip-doc svg {
+    color: var(--chip-neutral-icon);
+  }
+  .chip-warning {
+    background-color: transparent;
+    color: var(--chip-warning-foreground);
+    border-color: var(--chip-warning-border);
   }
 }
