@@ -30,3 +30,6 @@ export const THEME_COLOR = {
   light: "#faf9f6",
   dark: "#111315",
 } as const
+
+
+export const SUPPORT_MAILTO = `mailto:${SUPPORT_EMAIL}`
