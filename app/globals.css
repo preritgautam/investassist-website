@@ -2248,25 +2248,26 @@ input:-webkit-autofill:focus {
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     background: var(--card);
-    padding: 30px 24px 26px;
+    padding: 28px 24px 24px;
   }
   /* The recommended plan reads as a filled, highlighted box in BOTH themes: a
      soft brand-tinted surface (cream in light, warm dark in dark) inside a full
      brand border. */
   .ia-landing .price.feat {
-    background: var(--card);
+    background: linear-gradient(135deg, rgba(250,251,252,0.92) 0%, rgba(246,233,198,0.82) 100%);
     border: 1px solid var(--control-border);
     border-top: 2px solid var(--card-accent);
     border-top-width: 2px;
     box-shadow: var(--shadow-card-emphasis);
   }
-  .ia-landing .price.feat .overage {
-    border-top-color: var(--border);
-  }
   .ia-landing .price .badge {
     position: absolute;
     top: -11px;
-    left: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     @apply font-mono; font-size: var(--text-2xs); font-weight: 600;
     letter-spacing: 1.4px;
     text-transform: uppercase;
@@ -2279,7 +2280,7 @@ input:-webkit-autofill:focus {
   }
   .ia-landing .price h3 {
     font-size: 1.125rem;
-    font-weight: 650;
+    font-weight: 700;
     letter-spacing: -0.3px;
     color: var(--foreground);
   }
@@ -2287,19 +2288,19 @@ input:-webkit-autofill:focus {
     font-size: var(--text-copy-sm);
     line-height: 1.5;
     color: var(--muted-foreground);
-    margin-top: 6px;
-    min-height: 42px;
-  }
-  .ia-landing .price .support {
+    margin-top: 4px;
+    /* Sized for the longest tagline (trial copy wraps to 3 lines) so every
+       card's price/credits/CTA block starts at the same height. */
     min-height: 60px;
+     margin-bottom: 9px;
   }
   .ia-landing .price strong {
     display: block;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -1.5px;
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -1px;
     color: var(--foreground);
-    margin: 16px 0 2px;
+    margin: 0 0 4px;
     font-variant-numeric: tabular-nums;
   }
   .ia-landing .price strong small {
@@ -2311,26 +2312,43 @@ input:-webkit-autofill:focus {
   .ia-landing .price .credits {
     font-size: var(--text-copy-sm);
     font-weight: 600;
-    color: var(--brand-text);
-  }
-  .ia-landing .price .support {
-    font-size: var(--text-meta);
-    line-height: 1.55;
-    color: var(--muted-foreground);
-    margin-top: 12px;
-  }
-  .ia-landing .price .overage {
-    font-size: var(--text-tag);
     line-height: 1.5;
-    font-weight: 500;
-    color: var(--muted-foreground);
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    margin-bottom: 18px;
+    color: var(--brand-text);
+    /* Sized for the longest credits line (2 lines) so the CTA button below
+       lines up across all cards. */
+    min-height: 42px;
+    margin-bottom: 20px;
   }
   .ia-landing .price .cta {
     width: 100%;
+    padding: 12px 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .ia-landing .price .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 8px;
+    list-style: none;
+  }
+  .ia-landing .price .feature-list li {
+    position: relative;
+    padding-left: 24px;
+    font-size: var(--text-copy-sm);
+    line-height: 1.5;
+    color: var(--muted-foreground);
+  }
+  .ia-landing .price .feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    width: 16px;
+    height: 16px;
+    background: var(--brand-text);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 90% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 90% no-repeat;
   }
   .ia-landing .pricing-note {
     font-size: var(--text-meta);
