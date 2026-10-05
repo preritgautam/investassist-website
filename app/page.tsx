@@ -87,7 +87,7 @@ export default async function HomePage({
           <div className="wrap">
             <div className="hero-composition">
               <div className="hero-top">
-                <div className="eyebrow">BUY-SIDE CRE UNDERWRITING</div>
+                <div className="eyebrow">BUY-SIDE ACQUISITION INTELLIGENCE SYSTEM</div>
                 <h1>
                   Read the deal beneath <br />
                   <span>the deal.</span>
